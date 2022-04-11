@@ -1,0 +1,52 @@
+module.exports = {
+  content: [
+    "./index.html",
+    "./src/**/*.{vue,js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {
+      colors: {
+        transparent: 'transparent',
+        current: 'currentColor',
+        'white': '#ffffff',
+        'black': '#000000',
+        'primary': {
+          '100': '#ED6767',
+          '500': '#AF1D1D',
+          '700': '#630000'
+        },
+        'secondary': {
+          '100': '#FFD459',
+          '500': '#FFCA34',
+          '700': '#E8AD07'
+        },
+        'action': {
+          '100': '#57A7DB',
+          '500': '#3493CF',
+          '700': '#117EC4'
+        },
+        'black': {
+          '100': '#626262',
+          '500': '#282828',
+          '700': '#000000'
+        },
+        'white': {
+          '100': '#FFFFFF',
+          '500': '#F1F1F1',
+          '700': '#E6E6E6'
+        },
+        'grey': {
+          '100': '#E1E1E1',
+          '500': '#D0D0D0',
+          '700': '#A5A4A4'
+        },
+        'gray': {
+          '100': '#E1E1E1',
+          '500': '#D0D0D0',
+          '700': '#A5A4A4'
+        },
+      },
+    },
+  },
+  plugins: [],
+}
