@@ -11,6 +11,13 @@ export default defineConfig({
       globalComponentsDeclaration: true,
     }),
   ],
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@import "./src/assets/styles/mixins/index.scss";`
+      }
+    }
+  },
   resolve: {
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),

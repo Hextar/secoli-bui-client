@@ -16,13 +16,18 @@ module.exports = {
   },
 
   extends: [
-    'eslint:recommended',
+    'airbnb',
     'plugin:vue/vue3-recommended',
     'prettier'
   ],
 
   // required to lint *.vue files
-  plugins: ['vue', 'import', 'decorator-position'],
+  plugins: [
+    'vue',
+    'import',
+    'decorator-position',
+    'prettier'
+  ],
 
   settings: {
     'import/resolver': {
@@ -35,6 +40,7 @@ module.exports = {
 
   // add your custom rules here
   rules: {
+    "prettier/prettier": ["error"],
     "vetur.validation.template": false,
     'vue-scoped-css/enforce-style-type': ['error', { allows: ['scoped'] }],
     'import/no-unresolved': 'error',

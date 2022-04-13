@@ -1,40 +1,13 @@
 <template>
-  <h1>Home Page</h1>
-  <div class="container mx-auto">
-    <div class="flex flex-col justify-center">
-      <div
-        v-for="({ bg, text }, idx) in items"
-        :key="`${bg}-${text}-${idx}`"
-        class="flex flex-row"
-      > 
-        <div
-          class="square flex flex-1 justify-center items-center w-33"
-          :class="getColor('bg', bg, 700)"
-        >
-          <p :class="getColor('text', text, 500)">
-            {{ typeof bg }} {{ bg }}
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-          </p>
-        </div>
-        <div
-          class="square flex flex-1 justify-center items-center w-33 "
-          :class="getColor('bg', bg)"
-        >
-          <p :class="getColor('text', text, 500)">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-          </p>
-        </div>
-        <div
-          class="square flex flex-1 justify-center items-center w-33"
-          :class="getColor('bg', bg, 100)"
-        >
-          <p :class="getColor('text', text, 500)">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
+  <DefaultLayout>
+    <ImageWrapper
+      height="100vh"
+      image="/images/background.jpg"
+      lazy-image="/images/background-lazy.jpg"
+    >
+      <Header class="pt-8" />
+    </ImageWrapper>
+  </DefaultLayout>
 </template>
 
 <script setup lang="ts">
@@ -46,7 +19,7 @@ const items = ref([
   { bg: 'action', text: 'white' },
   { bg: 'black', text: 'white' },
   { bg: 'white', text: 'white' },
-  { bg: 'grey', text: 'white' }
+  { bg: 'grey', text: 'white' },
 ])
 
 const getColor = (

@@ -1,3 +1,5 @@
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 module.exports = {
   content: [
     "./index.html",
@@ -5,6 +7,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        'display': ['Marcellus', ...defaultTheme.fontFamily.sans],
+        'body': ['Marcellus', ...defaultTheme.fontFamily.sans]
+      },
       colors: {
         transparent: 'transparent',
         current: 'currentColor',

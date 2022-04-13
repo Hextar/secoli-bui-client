@@ -10,11 +10,6 @@ const routes = [
     component: Homepage,
   },
   {
-    path: "/event:id",
-    name: "Event",
-    component: Event,
-  },
-  {
     path: "/:catchAll(.*)",
     component: NotFound,
   },

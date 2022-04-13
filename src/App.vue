@@ -1,5 +1,5 @@
 <template>
-  <router-view />
+  <router-view class="h-100 w-100 flex flex-1 justify-center bg-black-700" />
 </template>
 
 <script setup lang="ts">
@@ -9,11 +9,7 @@
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
