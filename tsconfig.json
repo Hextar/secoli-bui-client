@@ -12,9 +12,16 @@
     "esModuleInterop": true,
     "lib": ["esnext", "dom"],
     "types": [
-      "vite/client", // if using vite
-      // ...
-    ]
+      "vite/client"
+    ],
+    "paths": {
+      "@/components/*": ["./src/components/*"],
+      "@/utils/*": ["./src/utils/*"],
+      "@/store/*": ["./src/store/*"],
+      "@/assets/*": ["./src/assets/*"],
+      "@/img/*": ["./public/images/*"],
+      "@/*": ["./src/*"],
+    }
   },
   "include": [
     "src/**/*.ts",
@@ -27,12 +34,5 @@
     "**/*.stories.ts",
     "**/*.spec.ts"
   ],
-  "references": [{ "path": "./tsconfig.node.json" }],
-  "paths": {
-    "@components": ["src/components"],
-    "@store": ["src/store"],
-    "@scss": ["src/styles/scss"],
-    "@img": ["src/assests/images"],
-    "@": ["src"],
-  }
+  "references": [{ "path": "./tsconfig.node.json" }]
 }

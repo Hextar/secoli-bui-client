@@ -8,7 +8,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'display': ['Marcellus', ...defaultTheme.fontFamily.sans],
+        'display': ['Alegreya', ...defaultTheme.fontFamily.sans],
         'body': ['Marcellus', ...defaultTheme.fontFamily.sans]
       },
       colors: {

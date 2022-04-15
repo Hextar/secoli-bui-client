@@ -3,12 +3,19 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
-    Button: typeof import('./src/components/layout/common/Button.vue')['default']
+    Button: typeof import('./src/components/common/Button/index.vue')['default']
+    Common: typeof import('./src/components/common/index.vue')['default']
+    Decoration: typeof import('./src/components/common/Decoration.vue')['default']
+    'Decoration copy': typeof import('./src/components/common/Decoration copy.vue')['default']
     Default: typeof import('./src/components/layout/Default.vue')['default']
     DefaultLayout: typeof import('./src/components/layout/DefaultLayout.vue')['default']
-    Header: typeof import('./src/components/layout/Header.vue')['default']
+    Header: typeof import('./src/components/common/Header.vue')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
+    Hero: typeof import('./src/components/layout/common/Hero.vue')['default']
     ImageWrapper: typeof import('./src/components/layout/common/ImageWrapper.vue')['default']
+    Logo: typeof import('./src/components/common/Logo.vue')['default']
+    Menu: typeof import('./src/components/menu/Menu.vue')['default']
+    Spacer: typeof import('./src/components/common/Spacer.vue')['default']
   }
 }
 
