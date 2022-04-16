@@ -7,8 +7,17 @@ import svgLoader from 'vite-svg-loader'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    vue(),
-    svgLoader({ defaultImport: 'component' }),
+    vue({
+      template: {
+        compilerOptions: {
+          isCustomElement: tag => /^x-/.test(tag)
+        }
+      }
+    }),
+    svgLoader({
+      defaultImport: 'component',
+      svgoConfig: { multipass: true }
+  }),
     ViteComponents({
       globalComponentsDeclaration: true,
     }),

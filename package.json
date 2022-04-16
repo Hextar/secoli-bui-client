@@ -8,15 +8,18 @@
     "preview": "vite preview",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore --fix src",
     "format": "prettier .  --write",
-    "check:no-eslint-disable": "./scripts/check-no-debugger-or-console.sh",
+    "check:custom": "./scripts/check-custom.sh",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "test:unit": "npm run test:unit:javascript && npm run test:unit:typescript",
+    "test:unit:javascript": "jest --config=jest.unit.config.js src/javascript",
+    "test:unit:typescript": "jest --config=jest.unit.config.js src/typescript"
   },
   "dependencies": {
     "@headlessui/vue": "^1.5.0",
     "axios": "^0.26.1",
     "floating-vue": "*",
-    "storybook": "^6.4.21",
+    "storybook": "^6.3.13",
     "vue": "^3.2.31",
     "vue-axios": "^3.4.1",
     "vue-router": "^4.0.13",
@@ -27,9 +30,12 @@
   "devDependencies": {
     "@babel/core": "^7.17.9",
     "@storybook/addon-actions": "^6.4.21",
-    "@storybook/addon-essentials": "^6.4.21",
+    "@storybook/addon-essentials": "^5.3.21",
     "@storybook/addon-links": "^6.4.21",
     "@storybook/vue3": "^6.4.21",
+    "@types/jest": "^27.4.1",
+    "@types/svgo": "^2.6.3",
+    "@types/ws": "^8.5.3",
     "@vitejs/plugin-vue": "^2.3.0",
     "autoprefixer": "^10.4.4",
     "babel-loader": "^8.2.4",
@@ -42,20 +48,36 @@
     "eslint-plugin-react": "^7.29.4",
     "eslint-plugin-react-hooks": "^4.4.0",
     "eslint-plugin-vue": "^8.6.0",
+    "jest": "^27.5.1",
     "lint-staged": "^12.3.7",
     "postcss": "^8.4.12",
     "prettier": "^2.6.2",
     "prettier-plugin-tailwindcss": "^0.1.8",
     "sass": "^1.50.0",
-    "storybook-builder-vite": "^0.1.23",
+    "storybook-builder-vite": "^0.0.2",
+    "svgo": "^2.8.0",
     "tailwindcss": "^3.0.23",
+    "ts-jest": "^27.1.4",
     "typescript": "^4.5.4",
     "url": "^0.11.0",
     "vite": "^2.9.0",
     "vite-plugin-components": "^0.13.3",
     "vite-svg-loader": "^3.2.0",
+    "vue-jest": "^3.0.7",
     "vue-loader": "^16.8.3",
     "vue-tsc": "^0.29.8"
+  },
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ]
+    ]
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
@@ -63,7 +85,7 @@
   "lint-staged": {
     "*.{js,jsx,ts,tsx,vue}": [
       "vue-cli-service lint",
-      "npm run check:no-eslint-disable",
+      "npm run check:custom",
       "git add"
     ]
   },

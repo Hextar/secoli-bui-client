@@ -11,8 +11,11 @@
     "isolatedModules": false,
     "esModuleInterop": true,
     "lib": ["esnext", "dom"],
+    "typeRoots": ["node_modules/@types"],
     "types": [
-      "vite/client"
+      "vite/client",
+      "vite-svg-loader",
+      "jest",
     ],
     "paths": {
       "@/components/*": ["./src/components/*"],

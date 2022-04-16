@@ -19,7 +19,7 @@ app.use(FloatingVue, {
     'secoli-bui': {
       '$extend': 'tooltip',
       triggers: ['hover', 'click', 'touch'],
-      distance: 2,
+      distance: 6,
     },
   },
 })
