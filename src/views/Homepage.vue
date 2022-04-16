@@ -11,8 +11,9 @@
           exact
         >
           La
-          <span class="cursor-pointer" @click="onClick">{{ showPeach ? '🍑' : 'Pesca' }}</span> dei
-          Burattini
+          <span v-if="showPeach" v-tooltip="tooltip" class="cursor-pointer">🍑</span>
+          <span v-else class="cursor-pointer" @click="onClick">Pesca</span>
+          dei Burattini
         </h2>
         <h3 class="mb-4 text-center font-display text-2xl uppercase text-white-100" to="/" exact>
           Di perdita e riscatto
@@ -31,10 +32,18 @@
 
 <script setup lang="ts">
 import { computed, ref } from 'vue'
+import { TooltipOptions } from '@/types'
 
 let counter = ref(0)
 
 const showPeach = computed((): boolean => counter.value > 33)
+const tooltip = computed(
+  (): TooltipOptions => ({
+    content: 'Charm',
+    placement: 'top',
+    theme: 'secoli-bui',
+  })
+)
 
 const onClick = () => {
   counter.value += 1
