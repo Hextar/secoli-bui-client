@@ -60,7 +60,7 @@ $md-w: 120px;
     height: 0.5px;
     width: 100%;
     top: 5px;
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, .85);
   }
 
   &--size {
