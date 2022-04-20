@@ -1,28 +1,24 @@
 <template>
-  <div class="image-wrapper relative flex items-start justify-center">
+  <div class="header relative flex items-start justify-center">
     <img
-      class="image-wrapper__background pointer-events-none"
+      class="header__background pointer-events-none"
       :src="image"
       v-lazy="lazyImage"
       alt="Background event cover"
     />
-    <div
-      class="image-wrapper__content items-space-betwen container flex flex-col justify-center px-8"
-    >
-      <div class="image-wrapper__content__menu flex flex-col items-center justify-center pt-8">
+    <div class="header__content items-space-betwen container flex flex-col justify-center px-8">
+      <div class="header__content__menu flex flex-col items-center justify-center pt-8">
         <slot name="menu" />
       </div>
       <Spacer />
-      <div class="image-wrapper__content__body container flex flex-col items-center justify-center">
+      <div class="header__content__body container flex flex-col items-center justify-center">
         <slot name="content" />
       </div>
       <Spacer />
-      <div
-        class="image-wrapper__content__action container flex flex-col items-center justify-center"
-      >
+      <div class="header__content__action container flex flex-col items-center justify-center">
         <IconArrow
           v-show="!scrolled"
-          class="image-wrapper__content__action__icon cursor-pointer"
+          class="header__content__action__icon cursor-pointer"
           @click="onScroll"
         />
       </div>
@@ -66,7 +62,7 @@ const onScroll = (): void => {
 </script>
 
 <style lang="scss" scoped>
-.image-wrapper {
+.header {
   height: 100vh;
   max-height: 720px;
   overflow: hidden;

@@ -9,6 +9,7 @@ declare module 'vue' {
     'Decoration copy': typeof import('./src/components/common/Decoration copy.vue')['default']
     Default: typeof import('./src/components/layout/Default.vue')['default']
     DefaultLayout: typeof import('./src/components/layout/DefaultLayout.vue')['default']
+    Footer: typeof import('./src/components/common/Footer.vue')['default']
     Header: typeof import('./src/components/common/Header.vue')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
     Hero: typeof import('./src/components/layout/common/Hero.vue')['default']
