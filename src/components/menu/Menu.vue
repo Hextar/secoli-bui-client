@@ -1,16 +1,16 @@
 <template>
-  <div class="header">
-    <div class="header__logo mb-6 flex flex-col items-center justify-center">
+  <div class="menu">
+    <div class="menu__logo mb-6 flex flex-col items-center justify-center">
       <Logo />
     </div>
-    <template class="header__content flex flex-wrap items-center justify-center gap-8">
+    <template class="menu__content flex flex-wrap items-center justify-center gap-8">
       <div
         v-for="({ label, to, tooltip, disabled }, idx) in items"
         :key="`${label}-${idx}`"
         v-tooltip="tooltip"
       >
         <router-link
-          class="header__content__item cursor-pointer font-display text-lg text-white-100"
+          class="menu__content__item cursor-pointer font-display text-lg font-bold text-white-100"
           :to="to"
           :disabled="disabled"
           exact
@@ -23,37 +23,13 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import { TooltipOptions } from '@/types'
+import { MenuItems } from './items'
 
-const items = ref([
-  {
-    label: 'Home',
-    to: '/',
-  },
-  {
-    label: 'Eventi',
-    to: '/events',
-    tooltip: { content: 'Coming soon', placement: 'bottom' },
-    disabled: true,
-  },
-  {
-    label: 'Ambientazione',
-    to: '/world-system',
-    tooltip: { content: 'Coming soon', placement: 'bottom' },
-    disabled: true,
-  },
-  {
-    label: 'Gioca con noi',
-    to: '/play-with-us',
-    tooltip: { content: 'Coming soon', placement: 'bottom' },
-    disabled: true,
-  },
-])
+const items = MenuItems
 </script>
 
 <style lang="scss" scoped>
-.header {
+.menu {
   &__logo {
     z-index: 2;
   }

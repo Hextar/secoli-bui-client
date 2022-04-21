@@ -10,7 +10,7 @@
         [`button--variant--${variant}`]: true,
         [`button--icon--${iconPosition}`]: true,
       }"
-      :disabled="disabled"
+      :disabled="!!disabled || undefined"
       v-bind="$attrs"
     >
       <span v-if="hasPrefix" class="button__slot">

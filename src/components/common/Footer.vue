@@ -22,17 +22,8 @@
             (giochi di ruolo dal vivo) ed attività affini.
           </span>
         </div>
-        <div class="flex w-1/5 flex-col justify-center gap-8">
-          <span class="text-center font-display text-sm text-white-500">EVENTI</span>
-        </div>
-        <div class="flex w-1/5 flex-col justify-center gap-8">
-          <span class="text-center font-display text-sm text-white-500">AMBIENTAZIONE</span>
-        </div>
-        <div class="flex w-1/5 flex-col justify-center gap-8">
-          <span class="text-center font-display text-sm text-white-500">GIOCA CON NOI</span>
-        </div>
-        <div class="flex w-1/5 flex-col justify-center gap-8">
-          <span class="text-center font-display text-sm text-white-500">NEWSLETTER</span>
+        <div class="flex w-4/5 flex-col justify-center gap-8">
+          <MenuFooter />
         </div>
       </div>
     </div>
