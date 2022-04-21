@@ -5,9 +5,9 @@
     </div>
     <template class="header__content flex flex-wrap items-center justify-center gap-8">
       <div
-        v-for="({ label, to, disabled }, idx) in items"
+        v-for="({ label, to, tooltip, disabled }, idx) in items"
         :key="`${label}-${idx}`"
-        v-tooltip="tooltip(!!disabled)"
+        v-tooltip="tooltip"
       >
         <router-link
           class="header__content__item cursor-pointer font-display text-lg text-white-100"
@@ -27,16 +27,29 @@ import { ref } from 'vue'
 import { TooltipOptions } from '@/types'
 
 const items = ref([
-  { label: 'Home', to: '/' },
-  { label: 'Eventi', to: '/events', disabled: true },
-  { label: 'Ambientazione', to: '/world-system', disabled: true },
-  { label: 'Gioca con noi', to: '/play-with-us', disabled: true },
+  {
+    label: 'Home',
+    to: '/',
+  },
+  {
+    label: 'Eventi',
+    to: '/events',
+    tooltip: { content: 'Coming soon', placement: 'bottom' },
+    disabled: true,
+  },
+  {
+    label: 'Ambientazione',
+    to: '/world-system',
+    tooltip: { content: 'Coming soon', placement: 'bottom' },
+    disabled: true,
+  },
+  {
+    label: 'Gioca con noi',
+    to: '/play-with-us',
+    tooltip: { content: 'Coming soon', placement: 'bottom' },
+    disabled: true,
+  },
 ])
-
-const tooltip = (value: boolean): TooltipOptions => ({
-  content: value ? 'Poison Fatal' : undefined,
-  placement: 'bottom',
-})
 </script>
 
 <style lang="scss" scoped>

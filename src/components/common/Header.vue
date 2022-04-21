@@ -1,5 +1,5 @@
 <template>
-  <div class="header relative flex items-start justify-center">
+  <div ref="header" class="header relative flex items-start justify-center">
     <img
       class="header__background pointer-events-none"
       :src="image"
@@ -30,6 +30,8 @@
 import { computed, ref } from 'vue'
 import { IconArrow } from '@/assets/icons'
 
+const header = ref<HTMLDivElement>()
+
 const props = defineProps({
   image: { type: String, required: true },
   lazyImage: { type: String, required: true },
@@ -56,7 +58,9 @@ const style = computed((): string => {
 })
 
 const onScroll = (): void => {
-  console.warn('TRIGGED SCROLL')
+  const el = header.value as Element
+  const { height } = el.getBoundingClientRect()
+  window.scrollTo({ top: height, behavior: 'smooth' })
   scrolled.value = true
 }
 </script>
