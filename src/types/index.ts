@@ -13,3 +13,12 @@
   trigger?: string
   theme?: string
 } | string
+
+/**
+ * v-lazy option tpye
+ */
+ export type LazyOptions = {
+  src?: string, // your image url
+  loading?: string, // your loading image url
+  error?: string// your error image url
+}

@@ -3,7 +3,7 @@
     <img
       class="header__background pointer-events-none"
       :src="image"
-      v-lazy="lazyImage"
+      v-lazy="lazy"
       alt="Background event cover"
     />
     <div class="header__content items-space-betwen container flex flex-col justify-center px-8">
@@ -28,7 +28,7 @@
 
 <script setup lang="ts">
 import { computed, ref } from 'vue'
-import { IconArrow } from '@/assets/icons'
+import { LazyOptions } from '@/types'
 
 const header = ref<HTMLDivElement>()
 
@@ -40,11 +40,13 @@ const props = defineProps({
 
 let scrolled = ref(false)
 
-const lazy = computed(() => ({
-  src: props.image,
-  loading: props.lazyImage,
-  error: props.image,
-}))
+const lazy = computed(
+  (): LazyOptions => ({
+    src: props.image,
+    loading: props.lazyImage,
+    error: props.image,
+  })
+)
 
 const style = computed((): string => {
   const { height } = props

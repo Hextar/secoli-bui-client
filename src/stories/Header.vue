@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <Header>
     <div class="wrapper">
       <div>
         <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
@@ -23,15 +23,21 @@
       <div>
         <my-button size="small" @click="$emit('logout')" label="Log out" v-if="user" />
         <my-button size="small" @click="$emit('login')" label="Log in" v-if="!user" />
-        <my-button primary size="small" @click="$emit('createAccount')" label="Sign up" v-if="!user" />
+        <my-button
+          primary
+          size="small"
+          @click="$emit('createAccount')"
+          label="Sign up"
+          v-if="!user"
+        />
       </div>
     </div>
-  </header>
+  </Header>
 </template>
 
 <script>
-import './header.css';
-import MyButton from './Button.vue';
+import './header.css'
+import MyButton from './Button.vue'
 
 export default {
   name: 'my-header',
@@ -45,5 +51,5 @@ export default {
   },
 
   emits: ['login', 'logout', 'createAccount'],
-};
+}
 </script>
