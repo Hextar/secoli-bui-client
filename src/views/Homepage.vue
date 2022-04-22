@@ -26,7 +26,7 @@
           faucibus mauris imperdiet eu. Curabitur euismod nulla eget leo ornare, in viverra ipsum
           finibus.
         </p>
-        <Button class="px-4" disabled> Scopri di piu </Button>
+        <Button class="px-16" disabled> Scopri di piu </Button>
       </template>
     </Header>
   </DefaultLayout>
