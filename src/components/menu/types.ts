@@ -1,6 +1,6 @@
 import { TooltipOptions  } from "@/types"
 
-export type MenuItemType {
+export type MenuItemType = {
   label: string,
   to?: string,
   tooltip?: TooltipOptions,
