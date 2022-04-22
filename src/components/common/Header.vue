@@ -95,8 +95,11 @@ const onScroll = (): void => {
 
       &__icon {
         transform: scale(0.33);
-        animation: bounce 1s infinite alternate;
-        -webkit-animation: bounce 1s infinite alternate;
+
+        @screen md {
+          animation: bounce 1s infinite alternate;
+          -webkit-animation: bounce 1s infinite alternate;
+        }
       }
     }
 
