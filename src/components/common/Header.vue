@@ -1,20 +1,18 @@
 <template>
-  <div ref="header" class="header relative flex items-start justify-center">
+  <div ref="header" class="header flex items-start justify-center">
     <img
       class="header__background pointer-events-none"
       :src="image"
       v-lazy="lazy"
       alt="Background event cover"
     />
-    <div class="header__content items-space-betwen container flex flex-col justify-center px-8">
+    <div class="header__content items-space-betwen container flex flex-col justify-between px-8">
       <div class="header__content__menu flex flex-col items-center justify-center pt-8">
         <slot name="menu" />
       </div>
-      <Spacer />
       <div class="header__content__body container flex flex-col items-center justify-center">
         <slot name="content" />
       </div>
-      <Spacer />
       <div class="header__content__action container flex flex-col items-center justify-center">
         <IconArrow
           v-show="!scrolled"
@@ -29,13 +27,13 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import { LazyOptions } from '@/types'
+import { IconArrow } from '@/assets/icons'
 
 const header = ref<HTMLDivElement>()
 
 const props = defineProps({
   image: { type: String, required: true },
   lazyImage: { type: String, required: true },
-  height: { type: [Number, String], default: 420 },
 })
 
 let scrolled = ref(false)
@@ -47,17 +45,6 @@ const lazy = computed(
     error: props.image,
   })
 )
-
-const style = computed((): string => {
-  const { height } = props
-  const px = `${height}`.includes('px')
-  const percent = `${height}`.includes('%')
-  const vh = `${height}`.includes('vh')
-  return `
-    height: ${height}${!px && !percent && !vh ? 'px' : ''};
-    min-height: ${height}${!px && !percent && !vh ? 'px' : ''};
-  `
-})
 
 const onScroll = (): void => {
   const el = header.value as Element
@@ -72,6 +59,7 @@ const onScroll = (): void => {
   height: 100vh;
   max-height: 800px;
   overflow: hidden;
+  z-index: 0;
 
   &__background {
     position: absolute;
@@ -85,10 +73,8 @@ const onScroll = (): void => {
   &__content {
     height: 100%;
 
-    &__menu,
     &__body,
     &__action {
-      position: relative;
       z-index: 3;
     }
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="footer relative flex flex-col items-start justify-center">
+  <div class="footer flex flex-col items-start justify-center">
     <div class="footer__main relative flex w-full items-center justify-center bg-black-700">
       <div class="container mb-4 flex w-full flex-wrap items-start justify-between p-8">
         <div class="mb-16 flex w-full flex-col items-center gap-8 md:mb-0 md:w-1/5 md:items-start">
@@ -52,6 +52,8 @@
 
 <style lang="scss" scoped>
 .footer {
+  z-index: 0;
+
   &__bloody {
     $blood-h: 48px;
     margin-top: $blood-h;

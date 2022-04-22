@@ -42,7 +42,7 @@
         >
           Newsletter
         </span>
-        <span class="mb-8 font-body text-sm text-grey-500">
+        <span class="mb-8 text-center font-body text-sm text-grey-500 md:text-left">
           Non perderti tutti gli aggiornatmenti dei nostri eventi LARP
         </span>
         <Button

@@ -9,7 +9,7 @@ declare module 'vue' {
     'Decoration copy': typeof import('./src/components/common/Decoration copy.vue')['default']
     Default: typeof import('./src/components/layout/Default.vue')['default']
     DefaultLayout: typeof import('./src/components/layout/DefaultLayout.vue')['default']
-    Footer: typeof import('./src/components/common/Footer.vue')['default']
+    Footer: typeof import('./src/components/layout/Footer.vue')['default']
     Header: typeof import('./src/components/common/Header.vue')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
     Hero: typeof import('./src/components/layout/common/Hero.vue')['default']
@@ -18,6 +18,8 @@ declare module 'vue' {
     Logo: typeof import('./src/components/common/Logo.vue')['default']
     Menu: typeof import('./src/components/menu/Menu.vue')['default']
     MenuFooter: typeof import('./src/components/menu/MenuFooter.vue')['default']
+    MenuMobile: typeof import('./src/components/menu/MenuMobile.vue')['default']
+    Mobile: typeof import('./src/components/menu/Mobile.vue')['default']
     Spacer: typeof import('./src/components/common/Spacer.vue')['default']
   }
 }

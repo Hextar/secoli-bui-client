@@ -1,6 +1,6 @@
 <template>
   <DefaultLayout>
-    <Header height="100vh" image="/images/background.jpg" lazy-image="/images/background-lazy.jpg">
+    <Header image="/images/background.jpg" lazy-image="/images/background-lazy.jpg">
       <template #menu>
         <Menu />
       </template>
@@ -26,7 +26,7 @@
           faucibus mauris imperdiet eu. Curabitur euismod nulla eget leo ornare, in viverra ipsum
           finibus.
         </p>
-        <Button class="px-16" disabled> Scopri di piu </Button>
+        <Button class="w-[160px]" disabled> Scopri di piu </Button>
       </template>
     </Header>
   </DefaultLayout>

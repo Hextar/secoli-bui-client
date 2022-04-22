@@ -3,7 +3,9 @@
     <div class="menu__logo mb-6 flex flex-col items-center justify-center">
       <Logo />
     </div>
-    <template class="menu__content flex flex-wrap items-center justify-center gap-8">
+    <template
+      class="menu__content invisible flex flex-wrap items-center justify-center gap-8 sm:visible"
+    >
       <div
         v-for="({ label, to, tooltip, disabled }, idx) in items"
         :key="`${label}-${idx}`"
@@ -30,9 +32,7 @@ const items = MenuItems
 
 <style lang="scss" scoped>
 .menu {
-  &__logo {
-    z-index: 2;
-  }
+  z-index: 10;
 
   &__content {
     &__item {
