@@ -1,14 +1,16 @@
 <template>
   <div class="menu-footer">
-    <template class="menu-footer__content flex flex-wrap items-start justify-end gap-32">
+    <template
+      class="menu-footer__content flex flex-wrap items-start justify-center gap-16 md:justify-end"
+    >
       <div
         v-for="({ label, to, tooltip, disabled, children }, idx) in items"
         :key="`${label}-${idx}`"
-        class="justiy-start flex h-full flex-col items-start"
+        class="justiy-start flex h-full w-full flex-col items-center md:w-32 md:items-start"
         v-tooltip="tooltip"
       >
         <router-link
-          class="menu-footer__content__title mb-4 cursor-pointer font-display text-lg font-bold text-white-100"
+          class="menu-footer__content__title mb-4 cursor-pointer text-center font-display text-lg font-bold text-white-100"
           :to="to"
           :disabled="disabled"
           exact
@@ -33,23 +35,20 @@
           </router-link>
         </template>
       </div>
-      <div class="justiy-start flex h-full flex-col items-start">
+      <div class="justiy-start flex h-full w-full flex-col items-center md:w-32 md:items-start">
         <span
-          class="menu-footer__content__title mb-4 cursor-pointer font-display text-lg font-bold text-white-100"
+          class="menu-footer__content__title mb-4 w-full cursor-pointer text-center font-display text-lg font-bold text-white-100 md:text-left"
           :disabled="disabled"
           exact
         >
           Newsletter
         </span>
-        <span class="mb-4 text-sm text-white-500">
-          La Mad² Factory è un'associazione che si propone come trampolino di lancio per
-          associazioni nascenti e/o progetti ed eventi che abbiano finalità ludiche come larp
-          (giochi di ruolo dal vivo) ed attività affini.
+        <span class="mb-8 font-body text-sm text-grey-500">
+          Non perderti tutti gli aggiornatmenti dei nostri eventi LARP
         </span>
         <Button
-          class="px-4"
           tag="a"
-          href="https://www.facebook.com/"
+          href="https://mailchi.mp/bd173f18b082/iscriviti"
           rel="nofollow"
           alt="Iscriviti alla newsletter"
           title="Iscriviti alla newsletter"
@@ -63,9 +62,14 @@
 </template>
 
 <script setup lang="ts">
-import { MenuItems } from './items'
+import { computed } from 'vue'
+import { MenuItems } from '@/router/items'
 
 const items = MenuItems.filter(({ label }) => label !== 'Home')
+
+const getFraction = computed((): number => {
+  return items.length + 1
+})
 </script>
 
 <style lang="scss" scoped>

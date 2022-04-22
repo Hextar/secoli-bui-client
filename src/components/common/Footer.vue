@@ -1,8 +1,8 @@
 <template>
   <div class="footer relative flex flex-col items-start justify-center">
     <div class="footer__main relative flex w-full items-center justify-center bg-black-700">
-      <div class="container mb-8 flex w-full flex-wrap items-start justify-between py-8">
-        <div class="flex w-1/5 flex-col gap-8">
+      <div class="container mb-4 flex w-full flex-wrap items-start justify-between p-8">
+        <div class="mb-16 flex w-full flex-col items-center gap-8 md:mb-0 md:w-1/5 md:items-start">
           <a
             href="https://www.facebook.com/mad2factory/"
             rel="nofollow"
@@ -16,29 +16,30 @@
               alt="Mad2Factory logo"
             />
           </a>
-          <span class="text-sm text-white-500">
+          <span class="text-center font-body text-sm text-white-500 md:text-left">
             La Mad² Factory è un'associazione che si propone come trampolino di lancio per
             associazioni nascenti e/o progetti ed eventi che abbiano finalità ludiche come larp
             (giochi di ruolo dal vivo) ed attività affini.
           </span>
         </div>
-        <div class="flex w-4/5 flex-col justify-center gap-8">
+        <div class="flex w-full flex-col justify-center gap-8 md:w-4/5">
           <MenuFooter />
         </div>
       </div>
     </div>
-    <div
-      class="footer__bloody relative flex w-full items-center justify-center bg-primary-500 py-8"
-    >
-      <div class="container flex w-full items-start justify-between font-display">
-        <span class="footer__bloody__copyright text-grey-700">
+    <div class="footer__bloody relative flex w-full items-center justify-center bg-primary-500 p-8">
+      <div class="container flex w-full flex-wrap items-start justify-between font-display">
+        <span
+          class="footer__bloody__copyright mb-8 w-full text-center text-grey-700 md:mb-0 md:w-1/2 md:text-left"
+        >
           ©2022 Mad Factory, All Rights Reserved
         </span>
         <router-link
-          class="footer__bloody__privacy-policy font-display text-grey-700"
+          class="footer__bloody__privacy-policy w-full text-center font-display text-grey-700 md:w-1/2 md:text-right"
           to="/"
           title="politica sulla privacy"
           alt="politica sulla privacy"
+          disabled
         >
           Politica sulla privacy
         </router-link>
@@ -51,11 +52,8 @@
 
 <style lang="scss" scoped>
 .footer {
-  &__main {
-  }
-
   &__bloody {
-    $blood-h: 32px;
+    $blood-h: 48px;
     margin-top: $blood-h;
 
     &:before {
@@ -65,10 +63,11 @@
       top: -#{$blood-h};
       left: 0;
       right: 0;
-      background-image: url('/images/elf_juice.png');
-      background-size: cover;
-      background-position: center center;
+      background-image: url('@/assets/images/elf_juice.svg');
+      background-size: contain;
+      background-position: center bottom;
       background-repeat: no-repeat;
+      z-index: 2;
     }
   }
 }

@@ -1,0 +1,1 @@
+export { default as ImageElfJuice } from './elf_juice.svg?component'

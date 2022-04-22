@@ -23,7 +23,7 @@
 </template>
 
 <script setup lang="ts">
-import { MenuItems } from './items'
+import { MenuItems } from '@/router/items'
 
 const items = MenuItems
 </script>
