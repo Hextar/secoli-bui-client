@@ -70,7 +70,7 @@ const onScroll = (): void => {
 <style lang="scss" scoped>
 .header {
   height: 100vh;
-  max-height: 720px;
+  max-height: 800px;
   overflow: hidden;
 
   &__background {
