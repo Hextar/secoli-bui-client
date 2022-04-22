@@ -38,7 +38,6 @@
       <div class="justiy-start flex h-full w-full flex-col items-center md:w-32 md:items-start">
         <span
           class="menu-footer__content__title mb-4 w-full cursor-pointer text-center font-display text-lg font-bold text-white-100 md:text-left"
-          :disabled="disabled"
           exact
         >
           Newsletter
