@@ -9,7 +9,7 @@
     <div
       class="header__content items-space-betwen container flex flex-col justify-start px-8 pb-16 md:justify-between md:pb-0"
     >
-      <div class="header__content__menu flex flex-col items-center justify-center pt-8">
+      <div class="header__content__menu flex flex-col items-center justify-center pt-6 md:pt-8">
         <slot name="menu" />
       </div>
       <div class="header__content__body container flex flex-col items-center justify-center py-8">

@@ -55,8 +55,8 @@ $overlayIndex: 99;
 .menu-mobile {
   &__toggle {
     position: fixed;
-    top: calc(#{$hamburgherSize} / 2);
-    left: calc(#{$hamburgherSize} / 2);
+    top: calc(#{$hamburgherSize} / 3);
+    left: calc(#{$hamburgherSize} / 3);
     z-index: $overlayIndex + 1;
     height: $hamburgherSize;
     width: $hamburgherSize;

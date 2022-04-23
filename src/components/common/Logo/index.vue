@@ -13,9 +13,9 @@ const props = defineProps({
 
 // VARIABLES
 const SIZE: { [key: string]: number } = {
-  small: 240,
+  small: 180,
   medium: 320,
-  large: 480,
+  large: 460,
 }
 
 // COMPUTED
