@@ -7,7 +7,7 @@
       alt="Background event cover"
     />
     <div
-      class="header__content items-space-betwen container flex flex-col justify-start px-8 md:justify-between"
+      class="header__content items-space-betwen container flex flex-col justify-start px-8 pb-16 md:justify-between md:pb-0"
     >
       <div class="header__content__menu flex flex-col items-center justify-center pt-8">
         <slot name="menu" />
@@ -21,7 +21,7 @@
       >
         <IconArrow
           v-if="!scrolled"
-          class="header__content__action__icon cursor-pointer"
+          class="header__content__action__icon animate__bounce cursor-pointer"
           @click="onScroll"
         />
       </div>
@@ -68,22 +68,29 @@ const onScroll = (): void => {
 
 <style lang="scss" scoped>
 .header {
-  min-height: 600px;
-  max-height: 800px;
-  overflow: hidden;
   z-index: 0;
+  height: 90vh;
 
-  @screen sm {
-    height: 100vh;
+  &,
+  &__background {
+    height: 100%;
+    width: 100%;
+    max-height: 700px;
+
+    @screen sm {
+      max-height: 800px;
+      height: 100vh;
+    }
   }
 
   &__background {
     position: absolute;
-    @include fullsize;
+    top: 0;
+    right: 0;
+    left: 0;
     object-fit: cover;
+    object-position: center bottom;
     z-index: 1;
-    height: 100%;
-    width: 100%;
   }
 
   &__content {
@@ -99,11 +106,6 @@ const onScroll = (): void => {
 
       &__icon {
         transform: scale(0.33);
-
-        @screen md {
-          animation: bounce 1s infinite alternate;
-          -webkit-animation: bounce 1s infinite alternate;
-        }
       }
     }
 
@@ -115,15 +117,6 @@ const onScroll = (): void => {
       opacity: 0.5;
       z-index: 2;
     }
-  }
-}
-
-@keyframes bounce {
-  from {
-    margin-top: 0;
-  }
-  to {
-    margin-top: -15px;
   }
 }
 </style>

@@ -35,7 +35,7 @@
           faucibus mauris imperdiet eu. Curabitur euismod nulla eget leo ornare, in viverra ipsum
           finibus.
         </p>
-        <Button class="w-[160px]" tag="router-link" to="/events"> Scopri di piu </Button>
+        <Button class="w-[160px]" disabled> Scopri di piu </Button>
       </template>
     </Header>
   </DefaultLayout>

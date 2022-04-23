@@ -2,29 +2,49 @@
   &bloody-slash {
     transform-origin: center left;
     animation: fade-in 0.255s forwards, slash 0.255s forwards, blood 1.275s forwards;
+    -webkit-animation: fade-in 0.255s forwards, slash 0.255s forwards, blood 1.275s forwards;
+  }
+
+  &bounce {
+    @screen md {
+      animation: bounce 1s infinite alternate;
+      -webkit-animation: bounce 1s infinite alternate;
+    }
   }
 
   &gentle-slide-from- {
     &above {
       animation: fade-in 0.510s ease-in-out, gentle-slide-from-above 0.510s ease-in-out;
+      -webkit-animation: fade-in 0.510s ease-in-out, gentle-slide-from-above 0.510s ease-in-out;
     }
 
     &below {
       animation: fade-in 0.510s ease-in-out, gentle-slide-from-below 0.510s ease-in-out;
+      -webkit-animation: fade-in 0.510s ease-in-out, gentle-slide-from-below 0.510s ease-in-out;
     }
   }
 
   &slide-from- {
     &above {
       animation: fade-in 0.510s ease-in-out, slide-from-above 0.510s ease-in-out;
+      -webkit-animation: fade-in 0.510s ease-in-out, slide-from-above 0.510s ease-in-out;
     }
 
     &below {
       animation: fade-in 0.510s ease-in-out, slide-from-below 0.510s ease-in-out;
+      -webkit-animation: fade-in 0.510s ease-in-out, slide-from-below 0.510s ease-in-out;
     }
   }
 }
 
+@keyframes bounce {
+  from {
+    margin-top: 0;
+  }
+  to {
+    margin-top: -15px;
+  }
+}
 
 @keyframes fade-in {
   0% {

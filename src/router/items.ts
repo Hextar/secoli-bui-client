@@ -9,7 +9,6 @@ export const MenuItems: MenuItemType[] = [
     label: 'Eventi',
     to: '/events',
     tooltip: { content: 'Coming soon', placement: 'bottom' },
-    disabled: true,
     children: [
       {
         label: 'Eventi passati',
