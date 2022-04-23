@@ -11,4 +11,5 @@ const store = createStore({
 	}
 })
 
+export * from './types'
 export default store

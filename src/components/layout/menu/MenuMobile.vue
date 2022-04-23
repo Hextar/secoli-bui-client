@@ -3,9 +3,9 @@
     class="menu-mobile__toggle flex cursor-pointer select-none flex-wrap items-center justify-start gap-8 sm:hidden"
   >
     <InputHamburgher
-      class="menu-mobile__toggle__hamburgher animate__bloody-slash select-none"
+      class="menu-mobile__toggle__hamburgher select-none"
       :class="{
-        'menu-mobile__toggle__hamburgher--not-loaded': !loaded,
+        'animate__bloody-slash': loaded,
         'menu-mobile__toggle__hamburgher--close': open,
       }"
       @click="open = !open"
@@ -18,7 +18,7 @@
     <div
       v-for="({ label, to, tooltip, disabled }, idx) in items"
       :key="`${label}-${idx}`"
-      class="menu-mobile__overlay__item animate__slide-from-above cursor-pointer font-display text-lg font-bold text-white-100"
+      class="menu-mobile__overlay__item animate__gentle-slide-from-above cursor-pointer font-display text-lg font-bold text-white-100"
       v-tooltip="tooltip"
     >
       <router-link :to="to" :disabled="disabled" exact @click="open = !open">
@@ -42,7 +42,7 @@ watch(open, (val) => {
   document.documentElement.style.overflow = val ? 'hidden' : 'auto'
 })
 
-onMounted(() => (loaded.value = true))
+onMounted(() => setTimeout(() => (loaded.value = true), 510))
 </script>
 
 <style lang="scss" scoped>
@@ -74,12 +74,6 @@ $overlayIndex: 99;
     }
 
     &__hamburgher {
-      &--not-loaded {
-        // on page load, avoid happening at the
-        // same time as the animated logo
-        animation-delay: 0.51s;
-      }
-
       // transform the claw mark signs
       // into an x
       &--close {

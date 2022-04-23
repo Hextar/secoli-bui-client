@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, reactive, onUnmounted } from 'vue'
+import { onMounted, onUnmounted } from 'vue'
 import { useStore } from 'vuex'
 
 const { commit } = useStore()

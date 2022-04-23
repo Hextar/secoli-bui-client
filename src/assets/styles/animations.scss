@@ -4,13 +4,23 @@
     animation: fade-in 0.255s forwards, slash 0.255s forwards, blood 1.275s forwards;
   }
 
-  &slide-from- {
+  &gentle-slide-from- {
     &above {
-      animation: fade-in 0.255s ease-in-out, slide-from-above 0.255s ease-in-out;
+      animation: fade-in 0.510s ease-in-out, gentle-slide-from-above 0.510s ease-in-out;
     }
 
     &below {
-      animation: fade-in 0.255s ease-in-out, slide-from-below 0.255s ease-in-out;
+      animation: fade-in 0.510s ease-in-out, gentle-slide-from-below 0.510s ease-in-out;
+    }
+  }
+
+  &slide-from- {
+    &above {
+      animation: fade-in 0.510s ease-in-out, slide-from-above 0.510s ease-in-out;
+    }
+
+    &below {
+      animation: fade-in 0.510s ease-in-out, slide-from-below 0.510s ease-in-out;
     }
   }
 }
@@ -61,12 +71,22 @@
   }
 }
 
-@keyframes slide-from-above {
+@keyframes gentle-slide-from-above {
   0% { transform: translateY(-16px) }
+  100% { transform: translateY(0) }
+}
+
+@keyframes gentle-slide-from-below {
+  0% { transform: translateY(0) }
+  100% { transform: translateY(-16px) }
+}
+
+@keyframes slide-from-above {
+  0% { transform: translateY(-32px) }
   100% { transform: translateY(0) }
 }
 
 @keyframes slide-from-below {
   0% { transform: translateY(0) }
-  100% { transform: translateY(-16px) }
+  100% { transform: translateY(-32px) }
 }
