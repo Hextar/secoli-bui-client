@@ -1,7 +1,7 @@
 <template>
   <div class="menu-footer">
     <template
-      class="menu-footer__content flex flex-wrap items-start justify-center gap-16 md:justify-end"
+      class="menu-footer__content flex flex-wrap items-start justify-center gap-8 md:justify-end md:gap-16"
     >
       <div
         v-for="({ label, to, tooltip, disabled, children }, idx) in items"

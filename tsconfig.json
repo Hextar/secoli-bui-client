@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "allowJs": true,
+    "allowsyntheticdefaultimports": true,
     "target": "esnext",
     "useDefineForClassFields": true,
     "module": "esnext",
@@ -24,6 +26,7 @@
       "@/assets/*": ["./src/assets/*"],
       "@/img/*": ["./public/images/*"],
       "@/*": ["./src/*"],
+      "~/*": ["./*"],
     }
   },
   "include": [

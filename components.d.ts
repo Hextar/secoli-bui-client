@@ -16,9 +16,9 @@ declare module 'vue' {
     ImageWrapper: typeof import('./src/components/layout/common/ImageWrapper.vue')['default']
     'Index copy': typeof import('./src/components/menu/index copy.vue')['default']
     Logo: typeof import('./src/components/common/Logo.vue')['default']
-    Menu: typeof import('./src/components/menu/Menu.vue')['default']
-    MenuFooter: typeof import('./src/components/menu/MenuFooter.vue')['default']
-    MenuMobile: typeof import('./src/components/menu/MenuMobile.vue')['default']
+    Menu: typeof import('./src/components/layout/menu/Menu.vue')['default']
+    MenuFooter: typeof import('./src/components/layout/menu/MenuFooter.vue')['default']
+    MenuMobile: typeof import('./src/components/layout/menu/MenuMobile.vue')['default']
     Mobile: typeof import('./src/components/menu/Mobile.vue')['default']
     Spacer: typeof import('./src/components/common/Spacer.vue')['default']
   }

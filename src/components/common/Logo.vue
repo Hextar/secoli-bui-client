@@ -6,7 +6,7 @@
 import { computed } from 'vue'
 
 const SIZE: { [key: string]: number } = {
-  small: 160,
+  small: 240,
   normal: 280,
   large: 480,
 }

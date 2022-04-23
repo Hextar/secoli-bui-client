@@ -5,6 +5,7 @@ import store from './store'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import VueLazyLoad from 'vue3-lazyload'
+import Vue3MobileDetection from "vue3-mobile-detection";
 import FloatingVue from 'floating-vue'
 
 // CSS imports
@@ -23,6 +24,7 @@ app.use(FloatingVue, {
     },
   },
 })
+app.use(Vue3MobileDetection)
 app.use(VueAxios, axios)
 app.use(VueLazyLoad)
 

@@ -32,8 +32,8 @@ import { IconArrow } from '@/assets/icons'
 const header = ref<HTMLDivElement>()
 
 const props = defineProps({
-  image: { type: String, required: true },
-  lazyImage: { type: String, required: true },
+  image: { type: String, required: false },
+  lazyImage: { type: String, required: false },
 })
 
 let scrolled = ref(false)
