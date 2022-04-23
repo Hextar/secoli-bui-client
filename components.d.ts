@@ -10,7 +10,7 @@ declare module 'vue' {
     Default: typeof import('./src/components/layout/Default.vue')['default']
     DefaultLayout: typeof import('./src/components/layout/DefaultLayout.vue')['default']
     Footer: typeof import('./src/components/layout/Footer.vue')['default']
-    Header: typeof import('./src/components/common/Header.vue')['default']
+    Header: typeof import('./src/components/layout/Header.vue')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
     Hero: typeof import('./src/components/layout/common/Hero.vue')['default']
     ImageWrapper: typeof import('./src/components/layout/common/ImageWrapper.vue')['default']

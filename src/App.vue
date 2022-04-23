@@ -3,8 +3,24 @@
 </template>
 
 <script setup lang="ts">
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
+import { onMounted, reactive, onUnmounted } from 'vue'
+import { useStore } from 'vuex'
+
+const { commit } = useStore()
+
+const onResize = (): void => {
+  const isMobile = (window?.innerWidth || 0) <= 760
+  commit('setIsMobile', isMobile)
+}
+
+onMounted(() => {
+  onResize()
+  window.addEventListener('resize', onResize)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('resize', onResize)
+})
 </script>
 
 <style lang="scss">

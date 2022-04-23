@@ -5,6 +5,15 @@
         <Menu />
       </template>
       <template #content>
+        <h3
+          v-if="showNextEvent"
+          class="text-md my-4 text-center font-display uppercase text-white-100"
+          to="/"
+          exact
+        >
+          Prossimo evento
+        </h3>
+        <Decoration v-if="showNextEvent" class="mb-4" size="medium" inverted />
         <h2
           class="mb-4 text-center font-display text-6xl text-white-100 bg-blend-multiply mix-blend-multiply"
           to="/"
@@ -37,6 +46,7 @@ import { computed, ref } from 'vue'
 import { TooltipOptions } from '@/types'
 
 let counter = ref(0)
+let showNextEvent = ref(false)
 
 const showPeach = computed((): boolean => counter.value > 33)
 const tooltip = computed(

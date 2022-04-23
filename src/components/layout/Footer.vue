@@ -1,6 +1,6 @@
 <template>
   <div class="footer flex flex-col items-start justify-center">
-    <div class="footer__main relative flex w-full items-center justify-center bg-black-700">
+    <div class="footer__main relative flex w-full items-center justify-center bg-black-700 pb-8">
       <div class="container mb-4 flex w-full flex-wrap items-start justify-between p-8">
         <div class="mb-16 flex w-full flex-col items-center gap-8 md:mb-0 md:w-1/5 md:items-start">
           <a
@@ -54,9 +54,10 @@
 .footer {
   z-index: 0;
 
+  &__main--muddy,
   &__bloody {
     $blood-h: 48px;
-    margin-top: $blood-h;
+    padding-top: $blood-h;
 
     &:before {
       content: '';
@@ -70,6 +71,14 @@
       background-position: center bottom;
       background-repeat: no-repeat;
       z-index: 2;
+    }
+  }
+
+  &__main--muddy {
+    padding-top: 0;
+
+    &:before {
+      background-image: url('@/assets/images/orc_juice.svg');
     }
   }
 }

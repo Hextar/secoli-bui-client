@@ -1,15 +1,14 @@
 <template>
-  <div class="menu-mobile__toggle flex flex-wrap items-center justify-start gap-8 sm:hidden">
+  <div
+    class="menu-mobile__toggle flex cursor-pointer select-none flex-wrap items-center justify-start gap-8 sm:hidden"
+  >
     <InputHamburgher
-      v-if="!open"
-      class="menu-mobile__toggle__hamburgher animate__bloody-slash"
-      :class="{ 'menu-mobile__toggle__hamburgher--not-loaded': !loaded }"
-      @click="open = true"
-    />
-    <InputClose
-      v-else
-      class="menu-mobile__toggle__close animate__bloody-slash"
-      @click="open = false"
+      class="menu-mobile__toggle__hamburgher animate__bloody-slash select-none"
+      :class="{
+        'menu-mobile__toggle__hamburgher--not-loaded': !loaded,
+        'menu-mobile__toggle__hamburgher--close': open,
+      }"
+      @click="open = !open"
     />
   </div>
   <div
@@ -34,7 +33,6 @@ import { ref, watch, onMounted } from 'vue'
 
 import { MenuItems } from '@/router/items'
 import { InputHamburgher } from '@/assets/icons'
-import { InputClose } from '@/assets/icons'
 
 const items = MenuItems
 const open = ref(false)
@@ -65,6 +63,13 @@ $overlayIndex: 99;
       &:hover,
       &:focus {
         fill: theme('colors.primary.500');
+        outline: none;
+      }
+
+      &::v-deep {
+        .claw-mark {
+          transition: all 0.255s ease-in-out;
+        }
       }
     }
 
@@ -73,6 +78,26 @@ $overlayIndex: 99;
         // on page load, avoid happening at the
         // same time as the animated logo
         animation-delay: 0.51s;
+      }
+
+      // transform the claw mark signs
+      // into an x
+      &--close {
+        &::v-deep {
+          .claw-mark {
+            &.first {
+              transform: translateX(16px) rotate(40deg);
+            }
+
+            &.second {
+              opacity: 0;
+            }
+
+            &.third {
+              transform: translateY(28px) translateX(-42px) rotate(-40deg);
+            }
+          }
+        }
       }
     }
   }

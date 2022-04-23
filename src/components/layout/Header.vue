@@ -6,16 +6,21 @@
       v-lazy="lazy"
       alt="Background event cover"
     />
-    <div class="header__content items-space-betwen container flex flex-col justify-between px-8">
+    <div
+      class="header__content items-space-betwen container flex flex-col justify-start px-8 md:justify-between"
+    >
       <div class="header__content__menu flex flex-col items-center justify-center pt-8">
         <slot name="menu" />
       </div>
-      <div class="header__content__body container flex flex-col items-center justify-center">
+      <div class="header__content__body container flex flex-col items-center justify-center py-8">
         <slot name="content" />
       </div>
-      <div class="header__content__action container flex flex-col items-center justify-center">
+      <div
+        v-if="!isMobile"
+        class="header__content__action container flex flex-col items-center justify-center"
+      >
         <IconArrow
-          v-show="!scrolled"
+          v-if="!scrolled"
           class="header__content__action__icon cursor-pointer"
           @click="onScroll"
         />
@@ -26,8 +31,11 @@
 
 <script setup lang="ts">
 import { computed, ref } from 'vue'
+import { useStore } from 'vuex'
 import { LazyOptions } from '@/types'
 import { IconArrow } from '@/assets/icons'
+
+const { state } = useStore()
 
 const header = ref<HTMLDivElement>()
 
@@ -37,6 +45,10 @@ const props = defineProps({
 })
 
 let scrolled = ref(false)
+
+const isMobile = computed((): boolean => {
+  return state.isMobile
+})
 
 const lazy = computed(
   (): LazyOptions => ({
@@ -56,10 +68,14 @@ const onScroll = (): void => {
 
 <style lang="scss" scoped>
 .header {
-  height: 100vh;
+  min-height: 600px;
   max-height: 800px;
   overflow: hidden;
   z-index: 0;
+
+  @screen sm {
+    height: 100vh;
+  }
 
   &__background {
     position: absolute;

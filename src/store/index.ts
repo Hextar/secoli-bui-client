@@ -2,7 +2,12 @@ import { createStore } from 'vuex'
 
 const store = createStore({
 	state:{
-		 name: "Vue"
+		isMobile: false
+	},
+	mutations: {
+		setIsMobile (state, value) {
+			state.isMobile = value
+		}
 	}
 })
 

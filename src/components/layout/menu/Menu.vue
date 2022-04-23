@@ -25,25 +25,15 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, reactive, onUnmounted } from 'vue'
+import { computed } from 'vue'
+import { useStore } from 'vuex'
 import { MenuItems } from '@/router/items'
 
+const { state } = useStore()
+
 const items = MenuItems
-const state = reactive({
-  windowWidth: 0,
-})
 const isMobile = computed((): boolean => {
-  return state.windowWidth <= 760
-})
-
-const onResize = (): number => (state.windowWidth = window?.innerWidth || 0)
-
-onMounted(() => {
-  window.addEventListener('resize', onResize)
-})
-
-onUnmounted(() => {
-  window.removeEventListener('resize', onResize)
+  return state.isMobile
 })
 </script>
 

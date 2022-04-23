@@ -1,5 +1,11 @@
 <template>
-  <div class="decoration" :class="`decoration--size--${size}`">
+  <div
+    class="decoration"
+    :class="{
+      [`decoration--size--${size}`]: true,
+      'decoration--inverted': inverted,
+    }"
+  >
     <IconDecoration />
   </div>
 </template>
@@ -10,6 +16,7 @@ import { IconDecoration } from '@/assets/icons'
 const props = defineProps({
   size: { type: String, default: 'medium' },
   color: { type: String, default: 'white' },
+  inverted: { type: Boolean, default: false },
 })
 </script>
 
@@ -20,6 +27,10 @@ $lg-w: 120px;
 
 .decoration {
   position: relative;
+
+  &--inverted {
+    transform: scaleY(-1);
+  }
 
   &:before,
   &:after {
