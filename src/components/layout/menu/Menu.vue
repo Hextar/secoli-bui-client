@@ -3,7 +3,7 @@
     <div
       class="menu__logo animate__slide-from-above mb-6 flex flex-col items-center justify-center"
     >
-      <Logo :size="$isMobile() ? 'small' : 'medium'" />
+      <Logo :size="isMobile ? 'small' : 'medium'" />
     </div>
     <template class="menu__content hidden flex-wrap items-center justify-center gap-8 sm:flex">
       <div
@@ -25,23 +25,31 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
-
+import { computed, onMounted, reactive, onUnmounted } from 'vue'
 import { MenuItems } from '@/router/items'
 
 const items = MenuItems
-
+const state = reactive({
+  windowWidth: 0,
+})
 const isMobile = computed((): boolean => {
-  return true
+  return state.windowWidth <= 760
+})
+
+const onResize = (): number => (state.windowWidth = window?.innerWidth || 0)
+
+onMounted(() => {
+  window.addEventListener('resize', onResize)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('resize', onResize)
 })
 </script>
 
 <style lang="scss" scoped>
 .menu {
   z-index: 10;
-
-  &__logo {
-  }
 
   &__content {
     &__item {

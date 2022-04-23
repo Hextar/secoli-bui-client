@@ -4,7 +4,7 @@ import {
   ButtonSize,
   ButtonTag,
   ButtonVariant
-} from '@/components/common/Button'
+} from './'
 
 export const colorValidator = (value: ButtonColor): boolean =>
   Object.values(ButtonColor).includes(value)

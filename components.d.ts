@@ -15,7 +15,7 @@ declare module 'vue' {
     Hero: typeof import('./src/components/layout/common/Hero.vue')['default']
     ImageWrapper: typeof import('./src/components/layout/common/ImageWrapper.vue')['default']
     'Index copy': typeof import('./src/components/menu/index copy.vue')['default']
-    Logo: typeof import('./src/components/common/Logo.vue')['default']
+    Logo: typeof import('./src/components/common/Logo/index.vue')['default']
     Menu: typeof import('./src/components/layout/menu/Menu.vue')['default']
     MenuFooter: typeof import('./src/components/layout/menu/MenuFooter.vue')['default']
     MenuMobile: typeof import('./src/components/layout/menu/MenuMobile.vue')['default']
