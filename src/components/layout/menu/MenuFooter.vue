@@ -37,7 +37,7 @@
       </div>
       <div class="justiy-start flex h-full w-full flex-col items-center md:w-32 md:items-start">
         <span
-          class="menu-footer__content__title mb-4 w-full cursor-pointer text-center font-display text-lg font-bold text-white-100 md:text-left"
+          class="menu-footer__content__title-special mb-4 cursor-pointer text-center font-display text-lg font-bold text-white-100 md:text-left"
           exact
         >
           Newsletter
@@ -64,8 +64,10 @@
 import { computed } from 'vue'
 import { MenuItems } from '@/router/items'
 
-const items = MenuItems.filter(({ label }) => label !== 'Home')
+// VARIABLES
+const items = MenuItems.filter(({ homepage }) => !homepage)
 
+// COMPUTED
 const getFraction = computed((): number => {
   return items.length + 1
 })

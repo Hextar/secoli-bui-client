@@ -5,5 +5,6 @@ export type MenuItemType = {
   to?: string,
   tooltip?: TooltipOptions,
   disabled?: boolean,
-  children?: MenuItemType[]
+  children?: MenuItemType[],
+  homepage?: boolean
 }

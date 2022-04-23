@@ -4,6 +4,8 @@ export const MenuItems: MenuItemType[] = [
   {
     label: 'Home',
     to: '/',
+    tooltip: { content: 'Tenda master', placement: 'bottom' },
+    homepage: true,
   },
   {
     label: 'Eventi',

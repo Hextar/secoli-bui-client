@@ -37,15 +37,19 @@ import { IconArrow } from '@/assets/icons'
 
 const { state } = useStore()
 
+// REFS
 const header = ref<HTMLDivElement>()
 
+// PROPS
 const props = defineProps({
   image: { type: String, required: false },
   lazyImage: { type: String, required: false },
 })
 
+// VARIABLES
 let scrolled = ref(false)
 
+// COMPUTED
 const isMobile = computed((): boolean => {
   return state.isMobile
 })
@@ -58,6 +62,7 @@ const lazy = computed(
   })
 )
 
+// METHODS
 const onScroll = (): void => {
   const el = header.value as Element
   const { height } = el.getBoundingClientRect()
@@ -102,11 +107,8 @@ const onScroll = (): void => {
     }
 
     &__action {
-      height: 96px;
-
-      &__icon {
-        transform: scale(0.33);
-      }
+      height: 48px;
+      margin-bottom: 48px;
     }
 
     &:after {

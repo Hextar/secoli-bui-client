@@ -2,7 +2,7 @@
   <DefaultLayout>
     <Header image="/images/background.jpg" lazy-image="/images/background-lazy.jpg">
       <template #menu>
-        <Menu />
+        <MenuEvent />
       </template>
       <template #content>
         <h3
@@ -14,11 +14,7 @@
           Prossimo evento
         </h3>
         <Decoration v-if="showNextEvent" class="mb-4" size="medium" inverted />
-        <h2
-          class="mb-4 text-center font-display text-6xl text-white-100 bg-blend-multiply mix-blend-multiply"
-          to="/"
-          exact
-        >
+        <h2 class="mb-4 text-center font-display text-6xl text-white-100" to="/" exact>
           La
           <span v-if="showPeach" v-tooltip="tooltip" class="cursor-pointer">🍑</span>
           <span v-else class="cursor-pointer" @click="onClick">Pesca</span>
@@ -35,7 +31,7 @@
           faucibus mauris imperdiet eu. Curabitur euismod nulla eget leo ornare, in viverra ipsum
           finibus.
         </p>
-        <Button class="w-[160px]" disabled> Scopri di piu </Button>
+        <Button class="w-[160px]" disabled> Scopri di piú </Button>
       </template>
     </Header>
   </DefaultLayout>
@@ -51,7 +47,7 @@ let showNextEvent = ref(false)
 const showPeach = computed((): boolean => counter.value > 33)
 const tooltip = computed(
   (): TooltipOptions => ({
-    content: 'Charm',
+    content: 'Charme',
     placement: 'top',
     theme: 'secoli-bui',
   })

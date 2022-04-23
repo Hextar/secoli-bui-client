@@ -6,15 +6,18 @@
 import { computed } from 'vue'
 import { sizeValidator } from './'
 
+// PROPS
+const props = defineProps({
+  size: { type: String, default: 'medium', validator: sizeValidator },
+})
+
+// VARIABLES
 const SIZE: { [key: string]: number } = {
   small: 240,
   medium: 320,
   large: 480,
 }
 
-const props = defineProps({
-  size: { type: String, default: 'medium', validator: sizeValidator },
-})
-
+// COMPUTED
 const width = computed((): number => SIZE[props.size])
 </script>

@@ -35,6 +35,7 @@
           ©2022 Mad Factory, All Rights Reserved
         </span>
         <router-link
+          v-tooltip="tooltip"
           class="footer__bloody__privacy-policy w-full text-center font-display text-grey-700 md:w-1/2 md:text-right"
           to="/"
           title="politica sulla privacy"
@@ -48,7 +49,19 @@
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { computed } from 'vue'
+import { TooltipOptions } from '@/types'
+
+// COMPUTED
+const tooltip = computed(
+  (): TooltipOptions => ({
+    content: 'Coming soon',
+    placement: 'top',
+    theme: 'secoli-bui',
+  })
+)
+</script>
 
 <style lang="scss" scoped>
 .footer {

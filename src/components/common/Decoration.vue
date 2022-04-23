@@ -13,6 +13,7 @@
 <script setup lang="ts">
 import { IconDecoration } from '@/assets/icons'
 
+// PROPS
 const props = defineProps({
   size: { type: String, default: 'medium' },
   color: { type: String, default: 'white' },

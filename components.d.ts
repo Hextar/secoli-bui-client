@@ -10,6 +10,8 @@ declare module 'vue' {
     Header: typeof import('./src/components/layout/Header.vue')['default']
     Logo: typeof import('./src/components/common/Logo/index.vue')['default']
     Menu: typeof import('./src/components/layout/menu/Menu.vue')['default']
+    'Menu copy': typeof import('./src/components/layout/menu/Menu copy.vue')['default']
+    MenuEvent: typeof import('./src/components/layout/menu/MenuEvent.vue')['default']
     MenuFooter: typeof import('./src/components/layout/menu/MenuFooter.vue')['default']
     MenuMobile: typeof import('./src/components/layout/menu/MenuMobile.vue')['default']
     Spacer: typeof import('./src/components/common/Spacer.vue')['default']

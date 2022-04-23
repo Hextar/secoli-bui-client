@@ -37,9 +37,11 @@ import { colorValidator, variantValidator, sizeValidator, flairValidator, tagVal
 import { ButtonSize } from './types'
 import { TooltipOptions } from '@/types'
 
+// USE
 const attrs = useAttrs()
 const slots = useSlots()
 
+// PROPS
 const props = defineProps({
   primary: { type: Boolean, default: false },
   color: { type: String, default: 'white', validator: colorValidator },
@@ -52,6 +54,7 @@ const props = defineProps({
   tooltip: { type: String, default: undefined },
 })
 
+// COMPUTED
 const tooltip = computed(
   (): TooltipOptions => ({
     content: props.disabled ? 'Poison Fatal' : undefined,
@@ -59,6 +62,7 @@ const tooltip = computed(
     theme: 'secoli-bui',
   })
 )
+
 const padding = computed((): number => {
   const { class: className } = attrs
   const c = `${className}`
@@ -69,6 +73,7 @@ const padding = computed((): number => {
   }
   return 8
 })
+
 const fontSize = computed((): string => {
   if (props.size === ButtonSize.SMALL) {
     return 'text-sm'
@@ -77,8 +82,11 @@ const fontSize = computed((): string => {
   }
   return 'text-xl'
 })
+
 const hasPrefix = computed((): boolean => !!slots['prefix-icon'])
+
 const hasSuffix = computed((): boolean => !!slots['suffix-icon'])
+
 const iconPosition = computed((): string => getIconPosition(hasPrefix.value, hasSuffix.value))
 </script>
 

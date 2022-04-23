@@ -34,14 +34,17 @@ import { ref, watch, onMounted } from 'vue'
 import { MenuItems } from '@/router/items'
 import { InputHamburgher } from '@/assets/icons'
 
+// VARIABLES
 const items = MenuItems
 const open = ref(false)
 const loaded = ref(false)
 
+// WATCH
 watch(open, (val) => {
   document.documentElement.style.overflow = val ? 'hidden' : 'auto'
 })
 
+// MOUTNED
 onMounted(() => setTimeout(() => (loaded.value = true), 510))
 </script>
 
