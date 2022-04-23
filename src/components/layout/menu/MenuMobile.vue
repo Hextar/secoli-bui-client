@@ -27,7 +27,6 @@
       </router-link>
     </div>
   </div>
-  ransform-origin: center left; a
 </template>
 
 <script setup lang="ts">
