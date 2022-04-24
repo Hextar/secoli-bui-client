@@ -1,11 +1,32 @@
 <template>
-  <div class="menu-event flex w-full items-center justify-between bg-white-100 py-4 px-8">
+  <div
+    class="menu-event flex w-full items-center justify-between py-4 px-8"
+    :class="{
+      'menu-event--scrolled': hasScrolled,
+      'bg-white-100': hasScrolled,
+    }"
+  >
     <div class="flex h-full items-center gap-4">
-      <router-link class="menu-event__back flex items-center justify-start" to="/" exact>
-        <IconArrow class="menu-event__back__arrow cursor-pointer" />
+      <router-link
+        class="menu-event__back flex items-center justify-start text-white-100"
+        style="fill: red"
+        :class="{
+          'text-black-700': hasScrolled,
+        }"
+        to="/"
+        exact
+      >
+        <IconArrow class="menu-event__back__arrow cursor-pointer fill-current" />
         <!-- <Logo size="small" /> -->
       </router-link>
-      <h2 class="font-display text-2xl text-black-700">La Pesca dei Burattini</h2>
+      <h2
+        class="font-display text-2xl text-white-100"
+        :class="{
+          'text-black-700': hasScrolled,
+        }"
+      >
+        La Pesca dei Burattini
+      </h2>
     </div>
     <template
       class="menu-event__content hidden flex-wrap items-center justify-center gap-8 sm:flex"
@@ -16,7 +37,10 @@
         v-tooltip="tooltip"
       >
         <router-link
-          class="menu-event__content__item cursor-pointer font-display text-lg font-bold text-black-700"
+          class="menu-event__content__item cursor-pointer font-display text-lg font-bold text-white-100"
+          :class="{
+            'text-black-700': hasScrolled,
+          }"
           :to="to"
           :disabled="disabled"
           exact
@@ -46,6 +70,10 @@ const isMobile = computed((): boolean => {
   return state.isMobile
 })
 
+const hasScrolled = computed((): boolean => {
+  return state.hasScrolled
+})
+
 const tooltip = computed(
   (): TooltipOptions => ({
     content: 'Torna alla tenda master',
@@ -67,9 +95,9 @@ const tooltip = computed(
     &__arrow {
       transform: rotate(90deg);
 
-      &::v-deep {
+      &:deep {
         path {
-          fill: theme('colors.black.700');
+          // fill: theme('colors.black.700');
         }
       }
     }

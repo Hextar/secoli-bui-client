@@ -2,11 +2,15 @@ import { createStore } from 'vuex'
 
 const store = createStore({
 	state:{
-		isMobile: false
+		isMobile: false,
+		hasScrolled: false,
 	},
 	mutations: {
 		setIsMobile (state, value) {
 			state.isMobile = value
+		},
+		setHasScrolled (state, value) {
+			state.hasScrolled = value
 		}
 	}
 })

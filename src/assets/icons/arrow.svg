@@ -1,6 +1,3 @@
-<svg version="1.1" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
- <mask fill="#ffffff">
-  <path d="m42 51 4.5-3v-24h3v24l4.5 3 30-48-19.5 36-9 21-3 10.5-1.5 9-1.5 7.5-1.5 9-1.5-9-1.5-7.5-1.5-9-3-10.5-9-21-19.5-39z"/>
- </mask>
- <path d="m8.75 10.625 0.9375-0.625v-5h0.625v5l0.9375 0.625 6.25-10-4.0625 7.5-1.875 4.375-0.625 2.1875-0.3125 1.875-0.3125 1.5625-0.3125 1.875-0.3125-1.875-0.3125-1.5625-0.3125-1.875-0.625-2.1875-1.875-4.375-4.0625-8.125z" fill="#fff" style="stroke-width:.20833"/>
+<svg class="stroke-current hover:stroke-current fill-current hover:fill-current" version="1.1" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+ <path class="stroke-current hover:stroke-current fill-current hover:fill-current" d="m8.75 10.625 0.9375-0.625v-5h0.625v5l0.9375 0.625 6.25-10-4.0625 7.5-1.875 4.375-0.625 2.1875-0.3125 1.875-0.3125 1.5625-0.3125 1.875-0.3125-1.875-0.3125-1.5625-0.3125-1.875-0.625-2.1875-1.875-4.375-4.0625-8.125z" fill="#fff" style="stroke-width:.20833"/>
 </svg>

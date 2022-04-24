@@ -13,13 +13,20 @@ const onResize = (): void => {
   commit('setIsMobile', isMobile)
 }
 
+const onScroll = (): void => {
+  const hasScrolled = (window?.scrollY || 0) > 100
+  commit('setHasScrolled', hasScrolled)
+}
+
 onMounted(() => {
   onResize()
   window.addEventListener('resize', onResize)
+  window.addEventListener('scroll', onScroll)
 })
 
 onUnmounted(() => {
   window.removeEventListener('resize', onResize)
+  window.removeEventListener('scroll', onScroll)
 })
 </script>
 

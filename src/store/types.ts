@@ -1,3 +1,4 @@
 export interface State {
-  isMobile: boolean
+  isMobile: boolean,
+  hasScrolled: boolean
 }
