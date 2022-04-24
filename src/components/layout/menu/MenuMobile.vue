@@ -3,7 +3,17 @@
     class="menu-mobile__toggle flex cursor-pointer select-none flex-wrap items-center justify-start gap-8 sm:hidden"
   >
     <InputHamburgher
-      class="menu-mobile__toggle__hamburgher select-none"
+      v-if="randBoolean"
+      class="menu-mobile__toggle__hamburgher hamburgher-1 select-none"
+      :class="{
+        'animate__bloody-slash': loaded,
+        'menu-mobile__toggle__hamburgher--close': open,
+      }"
+      @click="open = !open"
+    />
+    <InputHamburgher2
+      v-else
+      class="menu-mobile__toggle__hamburgher hamburgher-2 select-none"
       :class="{
         'animate__bloody-slash': loaded,
         'menu-mobile__toggle__hamburgher--close': open,
@@ -29,10 +39,11 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch, onMounted } from 'vue'
+import { ref, watch, computed, onMounted } from 'vue'
 
 import { MenuItems } from '@/router/items'
 import { InputHamburgher } from '@/assets/icons'
+import { InputHamburgher2 } from '@/assets/icons'
 
 // VARIABLES
 const items = MenuItems
@@ -42,6 +53,12 @@ const loaded = ref(false)
 // WATCH
 watch(open, (val) => {
   document.documentElement.style.overflow = val ? 'hidden' : 'auto'
+})
+
+// COMPUTED
+const randBoolean = computed((): boolean => {
+  const rand = Math.floor(Math.random() * 2) + 1
+  return rand === 1
 })
 
 // MOUTNED
@@ -79,7 +96,7 @@ $overlayIndex: 99;
     &__hamburgher {
       // transform the claw mark signs
       // into an x
-      &--close {
+      &--close.hamburgher-1 {
         &::v-deep {
           .claw-mark {
             &.first {
@@ -91,7 +108,27 @@ $overlayIndex: 99;
             }
 
             &.third {
-              transform: translateY(28px) translateX(-42px) rotate(-40deg);
+              transform: translateY(28px) translateX(-42px) rotate(40deg);
+            }
+          }
+        }
+      }
+
+      // transform the claw mark signs
+      // into an x
+      &--close.hamburgher-2 {
+        &::v-deep {
+          .claw-mark {
+            &.first {
+              transform: translateX(16px) rotate(40deg);
+            }
+
+            &.second {
+              opacity: 0;
+            }
+
+            &.third {
+              transform: translateY(28px) translateX(-48px) rotate(-40deg);
             }
           }
         }
