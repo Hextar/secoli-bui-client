@@ -108,7 +108,7 @@ $overlayIndex: 99;
             }
 
             &.third {
-              transform: translateY(28px) translateX(-42px) rotate(40deg);
+              transform: translateY(28px) translateX(-42px) rotate(-40deg);
             }
           }
         }
