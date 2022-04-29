@@ -25,20 +25,14 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
-import { useStore } from 'vuex'
+import { useViewport } from '@/hooks'
 import { MenuItems } from '@/router/items'
-
-// USE
-const { state } = useStore()
 
 // VARIABLES
 const items = MenuItems
 
 // COMPUTED
-const isMobile = computed((): boolean => {
-  return state.isMobile
-})
+const { isMobile } = useViewport()
 </script>
 
 <style lang="scss" scoped>

@@ -1,9 +1,8 @@
 <template>
   <div
-    class="menu-event flex w-full items-center justify-between py-4 px-8"
+    class="menu-event animate_bg-fade flex w-full items-center justify-between py-4 px-8"
     :class="{
-      'menu-event--scrolled': hasScrolled,
-      'bg-white-100': hasScrolled,
+      'menu-event--scrolled': hasScrolledY,
     }"
   >
     <div class="flex h-full items-center gap-4">
@@ -11,18 +10,22 @@
         class="menu-event__back flex items-center justify-start text-white-100"
         style="fill: red"
         :class="{
-          'text-black-700': hasScrolled,
+          'text-black-700': hasScrolledY,
         }"
         to="/"
         exact
       >
-        <IconArrow class="menu-event__back__arrow cursor-pointer fill-current" />
-        <!-- <Logo size="small" /> -->
+        <IconArrow
+          v-if="hasScrolledY"
+          class="menu-event__back__arrow cursor-pointer fill-current"
+        />
+        <Logo v-else size="small" />
       </router-link>
       <h2
+        v-if="hasScrolledY"
         class="font-display text-2xl text-white-100"
         :class="{
-          'text-black-700': hasScrolled,
+          'text-black-700': hasScrolledY,
         }"
       >
         La Pesca dei Burattini
@@ -39,11 +42,10 @@
         <router-link
           class="menu-event__content__item cursor-pointer font-display text-lg font-bold text-white-100"
           :class="{
-            'text-black-700': hasScrolled,
+            'text-black-700': hasScrolledY,
           }"
           :to="to"
           :disabled="disabled"
-          exact
         >
           {{ label }}
         </router-link>
@@ -54,25 +56,48 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useStore } from 'vuex'
-import { MenuItems } from '@/router/items'
+import { useViewport, useScroll } from '@/hooks'
+import { MenuItemType } from '@/types'
 import { IconArrow } from '@/assets/icons'
 import { TooltipOptions } from '@/types'
 
-// USE
-const { state } = useStore()
-
 // VARIABLES
-const items = MenuItems
+const items: MenuItemType[] = [
+  {
+    label: 'Info',
+    to: '#header',
+    tooltip: { content: 'Informazioni', placement: 'bottom' },
+    homepage: true,
+  },
+  {
+    label: 'Fazioni',
+    to: '#header',
+    tooltip: { content: 'Informazioni', placement: 'bottom' },
+    homepage: true,
+  },
+  {
+    label: 'Programma',
+    to: '#header',
+    tooltip: { content: 'Informazioni', placement: 'bottom' },
+    homepage: true,
+  },
+  {
+    label: 'Consigli',
+    to: '#header',
+    tooltip: { content: 'Informazioni', placement: 'bottom' },
+    homepage: true,
+  },
+  {
+    label: 'Sicurezza',
+    to: '#header',
+    tooltip: { content: 'Informazioni', placement: 'bottom' },
+    homepage: true,
+  },
+]
 
 // COMPUTED
-const isMobile = computed((): boolean => {
-  return state.isMobile
-})
-
-const hasScrolled = computed((): boolean => {
-  return state.hasScrolled
-})
+const { isMobile } = useViewport()
+const { hasScrolledY, scrollY } = useScroll()
 
 const tooltip = computed(
   (): TooltipOptions => ({
@@ -90,6 +115,12 @@ const tooltip = computed(
   right: 0;
   left: 0;
   z-index: 10;
+  background-color: rgba(255, 255, 255, 0);
+  transition: all 0.255s ease-in-out;
+
+  &--scrolled {
+    background-color: rgba(255, 255, 255, 0.95);
+  }
 
   &__back {
     &__arrow {

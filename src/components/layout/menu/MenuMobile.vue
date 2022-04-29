@@ -61,7 +61,7 @@ const randSlash = computed((): number => {
   return Math.floor(Math.random() * 3) + 1
 })
 
-// MOUTNED
+// ON MOUNTED
 onMounted(() => setTimeout(() => (loaded.value = true), 510))
 </script>
 

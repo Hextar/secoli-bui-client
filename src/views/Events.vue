@@ -1,6 +1,10 @@
 <template>
   <DefaultLayout>
-    <Header image="/images/background.jpg" lazy-image="/images/background-lazy.jpg">
+    <Header
+      class="text-white-100"
+      image="/images/background.jpg"
+      lazy-image="/images/background-lazy.jpg"
+    >
       <template #menu>
         <MenuEvent />
       </template>
@@ -24,14 +28,6 @@
           Di perdita e riscatto
         </h3>
         <Decoration class="mb-8" size="medium" />
-        <p
-          class="container mb-8 w-screen px-8 text-center font-body text-sm text-white-100 sm:w-screen md:w-4/5 lg:w-2/3"
-        >
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vehicula tellus nibh, non
-          faucibus mauris imperdiet eu. Curabitur euismod nulla eget leo ornare, in viverra ipsum
-          finibus.
-        </p>
-        <Button class="w-[160px]" disabled> Scopri di piú </Button>
       </template>
     </Header>
   </DefaultLayout>

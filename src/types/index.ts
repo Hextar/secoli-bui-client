@@ -22,3 +22,15 @@
   loading?: string, // your loading image url
   error?: string// your error image url
 }
+
+/**
+ * menu item option tpye
+ */
+export type MenuItemType = {
+  label: string,
+  to?: string,
+  tooltip?: TooltipOptions,
+  disabled?: boolean,
+  children?: MenuItemType[],
+  homepage?: boolean
+}

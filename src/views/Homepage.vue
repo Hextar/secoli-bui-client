@@ -1,6 +1,10 @@
 <template>
   <DefaultLayout>
-    <Header image="/images/background.jpg" lazy-image="/images/background-lazy.jpg">
+    <Header
+      class="text-white-100"
+      image="/images/background.jpg"
+      lazy-image="/images/background-lazy.jpg"
+    >
       <template #menu>
         <Menu />
       </template>

@@ -31,13 +31,11 @@
 
 <script setup lang="ts">
 import { computed, ref } from 'vue'
-import { useStore } from 'vuex'
+import { useScroll, useViewport } from '@/hooks'
 import { LazyOptions } from '@/types'
 import { IconArrow } from '@/assets/icons'
 
-const { state } = useStore()
-
-// REFS
+// VARIABLES
 const header = ref<HTMLDivElement>()
 
 // PROPS
@@ -50,9 +48,8 @@ const props = defineProps({
 let scrolled = ref(false)
 
 // COMPUTED
-const isMobile = computed((): boolean => {
-  return state.isMobile
-})
+const { isMobile } = useViewport()
+const { scrollToRef } = useScroll()
 
 const lazy = computed(
   (): LazyOptions => ({
@@ -64,10 +61,7 @@ const lazy = computed(
 
 // METHODS
 const onScroll = (): void => {
-  const el = header.value as Element
-  const { height } = el.getBoundingClientRect()
-  window.scrollTo({ top: height, behavior: 'smooth' })
-  scrolled.value = true
+  scrollToRef(header, () => (scrolled.value = true))
 }
 </script>
 

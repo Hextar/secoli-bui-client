@@ -5,6 +5,13 @@
     -webkit-animation: fade-in 0.255s forwards, slash 0.255s forwards, blood 1.275s forwards;
   }
 
+  &fade-in {
+    @screen md {
+      animation: fade-in .510s infinite alternate;
+      -webkit-animation: fade-in .510s infinite alternate;
+    }
+  }
+
   &bounce {
     @screen md {
       animation: bounce 1s infinite alternate;
