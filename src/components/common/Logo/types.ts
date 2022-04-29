@@ -1,9 +1,5 @@
-export type LogoProps = {
-  size: LogoSize | null
-}
+import { UiSize } from '@/components/common/types'
 
-export enum LogoSize {
-  SMALL = 'small',
-  MEDIUM = 'medium',
-  LARGE = 'large'
+export type LogoProps = {
+  size: UiSize | null
 }

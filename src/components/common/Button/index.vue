@@ -33,8 +33,14 @@
 import { computed, useAttrs, useSlots } from 'vue'
 import { getIconPosition } from '@/utils'
 
-import { colorValidator, variantValidator, sizeValidator, flairValidator, tagValidator } from './'
-import { ButtonSize } from './types'
+import {
+  colorValidator,
+  variantValidator,
+  sizeValidator,
+  flairValidator,
+  tagValidator,
+  UiSize,
+} from '@/components/common'
 import { TooltipOptions } from '@/types'
 
 // USE
@@ -68,16 +74,16 @@ const padding = computed((): number => {
   const c = `${className}`
   if (c.includes('pa-') || c.includes('px-')) {
     return -1
-  } else if (props.size === ButtonSize.SMALL) {
+  } else if (props.size === UiSize.SMALL) {
     return 4
   }
   return 8
 })
 
 const fontSize = computed((): string => {
-  if (props.size === ButtonSize.SMALL) {
+  if (props.size === UiSize.SMALL) {
     return 'text-sm'
-  } else if (props.size === ButtonSize.MEDIUM) {
+  } else if (props.size === UiSize.MEDIUM) {
     return 'text-md'
   }
   return 'text-xl'

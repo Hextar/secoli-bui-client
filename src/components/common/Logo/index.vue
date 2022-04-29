@@ -4,7 +4,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { sizeValidator } from './'
+import { sizeValidator } from '@/components/common'
 
 // PROPS
 const props = defineProps({

@@ -1,39 +1,11 @@
+import { UiVariant, UiColor, UiSize, UiFlair, UiTag } from '@/components/common/types'
+
 export type ButtonProps = {
-  tag: ButtonTag | null,
-  variant: ButtonVariant | null,
-  color: ButtonColor | null,
-  flair: ButtonFlair | null,
-  size: ButtonSize | null
+  tag: UiTag | null,
+  variant: UiVariant | null,
+  color: UiColor | null,
+  flair: UiFlair | null,
+  size: UiSize | null
   fullWidth: boolean | null,
   disabled?: boolean
-}
-
-export enum ButtonVariant {
-  DEFAULT = 'default',
-  OUTLINE = 'outline'
-}
-
-export enum ButtonColor {
-  PRIMARY = 'primary',
-  WHITE = 'white',
-  BLACK = 'black'
-}
-
-export enum ButtonSize {
-  SMALL = 'small',
-  MEDIUM = 'medium',
-  LARGE = 'large'
-}
-
-export enum ButtonFlair {
-  SOFT = 'soft',
-  ROUNDED = 'rounded',
-  SQUARED = 'squared'
-}
-
-export enum ButtonTag {
-  BUTTON = 'button',
-  ROUTER = 'router-link',
-  A = 'a',
-  DIV = 'div'
 }
