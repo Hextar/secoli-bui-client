@@ -1,4 +1,4 @@
-import { computed, ref, onMounted, onUnmounted } from 'vue';
+import { computed, ref, onMounted, onUnmounted, readonly } from 'vue';
 
 export enum VIEWPORT {
   MOBILE = 640,
@@ -44,8 +44,8 @@ export const useViewport = () => {
   })
 
   return {
-    width,
-    height,
+    width: readonly(width),
+    height: readonly(height),
     isMobile,
     isTablet,
     isDesktop,

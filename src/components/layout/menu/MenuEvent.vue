@@ -2,7 +2,8 @@
   <div
     class="menu-event flex justify-between py-4 px-8"
     :class="{
-      'menu-event--scrolled': hasScrolledY,
+      'menu-event--scrolled': hasScrolledY(parsedScrollThreshold),
+      'backdrop-blur': hasScrolledY(parsedScrollThreshold),
     }"
   >
     <div
@@ -14,21 +15,21 @@
     <div v-else class="animate_bg-fade flex h-full items-center justify-between gap-4">
       <router-link
         class="menu-event__back flex items-center justify-start text-white-100"
-        :class="{ 'text-black-700': hasScrolledY }"
+        :class="{ 'text-black-700': hasScrolledY(parsedScrollThreshold) }"
         to="/"
         exact
       >
         <IconArrow
-          v-if="hasScrolledY"
+          v-if="hasScrolledY(parsedScrollThreshold)"
           class="menu-event__back__arrow cursor-pointer fill-current"
         />
         <Logo v-else size="small" />
       </router-link>
       <h2
-        v-if="hasScrolledY"
+        v-if="hasScrolledY(parsedScrollThreshold)"
         class="font-display text-2xl text-white-100"
         :class="{
-          'text-black-700': hasScrolledY,
+          'text-black-700': hasScrolledY(parsedScrollThreshold),
         }"
       >
         La Pesca dei Burattini
@@ -44,8 +45,8 @@
         <router-link
           class="menu-event__content__item cursor-pointer items-center font-display text-lg font-bold text-white-100"
           :class="{
-            'menu-event__content__item--scrolled': hasScrolledY,
-            'text-black-700': hasScrolledY,
+            'menu-event__content__item--scrolled': hasScrolledY(parsedScrollThreshold),
+            'text-black-700': hasScrolledY(parsedScrollThreshold),
           }"
           :to="to"
           :disabled="disabled"
@@ -54,7 +55,7 @@
           {{ label }}
         </router-link>
       </div>
-      <Button class="w-[112px]" variant="filled" color="primary" size="small">
+      <Button class="w-[112px]" variant="default" color="primary" size="small">
         <span class="font-display text-lg font-bold">Iscriviti</span>
       </Button>
     </div>
@@ -63,7 +64,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, defineProps } from 'vue'
 import { useViewport, useScroll } from '@/hooks'
 import { MenuItemType } from '@/types'
 import { TooltipOptions } from '@/types'
@@ -71,6 +72,11 @@ import { TooltipOptions } from '@/types'
 import { IconArrow } from '@/assets/icons'
 import { Button, Logo } from '@/components/common'
 import { MenuMobile } from '@/components/layout'
+
+// PROPS
+const props = defineProps({
+  scrollThreshold: { type: Number, default: 200 },
+})
 
 // VARIABLES
 const items: MenuItemType[] = [
@@ -112,6 +118,7 @@ const items: MenuItemType[] = [
 // COMPUTED
 const { aboveTablet, belowTablet } = useViewport()
 const { hasScrolledY, scrollY } = useScroll()
+const parsedScrollThreshold = computed(() => props.scrollThreshold - 54)
 
 const tooltip = computed(
   (): TooltipOptions => ({
@@ -132,10 +139,6 @@ const tooltip = computed(
   background-color: rgba(255, 255, 255, 0);
   transition: all 0.255s ease-in-out;
 
-  &--scrolled {
-    background-color: rgba(255, 255, 255, 0.95);
-  }
-
   &__back {
     &__arrow {
       transform: rotate(90deg);
@@ -147,23 +150,23 @@ const tooltip = computed(
       position: relative;
       z-index: 1;
 
-      // &:after {
-      //   content: '';
-      //   position: absolute;
-      //   top: 50%;
-      //   left: 0;
-      //   height: 1px;
-      //   width: 0px;
-      //   background-color: theme('colors.white.100');
-      //   transition: width 0.255s ease-in-out;
-      //   z-index: 2;
-      // }
+      &:after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        height: 1px;
+        width: 0px;
+        background-color: theme('colors.white.100');
+        transition: width 0.255s ease-in-out;
+        z-index: 2;
+      }
 
-      // &--scrolled {
-      //   &:after {
-      //     background-color: theme('colors.black.700');
-      //   }
-      // }
+      &--scrolled {
+        &:after {
+          background-color: theme('colors.black.700');
+        }
+      }
 
       &.router-link-exact-active:after,
       &:hover:after {

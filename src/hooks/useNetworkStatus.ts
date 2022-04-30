@@ -1,5 +1,5 @@
 
-import { computed, ref, onMounted, onUnmounted } from 'vue';
+import { computed, ref, onMounted, onUnmounted, readonly } from 'vue';
 
 export enum NETWORK_STATUS {
   ONLINE = 'online',
@@ -29,4 +29,8 @@ export const useNetworkStatus = () => {
     window.removeEventListener(NETWORK_STATUS.ONLINE, updateOnlineStatus)
     window.removeEventListener(NETWORK_STATUS.OFFLINE, updateOnlineStatus)
   })
+
+  return {
+    status: readonly(status)
+  }
 }

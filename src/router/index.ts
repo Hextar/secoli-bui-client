@@ -24,6 +24,7 @@ const routes = [
 
 const scrollBehavior: RouterScrollBehavior = (to, from, savedPosition) => {
   setTimeout(() => {
+    if (to.params.silently) { return }
     if (to.hash) {
       const el = window.location.href.split('#')[1]
       if (el.length) {

@@ -4,14 +4,14 @@
       class="text-white-100"
       image="/images/background.jpg"
       lazy-image="/images/background-lazy.jpg"
-      height="45vh"
+      height="400px"
     >
       w-full
       <template #menu>
-        <MenuEvent />
+        <MenuEvent :scroll-threshold="400" />
       </template>
       <template #content>
-        <div id="info" class="flex flex-col items-start justify-center py-16">
+        <div id="info" class="anchor flex flex-col items-start justify-center py-16">
           <div class="flex flex-col items-start justify-start">
             <h2 class="mb-4 font-display text-6xl text-white-100" to="/" exact>
               La
@@ -32,7 +32,7 @@
     </Header>
     <Article>
       <Paragraph>
-        <h2 id="fazioni">Fazioni</h2>
+        <h2 id="fazioni" class="anchor">Fazioni</h2>
       </Paragraph>
       <Paragraph class="pb-8">
         <h3 class="pb-4 text-left">I Portatori della Fiamma Bianca</h3>

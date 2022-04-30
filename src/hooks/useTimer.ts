@@ -1,10 +1,12 @@
 import { ref, onUnmounted } from 'vue'
 
 export const useTimer = (callback = (times?: number, now?: number) => {}, step = 1000) => {
+  // VARIABLES
   let timerVariableId: any
   let times = 0
   const isPaused = ref(false)
    
+  // METHODS
   const stop = () => {
     if (timerVariableId) {
       clearInterval(timerVariableId)
@@ -16,10 +18,10 @@ export const useTimer = (callback = (times?: number, now?: number) => {}, step =
   const start = () => {
     stop();
     if (!timerVariableId) {
-      times = 0;
+      times = 0
       timerVariableId = setInterval(() => {
         if (!isPaused.value) {
-          times++;
+          times++
           callback(times, step * times)
         }
       }, step)
@@ -34,10 +36,9 @@ export const useTimer = (callback = (times?: number, now?: number) => {}, step =
     isPaused.value = false
   }
 
+  // ON UNMOUNTED
   onUnmounted(() => {
-    if (timerVariableId) {
-      clearInterval(timerVariableId)
-    }
+    if (timerVariableId) { clearInterval(timerVariableId) }
   })
 
   return {
