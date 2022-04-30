@@ -140,7 +140,7 @@ const iconPosition = computed((): string => getIconPosition(hasPrefix.value, has
             @include row--center;
 
             // used to override a svg/shortcut size
-            :deep svg {
+            :deep(svg) {
               height: $icon;
               width: $icon;
             }

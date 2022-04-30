@@ -4,38 +4,32 @@
       class="text-white-100"
       image="/images/background.jpg"
       lazy-image="/images/background-lazy.jpg"
+      show-arrow
     >
       <template #menu>
-        <Menu />
+        <MenuNormal />
       </template>
       <template #content>
-        <h3
-          v-if="showNextEvent"
-          class="text-md my-4 text-center font-display uppercase text-white-100"
-          to="/"
-          exact
-        >
-          Prossimo evento
-        </h3>
-        <Decoration v-if="showNextEvent" class="mb-4" size="medium" inverted />
-        <h2 class="mb-4 text-center font-display text-6xl text-white-100" to="/" exact>
-          La
-          <span v-if="showPeach" v-tooltip="tooltip" class="cursor-pointer">🍑</span>
-          <span v-else class="cursor-pointer" @click="onClick">Pesca</span>
-          dei Burattini
-        </h2>
-        <h3 class="mb-4 text-center font-display text-2xl uppercase text-white-100" to="/" exact>
-          Di perdita e riscatto
-        </h3>
-        <Decoration class="mb-8" size="medium" />
-        <p
-          class="container mb-8 w-screen px-8 text-center font-body text-sm text-white-100 sm:w-screen md:w-4/5 lg:w-2/3"
-        >
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vehicula tellus nibh, non
-          faucibus mauris imperdiet eu. Curabitur euismod nulla eget leo ornare, in viverra ipsum
-          finibus.
-        </p>
-        <Button class="w-[160px]" tag="router-link" to="/events"> Scopri di piú </Button>
+        <div class="flex w-full flex-col items-center justify-center">
+          <h2 class="mb-4 text-center font-display text-6xl text-white-100" to="/" exact>
+            La
+            <span v-if="showPeach" v-tooltip="tooltip" class="cursor-pointer">🍑</span>
+            <span v-else class="cursor-pointer" @click="onClick">Pesca</span>
+            dei Burattini
+          </h2>
+          <h3 class="mb-4 text-center font-display text-2xl uppercase text-white-100" to="/" exact>
+            Di perdita e riscatto
+          </h3>
+          <Decoration class="mb-8" size="medium" />
+          <p
+            class="mb-8 w-screen px-8 text-center font-body text-sm text-white-100 sm:w-screen md:w-4/5 lg:w-2/3"
+          >
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vehicula tellus nibh, non
+            faucibus mauris imperdiet eu. Curabitur euismod nulla eget leo ornare, in viverra ipsum
+            finibus.
+          </p>
+          <Button class="w-[160px]" tag="router-link" to="/events"> Scopri di piú </Button>
+        </div>
       </template>
     </Header>
   </DefaultLayout>
@@ -45,8 +39,10 @@
 import { computed, ref } from 'vue'
 import { TooltipOptions } from '@/types'
 
+import { Button, Decoration } from '@/components/common'
+import { DefaultLayout, Header, MenuNormal } from '@/components/layout'
+
 let counter = ref(0)
-let showNextEvent = ref(false)
 
 const showPeach = computed((): boolean => counter.value > 33)
 const tooltip = computed(

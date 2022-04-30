@@ -1,6 +1,5 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import ViteComponents from 'vite-plugin-components'
 import { fileURLToPath, URL } from "url";
 import svgLoader from 'vite-svg-loader'
 
@@ -17,9 +16,6 @@ export default defineConfig({
     svgLoader({
       defaultImport: 'component',
       svgoConfig: { multipass: true }
-  }),
-    ViteComponents({
-      globalComponentsDeclaration: true,
     }),
   ],
   css: {

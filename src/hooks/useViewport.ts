@@ -1,9 +1,9 @@
 import { computed, ref, onMounted, onUnmounted } from 'vue';
 
 export enum VIEWPORT {
-  MOBILE = 760,
-  TABLET = 922,
-  DESKTOP = 1440,
+  MOBILE = 640,
+  TABLET = 768,
+  DESKTOP = 1024,
   LARGE_DESKTOP = 1440,
 }
 
@@ -17,6 +17,14 @@ export const useViewport = () => {
   const isTablet = computed(() => width.value > VIEWPORT.MOBILE && width.value <= VIEWPORT.TABLET)
   const isDesktop = computed(() => width.value > VIEWPORT.TABLET && width.value <= VIEWPORT.DESKTOP)
   const isLargeDesktop = computed(() => width.value > VIEWPORT.DESKTOP)
+
+  const aboveMobile = computed(() => width.value > VIEWPORT.MOBILE)
+  const aboveTablet = computed(() => width.value > VIEWPORT.TABLET)
+  const aboveDesktop = computed(() => width.value > VIEWPORT.DESKTOP)
+
+  const belowTablet = computed(() => width.value <=  VIEWPORT.TABLET)
+  const belowDesktop = computed(() => width.value <=  VIEWPORT.DESKTOP)
+  const belowLargeDesktop = computed(() => width.value <=  VIEWPORT.LARGE_DESKTOP)
 
   // METHODS
   const handleResize = () => {
@@ -41,6 +49,12 @@ export const useViewport = () => {
     isMobile,
     isTablet,
     isDesktop,
-    isLargeDesktop
+    isLargeDesktop,
+    aboveMobile,
+    aboveTablet,
+    aboveDesktop,
+    belowTablet,
+    belowDesktop,
+    belowLargeDesktop
   }  
 }

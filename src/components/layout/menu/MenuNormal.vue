@@ -3,7 +3,7 @@
     <div
       class="menu__logo animate__slide-from-above mb-6 flex flex-col items-center justify-center"
     >
-      <Logo :size="isMobile ? 'small' : 'medium'" />
+      <Logo :size="isMobile ? 'small' : 'medium'" homepage />
     </div>
     <template class="menu__content hidden flex-wrap items-center justify-center gap-8 sm:flex">
       <div
@@ -22,11 +22,15 @@
       </div>
     </template>
   </div>
+  <MenuMobile v-if="isMobile" :items="items" />
 </template>
 
 <script setup lang="ts">
 import { useViewport } from '@/hooks'
 import { MenuItems } from '@/router/items'
+
+import { Logo } from '@/components/common'
+import { MenuMobile } from '@/components/layout/menu'
 
 // VARIABLES
 const items = MenuItems

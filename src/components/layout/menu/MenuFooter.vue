@@ -37,7 +37,7 @@
       </div>
       <div class="justiy-start flex h-full w-full flex-col items-center md:w-32 md:items-start">
         <span
-          class="menu-footer__content__title-special mb-4 cursor-pointer text-center font-display text-lg font-bold text-white-100 md:text-left"
+          class="menu-footer__content__title-special mb-4 text-center font-display text-lg font-bold text-white-100 md:text-left"
           exact
         >
           Newsletter
@@ -61,16 +61,12 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
 import { MenuItems } from '@/router/items'
+
+import { Button } from '@/components/common'
 
 // VARIABLES
 const items = MenuItems.filter(({ homepage }) => !homepage)
-
-// COMPUTED
-const getFraction = computed((): number => {
-  return items.length + 1
-})
 </script>
 
 <style lang="scss" scoped>

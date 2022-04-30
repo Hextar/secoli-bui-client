@@ -58,7 +58,9 @@ module.exports = {
         lg: '1024px',
         xl: '1280px'
       }
-    },
+    }
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography')
+  ],
 }

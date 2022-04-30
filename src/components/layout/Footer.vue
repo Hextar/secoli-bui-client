@@ -1,8 +1,8 @@
 <template>
   <div class="footer flex flex-col items-start justify-center">
-    <div class="footer__main relative flex w-full items-center justify-center bg-black-700 pb-8">
-      <div class="container mb-4 flex w-full flex-wrap items-start justify-between p-8">
-        <div class="mb-16 flex w-full flex-col items-center gap-8 md:mb-0 md:w-1/5 md:items-start">
+    <div class="footer__main relative flex items-center justify-center bg-black-700 pb-8">
+      <div class="container-md mb-4 flex flex-wrap items-start justify-between p-8">
+        <div class="mb-16 flex flex-col items-center gap-8 md:mb-0 md:w-1/5 md:items-start">
           <a
             href="https://www.facebook.com/mad2factory/"
             rel="nofollow"
@@ -22,13 +22,13 @@
             (giochi di ruolo dal vivo) ed attività affini.
           </span>
         </div>
-        <div class="flex w-full flex-col justify-center gap-8 md:w-4/5">
+        <div class="flex flex-col justify-center gap-8 md:w-4/5">
           <MenuFooter />
         </div>
       </div>
     </div>
     <div class="footer__bloody relative flex w-full items-center justify-center bg-primary-500 p-8">
-      <div class="container flex w-full flex-wrap items-start justify-between font-display">
+      <div class="flex w-full flex-wrap items-start justify-between font-display">
         <span
           class="footer__bloody__copyright mb-8 w-full text-center text-grey-700 md:mb-0 md:w-1/2 md:text-left"
         >
@@ -53,6 +53,8 @@
 import { computed } from 'vue'
 import { TooltipOptions } from '@/types'
 
+import { MenuFooter } from '@/components/layout/menu'
+
 // COMPUTED
 const tooltip = computed(
   (): TooltipOptions => ({
@@ -76,7 +78,7 @@ const tooltip = computed(
       content: '';
       position: absolute;
       height: $blood-h !important;
-      top: -#{$blood-h};
+      top: calc(-#{$blood-h} + 1px);
       left: 0;
       right: 0;
       background-image: url('@/assets/images/elf_juice.svg');

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="menu-mobile__toggle flex cursor-pointer select-none flex-wrap items-center justify-start gap-8 sm:hidden"
+    class="menu-mobile__toggle flex cursor-pointer select-none flex-wrap items-center justify-start gap-8"
   >
     <InputHamburgherSymmetric
       v-if="randSlash === 1"
@@ -22,10 +22,7 @@
       @click="open = !open"
     />
   </div>
-  <div
-    v-if="open"
-    class="menu-mobile__overlay flex flex-col items-center justify-start gap-12 pt-48"
-  >
+  <div v-if="open" class="menu-mobile__overlay flex flex-col items-center justify-center gap-12">
     <div
       v-for="({ label, to, tooltip, disabled }, idx) in items"
       :key="`${label}-${idx}`"
@@ -40,14 +37,18 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch, computed, onMounted } from 'vue'
+import { defineProps, computed, onMounted, PropType, ref, watch } from 'vue'
+import { MenuItemType } from '@/types'
 
-import { MenuItems } from '@/router/items'
 import { InputHamburgherSymmetric } from '@/assets/icons'
 import { InputHamburgher } from '@/assets/icons'
 
+// PROPS
+const props = defineProps({
+  items: { required: true, type: Array as PropType<MenuItemType[]> },
+})
+
 // VARIABLES
-const items = MenuItems
 const open = ref(false)
 const loaded = ref(false)
 
@@ -86,10 +87,8 @@ $overlayIndex: 99;
         outline: none;
       }
 
-      &:deep {
-        .claw-mark {
-          transition: all 0.255s ease-in-out;
-        }
+      &:deep(.claw-mark) {
+        transition: all 0.255s ease-in-out;
       }
     }
 
@@ -103,37 +102,33 @@ $overlayIndex: 99;
       &--close.hamburgher {
         &--normal,
         &--reversed {
-          &:deep {
-            .claw-mark {
-              &.first {
-                transform: translateX(16px) rotate(40deg);
-              }
+          &:deep(.claw-mark) {
+            &.first {
+              transform: translateX(16px) rotate(40deg);
+            }
 
-              &.second {
-                opacity: 0;
-              }
+            &.second {
+              opacity: 0;
+            }
 
-              &.third {
-                transform: translateY(28px) translateX(-42px) rotate(-40deg);
-              }
+            &.third {
+              transform: translateY(28px) translateX(-42px) rotate(-40deg);
             }
           }
         }
 
         &--symmetric {
-          &:deep {
-            .claw-mark {
-              &.first {
-                transform: translateX(16px) rotate(40deg);
-              }
+          &:deep(.claw-mark) {
+            &.first {
+              transform: translateX(16px) rotate(40deg);
+            }
 
-              &.second {
-                opacity: 0;
-              }
+            &.second {
+              opacity: 0;
+            }
 
-              &.third {
-                transform: translateY(28px) translateX(-48px) rotate(-40deg);
-              }
+            &.third {
+              transform: translateY(28px) translateX(-48px) rotate(-40deg);
             }
           }
         }

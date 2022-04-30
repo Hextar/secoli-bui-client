@@ -1,0 +1,16 @@
+<template>
+  <img :src="src" :height="height" :width="width" :alt="alt" />
+</template>
+
+<script setup lang="ts">
+import { defineProps } from 'vue'
+
+// PROPS
+const props = defineProps({
+  src: { type: String, default: '' },
+  alt: { type: String, default: '' },
+  height: { type: Number, default: undefined },
+  width: { type: Number, default: undefined },
+})
+</script>
+defineProps

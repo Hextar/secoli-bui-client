@@ -1,23 +1,23 @@
 <template>
   <div ref="header" class="header flex items-start justify-center">
     <img
-      class="header__background pointer-events-none"
+      class="header__background pointer-events-none w-full"
       :src="image"
       v-lazy="lazy"
       alt="Background event cover"
     />
     <div
-      class="header__content items-space-betwen container flex flex-col justify-start px-8 pb-16 md:justify-between md:pb-0"
+      class="header__content items-space-betwen flex flex-col justify-start px-8 pb-16 md:justify-between md:pb-0"
     >
       <div class="header__content__menu flex flex-col items-center justify-center pt-6 md:pt-8">
         <slot name="menu" />
       </div>
-      <div class="header__content__body container flex flex-col items-center justify-center py-8">
+      <div class="header__content__body container-xl py-8">
         <slot name="content" />
       </div>
       <div
-        v-if="!isMobile"
-        class="header__content__action container flex flex-col items-center justify-center"
+        v-if="showArrow && !isMobile"
+        class="header__content__action flex flex-col items-center justify-center"
       >
         <IconArrow
           v-if="!scrolled"
@@ -30,9 +30,10 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, defineProps, ref } from 'vue'
 import { useScroll, useViewport } from '@/hooks'
 import { LazyOptions } from '@/types'
+
 import { IconArrow } from '@/assets/icons'
 
 // VARIABLES
@@ -40,8 +41,10 @@ const header = ref<HTMLDivElement>()
 
 // PROPS
 const props = defineProps({
+  height: { type: [String, Number], default: '100vh' },
   image: { type: String, required: false },
   lazyImage: { type: String, required: false },
+  showArrow: { type: Boolean, default: false },
 })
 
 // VARIABLES
@@ -68,17 +71,15 @@ const onScroll = (): void => {
 <style lang="scss" scoped>
 .header {
   z-index: 0;
-  height: 90vh;
 
   &,
   &__background {
     height: 100%;
-    width: 100%;
-    max-height: 700px;
+    max-height: v-bind('height');
 
     @screen sm {
+      height: v-bind('height');
       max-height: 800px;
-      height: 100vh;
     }
   }
 
@@ -109,6 +110,7 @@ const onScroll = (): void => {
       content: '';
       position: absolute;
       @include fullsize;
+      height: v-bind('height');
       background-color: theme('colors.black.700');
       opacity: 0.5;
       z-index: 2;
