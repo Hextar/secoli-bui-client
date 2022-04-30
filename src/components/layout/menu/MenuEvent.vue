@@ -150,23 +150,23 @@ const tooltip = computed(
       position: relative;
       z-index: 1;
 
-      &:after {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 0;
-        height: 1px;
-        width: 0px;
-        background-color: theme('colors.white.100');
-        transition: width 0.255s ease-in-out;
-        z-index: 2;
-      }
+      // &:after {
+      //   content: '';
+      //   position: absolute;
+      //   top: 50%;
+      //   left: 0;
+      //   height: 1px;
+      //   width: 0px;
+      //   background-color: theme('colors.white.100');
+      //   transition: width 0.255s ease-in-out;
+      //   z-index: 2;
+      // }
 
-      &--scrolled {
-        &:after {
-          background-color: theme('colors.black.700');
-        }
-      }
+      // &--scrolled {
+      //   &:after {
+      //     background-color: theme('colors.black.700');
+      //   }
+      // }
 
       &.router-link-exact-active:after,
       &:hover:after {
