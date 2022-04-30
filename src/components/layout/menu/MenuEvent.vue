@@ -76,33 +76,36 @@ import { MenuMobile } from '@/components/layout'
 const items: MenuItemType[] = [
   {
     label: 'Info',
-    to: '#header',
+    to: '#info',
     tooltip: { content: 'Informazioni', placement: 'bottom' },
     homepage: true,
   },
   {
     label: 'Fazioni',
-    to: '#header',
-    tooltip: { content: 'Informazioni', placement: 'bottom' },
+    to: { path: '/events', hash: '#fazioni' },
+    tooltip: { content: 'Teaser fazioni', placement: 'bottom' },
     homepage: true,
   },
   {
     label: 'Programma',
-    to: '#header',
-    tooltip: { content: 'Informazioni', placement: 'bottom' },
+    to: '#programma',
+    tooltip: { content: 'Coming soon', placement: 'bottom' },
     homepage: true,
+    disabled: true,
   },
   {
     label: 'Consigli',
-    to: '#header',
-    tooltip: { content: 'Informazioni', placement: 'bottom' },
+    to: '#consigli',
+    tooltip: { content: 'Coming soon', placement: 'bottom' },
     homepage: true,
+    disabled: true,
   },
   {
     label: 'Sicurezza',
-    to: '#header',
-    tooltip: { content: 'Informazioni', placement: 'bottom' },
+    to: '#sicurezza',
+    tooltip: { content: 'Coming soon', placement: 'bottom' },
     homepage: true,
+    disabled: true,
   },
 ]
 

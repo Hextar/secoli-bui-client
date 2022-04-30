@@ -23,12 +23,17 @@
   error?: string// your error image url
 }
 
+export type RouterLink = string | {
+  path: string,
+  hash?: string
+}
+
 /**
  * menu item option tpye
  */
 export type MenuItemType = {
   label: string,
-  to?: string,
+  to?: RouterLink,
   tooltip?: TooltipOptions,
   disabled?: boolean,
   children?: MenuItemType[],

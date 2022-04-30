@@ -7,49 +7,49 @@ import {
 } from './validators'
 
 import {
-  ButtonColor,
-  ButtonVariant,
-  ButtonSize,
-  ButtonFlair,
-  ButtonTag
+  UiColor,
+  UiVariant,
+  UiSize,
+  UiFlair,
+  UiTag
 } from '.'
 
 it('colorValidator should return true if a correct color is passed', () => {
-  expect(colorValidator(ButtonColor.PRIMARY)).toBe(true)
+  expect(colorValidator(UiColor.PRIMARY)).toBe(true)
 })
 
 it('colorValidator should return false if a wrong color is passed', () => {
-  expect(colorValidator('foo' as ButtonColor)).toBe(false)
+  expect(colorValidator('foo' as UiColor)).toBe(false)
 })
 
 it('variantValidator should return true if a correct variant is passed', () => {
-  expect(variantValidator(ButtonVariant.DEFAULT)).toBe(true)
+  expect(variantValidator(UiVariant.DEFAULT)).toBe(true)
 })
 
 it('variantValidator should return false if a wrong variant is passed', () => {
-  expect(variantValidator('foo' as ButtonVariant)).toBe(false)
+  expect(variantValidator('foo' as UiVariant)).toBe(false)
 })
 
 it('sizeValidator should return true if a correct size is passed', () => {
-  expect(sizeValidator(ButtonSize.SMALL)).toBe(true)
+  expect(sizeValidator(UiSize.SMALL)).toBe(true)
 })
 
 it('sizeValidator should return false if a wrong size is passed', () => {
-  expect(sizeValidator('foo' as ButtonSize)).toBe(false)
+  expect(sizeValidator('foo' as UiSize)).toBe(false)
 })
 
 it('flairValidator should return true if a correct flair is passed', () => {
-  expect(flairValidator(ButtonFlair.ROUNDED)).toBe(true)
+  expect(flairValidator(UiFlair.ROUNDED)).toBe(true)
 })
 
 it('flairValidator should return false if a wrong flair is passed', () => {
-  expect(flairValidator('foo' as ButtonFlair)).toBe(false)
+  expect(flairValidator('foo' as UiFlair)).toBe(false)
 })
 
 it('tagValidator should return true if a correct tag is passed', () => {
-  expect(tagValidator(ButtonTag.BUTTON)).toBe(true)
+  expect(tagValidator(UiTag.BUTTON)).toBe(true)
 })
 
 it('tagValidator should return false if a wrong tag is passed', () => {
-  expect(tagValidator('foo' as ButtonTag)).toBe(false)
+  expect(tagValidator('foo' as UiTag)).toBe(false)
 })
