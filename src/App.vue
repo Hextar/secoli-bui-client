@@ -5,9 +5,13 @@
 <script setup lang="ts"></script>
 
 <style lang="scss">
-#app {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+body {
+  background-color: theme('colors.primary.500');
   @include scrollbar;
+
+  #app {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 }
 </style>
