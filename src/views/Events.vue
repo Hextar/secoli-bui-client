@@ -226,11 +226,40 @@ import { Article, Image, Info, Paragraph } from '@/components/common'
 import { DefaultLayout, Header, MenuEvent } from '@/components/layout'
 
 // META
+const title = 'Prossimo evento - La pesca dei burattini'
+const description = 'La pesca dei burattini - evento LARP, 18 Giugno nel Sulcis'
+const url = 'https://www.grvsecolibui.it'
+const image = `${url}/images/social.jpg`
 useMeta({
-  title: 'Prossimo evento - La pesca dei burattini',
-  description: 'La pesca dei burattini - evento LARP, 18 Giugno nel Sulcis',
+  title: '',
+  description,
   htmlAttrs: { lang: 'it', amp: true },
-  canonical: 'https://www.grvsecolibui.it/events',
+  meta: [
+    // OpenGraph data (Most widely used)
+    { property: 'og:title', content: title },
+    { property: 'og:site_name', content: title },
+    // The list of types is available here: http://ogp.me/#types
+    { property: 'og:type', content: 'website' },
+    // Should the the same as your canonical link, see below.
+    { property: 'og:url', content: url },
+    { property: 'og:image', content: image },
+    // Often the same as your meta description, but not always.
+    { property: 'og:description', content: description },
+
+    // Twitter card
+    { name: 'twitter:card', content: 'summary' },
+    { name: 'twitter:site', content: url },
+    { name: 'twitter:title', content: title },
+    { name: 'twitter:description', content: description },
+    // {name: 'twitter:creator', content: '@alligatorio'},
+    { name: 'twitter:image:src', content: image },
+
+    // Google / Schema.org markup:
+    { itemprop: 'name', content: title },
+    { itemprop: 'description', content: description },
+    { itemprop: 'image', content: image },
+  ],
+  link: [{ rel: 'canonical', href: url }],
 })
 
 // VARIABLES

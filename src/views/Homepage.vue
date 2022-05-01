@@ -30,9 +30,24 @@
           <p
             class="mb-8 w-screen px-8 text-center font-body text-sm text-white-100 sm:w-screen md:w-4/5 lg:w-2/3"
           >
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vehicula tellus nibh, non
-            faucibus mauris imperdiet eu. Curabitur euismod nulla eget leo ornare, in viverra ipsum
-            finibus.
+            <!-- La pesca dei burattini è un evento one shot ambientato nel continente di Braara, setting
+            della campagna Secoli Bui.
+            <br />
+            <br />
+            Sei gruppi di avventurieri dai diversi fini si incontreranno dalle parti della regione
+            del Louren, in un luogo dimenticato da tutto e tutti tranne che dalla Dama Pallida in
+            persona.
+            <br />
+            <br /> -->
+            <i>
+              "Si mormora che tra queste valli si celi qualcosa di silenzioso e mai sopito e che
+              solo i temerari o i disperati calcano questi terreni, alla ricerca di qualcosa o
+              qualcuno…
+              <br />
+              <br />
+              Chi abita queste terre sa che non è possibile uscirne, chi le cerca invece, vi entra
+              per brama e riscatto…"
+            </i>
           </p>
           <Button class="w-[160px]" tag="router-link" to="/events"> Scopri di piú </Button>
         </div>
@@ -51,10 +66,40 @@ import { Button, Decoration } from '@/components/common'
 import { DefaultLayout, Header, MenuNormal } from '@/components/layout'
 
 // META
+const title = 'Homepage'
+const description = 'scopri i prossimi eventi LARP italiani'
+const url = 'https://www.grvsecolibui.it'
+const image = `${url}/images/social.jpg`
 useMeta({
-  title: 'Homepage',
+  title: '',
+  description,
   htmlAttrs: { lang: 'it', amp: true },
-  canonical: 'https://www.grvsecolibui.it',
+  meta: [
+    // OpenGraph data (Most widely used)
+    { property: 'og:title', content: title },
+    { property: 'og:site_name', content: title },
+    // The list of types is available here: http://ogp.me/#types
+    { property: 'og:type', content: 'website' },
+    // Should the the same as your canonical link, see below.
+    { property: 'og:url', content: url },
+    { property: 'og:image', content: image },
+    // Often the same as your meta description, but not always.
+    { property: 'og:description', content: description },
+
+    // Twitter card
+    { name: 'twitter:card', content: 'summary' },
+    { name: 'twitter:site', content: url },
+    { name: 'twitter:title', content: title },
+    { name: 'twitter:description', content: description },
+    // {name: 'twitter:creator', content: '@alligatorio'},
+    { name: 'twitter:image:src', content: image },
+
+    // Google / Schema.org markup:
+    { itemprop: 'name', content: title },
+    { itemprop: 'description', content: description },
+    { itemprop: 'image', content: image },
+  ],
+  link: [{ rel: 'canonical', href: url }],
 })
 
 // VARIABLES
