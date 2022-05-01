@@ -22,7 +22,7 @@
           <h1 class="mb-4 text-center font-display text-6xl text-white-100" to="/" exact>
             La
             <span v-if="showPeach" v-tooltip="tooltip" class="cursor-pointer">🍑</span>
-            <span v-else class="cursor-pointer" @click="onClick">Pesca</span>
+            <span v-else class="cursor-pointer" @click="counter++">Pesca</span>
             dei Burattini
           </h1>
           <h2
@@ -102,7 +102,7 @@ useMeta({
 let counter = ref(0)
 
 // COMPTUED
-const showPeach = computed((): boolean => counter.value > 33)
+const showPeach = computed((): boolean => counter.value >= 13)
 const tooltip = computed(
   (): TooltipOptions => ({
     content: 'Charm',
@@ -111,7 +111,4 @@ const tooltip = computed(
   })
 )
 const { isMobile, belowTablet } = useViewport()
-
-// METHODS
-const onClick = () => (counter.value += 1)
 </script>

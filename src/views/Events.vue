@@ -18,7 +18,7 @@
             <h1 class="mb-4 font-display text-6xl text-white-100" to="/" exact>
               La
               <span v-if="showPeach" v-tooltip="tooltip" class="cursor-pointer">🍑</span>
-              <span v-else class="cursor-pointer" @click="onClick">Pesca</span>
+              <span v-else class="cursor-pointer" @click="counter++">Pesca</span>
               dei Burattini
             </h1>
             <h2
@@ -342,7 +342,7 @@ let counter = ref(0)
 let showNextEvent = ref(false)
 
 // COMPUTED
-const showPeach = computed((): boolean => counter.value > 33)
+const showPeach = computed((): boolean => counter.value >= 13)
 const tooltip = computed(
   (): TooltipOptions => ({
     content: 'Charme',
