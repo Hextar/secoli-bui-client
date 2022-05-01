@@ -1,5 +1,5 @@
 @mixin scrollbar {
-  $thumbColor: rgba(40, 40, 40, .33);
+  $thumbColor: rgba(40, 40, 40, .66);
   $thumbColorHover: rgba(175, 29, 29, .66);
 
   // firefox
@@ -17,12 +17,14 @@
 
   // chrome, opera, safari
   &::-webkit-scrollbar {
-    height: 6px;
-    width: 6px;
+    height: 8px;
+    width: 8px;
+    right: 4px;
     transition: all .3s ease-in-out;
   }
   
   &::-webkit-scrollbar-thumb {
+    right: 4px;
     border-radius: 6px;
     background-color: $thumbColor;
     transition: all .3s ease-in-out;

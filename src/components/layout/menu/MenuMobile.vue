@@ -102,6 +102,12 @@ $overlayIndex: 99;
       &:deep(.claw-mark) {
         transition: all 0.255s ease-in-out;
       }
+
+      &,
+      svg {
+        height: 48px;
+        width: 48px;
+      }
     }
 
     &__hamburgher {

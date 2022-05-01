@@ -28,7 +28,9 @@ const scrollBehavior: RouterScrollBehavior = (to, from, savedPosition) => {
     if (to.hash) {
       const el = window.location.href.split('#')[1]
       if (el.length) {
-        document?.getElementById(el)?.scrollIntoView({ behavior: 'smooth' })
+        const elTop = document?.getElementById(el)?.getBoundingClientRect().top || 0
+        const windowTop = window.pageYOffset
+        window?.scrollTo({top: elTop + windowTop - 60, behavior: 'smooth'})
       }
     } else if (savedPosition) {
       return savedPosition;

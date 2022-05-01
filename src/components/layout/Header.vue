@@ -96,8 +96,13 @@ const onScroll = (): void => {
     }
 
     &__action {
-      height: 48px;
-      margin-bottom: 48px;
+      margin: 48px auto;
+
+      &,
+      svg {
+        height: 48px;
+        width: 48px;
+      }
     }
   }
 }

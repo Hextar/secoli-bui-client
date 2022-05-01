@@ -10,8 +10,11 @@
         <MenuEvent :scroll-threshold="400" />
       </template>
       <template #content>
-        <div id="info" class="anchor flex flex-col items-start justify-center py-16">
-          <div class="flex flex-col items-start justify-start">
+        <div
+          id="info"
+          class="anchor pb- flex flex-col items-start justify-center pt-16 pb-0 sm:pb-8"
+        >
+          <div class="mb-8 flex flex-col items-start justify-start">
             <h2 class="mb-4 font-display text-6xl text-white-100" to="/" exact>
               La
               <span v-if="showPeach" v-tooltip="tooltip" class="cursor-pointer">🍑</span>
@@ -25,6 +28,61 @@
             >
               Di perdita e riscatto
             </h3>
+          </div>
+          <div class="flex w-full flex-wrap items-start justify-start gap-8">
+            <Info class="w-full sm:w-auto" label="Dove">
+              <template #icon>
+                <IconPin />
+              </template>
+              <br />
+              <span class="pl-2">
+                •
+                <a
+                  class="text-action-500 hover:underline"
+                  href="https://www.google.com/maps/place/39%C2%B007'32.1%22N+8%C2%B026'27.4%22E/@39.1256265,8.438438,2283m/data=!3m1!1e3!4m6!3m5!1s0!7e2!8m2!3d39.1255724!4d8.440949"
+                  rel="nofollow"
+                  alt="indicazioni matzaccara"
+                  target="_blank"
+                >
+                  Matzaccara - Pineta di Punt’e Trettu
+                </a>
+              </span>
+              <br />
+            </Info>
+            <Info class="w-full sm:w-auto" label="Quando">
+              <template #icon>
+                <IconClock />
+              </template>
+              <br />
+              <span class="pl-2"> • 18/06/2020 15:00-23:00 </span><br />
+            </Info>
+            <Info class="w-full sm:w-auto" label="Quota">
+              <template #icon>
+                <IconMoney />
+              </template>
+              <br />
+              <span class="pl-2"> • 25€ STANDARD </span><br />
+              <span class="pl-2"> • 5€ PAGO COL SANGUE </span><br />
+            </Info>
+            <Info class="w-full sm:w-auto" label="Evento FB">
+              <template #icon>
+                <IconFacebook />
+              </template>
+              <br />
+              <span class="pl-2">
+                • Rimani aggiornato
+                <a
+                  class="text-action-500 hover:underline"
+                  href="https://www.facebook.com/events/353854243429800/"
+                  rel="nofollow"
+                  alt="evento facebook la pesca dei burattini"
+                  target="_blank"
+                >
+                  iscrivendoti all’evento!
+                </a>
+              </span>
+              <br />
+            </Info>
           </div>
         </div>
       </template>
@@ -163,7 +221,8 @@ import { computed, ref } from 'vue'
 import { useMeta } from 'vue-meta'
 import { TooltipOptions } from '@/types'
 
-import { Article, Image, Paragraph } from '@/components/common'
+import { IconClock, IconFacebook, IconMoney, IconPin } from '@/assets/icons'
+import { Article, Image, Info, Paragraph } from '@/components/common'
 import { DefaultLayout, Header, MenuEvent } from '@/components/layout'
 
 // META
