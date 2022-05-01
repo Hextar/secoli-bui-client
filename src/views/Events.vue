@@ -62,7 +62,6 @@
               </template>
               <br />
               <span class="pl-2"> • 25€ STANDARD </span><br />
-              <span class="pl-2"> • 5€ PAGO COL SANGUE </span><br />
             </Info>
             <Info class="w-full sm:w-auto" label="Evento FB">
               <template #icon>
