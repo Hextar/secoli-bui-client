@@ -5,13 +5,20 @@
       image="/images/background.jpg"
       lazy-image="/images/background-lazy.jpg"
       show-arrow
-      :height="belowTablet ? '100%' : '70vh'"
+      :height="belowTablet ? '100%' : '90vh'"
     >
       <template #menu>
         <MenuNormal />
       </template>
       <template #content>
         <div class="flex w-full flex-col items-center justify-center">
+          <h2
+            class="mb-4 text-center font-display text-xl uppercase text-white-100"
+            :class="{ 'mb-12': isMobile }"
+            exact
+          >
+            Prossimo evento
+          </h2>
           <h1 class="mb-4 text-center font-display text-6xl text-white-100" to="/" exact>
             La
             <span v-if="showPeach" v-tooltip="tooltip" class="cursor-pointer">🍑</span>
@@ -21,7 +28,6 @@
           <h2
             class="mb-4 text-center font-display text-2xl uppercase text-white-100"
             :class="{ 'mb-12': isMobile }"
-            to="/"
             exact
           >
             Di perdita e riscatto
@@ -30,22 +36,12 @@
           <p
             class="mb-8 w-screen px-8 text-center font-body text-sm text-white-100 sm:w-screen md:w-4/5 lg:w-2/3"
           >
-            <!-- La pesca dei burattini è un evento one shot ambientato nel continente di Braara, setting
-            della campagna Secoli Bui.
-            <br />
-            <br />
-            Sei gruppi di avventurieri dai diversi fini si incontreranno dalle parti della regione
-            del Louren, in un luogo dimenticato da tutto e tutti tranne che dalla Dama Pallida in
-            persona.
-            <br />
-            <br /> -->
             <i>
-              "Si mormora che tra queste valli si celi qualcosa di silenzioso e mai sopito e che
-              solo i temerari o i disperati calcano questi terreni, alla ricerca di qualcosa o
-              qualcuno…
+              "Si mormora che tra queste valli si celi qualcosa di silenzioso, mai sopito e che solo
+              i temerari o i disperati calcano questi terreni, alla ricerca di qualcosa o qualcuno…
               <br />
               <br />
-              Chi abita queste terre sa che non è possibile uscirne, chi le cerca invece, vi entra
+              Chi abita queste terre sa che non è possibile uscirne, chi le cerca invece vi entra
               per brama e riscatto…"
             </i>
           </p>

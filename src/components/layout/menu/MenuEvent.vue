@@ -93,32 +93,30 @@ const items: MenuItemType[] = [
     homepage: true,
   },
   {
+    label: 'Incipit',
+    to: '#incipit',
+    tooltip: { content: 'Incipit', placement: 'bottom' },
+    homepage: true,
+  },
+  {
     label: 'Fazioni',
     to: { path: '/events', hash: '#fazioni' },
     tooltip: { content: 'Teaser fazioni', placement: 'bottom' },
     homepage: true,
   },
   {
-    label: 'Programma',
-    to: '#programma',
-    tooltip: { content: 'Coming soon', placement: 'bottom' },
+    label: 'Come funziona?',
+    to: '#howItWorks',
+    tooltip: { content: 'Come funziona?', placement: 'bottom' },
     homepage: true,
-    disabled: true,
   },
-  {
-    label: 'Consigli',
-    to: '#consigli',
-    tooltip: { content: 'Coming soon', placement: 'bottom' },
-    homepage: true,
-    disabled: true,
-  },
-  {
-    label: 'Sicurezza',
-    to: '#sicurezza',
-    tooltip: { content: 'Coming soon', placement: 'bottom' },
-    homepage: true,
-    disabled: true,
-  },
+  // {
+  //   label: 'Sicurezza',
+  //   to: '#sicurezza',
+  //   tooltip: { content: 'Coming soon', placement: 'bottom' },
+  //   homepage: true,
+  //   disabled: true,
+  // },
 ]
 
 // COMPUTED
