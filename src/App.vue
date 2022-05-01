@@ -1,5 +1,5 @@
 <template>
-  <router-view class="h-100 w-100 flex flex-1 justify-center bg-primary-500 font-body" />
+  <router-view class="h-100 w-100 flex flex-1 justify-center font-body" />
 </template>
 
 <script setup lang="ts"></script>

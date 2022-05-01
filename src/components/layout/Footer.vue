@@ -67,6 +67,7 @@ const tooltip = computed(
 
 <style lang="scss" scoped>
 .footer {
+  position: relative;
   z-index: 0;
 
   &__main--muddy,

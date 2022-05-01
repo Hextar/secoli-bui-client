@@ -1,5 +1,11 @@
 <template>
-  <div class="menu">
+  <div
+    class="menu"
+    :class="{
+      'menu-event--scrolled': hasScrolledY(parsedScrollThreshold),
+      'backdrop-blur': hasScrolledY(parsedScrollThreshold),
+    }"
+  >
     <div
       class="menu__logo animate__slide-from-above mb-6 flex flex-col items-center justify-center"
     >
@@ -22,26 +28,46 @@
       </div>
     </template>
   </div>
-  <MenuMobile v-if="isMobile" :items="items" />
+  <MenuMobile v-if="belowTablet" :items="items" />
 </template>
 
 <script setup lang="ts">
-import { useViewport } from '@/hooks'
+import { computed, defineProps } from 'vue'
+import { useScroll, useViewport } from '@/hooks'
 import { MenuItems } from '@/router/items'
 
 import { Logo } from '@/components/common'
 import { MenuMobile } from '@/components/layout/menu'
 
+// PROPS
+const props = defineProps({
+  scrollThreshold: { type: Number, default: 200 },
+})
+
 // VARIABLES
 const items = MenuItems
 
 // COMPUTED
-const { isMobile } = useViewport()
+const { belowTablet, isMobile } = useViewport()
+const parsedScrollThreshold = computed(() => props.scrollThreshold - 54)
+
+// METHODS
+const { hasScrolledY } = useScroll()
 </script>
 
 <style lang="scss" scoped>
 .menu {
+  position: relative;
+  overflow: auto;
+  top: 0;
+  right: 0;
+  left: 0;
   z-index: 10;
+  transition: all 0.255s ease-in-out;
+
+  &--scrolled {
+    padding: 4px 0;
+  }
 
   &__content {
     &__item {

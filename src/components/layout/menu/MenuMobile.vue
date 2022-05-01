@@ -1,6 +1,9 @@
 <template>
   <div
-    class="menu-mobile__toggle flex cursor-pointer select-none flex-wrap items-center justify-start gap-8"
+    class="menu-mobile flex cursor-pointer select-none flex-wrap items-center justify-start gap-8"
+    :class="{
+      'menu-mobile--scrolled': scrolled,
+    }"
   >
     <InputHamburgherSymmetric
       v-if="randSlash === 1"
@@ -8,6 +11,7 @@
       :class="{
         'animate__bloody-slash': loaded,
         'menu-mobile__toggle__hamburgher--close': open,
+        'menu-mobile__toggle__hamburgher--scrolled': scrolled,
       }"
       @click="open = !open"
     />
@@ -18,6 +22,7 @@
         'hamburgher--reversed': randSlash === 3,
         'animate__bloody-slash': loaded,
         'menu-mobile__toggle__hamburgher--close': open,
+        'menu-mobile__toggle__hamburgher--scrolled': scrolled,
       }"
       @click="open = !open"
     />
@@ -46,6 +51,7 @@ import { InputHamburgher } from '@/assets/icons'
 // PROPS
 const props = defineProps({
   items: { required: true, type: Array as PropType<MenuItemType[]> },
+  scrolled: { default: false, type: Boolean },
 })
 
 // VARIABLES
@@ -71,16 +77,21 @@ $hamburgherSize: 48px;
 $overlayIndex: 99;
 
 .menu-mobile {
+  position: fixed;
+  top: calc(#{$hamburgherSize} / 3);
+  left: calc(#{$hamburgherSize} / 3);
+  z-index: 9999;
+
   &__toggle {
     position: fixed;
     top: calc(#{$hamburgherSize} / 3);
     left: calc(#{$hamburgherSize} / 3);
-    z-index: $overlayIndex + 1;
     height: $hamburgherSize;
     width: $hamburgherSize;
+    z-index: 100;
 
     &__hamburgher,
-    &__close {
+    &__hamburgher--close {
       &:hover,
       &:focus {
         fill: theme('colors.primary.500');
@@ -95,6 +106,10 @@ $overlayIndex: 99;
     &__hamburgher {
       &.hamburgher--reversed {
         transform: scaleY(-1);
+      }
+
+      &--scrolled {
+        fill: theme('colors.black.700') !important;
       }
 
       // transform the claw mark signs
@@ -131,6 +146,12 @@ $overlayIndex: 99;
               transform: translateY(28px) translateX(-48px) rotate(-40deg);
             }
           }
+        }
+      }
+
+      &--close {
+        &:deep(.claw-mark) {
+          fill: theme('colors.white.100');
         }
       }
     }

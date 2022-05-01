@@ -5,6 +5,7 @@
       image="/images/background.jpg"
       lazy-image="/images/background-lazy.jpg"
       show-arrow
+      :height="belowTablet ? '100%' : '100vh'"
     >
       <template #menu>
         <MenuNormal />
@@ -17,10 +18,15 @@
             <span v-else class="cursor-pointer" @click="onClick">Pesca</span>
             dei Burattini
           </h2>
-          <h3 class="mb-4 text-center font-display text-2xl uppercase text-white-100" to="/" exact>
+          <h3
+            class="mb-4 text-center font-display text-2xl uppercase text-white-100"
+            :class="{ 'mb-12': isMobile }"
+            to="/"
+            exact
+          >
             Di perdita e riscatto
           </h3>
-          <Decoration class="mb-8" size="medium" />
+          <Decoration v-if="!isMobile" class="mb-8" size="medium" />
           <p
             class="mb-8 w-screen px-8 text-center font-body text-sm text-white-100 sm:w-screen md:w-4/5 lg:w-2/3"
           >
@@ -37,13 +43,16 @@
 
 <script setup lang="ts">
 import { computed, ref } from 'vue'
+import { useViewport } from '@/hooks'
 import { TooltipOptions } from '@/types'
 
 import { Button, Decoration } from '@/components/common'
 import { DefaultLayout, Header, MenuNormal } from '@/components/layout'
 
+// VARIABLES
 let counter = ref(0)
 
+// COMPTUED
 const showPeach = computed((): boolean => counter.value > 33)
 const tooltip = computed(
   (): TooltipOptions => ({
@@ -52,8 +61,8 @@ const tooltip = computed(
     theme: 'secoli-bui',
   })
 )
+const { isMobile, belowTablet } = useViewport()
 
-const onClick = () => {
-  counter.value += 1
-}
+// METHODS
+const onClick = () => (counter.value += 1)
 </script>

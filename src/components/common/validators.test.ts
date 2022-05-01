@@ -23,7 +23,7 @@ it('colorValidator should return false if a wrong color is passed', () => {
 })
 
 it('variantValidator should return true if a correct variant is passed', () => {
-  expect(variantValidator(UiVariant.DEFAULT)).toBe(true)
+  expect(variantValidator(UiVariant.FILLED)).toBe(true)
 })
 
 it('variantValidator should return false if a wrong variant is passed', () => {

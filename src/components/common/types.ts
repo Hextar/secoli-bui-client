@@ -1,5 +1,5 @@
 export enum UiVariant {
-  DEFAULT = 'default',
+  FILLED = 'filled',
   OUTLINE = 'outline'
 }
 

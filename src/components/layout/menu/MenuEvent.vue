@@ -55,12 +55,12 @@
           {{ label }}
         </router-link>
       </div>
-      <Button class="w-[112px]" variant="default" color="primary" size="small">
+      <Button class="w-[112px]" variant="filled" color="primary" size="small">
         <span class="font-display text-lg font-bold">Iscriviti</span>
       </Button>
     </div>
   </div>
-  <MenuMobile v-if="belowTablet" :items="items" />
+  <MenuMobile v-if="belowTablet" :items="items" :scrolled="hasScrolledY(parsedScrollThreshold)" />
 </template>
 
 <script setup lang="ts">
@@ -117,7 +117,6 @@ const items: MenuItemType[] = [
 
 // COMPUTED
 const { aboveTablet, belowTablet } = useViewport()
-const { hasScrolledY, scrollY } = useScroll()
 const parsedScrollThreshold = computed(() => props.scrollThreshold - 54)
 
 const tooltip = computed(
@@ -127,7 +126,22 @@ const tooltip = computed(
     theme: 'secoli-bui',
   })
 )
+
+// METHODS
+const { hasScrolledY } = useScroll()
 </script>
+
+<style lang="scss">
+.menu-mobile {
+  top: 24px !important;
+  transition: top 0.255s ease-in-out;
+
+  &--scrolled {
+    top: 12px !important;
+    left: 16px;
+  }
+}
+</style>
 
 <style lang="scss" scoped>
 .menu-event {
@@ -136,11 +150,17 @@ const tooltip = computed(
   right: 0;
   left: 0;
   z-index: 10;
-  background-color: rgba(255, 255, 255, 0);
   transition: all 0.255s ease-in-out;
+
+  &--scrolled {
+    padding: 4px 32px;
+  }
 
   &__back {
     &__arrow {
+      height: 32px;
+      height: 32px;
+      margin: 12px 0;
       transform: rotate(90deg);
     }
   }
