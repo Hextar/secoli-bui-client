@@ -13,21 +13,23 @@ export const useScroll = () => {
     const docViewTop = scrollY.value
     const { offsetTop: elemTop, offsetHeight } = elem as HTMLElement
     const elemBottom = elemTop + offsetHeight
-    return docViewTop > elemBottom
+    return docViewTop > (elemBottom - 160)
   }
 
   const onScroll = (): void => {
     scrollY.value = window?.scrollY
     scrollX.value = window?.scrollX
 
-    // Check for anchors scrolled into view
-    const anchors: Element[] =
-      Array.from(document.getElementsByClassName('anchor')) as Element[]
-    (anchors || []).map((elem: Element) => {
-      if (hasElemScrolledIntoView(elem)) {
-        replace({ hash: `#${elem.id}`, params: { silently: true } } as RouteQueryAndHash)
-      }
-    })
+    setTimeout(() => {
+      // Check for anchors scrolled into view
+      const anchors: Element[] =
+        Array.from(document.getElementsByClassName('anchor')) as Element[]
+      (anchors || []).map((elem: Element) => {
+        if (hasElemScrolledIntoView(elem)) {
+          replace({ hash: `#${elem.id}`, params: { silently: true } } as RouteQueryAndHash)
+        }
+      })
+    }, 150)
   }
 
   const scrollToRef = (ref: Ref, callback: () => {}): void => {
