@@ -6,7 +6,7 @@
     exact
     v-bind="$attrs"
   >
-    <img src="/images/secoli_bui_logo_dark.png" :width="width" />
+    <img src="/images/secoli_bui_logo_dark.png" :width="width" alt="Secoli Bui logo" />
   </router-link>
   <img v-else src="/images/secoli_bui_logo_dark.png" :width="width" />
 </template>

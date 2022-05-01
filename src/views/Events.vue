@@ -15,19 +15,19 @@
           class="anchor pb- flex flex-col items-start justify-center pt-16 pb-0 sm:pb-8"
         >
           <div class="mb-8 flex flex-col items-start justify-start">
-            <h2 class="mb-4 font-display text-6xl text-white-100" to="/" exact>
+            <h1 class="mb-4 font-display text-6xl text-white-100" to="/" exact>
               La
               <span v-if="showPeach" v-tooltip="tooltip" class="cursor-pointer">🍑</span>
               <span v-else class="cursor-pointer" @click="onClick">Pesca</span>
               dei Burattini
-            </h2>
-            <h3
+            </h1>
+            <h2
               class="mb-4 text-center font-display text-2xl uppercase text-white-100"
               to="/"
               exact
             >
               Di perdita e riscatto
-            </h3>
+            </h2>
           </div>
           <div class="flex w-full flex-wrap items-start justify-start gap-8">
             <Info class="w-full sm:w-auto" label="Dove">
@@ -228,7 +228,9 @@ import { DefaultLayout, Header, MenuEvent } from '@/components/layout'
 // META
 useMeta({
   title: 'Prossimo evento - La pesca dei burattini',
+  description: 'La pesca dei burattini - evento LARP, 18 Giugno nel Sulcis',
   htmlAttrs: { lang: 'it', amp: true },
+  canonical: 'https://www.grvsecolibui.it/events',
 })
 
 // VARIABLES

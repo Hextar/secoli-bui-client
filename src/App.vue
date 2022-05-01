@@ -11,7 +11,9 @@ import { useMeta } from 'vue-meta'
 // META
 useMeta({
   title: '',
+  description: 'Secoli bui - larp sardo',
   htmlAttrs: { lang: 'it', amp: true },
+  canonical: 'https://www.grvsecolibui.it',
 })
 </script>
 
