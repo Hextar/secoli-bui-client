@@ -1,5 +1,9 @@
 <template>
-  <div class="default-layout flex flex-1 flex-col bg-black-700" :class="{ 'h-100': fullHeight }">
+  <div
+    class="default-layout flex flex-1 flex-col bg-black-700"
+    :class="{ 'h-100': fullHeight }"
+    v-bind="$attrs"
+  >
     <slot />
     <Footer />
   </div>

@@ -4,6 +4,7 @@
     class="menu-event__back flex cursor-pointer items-center justify-start text-white-100"
     to="/"
     exact
+    v-bind="$attrs"
   >
     <img src="/images/secoli_bui_logo_dark.png" :width="width" />
   </router-link>

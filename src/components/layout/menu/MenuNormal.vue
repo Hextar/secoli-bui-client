@@ -5,6 +5,7 @@
       'menu-event--scrolled': hasScrolledY(parsedScrollThreshold),
       'backdrop-blur': hasScrolledY(parsedScrollThreshold),
     }"
+    v-bind="$attrs"
   >
     <div
       class="menu__logo animate__slide-from-above mb-6 flex flex-col items-center justify-center"

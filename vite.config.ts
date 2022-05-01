@@ -16,7 +16,7 @@ export default defineConfig({
     svgLoader({
       defaultImport: 'component',
       svgoConfig: { multipass: true }
-    }),
+    })
   ],
   css: {
     preprocessorOptions: {

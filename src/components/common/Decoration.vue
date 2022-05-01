@@ -5,6 +5,7 @@
       [`decoration--size--${size}`]: true,
       'decoration--inverted': inverted,
     }"
+    v-bind="$attrs"
   >
     <IconDecoration />
   </div>

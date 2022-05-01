@@ -5,7 +5,7 @@
       image="/images/background.jpg"
       lazy-image="/images/background-lazy.jpg"
       show-arrow
-      :height="belowTablet ? '100%' : '100vh'"
+      :height="belowTablet ? '100%' : '70vh'"
     >
       <template #menu>
         <MenuNormal />
@@ -43,11 +43,18 @@
 
 <script setup lang="ts">
 import { computed, ref } from 'vue'
+import { useMeta } from 'vue-meta'
 import { useViewport } from '@/hooks'
 import { TooltipOptions } from '@/types'
 
 import { Button, Decoration } from '@/components/common'
 import { DefaultLayout, Header, MenuNormal } from '@/components/layout'
+
+// META
+useMeta({
+  title: 'Homepage',
+  htmlAttrs: { lang: 'it', amp: true },
+})
 
 // VARIABLES
 let counter = ref(0)

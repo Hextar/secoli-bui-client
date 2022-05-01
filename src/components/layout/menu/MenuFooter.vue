@@ -1,5 +1,5 @@
 <template>
-  <div class="menu-footer">
+  <div class="menu-footer" v-bind="$attrs">
     <template
       class="menu-footer__content flex flex-wrap items-start justify-center gap-8 md:justify-end md:gap-16"
     >

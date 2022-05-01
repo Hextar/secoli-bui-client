@@ -1,6 +1,9 @@
 <template>
-  <div class="article flex flex-col items-center justify-start bg-white-100 px-8 pb-16">
-    <div class="container prose lg:prose-xl">
+  <div
+    class="article flex flex-col items-center justify-start bg-white-100 px-8 pb-16"
+    v-bind="$attrs"
+  >
+    <div class="prose lg:prose-xl">
       <slot />
     </div>
   </div>

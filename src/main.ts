@@ -4,6 +4,7 @@ import router from './router'
 import store from './store'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import { createMetaManager } from 'vue-meta'
 import VueLazyLoad from 'vue3-lazyload'
 import FloatingVue from 'floating-vue'
 
@@ -12,6 +13,7 @@ import './assets/styles/index.scss'
 import 'floating-vue/dist/style.css'
 
 const app = createApp(App)
+app.use(createMetaManager())
 app.use(router)
 app.use(store)
 app.use(FloatingVue, {

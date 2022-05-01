@@ -4,6 +4,7 @@
     :class="{
       'menu-mobile--scrolled': scrolled,
     }"
+    v-bind="$attrs"
   >
     <InputHamburgherSymmetric
       v-if="randSlash === 1"

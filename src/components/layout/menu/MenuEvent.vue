@@ -5,6 +5,7 @@
       'menu-event--scrolled': hasScrolledY(parsedScrollThreshold),
       'backdrop-blur': hasScrolledY(parsedScrollThreshold),
     }"
+    v-bind="$attrs"
   >
     <div
       v-if="belowTablet"
@@ -55,8 +56,10 @@
           {{ label }}
         </router-link>
       </div>
-      <Button class="w-[112px]" variant="filled" color="primary" size="small">
-        <span class="font-display text-lg font-bold">Iscriviti</span>
+      <Button class="w-[112px]" variant="filled" color="primary" size="small" :disabled="!!loading">
+        <span class="font-display text-lg font-bold" @click.prevent="downloadAttachment">
+          {{ loading ? 'Castando...' : 'Iscriviti' }}
+        </span>
       </Button>
     </div>
   </div>
@@ -64,9 +67,11 @@
 </template>
 
 <script setup lang="ts">
-import { computed, defineProps } from 'vue'
+import { computed, defineProps, ref, Ref } from 'vue'
+import axios from 'axios'
 import { useViewport, useScroll } from '@/hooks'
 import { MenuItemType } from '@/types'
+import { saveAs } from 'file-saver'
 import { TooltipOptions } from '@/types'
 
 import { IconArrow } from '@/assets/icons'
@@ -79,6 +84,7 @@ const props = defineProps({
 })
 
 // VARIABLES
+const loading: Ref<Boolean> = ref(false)
 const items: MenuItemType[] = [
   {
     label: 'Info',
@@ -129,6 +135,15 @@ const tooltip = computed(
 
 // METHODS
 const { hasScrolledY } = useScroll()
+
+const downloadAttachment = async (): Promise<void> => {
+  loading.value = true
+  axios
+    .get('/files/iscrizione.pdf', { responseType: 'blob' })
+    .then((response) => saveAs(response.data, 'secoli-bui-iscrizione.pdf'))
+    .catch((err: unknown) => console.error(err))
+    .finally(() => (loading.value = false))
+}
 </script>
 
 <style lang="scss">
