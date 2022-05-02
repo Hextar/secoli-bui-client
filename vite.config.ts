@@ -2,6 +2,7 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { fileURLToPath, URL } from "url";
 import svgLoader from 'vite-svg-loader'
+import viteCompression from 'vite-plugin-compression';
 import ViteFonts from 'vite-plugin-fonts'
 
 // https://vitejs.dev/config/
@@ -18,6 +19,7 @@ export default defineConfig({
       defaultImport: 'component',
       svgoConfig: { multipass: true }
     }),
+    viteCompression({ algorithm: 'brotliCompress' }),
     ViteFonts({
       google: {
         preconnect: true,
