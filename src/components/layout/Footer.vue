@@ -1,7 +1,7 @@
 <template>
   <div class="footer flex flex-col items-center justify-center" v-bind="$attrs">
     <div class="footer__main relative flex items-center justify-center bg-black-700 pb-8">
-      <div class="container mb-4 flex flex-wrap items-start justify-between p-8">
+      <div class="container mb-4 flex flex-wrap items-start justify-between py-8">
         <div class="mb-16 flex flex-col items-center gap-8 md:mb-0 md:w-1/5 md:items-start">
           <a
             href="https://www.facebook.com/mad2factory/"

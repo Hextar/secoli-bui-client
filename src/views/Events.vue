@@ -14,15 +14,19 @@
           id="info"
           class="anchor pb- flex flex-col items-start justify-center pt-16 pb-0 sm:pb-8"
         >
-          <div class="mb-8 flex flex-col items-start justify-start">
-            <h1 class="mb-4 font-display text-6xl text-white-100" to="/" exact>
+          <div class="mb-8 flex flex-col">
+            <h1
+              class="mb-4 text-center font-display text-6xl text-white-100 sm:text-left"
+              to="/"
+              exact
+            >
               La
               <span v-if="showPeach" v-tooltip="tooltip" class="cursor-pointer">🍑</span>
               <span v-else class="cursor-pointer" @click="counter++">Pesca</span>
               dei Burattini
             </h1>
             <h2
-              class="mb-4 text-center font-display text-2xl uppercase text-white-100"
+              class="mb-4 text-center font-display text-2xl uppercase text-white-100 sm:text-left"
               to="/"
               exact
             >
