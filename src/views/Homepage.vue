@@ -1,5 +1,5 @@
 <template>
-  <DefaultLayout>
+  <DefaultLayout v-once>
     <Header
       class="text-white-100"
       image="/images/background.jpg"

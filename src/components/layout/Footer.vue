@@ -13,6 +13,7 @@
               class="footer__main__logo"
               width="160"
               src="/images/logo_mad_light.png"
+              title="Mad2Factory logo"
               alt="Mad2Factory logo"
             />
           </a>

@@ -41,6 +41,7 @@
                   class="text-action-500 hover:underline"
                   href="https://www.google.com/maps/place/39%C2%B007'32.1%22N+8%C2%B026'27.4%22E/@39.1256265,8.438438,2283m/data=!3m1!1e3!4m6!3m5!1s0!7e2!8m2!3d39.1255724!4d8.440949"
                   rel="nofollow"
+                  title="indicazioni matzaccara"
                   alt="indicazioni matzaccara"
                   target="_blank"
                 >
@@ -74,6 +75,7 @@
                   class="text-action-500 hover:underline"
                   href="https://www.facebook.com/events/353854243429800/"
                   rel="nofollow"
+                  title="evento facebook la pesca dei burattini"
                   alt="evento facebook la pesca dei burattini"
                   target="_blank"
                 >
@@ -115,6 +117,7 @@
             class="float-none mx-auto sm:float-left sm:mr-16"
             src="/images/events/la_pesca_dei_burattini/i_portatori_della_fiamma_bianca.svg"
             :width="160"
+            title="Portatori della Fiamma Bianca"
             alt="Portatori della Fiamma Bianca"
           />
           <p class="text-justify">
@@ -134,6 +137,7 @@
             class="float-none mx-auto sm:float-right sm:ml-16"
             src="/images/events/la_pesca_dei_burattini/le_code_mozzate.svg"
             :width="160"
+            title="Portatori della Fiamma Bianca"
             alt="Portatori della Fiamma Bianca"
           />
           <p class="text-justify">
@@ -151,6 +155,7 @@
             class="float-none mx-auto sm:float-left sm:mr-16"
             src="/images/events/la_pesca_dei_burattini/l_ineluttabile_domani.svg"
             :width="160"
+            title="Portatori della Fiamma Bianca"
             alt="Portatori della Fiamma Bianca"
           />
           <p class="text-justify">
@@ -172,6 +177,7 @@
             class="float-none mx-auto sm:float-right sm:ml-16"
             src="/images/events/la_pesca_dei_burattini/i_cercatori_del_sentiero_dorato.svg"
             :width="160"
+            title="Portatori della Fiamma Bianca"
             alt="Portatori della Fiamma Bianca"
           />
           <p class="text-justify">
@@ -193,6 +199,7 @@
             class="float-none mx-auto sm:float-left sm:mr-16"
             src="/images/events/la_pesca_dei_burattini/le_fauci_grondanti.svg"
             :width="160"
+            title="Portatori della Fiamma Bianca"
             alt="Portatori della Fiamma Bianca"
           />
           <p class="text-justify">
@@ -214,6 +221,7 @@
             class="float-none mx-auto sm:float-right sm:ml-16"
             src="/images/events/la_pesca_dei_burattini/la_loghia_del_gufo.svg"
             :width="160"
+            title="Portatori della Fiamma Bianca"
             alt="Portatori della Fiamma Bianca"
           />
           <p class="text-justify">

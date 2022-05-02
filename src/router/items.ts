@@ -3,24 +3,24 @@ import { MenuItemType } from '@/types'
 export const MenuItems: MenuItemType[] = [
   {
     label: 'Home',
-    to: '/',
+    to: { path: '/' },
     tooltip: { content: 'Tenda master', placement: 'bottom' },
     homepage: true,
   },
   {
     label: 'Eventi',
-    to: '/events',
+    to: { path: '/events' },
     tooltip: { content: 'Coming soon', placement: 'bottom' },
     children: [
       {
         label: 'Eventi passati',
-        to: '/events/past',
+        to: { path: '/banana-events/past' },
         tooltip: { content: 'Coming soon', placement: 'bottom' },
         disabled: true,
       },
       {
         label: 'Eventi future',
-        to: '/events/future',
+        to: { path: '/events/future' },
         tooltip: { content: 'Coming soon', placement: 'bottom' },
         disabled: true,
       },
@@ -28,19 +28,19 @@ export const MenuItems: MenuItemType[] = [
   },
   {
     label: 'Ambientazione',
-    to: '/world-system',
+    to: { path: '/world-system' },
     tooltip: { content: 'Coming soon', placement: 'bottom' },
     disabled: true,
     children: [
       {
         label: 'Storia di Braara',
-        to: '/world-system/braara-story',
+        to: { path:  '/world-system/braara-story' },
         tooltip: { content: 'Coming soon', placement: 'bottom' },
         disabled: true,
       },
       {
         label: 'Sistema di Gioco',
-        to: '/world-system/game-system',
+        to: { path:  '/world-system/game-system' },
         tooltip: { content: 'Coming soon', placement: 'bottom' },
         disabled: true,
       },
@@ -48,37 +48,37 @@ export const MenuItems: MenuItemType[] = [
   },
   {
     label: 'Gioca con noi',
-    to: '/play-with-us',
+    to: { path: '/play-with-us' },
     tooltip: { content: 'Coming soon', placement: 'bottom' },
     disabled: true,
     children: [
       {
         label: 'Chi siamo',
-        to: '/pay-with-us/about-us',
+        to: { path: '/pay-with-us/about-us' },
         tooltip: { content: 'Coming soon', placement: 'bottom' },
         disabled: true,
       },
       {
         label: 'Cos’è il LARP?',
-        to: '/pay-with-us/what-is-larp',
+        to: { path: '/pay-with-us/what-is-larp' },
         tooltip: { content: 'Coming soon', placement: 'bottom' },
         disabled: true,
       },
       {
         label: 'Guida per neofiti',
-        to: '/pay-with-us/new-players-guide',
+        to: { path: '/pay-with-us/new-players-guide' },
         tooltip: { content: 'Coming soon', placement: 'bottom' },
         disabled: true,
       },
       {
         label: 'Sicurezza e COVID',
-        to: '/pay-with-us/safety-covid',
+        to: { path: '/pay-with-us/safety-covid' },
         tooltip: { content: 'Coming soon', placement: 'bottom' },
         disabled: true,
       },
       {
         label: 'Glossario LARP',
-        to: '/pay-with-us/larp-glossary',
+        to: { path: '/pay-with-us/larp-glossary' },
         tooltip: { content: 'Coming soon', placement: 'bottom' },
         disabled: true,
       },

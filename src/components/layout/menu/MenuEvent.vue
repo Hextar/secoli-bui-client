@@ -16,9 +16,10 @@
     <div v-else class="animate_bg-fade flex h-full items-center justify-between gap-4">
       <router-link
         class="menu-event__back flex items-center justify-start text-white-100"
-        :class="{ 'text-black-700': hasScrolledY(parsedScrollThreshold) }"
+        :class="{
+          'text-black-700': hasScrolledY(parsedScrollThreshold),
+        }"
         to="/"
-        exact
       >
         <IconArrow
           v-if="hasScrolledY(parsedScrollThreshold)"
@@ -46,11 +47,12 @@
         <router-link
           class="menu-event__content__item cursor-pointer items-center font-display text-lg font-bold text-white-100"
           :class="{
+            'menu-event__content__item--active': isActive(to, true),
             'menu-event__content__item--scrolled': hasScrolledY(parsedScrollThreshold),
             'text-black-700': hasScrolledY(parsedScrollThreshold),
           }"
-          :to="to"
           :disabled="disabled"
+          :to="to"
           exact
         >
           {{ label }}
@@ -63,16 +65,21 @@
       </Button>
     </div>
   </div>
-  <MenuMobile v-if="belowTablet" :items="items" :scrolled="hasScrolledY(parsedScrollThreshold)" />
+  <MenuMobile
+    v-if="belowTablet"
+    :items="items"
+    :scrolled="hasScrolledY(parsedScrollThreshold)"
+    match-hash
+  />
 </template>
 
 <script setup lang="ts">
 import { computed, ref, Ref } from 'vue'
 import axios from 'axios'
-import { useViewport, useScroll } from '@/hooks'
-import { MenuItemType } from '@/types'
+import { useRoute } from 'vue-router'
+import { useMenuItem, useScroll, useViewport } from '@/hooks'
 import { saveAs } from 'file-saver'
-import { TooltipOptions } from '@/types'
+import { MenuItemType, TooltipOptions } from '@/types'
 
 import { IconArrow } from '@/assets/icons'
 import { Button, Logo } from '@/components/common'
@@ -88,35 +95,28 @@ const loading: Ref<Boolean> = ref(false)
 const items: MenuItemType[] = [
   {
     label: 'Info',
-    to: '#info',
-    tooltip: { content: 'Informazioni', placement: 'bottom' },
+    to: { path: '/events', hash: '#info' },
+    tooltip: { content: 'Scrolla a: Informazioni', placement: 'bottom' },
     homepage: true,
   },
   {
     label: 'Incipit',
-    to: '#incipit',
-    tooltip: { content: 'Incipit', placement: 'bottom' },
+    to: { path: '/events', hash: '#incipit' },
+    tooltip: { content: 'Scrolla a: Incipit', placement: 'bottom' },
     homepage: true,
   },
   {
     label: 'Fazioni',
     to: { path: '/events', hash: '#fazioni' },
-    tooltip: { content: 'Teaser fazioni', placement: 'bottom' },
+    tooltip: { content: 'Scrolla a: Teaser fazioni', placement: 'bottom' },
     homepage: true,
   },
   {
     label: 'Come funziona?',
-    to: '#howItWorks',
-    tooltip: { content: 'Come funziona?', placement: 'bottom' },
+    to: { path: '/events', hash: '#howItWorks' },
+    tooltip: { content: 'Scrolla a: Come funziona?', placement: 'bottom' },
     homepage: true,
   },
-  // {
-  //   label: 'Sicurezza',
-  //   to: '#sicurezza',
-  //   tooltip: { content: 'Coming soon', placement: 'bottom' },
-  //   homepage: true,
-  //   disabled: true,
-  // },
 ]
 
 // COMPUTED
@@ -133,6 +133,7 @@ const tooltip = computed(
 
 // METHODS
 const { hasScrolledY } = useScroll()
+const { isActive } = useMenuItem()
 
 const downloadAttachment = async (): Promise<void> => {
   loading.value = true
@@ -179,38 +180,7 @@ const downloadAttachment = async (): Promise<void> => {
   }
 
   &__content {
-    &__item {
-      position: relative;
-      z-index: 1;
-
-      // &:after {
-      //   content: '';
-      //   position: absolute;
-      //   top: 50%;
-      //   left: 0;
-      //   height: 1px;
-      //   width: 0px;
-      //   background-color: theme('colors.white.100');
-      //   transition: width 0.255s ease-in-out;
-      //   z-index: 2;
-      // }
-
-      // &--scrolled {
-      //   &:after {
-      //     background-color: theme('colors.black.700');
-      //   }
-      // }
-
-      &.router-link-exact-active:after,
-      &:hover:after {
-        width: 100%;
-      }
-
-      &[disabled] {
-        pointer-events: none;
-        opacity: 0.5;
-      }
-    }
+    @include menuItem;
   }
 }
 </style>

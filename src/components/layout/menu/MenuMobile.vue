@@ -35,7 +35,14 @@
       class="menu-mobile__overlay__item animate__gentle-slide-from-above cursor-pointer font-display text-lg font-bold text-white-100"
       v-tooltip="tooltip"
     >
-      <router-link :to="to" :disabled="disabled" exact @click="open = !open">
+      <router-link
+        class="menu-mobile__overlay__item"
+        :class="{ 'menu-mobile__overlay__item--active': isActive(to, matchHash) }"
+        :disabled="disabled"
+        :to="to"
+        exact
+        @click="open = !open"
+      >
         {{ label }}
       </router-link>
     </div>
@@ -44,6 +51,8 @@
 
 <script setup lang="ts">
 import { computed, onMounted, PropType, ref, watch } from 'vue'
+import { useRoute } from 'vue-router'
+import { useMenuItem } from '@/hooks'
 import { MenuItemType } from '@/types'
 
 import { InputHamburgherSymmetric } from '@/assets/icons'
@@ -53,9 +62,11 @@ import { InputHamburgher } from '@/assets/icons'
 const props = defineProps({
   items: { required: true, type: Array as PropType<MenuItemType[]> },
   scrolled: { default: false, type: Boolean },
+  matchHash: { default: false, type: Boolean },
 })
 
 // VARIABLES
+const route = useRoute()
 const open = ref(false)
 const loaded = ref(false)
 
@@ -68,6 +79,9 @@ watch(open, (val) => {
 const randSlash = computed((): number => {
   return Math.floor(Math.random() * 3) + 1
 })
+
+// METHODS
+const { isActive } = useMenuItem()
 
 // ON MOUNTED
 onMounted(() => setTimeout(() => (loaded.value = true), 510))
@@ -171,6 +185,7 @@ $overlayIndex: 99;
     opacity: 0.95;
     overflow-y: scroll;
     z-index: $overlayIndex;
+    @include menuItem;
   }
 }
 </style>

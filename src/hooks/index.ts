@@ -1,4 +1,5 @@
 export * from './useCopyToClipboard'
+export * from './useMenuItem'
 export * from './useNetworkStatus'
 export * from './useOnClickOutside'
 export * from './useScroll'

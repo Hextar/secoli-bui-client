@@ -2,7 +2,7 @@ import { onMounted, onUnmounted, readonly, ref, Ref, } from 'vue'
 import { useRouter, RouteQueryAndHash } from 'vue-router'
 
 export const useScroll = () => {
-  const { replace} = useRouter()
+  const { replace } = useRouter()
 
   // VARIABLES
   const scrollY = ref(0);

@@ -1,5 +1,5 @@
 <template>
-  <img :src="src" :height="height" :width="width" :alt="alt" v-bind="$attrs" />
+  <img :src="src" :height="height" :width="width" :alt="alt" :title="alt" v-bind="$attrs" />
 </template>
 
 <script setup lang="ts">

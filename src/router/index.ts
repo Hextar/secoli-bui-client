@@ -1,23 +1,23 @@
-import { createWebHistory, createRouter, RouterScrollBehavior } from "vue-router";
+import { createWebHistory, createRouter, RouterScrollBehavior } from 'vue-router'
 import {
   Homepage,
   Events,
   NotFound
- } from "@/views";
+ } from '@/views';
 
 const routes = [
   {
-    path: "/",
-    name: "Homepage",
+    path: '/',
+    name: 'Homepage',
     component: Homepage,
   },
   {
-    path: "/events",
-    name: "Events",
+    path: '/events',
+    name: 'Events',
     component: Events,
   },
   {
-    path: "/:catchAll(.*)",
+    path: '/:catchAll(.*)',
     component: NotFound,
   },
 ];

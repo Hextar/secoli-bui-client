@@ -23,7 +23,7 @@
   error?: string// your error image url
 }
 
-export type RouterLink = string | {
+export type RouterLink = {
   path: string,
   hash?: string
 }

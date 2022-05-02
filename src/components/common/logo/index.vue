@@ -6,9 +6,20 @@
     exact
     v-bind="$attrs"
   >
-    <img src="/images/secoli_bui_logo_dark.png" :width="width" alt="Secoli Bui logo" />
+    <img
+      src="/images/secoli_bui_logo_dark.png"
+      :width="width"
+      alt="Secoli Bui logo"
+      title="Secoli Bui logo"
+    />
   </router-link>
-  <img v-else src="/images/secoli_bui_logo_dark.png" :width="width" />
+  <img
+    v-else
+    src="/images/secoli_bui_logo_dark.png"
+    :width="width"
+    alt="Secoli Bui logo"
+    title="Secoli Bui logo"
+  />
 </template>
 
 <script setup lang="ts">

@@ -20,8 +20,9 @@
       >
         <router-link
           class="menu__content__item cursor-pointer font-display text-lg font-bold text-white-100 grayscale"
-          :to="to"
+          :class="{ 'menu__content__item--active': isActive(to) }"
           :disabled="disabled"
+          :to="to"
           exact
         >
           {{ label }}
@@ -34,7 +35,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useScroll, useViewport } from '@/hooks'
+import { useMenuItem, useScroll, useViewport } from '@/hooks'
 import { MenuItems } from '@/router/items'
 
 import { Logo } from '@/components/common'
@@ -53,6 +54,7 @@ const { belowTablet, isMobile } = useViewport()
 const parsedScrollThreshold = computed(() => props.scrollThreshold - 54)
 
 // METHODS
+const { isActive } = useMenuItem()
 const { hasScrolledY } = useScroll()
 </script>
 
@@ -71,32 +73,7 @@ const { hasScrolledY } = useScroll()
   }
 
   &__content {
-    &__item {
-      position: relative;
-      z-index: 1;
-
-      &:after {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 0;
-        height: 1px;
-        width: 0px;
-        background-color: theme('colors.white.100');
-        transition: width 0.255s ease-in-out;
-        z-index: 2;
-      }
-
-      &.router-link-exact-active:after,
-      &:hover:after {
-        width: 100%;
-      }
-
-      &[disabled] {
-        pointer-events: none;
-        opacity: 0.5;
-      }
-    }
+    @include menuItem;
   }
 }
 </style>

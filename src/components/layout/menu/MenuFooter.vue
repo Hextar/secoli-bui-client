@@ -11,8 +11,9 @@
       >
         <router-link
           class="menu-footer__content__title mb-4 cursor-pointer text-center font-display text-lg font-bold text-white-100"
-          :to="to"
+          :class="{ 'menu-footer__content__title--active': isActive(to) }"
           :disabled="disabled"
+          :to="to"
           exact
         >
           {{ label }}
@@ -27,8 +28,9 @@
         >
           <router-link
             class="menu-footer__content__item mb-2 cursor-pointer font-display text-sm text-white-100"
-            :to="childTo"
+            :class="{ 'menu-footer__content__item--active': isActive(childTo) }"
             :disabled="childDisabled"
+            :to="childTo"
             exact
           >
             {{ childLabel }}
@@ -48,9 +50,9 @@
         <Button
           tag="a"
           href="https://mailchi.mp/bd173f18b082/iscriviti"
-          rel="nofollow"
-          alt="Iscriviti alla newsletter"
           title="Iscriviti alla newsletter"
+          alt="Iscriviti alla newsletter"
+          rel="nofollow"
           target="_blank"
         >
           Iscriviti
@@ -62,11 +64,15 @@
 
 <script setup lang="ts">
 import { MenuItems } from '@/router/items'
+import { useMenuItem } from '@/hooks'
 
 import { Button } from '@/components/common'
 
 // VARIABLES
 const items = MenuItems.filter(({ homepage }) => !homepage)
+
+// METHODS
+const { isActive } = useMenuItem()
 </script>
 
 <style lang="scss" scoped>
@@ -76,33 +82,7 @@ const items = MenuItems.filter(({ homepage }) => !homepage)
   }
 
   &__content {
-    &__title,
-    &__item {
-      position: relative;
-      z-index: 1;
-
-      &:after {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 0;
-        height: 1px;
-        width: 0px;
-        background-color: theme('colors.white.100');
-        transition: width 0.255s ease-in-out;
-        z-index: 2;
-      }
-
-      &.router-link-exact-active:after,
-      &:hover:after {
-        width: 100%;
-      }
-
-      &[disabled] {
-        pointer-events: none;
-        opacity: 0.5;
-      }
-    }
+    @include menuItem;
   }
 }
 </style>

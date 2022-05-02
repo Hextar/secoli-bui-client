@@ -4,6 +4,7 @@
       class="header__background pointer-events-none w-full"
       :src="image"
       v-lazy="lazy"
+      title="Background event cover"
       alt="Background event cover"
     />
     <div
