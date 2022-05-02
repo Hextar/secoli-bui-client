@@ -58,8 +58,15 @@
           {{ label }}
         </router-link>
       </div>
-      <Button class="w-[112px]" variant="filled" color="primary" size="small" :disabled="!!loading">
-        <span class="font-display text-lg font-bold" @click.prevent="downloadAttachment">
+      <Button
+        class="w-[112px]"
+        variant="filled"
+        color="primary"
+        size="small"
+        :disabled="!!loading"
+        @click.prevent="downloadAttachment"
+      >
+        <span class="font-display text-lg font-bold">
           {{ loading ? 'Castando...' : 'Iscriviti' }}
         </span>
       </Button>

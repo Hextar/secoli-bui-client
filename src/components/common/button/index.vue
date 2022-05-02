@@ -102,6 +102,7 @@ const iconPosition = computed((): string => getIconPosition(hasPrefix.value, has
 .button {
   position: relative;
   transition: background-color 250ms ease;
+  // width: 100%;
 
   &.button--size {
     @each $key in map-keys($sizes) {

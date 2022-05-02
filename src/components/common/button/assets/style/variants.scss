@@ -58,6 +58,9 @@ $colors: (
 
           &:focus,
           &:active {
+            outline: none;
+            box-shadow: none;
+
             @if $variant == 'outline' {
               border: 1px solid map-get($color, 'pressed');
               color: map-get($color, 'pressed') !important;
