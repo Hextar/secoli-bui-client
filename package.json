@@ -58,8 +58,7 @@
     "eslint-plugin-vue": "^8.6.0",
     "jest": "^27.5.1",
     "lint-staged": "^12.3.7",
-    "postcss": "^8.4.13",
-    "postcss-import": "^14.1.0",
+    "postcss": "^8.4.12",
     "prettier": "^2.6.2",
     "prettier-plugin-tailwindcss": "^0.1.8",
     "sass": "^1.50.0",
@@ -74,8 +73,7 @@
     "vite-svg-loader": "^3.2.0",
     "vue-jest": "^3.0.7",
     "vue-loader": "^16.8.3",
-    "vue-tsc": "^0.29.8",
-    "watch": "^1.0.2"
+    "vue-tsc": "^0.29.8"
   },
   "babel": {
     "presets": [
