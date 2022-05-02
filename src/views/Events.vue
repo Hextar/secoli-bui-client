@@ -254,7 +254,10 @@
             maledette che andrete ad esplorare.
             <br />
             Al momento della compilazione del
-            <strong class="text-action-500 hover:underline" @click="downloadAttachment">
+            <strong
+              class="cursor-pointer text-action-500 hover:underline"
+              @click="downloadAttachment"
+            >
               modulo di iscrizione
             </strong>
             potete mettere in ordine di preferenza 5 di queste fazioni, e selezionarne 1 che non
