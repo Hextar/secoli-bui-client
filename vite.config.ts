@@ -2,6 +2,7 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { fileURLToPath, URL } from "url";
 import svgLoader from 'vite-svg-loader'
+import ViteFonts from 'vite-plugin-fonts'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -16,12 +17,31 @@ export default defineConfig({
     svgLoader({
       defaultImport: 'component',
       svgoConfig: { multipass: true }
+    }),
+    ViteFonts({
+      google: {
+        preconnect: true,
+        display: 'swap',
+        families: [
+          {
+            name: 'Alegreya',
+            styles: 'wght@400;500;700',
+            defer: true
+          },
+          {
+            name: 'Marcellus',
+            styles: 'wght@400;500;700',
+            defer: true
+          }
+        ]
+      }
     })
   ],
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: `@import "./src/assets/styles/mixins/index.scss";`
+        additionalData: `@import "./src/assets/styles/mixins/index.scss";`,
+        charset: false,
       }
     }
   },

@@ -67,7 +67,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, defineProps, ref, Ref } from 'vue'
+import { computed, ref, Ref } from 'vue'
 import axios from 'axios'
 import { useViewport, useScroll } from '@/hooks'
 import { MenuItemType } from '@/types'

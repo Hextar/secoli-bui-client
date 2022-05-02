@@ -3,8 +3,6 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from 'vue'
-
 // PROPS
 const props = defineProps({
   src: { type: String, default: '' },
@@ -13,4 +11,3 @@ const props = defineProps({
   width: { type: Number, default: undefined },
 })
 </script>
-defineProps

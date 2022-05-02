@@ -33,7 +33,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, defineProps } from 'vue'
+import { computed } from 'vue'
 import { useScroll, useViewport } from '@/hooks'
 import { MenuItems } from '@/router/items'
 

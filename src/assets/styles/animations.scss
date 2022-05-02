@@ -6,14 +6,14 @@
   }
 
   &fade-in {
-    @screen md {
+    @media (min-width: theme('screens.md')) {
       animation: fade-in .510s infinite alternate;
       -webkit-animation: fade-in .510s infinite alternate;
     }
   }
 
   &bounce {
-    @screen md {
+    @media (min-width: theme('screens.md')) {
       animation: bounce 1s infinite alternate;
       -webkit-animation: bounce 1s infinite alternate;
     }

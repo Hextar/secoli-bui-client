@@ -43,7 +43,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, computed, onMounted, PropType, ref, watch } from 'vue'
+import { computed, onMounted, PropType, ref, watch } from 'vue'
 import { MenuItemType } from '@/types'
 
 import { InputHamburgherSymmetric } from '@/assets/icons'
