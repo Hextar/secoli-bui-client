@@ -45,7 +45,9 @@
               per brama e riscatto…"
             </i>
           </p>
-          <Button class="w-[160px]" tag="router-link" to="/events"> Scopri di piú </Button>
+          <Button class="w-[160px]" tag="router-link" to="/events/future/la-pesca-dei-burattini">
+            Scopri di piú
+          </Button>
         </div>
       </template>
     </Header>

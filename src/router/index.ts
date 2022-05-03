@@ -1,7 +1,7 @@
 import { createWebHistory, createRouter, RouterScrollBehavior } from 'vue-router'
 import {
   Homepage,
-  Events,
+  EventDetail,
   NotFound
  } from '@/views';
 
@@ -14,7 +14,33 @@ const routes = [
   {
     path: '/events',
     name: 'Events',
-    component: Events,
+    component: EventDetail,
+    children: [
+      {
+        path: '/events/past',
+        name: 'EventDetail',
+        component: EventDetail,
+        children: [
+          {
+            path: '/events/past/:title',
+            name: 'EventDetail',
+            component: EventDetail,
+          }
+        ]
+      },
+      {
+        path: '/events/future',
+        name: 'EventDetail',
+        component: EventDetail,
+        children: [
+          {
+            path: '/events/future/:title',
+            name: 'EventDetail',
+            component: EventDetail,
+          }
+        ]
+      }
+    ],
   },
   {
     path: '/:catchAll(.*)',

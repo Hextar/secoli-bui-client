@@ -10,19 +10,18 @@ export const MenuItems: MenuItemType[] = [
   {
     label: 'Eventi',
     to: { path: '/events' },
-    tooltip: { content: 'Coming soon', placement: 'bottom' },
+    tooltip: { content: 'List eventi', placement: 'bottom' },
     children: [
       {
         label: 'Eventi passati',
-        to: { path: '/banana-events/past' },
+        to: { path: '/events/past' },
         tooltip: { content: 'Coming soon', placement: 'bottom' },
         disabled: true,
       },
       {
         label: 'Eventi futuri',
         to: { path: '/events/future' },
-        tooltip: { content: 'Coming soon', placement: 'bottom' },
-        disabled: true,
+        tooltip: { content: 'Prossimi eventi', placement: 'bottom' }
       },
     ]
   },
