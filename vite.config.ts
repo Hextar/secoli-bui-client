@@ -7,6 +7,7 @@ import { chunkSplitPlugin } from 'vite-plugin-chunk-split';
 import viteCompression from 'vite-plugin-compression';
 import ViteFonts from 'vite-plugin-fonts'
 import viteImagemin from 'vite-plugin-imagemin'
+import { VitePWA } from 'vite-plugin-pwa'
 import ViteRadar from 'vite-plugin-radar'
 
 // https://vitejs.dev/config/
@@ -20,12 +21,8 @@ export default defineConfig({
       }
     }),
     chunkSplitPlugin(),
-    legacy({
-      targets: ['defaults', 'not IE 11']
-    }),
-    svgLoader({
-      defaultImport: 'component'
-    }),
+    legacy({ targets: ['defaults', 'not IE 11'] }),
+    svgLoader({ defaultImport: 'component' }),
     viteCompression({ algorithm: 'brotliCompress' }),
     ViteFonts({
       google: {
@@ -56,6 +53,7 @@ export default defineConfig({
         ]
       }
     }),
+    VitePWA(),
     ViteRadar({
       // Google Analytics tag injection
       analytics: {
