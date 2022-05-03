@@ -10,7 +10,7 @@ export const MenuItems: MenuItemType[] = [
   {
     label: 'Eventi',
     to: { path: '/events' },
-    tooltip: { content: 'List eventi', placement: 'bottom' },
+    tooltip: { content: 'Lista eventi', placement: 'bottom' },
     children: [
       {
         label: 'Eventi passati',

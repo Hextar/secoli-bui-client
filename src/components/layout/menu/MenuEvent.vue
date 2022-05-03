@@ -103,25 +103,25 @@ const items: MenuItemType[] = [
   {
     label: 'Info',
     to: { path: '/events', hash: '#info' },
-    tooltip: { content: 'Scrolla a: Informazioni', placement: 'bottom' },
+    tooltip: { content: 'Scrolla al paragrafo "Informazioni"', placement: 'bottom' },
     homepage: true,
   },
   {
     label: 'Incipit',
     to: { path: '/events', hash: '#incipit' },
-    tooltip: { content: 'Scrolla a: Incipit', placement: 'bottom' },
+    tooltip: { content: 'Scrolla al paragrafo "Incipit"', placement: 'bottom' },
     homepage: true,
   },
   {
     label: 'Fazioni',
     to: { path: '/events', hash: '#fazioni' },
-    tooltip: { content: 'Scrolla a: Teaser fazioni', placement: 'bottom' },
+    tooltip: { content: 'Scrolla al paragrafo "Fazioni"', placement: 'bottom' },
     homepage: true,
   },
   {
     label: 'Come funziona?',
     to: { path: '/events', hash: '#howItWorks' },
-    tooltip: { content: 'Scrolla a: Come funziona?', placement: 'bottom' },
+    tooltip: { content: 'Scrolla al paragrafo "Come funziona?"', placement: 'bottom' },
     homepage: true,
   },
 ]
@@ -143,7 +143,6 @@ const { hasScrolledY } = useScroll()
 const { isActive } = useMenuItem()
 
 const downloadAttachment = async (): Promise<void> => {
-  console.warn('SCARICANDO')
   loading.value = true
   axios
     .get('/files/iscrizione.pdf', { responseType: 'blob' })
