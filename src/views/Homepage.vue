@@ -2,7 +2,7 @@
   <DefaultLayout v-once>
     <Header
       class="text-white-100"
-      :image="backgroundLogo"
+      :image="backgroundLogoHd"
       show-arrow
       :height="belowTablet ? '100%' : '90vh'"
     >
@@ -62,7 +62,7 @@ import { TooltipOptions } from '@/types'
 import { Button, Decoration } from '@/components/common'
 import { DefaultLayout, Header, MenuNormal } from '@/components/layout'
 
-import backgroundLogo from '@images/background.jpg?preset=full'
+import { backgroundLogoHd } from '@/assets/images'
 
 // META
 const title = 'Homepage'

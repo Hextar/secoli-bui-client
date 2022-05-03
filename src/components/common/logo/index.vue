@@ -6,9 +6,15 @@
     exact
     v-bind="$attrs"
   >
-    <Image :src="secoliBuiLogo" :width="width" alt="Secoli Bui logo" title="Secoli Bui logo" />
+    <Image :src="secoliBuiLogoHd" :width="width" alt="Secoli Bui logo" title="Secoli Bui logo" />
   </router-link>
-  <Image v-else :src="secoliBuiLogo" :width="width" alt="Secoli Bui logo" title="Secoli Bui logo" />
+  <Image
+    v-else
+    :src="secoliBuiLogoHd"
+    :width="width"
+    alt="Secoli Bui logo"
+    title="Secoli Bui logo"
+  />
 </template>
 
 <script lang="ts">
@@ -23,7 +29,7 @@ export default {
 import { computed } from 'vue'
 import { Image, sizeValidator } from '@/components/common'
 
-import secoliBuiLogo from '@images/secoli_bui_logo_dark.png?preset=hd'
+import { secoliBuiLogoHd } from '@/assets/images'
 
 // PROPS
 const props = defineProps({

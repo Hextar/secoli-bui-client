@@ -1,6 +1,6 @@
 <template>
   <DefaultLayout v-once>
-    <Header class="text-white-100" :image="backgroundLogo" height="400px">
+    <Header class="text-white-100" :image="backgroundLogoHd" height="400px">
       <template #menu>
         <MenuEvent :scroll-threshold="500" />
       </template>
@@ -310,7 +310,7 @@ import { IconClock, IconFacebook, IconMoney, IconPin } from '@/assets/icons'
 import { Article, Image, Info, Paragraph } from '@/components/common'
 import { DefaultLayout, Header, MenuEvent } from '@/components/layout'
 
-import backgroundLogo from '@images/background.jpg?preset=full'
+import { backgroundLogoHd } from '@/assets/images'
 
 // META
 const title = 'Prossimo evento - La pesca dei burattini'

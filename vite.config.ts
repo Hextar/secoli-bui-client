@@ -19,8 +19,6 @@ const isDev = process.env.NODE_ENV === 'development'
 export default defineConfig({
   resolve: {
     alias: {
-      '@images': resolve(__dirname, 'public/images'),
-      // "@images": fileURLToPath(new URL(`~${isDev ? '/public/' : '/'}images`, import.meta.url)),
       "@": fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
@@ -43,8 +41,8 @@ export default defineConfig({
         widths: [440, 700],
         sizes: '(min-width: 700px) 700px, 100vw',
         formats: {
-          avif: { quality: 44 },
-          webp: { quality: 44 },
+          avif: { quality: 40 },
+          webp: { quality: 40 },
           jpg: { quality: 50 },
         },
       }),
@@ -71,19 +69,19 @@ export default defineConfig({
     }),
     legacy({ targets: ['defaults', 'not IE 11'] }),
     svgLoader({ defaultImport: 'component' }),
-    viteCompression({ algorithm: 'brotliCompress' }),
+    viteCompression({ algorithm: 'gzip' }),
     ViteFonts({
       custom: {
         families: [
           {
             name: 'Alegreya',
             local: 'Alegreya',
-            src: '~/src/assets/fonts/alegreya/**/*.ttf',
+            src: '/src/assets/fonts/alegreya/**/*.ttf',
           },
           {
             name: 'Marcellus',
             local: 'Marcellus',
-            src: '~/src/assets/fonts/marcellus/**/*.ttf',
+            src: '/src/assets/fonts/marcellus/**/*.ttf',
           }
         ],
         display: 'swap',

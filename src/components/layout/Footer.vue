@@ -12,7 +12,7 @@
             <Image
               class="footer__main__logo"
               :width="160"
-              :src="madLogo"
+              :src="madLogoHd"
               title="Mad2Factory logo"
               alt="Mad2Factory logo"
             />
@@ -57,7 +57,7 @@ import { TooltipOptions } from '@/types'
 import { Image } from '@/components/common'
 import { MenuFooter } from '@/components/layout/menu'
 
-import madLogo from '@images/logo_mad_light.png?preset=hd'
+import { madLogoHd } from '@/assets/images'
 
 // COMPUTED
 const tooltip = computed(
