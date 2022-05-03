@@ -1,8 +1,0 @@
-[build]
-  base = "/"
-  publish = "dist/"
-  command   = "npm i postcss-cli && npm run build"
-
-[build.environment]
-  NODE_ENV = "production"
-  NODE_VERSION = "16"
