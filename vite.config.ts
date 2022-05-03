@@ -1,4 +1,5 @@
 import { defineConfig } from 'vite'
+import { resolve } from 'path'
 import legacy from '@vitejs/plugin-legacy'
 import vue from '@vitejs/plugin-vue'
 import { fileURLToPath, URL } from "url"
@@ -6,29 +7,20 @@ import svgLoader from 'vite-svg-loader'
 import { chunkSplitPlugin } from 'vite-plugin-chunk-split'
 import viteCompression from 'vite-plugin-compression'
 import ViteFonts from 'vite-plugin-fonts'
-import imagePresets, { hdPreset, formatPreset, widthPreset, densityPreset } from 'vite-plugin-image-presets'
+import imagePresets, { hdPreset, formatPreset, densityPreset } from 'vite-plugin-image-presets'
 import viteImagemin from 'vite-plugin-imagemin'
 import { VitePWA } from 'vite-plugin-pwa'
 import ViteRadar from 'vite-plugin-radar'
 
-import type { Image } from 'vite-plugin-image-presets'
-
-const rectFor = (width: number, height: number = width) => new Buffer(
-  `<svg><rect x="0" y="0" width="${width}" height="${height}" rx="${width / 4}" ry="${height / 4}"/></svg>`
-)
-
-const withRoundBorders = (image: Image) => {
-  const { width, height } = image.options
-  return image
-    .resize({ width, height: width, fit: 'cover' })
-    .composite([{ input: rectFor(width), blend: 'dest-in' }])
-}
+const isProd = process.env.NODE_ENV === 'production'
+const isDev = process.env.NODE_ENV === 'development'
 
 // https://vitejs.dev/config/
 export default defineConfig({
   resolve: {
     alias: {
-      "@images": fileURLToPath(new URL('./public/images', import.meta.url)),
+      '@images': resolve(__dirname, 'public/images'),
+      // "@images": fileURLToPath(new URL(`~${isDev ? '/public/' : '/'}images`, import.meta.url)),
       "@": fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
@@ -37,10 +29,10 @@ export default defineConfig({
       reactivityTransform: true,
       template: {
         transformAssetUrls: {
-          tags: { source: ['src', 'srcset'], img: ['src', 'srcset'] }
-        },
-        compilerOptions: {
-          isCustomElement: tag => /^x-/.test(tag)
+          tags: {
+            source: ['src', 'srcset'],
+            img: ['src', 'srcset'],
+          }
         }
       }
     }),
@@ -70,21 +62,7 @@ export default defineConfig({
         formats: {
           png: { quality: 44 },
         },
-      }),
-      round: densityPreset({
-        class: 'img density',
-        height: 150, // avoid layout shift
-        baseWidth: 150,
-        density: [1, 1.5, 2],
-        resizeOptions: {
-          fit: 'cover',
-        },
-        withImage: withRoundBorders,
-        formats: {
-          webp: { quality: 40 },
-          png: { quality: 40 },
-        },
-      }),
+      })
     },
     {
       // The node modules Netlify will cache are in the top dir.

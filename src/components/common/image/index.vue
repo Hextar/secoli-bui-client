@@ -3,8 +3,6 @@
     <source v-for="(attrs, index) in sources" :key="index" v-bind="attrs" />
     <img
       class="picture__image"
-      :alt="alt"
-      :title="alt"
       v-bind="{
         ...(typeof lastSource === 'object' ? lastSource : { srcset: lastSource }),
         ...imgAttrs,
@@ -12,6 +10,14 @@
     />
   </picture>
 </template>
+
+<script lang="ts">
+export default {
+  name: 'Image',
+  inheritAttrs: false,
+  customOptions: {},
+}
+</script>
 
 <script setup lang="ts">
 import { type } from 'os'
@@ -29,10 +35,8 @@ const attrs = useAttrs()
 
 // PROPS
 const props = defineProps({
-  src: { default: '' },
-  // src: { type: String, default: '' },
+  src: { type: [String, Array] as PropType<String | any[]>, default: '' },
   presets: { type: Array as PropType<String[]>, default: () => ['hd'] },
-  alt: { type: String, default: '' },
   height: { type: Number, default: undefined },
   width: { type: Number, default: undefined },
 })
@@ -45,23 +49,25 @@ const style = computed(
   })
 )
 
-const pictureAttrs = computed(() =>
-  Object.keys(attrs)
-    .filter((key: string) => key === 'class')
+const pictureAttrs = computed(() => {
+  const allowed = ['class']
+  return Object.keys(attrs)
+    .filter((key: string) => allowed.includes(key))
     .reduce((obj: any, key: string) => {
       obj[key] = attrs[key]
       return obj
     }, {})
-)
+})
 
-const imgAttrs = computed(() =>
-  Object.keys(attrs)
-    .filter((key: string) => key !== 'class')
+const imgAttrs = computed(() => {
+  const allowed = ['alt', 'src', 'title']
+  return Object.keys(attrs)
+    .filter((key: string) => allowed.includes(key))
     .reduce((obj: any, key: string) => {
       obj[key] = attrs[key]
       return obj
     }, {})
-)
+})
 
 const allSources = computed((): string | any[] =>
   Array.isArray(props.src) ? props.src : [{ srcset: props.src }]

@@ -57,8 +57,7 @@ import { TooltipOptions } from '@/types'
 import { Image } from '@/components/common'
 import { MenuFooter } from '@/components/layout/menu'
 
-// import madLogo from '@images/logo_mad_light.png?preset=hd'
-import madLogo from '@images/logo_mad_light.png'
+import madLogo from '@images/logo_mad_light.png?preset=hd'
 
 // COMPUTED
 const tooltip = computed(

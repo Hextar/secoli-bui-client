@@ -2,8 +2,8 @@
   <DefaultLayout v-once>
     <Header
       class="text-white-100"
-      image="/images/background.jpg"
-      lazy-image="/images/background-lazy.jpg"
+      :image="backgroundLogo"
+      :lazy-image="backgroundLazyLogo"
       height="400px"
     >
       <template #menu>
@@ -118,7 +118,7 @@
         <Paragraph class="mb-4">
           <h3 class="pb-4 text-center sm:text-left">I Portatori della Fiamma Bianca</h3>
           <Image
-            class="float-none mx-auto sm:float-left sm:mr-32"
+            class="float-none mx-auto sm:float-left sm:mr-16"
             src="/images/events/la_pesca_dei_burattini/i_portatori_della_fiamma_bianca.svg?preset=thumbnail&srcset"
             :width="160"
             title="Portatori della Fiamma Bianca"
@@ -314,6 +314,9 @@ import { TooltipOptions } from '@/types'
 import { IconClock, IconFacebook, IconMoney, IconPin } from '@/assets/icons'
 import { Article, Image, Info, Paragraph } from '@/components/common'
 import { DefaultLayout, Header, MenuEvent } from '@/components/layout'
+
+import backgroundLogo from '@images/background.jpg?preset=full'
+import backgroundLazyLogo from '@images/background-lazy.jpg?preset=full'
 
 // META
 const title = 'Prossimo evento - La pesca dei burattini'

@@ -29,6 +29,14 @@
   </div>
 </template>
 
+<script lang="ts">
+export default {
+  name: 'CustomButton',
+  inheritAttrs: false,
+  customOptions: {},
+}
+</script>
+
 <script setup lang="ts">
 import { computed, useAttrs, useSlots } from 'vue'
 import { getIconPosition } from '@/utils'
@@ -102,7 +110,6 @@ const iconPosition = computed((): string => getIconPosition(hasPrefix.value, has
 .button {
   position: relative;
   transition: background-color 250ms ease;
-  // width: 100%;
 
   &.button--size {
     @each $key in map-keys($sizes) {

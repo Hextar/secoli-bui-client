@@ -11,12 +11,19 @@
   <Image v-else :src="secoliBuiLogo" :width="width" alt="Secoli Bui logo" title="Secoli Bui logo" />
 </template>
 
+<script lang="ts">
+export default {
+  name: 'Logo',
+  inheritAttrs: false,
+  customOptions: {},
+}
+</script>
+
 <script setup lang="ts">
 import { computed } from 'vue'
 import { Image, sizeValidator } from '@/components/common'
 
-// import secoliBuiLogo from '@images/secoli_bui_logo_dark.png?preset=hd'
-import secoliBuiLogo from '@images/secoli_bui_logo_dark.png'
+import secoliBuiLogo from '@images/secoli_bui_logo_dark.png?preset=hd'
 
 // PROPS
 const props = defineProps({

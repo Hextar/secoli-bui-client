@@ -31,7 +31,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, PropType, ref } from 'vue'
 import { useScroll, useViewport } from '@/hooks'
 import { LazyOptions } from '@/types'
 
@@ -44,8 +44,8 @@ const header = ref<HTMLDivElement>()
 // PROPS
 const props = defineProps({
   height: { type: [String, Number], default: '100vh' },
-  image: { type: String, required: false },
-  lazyImage: { type: String, required: false },
+  image: { type: [String, Array] as PropType<string | any[]>, required: false },
+  lazyImage: { type: [String, Array] as PropType<string | any[]>, required: false },
   showArrow: { type: Boolean, default: false },
 })
 

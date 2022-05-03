@@ -3,8 +3,8 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "dev": "cross-env DEBUG=image-presets:* vite",
-    "prebuild": "NODE_ENV=production postcss src/assets/styles/tailwind.scss -o src/assets/styles/tailwind.scss",
+    "dev": "cross-env NODE_ENV=development DEBUG=image-presets:* vite",
+    "prebuild": "cross-env NODE_ENV=production postcss src/assets/styles/tailwind.scss -o src/assets/styles/tailwind.scss",
     "build": "cross-env DEBUG=image-presets:* NODE_ENV=production vue-tsc --noEmit && vite build",
     "preview": "cross-env RAILS_ENV=production DEBUG=image-presets:* vite preview --open",
     "now": "npm run build && npm run preview",
