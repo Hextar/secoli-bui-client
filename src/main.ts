@@ -11,6 +11,7 @@ import VueLazyLoad from 'vue3-lazyload'
 // CSS imports
 import './assets/styles/index.scss'
 import 'floating-vue/dist/style.css'
+import 'virtual:fonts.css'
 
 const app = createApp(App)
 app.use(createMetaManager())

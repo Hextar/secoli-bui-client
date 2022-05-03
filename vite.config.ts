@@ -25,21 +25,21 @@ export default defineConfig({
     svgLoader({ defaultImport: 'component' }),
     viteCompression({ algorithm: 'brotliCompress' }),
     ViteFonts({
-      google: {
-        preconnect: true,
-        display: 'swap',
+      custom: {
         families: [
           {
             name: 'Alegreya',
-            styles: 'wght@400;500;700',
-            defer: true
+            local: 'Alegreya',
+            src: './src/assets/fonts/alegreya/**/*.ttf',
           },
           {
             name: 'Marcellus',
-            styles: 'wght@400;500;700',
-            defer: true
+            local: 'Marcellus',
+            src: './src/assets/fonts/marcellus/**/*.ttf',
           }
-        ]
+        ],
+        display: 'auto',
+        preload: true
       }
     }),
     viteImagemin({
