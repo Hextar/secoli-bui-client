@@ -4,6 +4,7 @@ import { fileURLToPath, URL } from "url";
 import svgLoader from 'vite-svg-loader'
 import viteCompression from 'vite-plugin-compression';
 import ViteFonts from 'vite-plugin-fonts'
+import ViteRadar from 'vite-plugin-radar'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -20,6 +21,12 @@ export default defineConfig({
       svgoConfig: { multipass: true }
     }),
     viteCompression({ algorithm: 'brotliCompress' }),
+    ViteRadar({
+      // Google Analytics tag injection
+      analytics: {
+        id: 'G-BSLHKEHKH0',
+      },
+    }),
     ViteFonts({
       google: {
         preconnect: true,

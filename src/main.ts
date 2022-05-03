@@ -3,10 +3,10 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import axios from 'axios'
+import FloatingVue from 'floating-vue'
 import VueAxios from 'vue-axios'
 import { createMetaManager } from 'vue-meta'
 import VueLazyLoad from 'vue3-lazyload'
-import FloatingVue from 'floating-vue'
 
 // CSS imports
 import './assets/styles/index.scss'
