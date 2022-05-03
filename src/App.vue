@@ -9,13 +9,18 @@
 import { useMeta } from 'vue-meta'
 
 // META
+const author = 'Mad² Factory'
 const title = 'Secoli bui'
 const description = 'scopri i prossimi eventi LARP italiani'
+const keywords =
+  'larp, grv, italia, gioco di ruolo dal vivo, sardegna, attivita aperto, zombie, lattice, elfi, orchi, cosplay, tempo libero, medioevo, magia, fantasy, dark fantasy, game of thrones'
 const url = 'https://www.grvsecolibui.it'
 const image = `${url}/images/social.jpg`
 useMeta({
+  author,
   title: '',
   description,
+  keywords,
   htmlAttrs: { lang: 'it', amp: true },
   meta: [
     // OpenGraph data (Most widely used)
