@@ -1,5 +1,4 @@
 import { defineConfig } from 'vite'
-import { resolve } from 'path'
 import legacy from '@vitejs/plugin-legacy'
 import vue from '@vitejs/plugin-vue'
 import { fileURLToPath, URL } from "url"
@@ -17,15 +16,13 @@ const isDev = process.env.NODE_ENV === 'development'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  resolve: {
-    alias: {
-      "@": fileURLToPath(new URL('./src', import.meta.url)),
-    },
-  },
   plugins: [
     vue({
       reactivityTransform: true,
       template: {
+        compilerOptions: {
+          isCustomElement: tag => /^x-/.test(tag)
+        },
         transformAssetUrls: {
           tags: {
             source: ['src', 'srcset'],
@@ -34,42 +31,42 @@ export default defineConfig({
         }
       }
     }),
-    chunkSplitPlugin(),
-    imagePresets({
-      hd: hdPreset({
-        class: 'img hd',
-        widths: [440, 700],
-        sizes: '(min-width: 700px) 700px, 100vw',
-        formats: {
-          avif: { quality: 40 },
-          webp: { quality: 40 },
-          jpg: { quality: 50 },
-        },
-      }),
-      full: formatPreset({
-        class: 'img full-width',
-        formats: {
-          avif: { quality: 80 },
-          webp: { quality: 80 },
-          original: {},
-        },
-      }),
-      thumbnail: densityPreset({
-        baseHeight: 48,
-        density: [1, 1.5, 2],
-        formats: {
-          png: { quality: 44 },
-        },
-      })
-    },
-    {
-      // The node modules Netlify will cache are in the top dir.
-      // cacheDir: resolve(__dirname, '../node_modules/.images'),
-      cacheDir: fileURLToPath(new URL('../node_modules/.images', import.meta.url))
-    }),
-    legacy({ targets: ['defaults', 'not IE 11'] }),
+    // chunkSplitPlugin(),
+    // imagePresets({
+    //   hd: hdPreset({
+    //     class: 'img hd',
+    //     widths: [440, 700],
+    //     sizes: '(min-width: 700px) 700px, 100vw',
+    //     formats: {
+    //       avif: { quality: 40 },
+    //       webp: { quality: 40 },
+    //       jpg: { quality: 50 },
+    //     },
+    //   }),
+    //   full: formatPreset({
+    //     class: 'img full-width',
+    //     formats: {
+    //       avif: { quality: 80 },
+    //       webp: { quality: 80 },
+    //       original: {},
+    //     },
+    //   }),
+    //   thumbnail: densityPreset({
+    //     baseHeight: 48,
+    //     density: [1, 1.5, 2],
+    //     formats: {
+    //       png: { quality: 44 },
+    //     },
+    //   })
+    // },
+    // {
+    //   // The node modules Netlify will cache are in the top dir.
+    //   // cacheDir: resolve(__dirname, '../node_modules/.images'),
+    //   cacheDir: fileURLToPath(new URL('../node_modules/.images', import.meta.url))
+    // }),
+    // legacy({ targets: ['defaults', 'not IE 11'] }),
     svgLoader({ defaultImport: 'component' }),
-    viteCompression({ algorithm: 'gzip' }),
+    // viteCompression({ algorithm: 'gzip' }),
     ViteFonts({
       custom: {
         families: [
@@ -114,5 +111,10 @@ export default defineConfig({
         charset: false,
       }
     }
+  },
+  resolve: {
+    alias: {
+      "@": fileURLToPath(new URL('./src', import.meta.url)),
+    },
   },
 })

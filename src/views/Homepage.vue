@@ -3,6 +3,7 @@
     <Header
       class="text-white-100"
       :image="backgroundLogoHd"
+      :lazy-image="backgroundLazyLogoHd"
       show-arrow
       :height="belowTablet ? '100%' : '90vh'"
     >
@@ -62,7 +63,7 @@ import { TooltipOptions } from '@/types'
 import { Button, Decoration } from '@/components/common'
 import { DefaultLayout, Header, MenuNormal } from '@/components/layout'
 
-import { backgroundLogoHd } from '@/assets/images'
+import { backgroundLogoHd, backgroundLazyLogoHd } from '@/assets/images'
 
 // META
 const title = 'Homepage'
