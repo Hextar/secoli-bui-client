@@ -1,11 +1,6 @@
 <template>
   <DefaultLayout v-once>
-    <Header
-      class="text-white-100"
-      :image="backgroundLogo"
-      :lazy-image="backgroundLazyLogo"
-      height="400px"
-    >
+    <Header class="text-white-100" :image="backgroundLogo" height="400px">
       <template #menu>
         <MenuEvent :scroll-threshold="500" />
       </template>
@@ -316,7 +311,6 @@ import { Article, Image, Info, Paragraph } from '@/components/common'
 import { DefaultLayout, Header, MenuEvent } from '@/components/layout'
 
 import backgroundLogo from '@images/background.jpg?preset=full'
-import backgroundLazyLogo from '@images/background-lazy.jpg?preset=full'
 
 // META
 const title = 'Prossimo evento - La pesca dei burattini'

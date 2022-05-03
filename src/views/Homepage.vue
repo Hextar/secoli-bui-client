@@ -3,7 +3,6 @@
     <Header
       class="text-white-100"
       :image="backgroundLogo"
-      :lazy-image="backgroundLazyLogo"
       show-arrow
       :height="belowTablet ? '100%' : '90vh'"
     >
@@ -64,7 +63,6 @@ import { Button, Decoration } from '@/components/common'
 import { DefaultLayout, Header, MenuNormal } from '@/components/layout'
 
 import backgroundLogo from '@images/background.jpg?preset=full'
-import backgroundLazyLogo from '@images/background-lazy.jpg?preset=full'
 
 // META
 const title = 'Homepage'

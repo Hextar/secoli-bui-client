@@ -3,7 +3,7 @@
     <Image
       class="header__background pointer-events-none w-full"
       :src="image"
-      v-lazy="lazy"
+      v-lazy="lazy ? lazy : undefined"
       title="Background event cover"
       alt="Background event cover"
     />
