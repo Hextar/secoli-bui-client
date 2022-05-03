@@ -18,9 +18,9 @@
  * v-lazy option tpye
  */
  export type LazyOptions = {
-  src?: string, // your image url
-  loading?: string, // your loading image url
-  error?: string// your error image url
+  src?: string,
+  loading?: string,
+  error?: string
 }
 
 export type RouterLink = {

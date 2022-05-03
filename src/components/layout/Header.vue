@@ -1,6 +1,6 @@
 <template>
   <div ref="header" class="header flex items-start justify-center" v-bind="$attrs">
-    <img
+    <Image
       class="header__background pointer-events-none w-full"
       :src="image"
       v-lazy="lazy"
@@ -36,6 +36,7 @@ import { useScroll, useViewport } from '@/hooks'
 import { LazyOptions } from '@/types'
 
 import { IconArrow } from '@/assets/icons'
+import { Image } from '@/components/common'
 
 // VARIABLES
 const header = ref<HTMLDivElement>()
@@ -81,10 +82,13 @@ const onScroll = (): void => {
     @include fullsize;
     height: 100%;
     min-height: 100%;
-    object-fit: cover;
-    object-position: center bottom;
     z-index: 1;
     opacity: 0.5;
+
+    :deep(img) {
+      object-fit: cover;
+      object-position: center bottom;
+    }
   }
 
   &__content {

@@ -1,0 +1,11 @@
+[build]
+  base = "/"
+  publish = "dist/"
+  command   = "npm run build"
+
+[build.environment]
+  NODE_ENV = "production"
+  NODE_VERSION = "16"
+
+[[plugins]]
+  package = "netlify-plugin-cache-folder"

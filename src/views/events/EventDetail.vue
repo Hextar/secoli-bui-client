@@ -118,8 +118,8 @@
         <Paragraph class="mb-4">
           <h3 class="pb-4 text-center sm:text-left">I Portatori della Fiamma Bianca</h3>
           <Image
-            class="float-none mx-auto sm:float-left sm:mr-16"
-            src="/images/events/la_pesca_dei_burattini/i_portatori_della_fiamma_bianca.svg"
+            class="float-none mx-auto sm:float-left sm:mr-32"
+            src="/images/events/la_pesca_dei_burattini/i_portatori_della_fiamma_bianca.svg?preset=thumbnail&srcset"
             :width="160"
             title="Portatori della Fiamma Bianca"
             alt="Portatori della Fiamma Bianca"
@@ -139,7 +139,7 @@
           <h3 class="pb-4 text-center sm:text-right">Le Code Mozzate</h3>
           <Image
             class="float-none mx-auto sm:float-right sm:ml-16"
-            src="/images/events/la_pesca_dei_burattini/le_code_mozzate.svg"
+            src="/images/events/la_pesca_dei_burattini/le_code_mozzate.svg?preset=thumbnail&srcset"
             :width="160"
             title="Portatori della Fiamma Bianca"
             alt="Portatori della Fiamma Bianca"
@@ -157,7 +157,7 @@
           <h3 class="pb-4 text-center sm:text-left">L'Ineluttabile Domani</h3>
           <Image
             class="float-none mx-auto sm:float-left sm:mr-16"
-            src="/images/events/la_pesca_dei_burattini/l_ineluttabile_domani.svg"
+            src="/images/events/la_pesca_dei_burattini/l_ineluttabile_domani.svg?preset=thumbnail&srcset"
             :width="160"
             title="Portatori della Fiamma Bianca"
             alt="Portatori della Fiamma Bianca"
@@ -179,7 +179,7 @@
           <h3 class="pb-8 text-center sm:text-right">I Cercatori del Sentiero Dorato</h3>
           <Image
             class="float-none mx-auto sm:float-right sm:ml-16"
-            src="/images/events/la_pesca_dei_burattini/i_cercatori_del_sentiero_dorato.svg"
+            src="/images/events/la_pesca_dei_burattini/i_cercatori_del_sentiero_dorato.svg?preset=thumbnail&srcset"
             :width="160"
             title="Portatori della Fiamma Bianca"
             alt="Portatori della Fiamma Bianca"
@@ -201,7 +201,7 @@
           <h3 class="pb-4 text-center sm:text-left">Le Fauci Grondanti</h3>
           <Image
             class="float-none mx-auto sm:float-left sm:mr-16"
-            src="/images/events/la_pesca_dei_burattini/le_fauci_grondanti.svg"
+            src="/images/events/la_pesca_dei_burattini/le_fauci_grondanti.svg?preset=thumbnail&srcset"
             :width="160"
             title="Portatori della Fiamma Bianca"
             alt="Portatori della Fiamma Bianca"
@@ -223,7 +223,7 @@
           <h3 class="pb-8 text-center sm:text-right">La Loghia del Gufo</h3>
           <Image
             class="float-none mx-auto sm:float-right sm:ml-16"
-            src="/images/events/la_pesca_dei_burattini/la_loghia_del_gufo.svg"
+            src="/images/events/la_pesca_dei_burattini/la_loghia_del_gufo.svg?preset=thumbnail&srcset"
             :width="160"
             title="Portatori della Fiamma Bianca"
             alt="Portatori della Fiamma Bianca"

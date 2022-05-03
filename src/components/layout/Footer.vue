@@ -9,10 +9,10 @@
             title="mad_2_factory"
             alt="mad_2_factory"
           >
-            <img
+            <Image
               class="footer__main__logo"
-              width="160"
-              src="/images/logo_mad_light.png"
+              :width="160"
+              :src="madLogo"
               title="Mad2Factory logo"
               alt="Mad2Factory logo"
             />
@@ -54,7 +54,11 @@
 import { computed } from 'vue'
 import { TooltipOptions } from '@/types'
 
+import { Image } from '@/components/common'
 import { MenuFooter } from '@/components/layout/menu'
+
+// import madLogo from '@images/logo_mad_light.png?preset=hd'
+import madLogo from '@images/logo_mad_light.png'
 
 // COMPUTED
 const tooltip = computed(
