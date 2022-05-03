@@ -59,7 +59,7 @@
                 <IconClock />
               </template>
               <br />
-              <span class="pl-2"> • 18/06/2020 15:00-23:00 </span><br />
+              <span class="pl-2"> • 18/06/2022 15:00-23:00 </span><br />
             </Info>
             <Info class="w-full sm:w-auto" label="Quota">
               <template #icon>
@@ -321,7 +321,7 @@ const description = 'La pesca dei burattini - evento LARP, 18 Giugno nel Sulcis'
 const url = 'https://www.grvsecolibui.it'
 const image = `${url}/images/social.jpg`
 useMeta({
-  title: '',
+  title,
   description,
   htmlAttrs: { lang: 'it', amp: true },
   meta: [

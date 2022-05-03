@@ -67,7 +67,7 @@ const description = 'scopri i prossimi eventi LARP italiani'
 const url = 'https://www.grvsecolibui.it'
 const image = `${url}/images/social.jpg`
 useMeta({
-  title: '',
+  title,
   description,
   htmlAttrs: { lang: 'it', amp: true },
   meta: [

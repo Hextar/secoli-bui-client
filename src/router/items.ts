@@ -19,7 +19,7 @@ export const MenuItems: MenuItemType[] = [
         disabled: true,
       },
       {
-        label: 'Eventi future',
+        label: 'Eventi futuri',
         to: { path: '/events/future' },
         tooltip: { content: 'Coming soon', placement: 'bottom' },
         disabled: true,
