@@ -64,7 +64,7 @@
         color="primary"
         size="small"
         :disabled="!!loading"
-        @click.prevent="downloadAttachment"
+        @click.prevent.stop="downloadAttachment"
       >
         <span class="font-display text-lg font-bold">
           {{ loading ? 'Castando...' : 'Iscriviti' }}
@@ -143,6 +143,7 @@ const { hasScrolledY } = useScroll()
 const { isActive } = useMenuItem()
 
 const downloadAttachment = async (): Promise<void> => {
+  console.warn('SCARICANDO')
   loading.value = true
   axios
     .get('/files/iscrizione.pdf', { responseType: 'blob' })
