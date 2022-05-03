@@ -4,7 +4,7 @@
       class="text-white-100"
       :image="backgroundLogoHd"
       :lazy-image="backgroundLazyLogoHd"
-      :height="400px"
+      height="400px"
     >
       <template #menu>
         <MenuEvent :scroll-threshold="500" />

@@ -31,6 +31,8 @@ type SourceSet = {
   srcset?: string
   type?: string
 }
+
+// VARIABLES
 const attrs = useAttrs()
 
 // PROPS

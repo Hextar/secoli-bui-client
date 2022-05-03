@@ -31,54 +31,53 @@ export default defineConfig({
         }
       }
     }),
-    // chunkSplitPlugin(),
-    // imagePresets({
-    //   hd: hdPreset({
-    //     class: 'img hd',
-    //     widths: [440, 700],
-    //     sizes: '(min-width: 700px) 700px, 100vw',
-    //     formats: {
-    //       avif: { quality: 40 },
-    //       webp: { quality: 40 },
-    //       jpg: { quality: 50 },
-    //     },
-    //   }),
-    //   full: formatPreset({
-    //     class: 'img full-width',
-    //     formats: {
-    //       avif: { quality: 80 },
-    //       webp: { quality: 80 },
-    //       original: {},
-    //     },
-    //   }),
-    //   thumbnail: densityPreset({
-    //     baseHeight: 48,
-    //     density: [1, 1.5, 2],
-    //     formats: {
-    //       png: { quality: 44 },
-    //     },
-    //   })
-    // },
-    // {
-    //   // The node modules Netlify will cache are in the top dir.
-    //   // cacheDir: resolve(__dirname, '../node_modules/.images'),
-    //   cacheDir: fileURLToPath(new URL('../node_modules/.images', import.meta.url))
-    // }),
-    // legacy({ targets: ['defaults', 'not IE 11'] }),
+    chunkSplitPlugin(),
+    imagePresets({
+      hd: hdPreset({
+        class: 'img hd',
+        widths: [440, 700],
+        sizes: '(min-width: 700px) 700px, 100vw',
+        formats: {
+          avif: { quality: 40 },
+          webp: { quality: 40 },
+          jpg: { quality: 50 },
+        },
+      }),
+      full: formatPreset({
+        class: 'img full-width',
+        formats: {
+          avif: { quality: 80 },
+          webp: { quality: 80 },
+          original: {},
+        },
+      }),
+      thumbnail: densityPreset({
+        baseHeight: 48,
+        density: [1, 1.5, 2],
+        formats: {
+          png: { quality: 44 },
+        },
+      })
+    },
+    {
+      // The node modules Netlify will cache are in the top dir.
+      cacheDir: fileURLToPath(new URL('../node_modules/.images', import.meta.url))
+    }),
+    legacy({ targets: ['defaults', 'not IE 11'] }),
     svgLoader({ defaultImport: 'component' }),
-    // viteCompression({ algorithm: 'gzip' }),
+    viteCompression({ algorithm: 'gzip' }),
     ViteFonts({
       custom: {
         families: [
           {
             name: 'Alegreya',
             local: 'Alegreya',
-            src: '/src/assets/fonts/alegreya/**/*.ttf',
+            src: './src/assets/fonts/alegreya/**/*.ttf',
           },
           {
             name: 'Marcellus',
             local: 'Marcellus',
-            src: '/src/assets/fonts/marcellus/**/*.ttf',
+            src: './src/assets/fonts/marcellus/**/*.ttf',
           }
         ],
         display: 'swap',
