@@ -16,8 +16,13 @@
     "types": [
       "vite/client",
       "vue/ref-macros",
+      "vite-svg-loader",
+      "vite-plugin-image-presets",
       "vite-plugin-pages/client",
       "vite-plugin-vue-layouts/client"
+    ],
+    "typeRoots": [
+      "./node_modules/@types/"
     ],
     "paths": {
       "~/*": ["src/*"]

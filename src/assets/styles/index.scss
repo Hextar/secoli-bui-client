@@ -1,0 +1,14 @@
+@import './animations.scss';
+@import './markdown.scss';
+@import './nprogress.scss';
+@import './svg.scss';
+@import './tailwind.scss';
+@import './tooltip.scss';
+
+html,
+body,
+#app {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}

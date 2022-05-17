@@ -13,6 +13,12 @@ import Inspect from 'vite-plugin-inspect'
 import Prism from 'markdown-it-prism'
 import LinkAttributes from 'markdown-it-link-attributes'
 import Unocss from 'unocss/vite'
+import svgLoader from 'vite-svg-loader'
+import ViteFonts from 'vite-plugin-fonts'
+import imagePresets, { hdPreset, formatPreset, densityPreset } from 'vite-plugin-image-presets'
+import viteImagemin from 'vite-plugin-imagemin'
+import ViteRadar from 'vite-plugin-radar'
+import { fileURLToPath, URL } from 'url'
 
 const markdownWrapperClasses = 'prose prose-sm m-auto text-left'
 
@@ -117,6 +123,103 @@ export default defineConfig({
       include: [path.resolve(__dirname, 'locales/**')],
     }),
 
+    // https://github.com/ElMassimo/vite-plugin-image-presets
+    imagePresets({
+      hd: hdPreset({
+        class: 'img hd',
+        widths: [440, 700],
+        sizes: '(min-width: 700px) 700px, 100vw',
+        formats: {
+          avif: { quality: 33 },
+          webp: { quality: 33 },
+          jpg: { quality: 50 },
+          png: { quality: 44 },
+        },
+      }),
+      full: formatPreset({
+        class: 'img full',
+        loading: 'lazy',
+        formats: {
+          avif: { quality: 77 },
+          webp: { quality: 77 },
+          original: {},
+        },
+      }),
+      logo: densityPreset({
+        class: 'img logo',
+        baseHeight: 96,
+        density: [1, 1.5, 2],
+        loading: 'lazy',
+        formats: {
+          png: { quality: 33 },
+        },
+      }),
+      article: densityPreset({
+        class: 'img article',
+        baseHeight: 200,
+        density: [1, 1.5, 2],
+        loading: 'lazy',
+        formats: {
+          png: { quality: 44 },
+        },
+      }),
+      thumbnail: densityPreset({
+        baseHeight: 48,
+        density: [1, 1.5, 2],
+        formats: {
+          png: { quality: 44 },
+        },
+      })
+    },
+    {
+      // The node modules Netlify will cache are in the top dir.
+      cacheDir: fileURLToPath(new URL('../node_modules/.images', import.meta.url))
+    }),
+
+    // https://github.com/jpkleemans/vite-svg-loader
+    svgLoader({ defaultImport: 'component' }),
+
+    // https://github.com/stafyniaksacha/vite-plugin-fonts
+    ViteFonts({
+      custom: {
+        families: [
+          {
+            name: 'Alegreya',
+            local: 'Alegreya',
+            src: './src/assets/fonts/alegreya/**/*.ttf',
+          },
+          {
+            name: 'Marcellus',
+            local: 'Marcellus',
+            src: './src/assets/fonts/marcellus/**/*.ttf',
+          }
+        ],
+        display: 'swap',
+        preload: true
+      }
+    }),
+
+    // https://github.com/vbenjs/vite-plugin-imagemin
+    viteImagemin({
+      gifsicle: { optimizationLevel: 7, interlaced: false },
+      optipng: { optimizationLevel: 7 },
+      mozjpeg: { quality: 20 },
+      pngquant: { quality: [0.8, 0.9], speed: 4, strip: true },
+      svgo: {
+        plugins: [{ name: 'removeViewBox' },
+          { name: 'removeEmptyAttrs', active: false },
+        ]
+      }
+    }),
+
+    // https://github.com/stafyniaksacha/vite-plugin-radar
+    ViteRadar({
+      // Google Analytics tag injection
+      analytics: {
+        id: 'G-BSLHKEHKH0',
+      },
+    }),
+
     // https://github.com/antfu/vite-plugin-inspect
     // Visit http://localhost:3333/__inspect/ to see the inspector
     Inspect(),
@@ -127,6 +230,17 @@ export default defineConfig({
     script: 'async',
     formatting: 'minify',
     onFinished() { generateSitemap() },
+  },
+
+  optimizeDeps: { exclude: ["prettier"] },
+
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@import "./src/assets/styles/mixins/index.scss";`,
+        charset: false,
+      }
+    }
   },
 
   // https://github.com/vitest-dev/vitest

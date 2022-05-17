@@ -5,11 +5,21 @@ import '@vue/runtime-core'
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    Counter: typeof import('./components/Counter.vue')['default']
-    Footer: typeof import('./components/Footer.vue')['default']
+    Article: typeof import('./components/common/typography/Article.vue')['default']
+    Decoration: typeof import('./components/common/Decoration.vue')['default']
+    Footer: typeof import('./components/layout/Footer.vue')['default']
+    Header: typeof import('./components/layout/Header.vue')['default']
+    Image: typeof import('./components/common/image/Image.vue')['default']
+    Logo: typeof import('./components/common/logo/Logo.vue')['default']
+    MenuEvent: typeof import('./components/menu/MenuEvent.vue')['default']
+    MenuFooter: typeof import('./components/menu/MenuFooter.vue')['default']
+    MenuMobile: typeof import('./components/menu/MenuMobile.vue')['default']
+    MenuNormal: typeof import('./components/menu/MenuNormal.vue')['default']
+    Paragraph: typeof import('./components/common/typography/Paragraph.vue')['default']
     README: typeof import('./components/README.md')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SplashScreen: typeof import('./components/layout/SplashScreen.vue')['default']
   }
 }
 

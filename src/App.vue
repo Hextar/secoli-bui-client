@@ -2,12 +2,12 @@
 // https://github.com/vueuse/head
 // you can use this to manipulate the document head in any components,
 // they will be rendered correctly in the html results with vite-ssg
-import { isDark, preferredDark } from '~/composables'
+import { isDark } from '~/composables'
 
 useHead({
-  title: 'Vitesse',
+  title: 'Secoli bui',
   meta: [
-    { name: 'description', content: 'Opinionated Vite Starter Template' },
+    { name: 'description', content: 'Scopri i prossimi eventi LARP italiani' },
     {
       name: 'theme-color',
       content: computed(() => isDark.value ? '#00aba9' : '#ffffff'),
@@ -16,13 +16,14 @@ useHead({
   link: [
     {
       rel: 'icon',
-      type: 'image/svg+xml',
-      href: computed(() => preferredDark.value ? '/favicon-dark.svg' : '/favicon.svg'),
+      type: 'ico',
+      href: computed(() => '/favicon.ico'),
     },
   ],
 })
 </script>
 
 <template>
-  <RouterView />
+  <SplashScreen />
+  <router-view class="h-100 w-100 flex flex-1 justify-center font-body" />
 </template>

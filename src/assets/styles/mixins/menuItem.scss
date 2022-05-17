@@ -1,0 +1,35 @@
+@mixin menuItem {
+  &__title,
+  &__item {
+    position: relative;
+    z-index: 1;
+
+    &[disabled] {
+      pointer-events: none;
+      opacity: 0.5;
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 1px;
+      width: 0%;
+      background-color: theme('colors.white.100');
+      transition: width 0.255s ease-in-out;
+      z-index: 2;
+    }
+    
+    &--scrolled:after {
+      background-color: theme('colors.black.700');
+    }
+
+    &--active:after,
+    &:hover:after {
+      content: '';
+      width: 100%;
+    }
+  }
+}
