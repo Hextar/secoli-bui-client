@@ -18,7 +18,6 @@
       <div
         v-for="({ label, to, tooltip, disabled }, idx) in items"
         :key="`${label}-${idx}`"
-        v-tooltip="tooltip"
       >
         <router-link
           class="menu__content__item cursor-pointer font-display text-lg font-bold text-white-100 grayscale"

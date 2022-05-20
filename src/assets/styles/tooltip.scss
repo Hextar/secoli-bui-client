@@ -1,13 +1,13 @@
 .v-popper--secoli-bui {
   .v-popper {
     &__inner {
-      background: theme('colors.primary.500');
+      background: #AF1D1D;
       padding: 8px;
       box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
     }
     
     &__arrow-outer {
-      border-color: theme('colors.primary.500');
+      border-color: #AF1D1D;
     }
   }
 }

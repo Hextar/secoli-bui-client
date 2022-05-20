@@ -7,7 +7,8 @@
   "scripts": {
     "build": "vite-ssg build",
     "dev": "vite --port 3333 --open",
-    "lint": "eslint .",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore --fix src",
+    "format": "prettier .  --write",
     "now": "npm run build && npm run preview",
     "preview": "vite preview",
     "preview-https": "serve dist",
@@ -29,25 +30,30 @@
     "vue-router": "^4.0.15"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.23.0",
+    "@alexanderniebuhr/prettier-plugin-unocss": "^0.0.4",
     "@iconify-json/carbon": "^1.1.4",
     "@intlify/vite-plugin-vue-i18n": "^4.0.0",
+    "@trivago/prettier-plugin-sort-imports": "^3.2.0",
     "@types/file-saver": "^2.0.5",
     "@types/markdown-it-link-attributes": "^3.0.1",
     "@types/nprogress": "^0.2.0",
+    "@types/sharp": "^0.30.2",
     "@vitejs/plugin-vue": "^2.3.2",
     "@vue/test-utils": "^2.0.0-rc.21",
     "critters": "^0.0.16",
     "cross-env": "^7.0.3",
     "cypress": "^9.6.1",
     "eslint": "^8.15.0",
+    "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-cypress": "^2.12.1",
+    "eslint-plugin-prettier": "^4.0.0",
     "file-saver": "^2.0.5",
-    "floating-vue": "2.0.0-beta.16",
     "https-localhost": "^4.7.1",
     "markdown-it-link-attributes": "^4.0.0",
     "markdown-it-prism": "^2.2.4",
+    "patch-vue-directive-ssr": "^0.0.1",
     "pnpm": "^7.0.1",
+    "prettier": "^2.6.2",
     "sass": "^1.51.0",
     "typescript": "^4.6.4",
     "unocss": "^0.33.2",
@@ -69,6 +75,23 @@
     "vite-svg-loader": "^3.3.0",
     "vitest": "^0.12.4",
     "vue-tsc": "^0.34.12",
+    "vue-use-popperjs": "^2.3.1",
     "vue3-lazyload": "^0.3.0"
+  },
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ]
+    ]
+  },
+  "engines": {
+    "node": ">= 16.0.0",
+    "npm": ">= 7.0.0"
   }
 }

@@ -1,10 +1,4 @@
-import {
-  UiColor,
-  UiFlair,
-  UiSize,
-  UiTag,
-  UiVariant
-} from './button/types'
+import { UiVariant, UiColor, UiSize, UiFlair, UiTag } from '~/components/common/types'
 
 export const colorValidator = (value: UiColor): boolean =>
   Object.values(UiColor).includes(value)

@@ -1,48 +1,54 @@
+<script setup lang="ts">
+import { MenuItems } from '~/pages/items'
+
+import { useMenuItem } from '~/composables'
+
+const { t } = useI18n()
+
+// VARIABLES
+const items = MenuItems.filter(({ homepage }) => !homepage)
+
+// METHODS
+const { isActive } = useMenuItem()
+</script>
+
 <template>
   <div class="menu-footer" v-bind="$attrs">
-    <template
+    <div
       class="menu-footer__content flex flex-wrap items-start justify-center gap-8 md:justify-end md:gap-16"
     >
       <div
-        v-for="({ label, to, tooltip, disabled, children }, idx) in items"
-        :key="`${label}-${idx}`"
-        class="justiy-start flex h-full w-full flex-col items-center md:w-32 md:items-start"
-        v-tooltip="tooltip"
+        v-for="item in items"
+        :key="item.label"
+        class="justify-start flex h-full w-full flex-col items-center md:w-32 md:items-start"
       >
         <router-link
+          v-if="item.to"
           class="menu-footer__content__title mb-4 cursor-pointer text-center font-display text-lg font-bold text-white-100"
-          :class="{ 'menu-footer__content__title--active': isActive(to) }"
-          :disabled="disabled"
-          :aria-label="label"
-          :to="to"
+          :class="{ 'menu-footer__content__title--active': isActive(item.to) }"
+          :disabled="item.disabled"
+          :aria-label="item.label"
+          :to="item.to"
           exact
         >
-          {{ label }}
+          {{ item.label }}
         </router-link>
-        <template
-          v-for="(
-            {
-              label: childLabel,
-              to: childTo,
-              tooltip: childTooltip,
-              disabled: childDisabled,
-            },
-            childIdx
-          ) in children"
-          :key="`${childLabel}-${childIdx}`"
-          v-tooltip="childTooltip"
+        <div
+          v-for="child in item.children"
+          :key="child.label"
         >
           <router-link
+            v-if="child.to"
             class="menu-footer__content__item mb-2 cursor-pointer font-display text-sm text-white-100"
-            :class="{ 'menu-footer__content__item--active': isActive(childTo) }"
-            :disabled="childDisabled"
-            :aria-label="childLabel"
-            :to="childTo"
+            :class="{ 'menu-footer__content__item--active': isActive(child.to) }"
+            :disabled="child.disabled"
+            :aria-label="child.label"
+            :to="child.to"
             exact
           >
-            {{ childLabel }}
+            {{ child.label }}
           </router-link>
-        </template>
+        </div>
       </div>
       <div
         class="justiy-start flex h-full w-full flex-col items-center md:w-32 md:items-start"
@@ -59,6 +65,7 @@
           Non perderti tutti gli aggiornamenti dei nostri eventi LARP
         </span>
         <Button
+          variant="outline"
           tag="a"
           href="https://mailchi.mp/bd173f18b082/iscriviti"
           title="Iscriviti alla newsletter"
@@ -66,24 +73,12 @@
           rel="noopener noreferrer"
           target="_blank"
         >
-          Iscriviti
+          {{ t('common.subscribe') }}
         </Button>
       </div>
-    </template>
+    </div>
   </div>
 </template>
-
-<script setup lang="ts">
-import { MenuItems } from '~/pages/items'
-
-import { useMenuItem } from '~/composables'
-
-// VARIABLES
-const items = MenuItems.filter(({ homepage }) => !homepage)
-
-// METHODS
-const { isActive } = useMenuItem()
-</script>
 
 <style lang="scss" scoped>
 .menu-footer {

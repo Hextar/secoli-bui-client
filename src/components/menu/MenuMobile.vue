@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import { PropType, computed, onMounted, ref, watch } from 'vue'
+import type { PropType } from 'vue'
+import { computed, onMounted, ref, watch } from 'vue'
 
 import { InputHamburgher, InputHamburgherSymmetric } from '~/assets/icons'
 
 import { useMenuItem } from '~/composables'
 
-import { MenuItemType } from '~/types'
+import type { MenuItemType } from '~/types'
 
 // PROPS
 const props = defineProps({
@@ -73,7 +74,6 @@ onMounted(() => setTimeout(() => (loaded.value = true), 510))
       v-for="({ label, to, tooltip, disabled }, idx) in props.items"
       :key="`${label}-${idx}`"
       class="menu-mobile__overlay__item animate__gentle-slide-from-above cursor-pointer font-display text-lg font-bold text-white-100"
-      v-tooltip="tooltip"
     >
       <router-link
         class="menu-mobile__overlay__item"
@@ -119,7 +119,7 @@ $overlayIndex: 99;
     &__hamburgher--close {
       &:hover,
       &:focus {
-        fill: theme('colors.primary.500');
+        fill: #AF1D1D;
         outline: none;
       }
 
@@ -140,7 +140,7 @@ $overlayIndex: 99;
       }
 
       &--scrolled {
-        fill: theme('colors.black.700') !important;
+        fill: #0F0F0F !important;
       }
 
       // transform the claw mark signs
@@ -182,7 +182,7 @@ $overlayIndex: 99;
 
       &--close {
         &:deep(.claw-mark) {
-          fill: theme('colors.white.100');
+          fill: #FFF;
         }
       }
     }
@@ -191,7 +191,7 @@ $overlayIndex: 99;
   &__overlay {
     position: fixed;
     @include fullsize;
-    background-color: theme('colors.black.700');
+    @apply bg-black-700;
     opacity: 0.95;
     overflow-y: scroll;
     z-index: $overlayIndex;

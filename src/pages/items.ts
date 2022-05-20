@@ -1,4 +1,4 @@
-import { MenuItemType } from '~/types'
+import type { MenuItemType } from '~/types'
 
 export const MenuItems: MenuItemType[] = [
   {
@@ -21,9 +21,9 @@ export const MenuItems: MenuItemType[] = [
       {
         label: 'Eventi futuri',
         to: { path: '/events/future' },
-        tooltip: { content: 'Prossimi eventi', placement: 'bottom' }
+        tooltip: { content: 'Prossimi eventi', placement: 'bottom' },
       },
-    ]
+    ],
   },
   {
     label: 'Ambientazione',
@@ -33,17 +33,17 @@ export const MenuItems: MenuItemType[] = [
     children: [
       {
         label: 'Storia di Braara',
-        to: { path:  '/world-system/braara-story' },
+        to: { path: '/world-system/braara-story' },
         tooltip: { content: 'Coming soon', placement: 'bottom' },
         disabled: true,
       },
       {
         label: 'Sistema di Gioco',
-        to: { path:  '/world-system/game-system' },
+        to: { path: '/world-system/game-system' },
         tooltip: { content: 'Coming soon', placement: 'bottom' },
         disabled: true,
       },
-    ]
+    ],
   },
   {
     label: 'Gioca con noi',
@@ -81,6 +81,6 @@ export const MenuItems: MenuItemType[] = [
         tooltip: { content: 'Coming soon', placement: 'bottom' },
         disabled: true,
       },
-    ]
-  }
+    ],
+  },
 ]

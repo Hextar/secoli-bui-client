@@ -1,13 +1,16 @@
-button:
-  about: Su di me
+common:
   back: Indietro
+  next: Prossimo
   go: Vai
   home: Home
-  toggle_dark: Attiva/disattiva modalità scura
   toggle_langs: Cambia lingua
-intro:
-  desc: Modello per una Applicazione Vite
-  dynamic-route: Demo di rotta dinamica
-  hi: Ciao, {name}!
-  whats-your-name: Come ti chiami?
+  loading: Castando...
+  subscribe: Iscriviti
 not-found: Non trovato
+homepage:
+  next_event: Prossimo evento
+  more: Scopri di piú
+footer:
+  desc: La Mad² Factory è un'associazione che si propone come trampolino di lancio per associazioni nascenti e/o progetti ed eventi che abbiano finalità ludiche come larp (giochi di ruolo dal vivo) ed attività affini.
+  copyright: ©{year} Mad Factory, Tutti i diritti riservati
+  privacy: Politica sulla privacy

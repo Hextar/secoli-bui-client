@@ -11,7 +11,7 @@
     will-change: opacity;
     transform: translateZ(0);
 
-    @media (min-width: theme('screens.md')) {
+    @media (min-width: '768px') {
       animation: fade-in .510s infinite alternate;
       -webkit-animation: fade-in .510s infinite alternate;
     }
@@ -21,7 +21,7 @@
     will-change: margin-top;
     transform: translateZ(0);
 
-    @media (min-width: theme('screens.md')) {
+    @media (min-width: '768px') {
       animation: bounce 1s infinite alternate;
       -webkit-animation: bounce 1s infinite alternate;
     }
@@ -106,10 +106,10 @@
 
 @keyframes blood {
   0% {
-    fill: theme('colors.primary.500');
+    fill: #AF1D1D;
   }
   100% {
-    fill: theme('colors.white.500');
+    fill: #F1F1F1;
   }
 }
 

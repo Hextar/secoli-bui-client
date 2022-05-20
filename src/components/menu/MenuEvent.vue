@@ -1,18 +1,19 @@
 <script setup lang="ts">
 import axios from 'axios'
 import pkg from 'file-saver'
-import { Ref, computed, ref } from 'vue'
+import type { Ref } from 'vue'
+import { computed, ref } from 'vue'
 
 import { IconArrow } from '~/assets/icons'
 
 import { useMenuItem, useScroll, useViewport } from '~/composables'
 
-import { MenuItemType } from '~/types'
-
+import type { MenuItemType } from '~/types'
 // PROPS
 const props = defineProps({
   scrollThreshold: { type: Number, default: 200 },
 })
+const { t } = useI18n()
 
 // VARIABLES
 const { saveAs } = pkg
@@ -62,7 +63,7 @@ const downloadAttachment = async (): Promise<void> => {
   loading.value = true
   axios
     .get('/files/iscrizione.pdf', { responseType: 'blob' })
-    .then((response) => saveAs(response.data, 'secoli-bui-iscrizione.pdf'))
+    .then(response => saveAs(response.data, 'secoli-bui-iscrizione.pdf'))
     .catch((err: unknown) => console.error(err))
     .finally(() => (loading.value = false))
 }
@@ -119,7 +120,6 @@ const downloadAttachment = async (): Promise<void> => {
         v-for="({ label, to, tooltip, disabled }, idx) in items"
         :key="`${label}-${idx}`"
         class="flex items-center justify-center"
-        v-tooltip="tooltip"
       >
         <router-link
           class="menu-event__content__item cursor-pointer items-center font-display text-lg font-bold text-white-100"
@@ -147,7 +147,7 @@ const downloadAttachment = async (): Promise<void> => {
         @click.prevent.stop="downloadAttachment"
       >
         <span class="font-display text-lg font-bold">
-          {{ loading ? 'Castando...' : 'Iscriviti' }}
+          {{ loading ? t('common.loading') : t('common.subscribe') }}
         </span>
       </Button>
     </div>
@@ -168,7 +168,7 @@ const downloadAttachment = async (): Promise<void> => {
         @click.prevent.stop="downloadAttachment"
       >
         <span class="font-display text-lg font-bold">
-          {{ loading ? 'Castando...' : 'Iscriviti' }}
+          {{ loading ? t('common.loading') : t('common.subscribe') }}
         </span>
       </Button>
     </template>

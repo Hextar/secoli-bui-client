@@ -1,14 +1,10 @@
 <script setup lang="ts">
-import { PropType, computed, ref } from 'vue'
+import type { PropType } from 'vue'
+import { ref } from 'vue'
 
 import { IconArrow } from '~/assets/icons'
 
 import { useScroll, useViewport } from '~/composables'
-
-import { LazyOptions } from '~/types'
-
-// VARIABLES
-const header = ref<HTMLDivElement>()
 
 // PROPS
 const props = defineProps({
@@ -22,19 +18,12 @@ const props = defineProps({
 })
 
 // VARIABLES
-let scrolled = ref(false)
+const header = ref<HTMLDivElement>()
+const scrolled = ref(false)
 
 // COMPUTED
 const { isMobile } = useViewport()
 const { scrollToRef } = useScroll()
-
-const lazy = computed(
-  (): LazyOptions => ({
-    src: props.image,
-    loading: props.lazyImage,
-    error: props.image,
-  }),
-)
 
 // METHODS
 const onScroll = (): void => {
@@ -51,7 +40,6 @@ const onScroll = (): void => {
     <Image
       class="header__background pointer-events-none w-full"
       :src="image"
-      v-lazy="lazy ? lazy : undefined"
       title="Background event cover"
       alt="Background event cover"
       above-the-fold
@@ -87,6 +75,7 @@ const onScroll = (): void => {
   z-index: 1;
   height: auto;
   min-height: v-bind('height');
+  @apply bg-black-700;
 
   &__background {
     position: absolute;

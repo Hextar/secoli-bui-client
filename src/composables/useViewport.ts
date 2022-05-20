@@ -1,4 +1,4 @@
-import { computed, ref, onMounted, onUnmounted, readonly } from 'vue';
+import { computed, onMounted, onUnmounted, readonly, ref } from 'vue'
 
 export enum VIEWPORT {
   MOBILE = 640,
@@ -9,10 +9,10 @@ export enum VIEWPORT {
 
 export const useViewport = () => {
   // VARIABLES
-  const width = ref(window.innerWidth);
-  const height = ref(window.innerHeight);
+  const width = ref(window.innerWidth)
+  const height = ref(window.innerHeight)
 
-  // COMPTUED
+  // COMPUTED
   const isMobile = computed(() => width.value <= VIEWPORT.MOBILE)
   const isTablet = computed(() => width.value > VIEWPORT.MOBILE && width.value <= VIEWPORT.TABLET)
   const isDesktop = computed(() => width.value > VIEWPORT.TABLET && width.value <= VIEWPORT.DESKTOP)
@@ -22,21 +22,21 @@ export const useViewport = () => {
   const aboveTablet = computed(() => width.value > VIEWPORT.TABLET)
   const aboveDesktop = computed(() => width.value > VIEWPORT.DESKTOP)
 
-  const belowTablet = computed(() => width.value <=  VIEWPORT.TABLET)
-  const belowDesktop = computed(() => width.value <=  VIEWPORT.DESKTOP)
-  const belowLargeDesktop = computed(() => width.value <=  VIEWPORT.LARGE_DESKTOP)
+  const belowTablet = computed(() => width.value <= VIEWPORT.TABLET)
+  const belowDesktop = computed(() => width.value <= VIEWPORT.DESKTOP)
+  const belowLargeDesktop = computed(() => width.value <= VIEWPORT.LARGE_DESKTOP)
 
   // METHODS
   const handleResize = () => {
-    width.value = window.innerWidth;
-    height.value = window.innerHeight;
+    width.value = window.innerWidth
+    height.value = window.innerHeight
   }
 
   // ON MOUNTED
   onMounted(() => {
     handleResize()
     window.addEventListener('resize', handleResize)
-  });
+  })
 
   // ON UNMOUNTED
   onUnmounted(() => {
@@ -55,6 +55,6 @@ export const useViewport = () => {
     aboveDesktop,
     belowTablet,
     belowDesktop,
-    belowLargeDesktop
-  }  
+    belowLargeDesktop,
+  }
 }

@@ -2,13 +2,27 @@
 @import './markdown.scss';
 @import './nprogress.scss';
 @import './svg.scss';
-@import './tailwind.scss';
 @import './tooltip.scss';
 
-html,
-body,
-#app {
-  height: 100%;
-  margin: 0;
-  padding: 0;
+body {
+  // @apply bg-primary-500;
+  @include scrollbar;
+
+  // &:after {
+  //   content: 'Fatal';
+  //   position: absolute;
+  //   @include fullsize;
+  //   height: calc(100vh - 5rem);
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: center;
+  //   font-size: 5rem;
+  //   @apply text-primary-100;
+  //   z-index: -1;
+  // }
+
+  #app {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 }

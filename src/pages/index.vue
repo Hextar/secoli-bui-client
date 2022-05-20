@@ -1,64 +1,85 @@
 <script setup lang="ts">
-import { useUserStore } from '~/stores/user'
+import { computed, ref } from 'vue'
 
-const user = useUserStore()
-const name = $ref(user.savedName)
+import { backgroundLazyLogoHd, backgroundLogoHd } from '~/assets/images'
 
-const router = useRouter()
-const go = () => {
-  if (name)
-    router.push(`/hi/${encodeURIComponent(name)}`)
-}
+import { useViewport } from '~/composables'
 
 const { t } = useI18n()
+
+// VARIABLES
+const counter = ref(0)
+
+// COMPUTED
+const showPeach = computed((): boolean => counter.value >= 1)
+
+const { isMobile, belowTablet } = useViewport()
 </script>
 
 <template>
-  <div>
-    <div text-4xl>
-      <div i-carbon-campsite inline-block />
-    </div>
-    <p>
-      <a rel="noreferrer" href="https://github.com/antfu/vitesse" target="_blank">
-        Vitesse
-      </a>
-    </p>
-    <p>
-      <em text-sm opacity-75>{{ t('intro.desc') }}</em>
-    </p>
-
-    <div py-4 />
-
-    <input
-      id="input"
-      v-model="name"
-      :placeholder="t('intro.whats-your-name')"
-      :aria-label="t('intro.whats-your-name')"
-      type="text"
-      autocomplete="false"
-      p="x4 y2"
-      w="250px"
-      text="center"
-      bg="transparent"
-      border="~ rounded gray-200 dark:gray-700"
-      outline="none active:none"
-      @keydown.enter="go"
-    >
-    <label class="hidden" for="input">{{ t('intro.whats-your-name') }}</label>
-
-    <div>
-      <button
-        btn m-3 text-sm
-        :disabled="!name"
-        @click="go"
-      >
-        {{ t('button.go') }}
-      </button>
-    </div>
-  </div>
+  <Header
+    class="text-white-100"
+    :image="backgroundLogoHd"
+    :lazy-image="backgroundLazyLogoHd"
+    show-arrow
+    :height="belowTablet ? '100%' : '90vh'"
+  >
+    <template #menu>
+      <MenuNormal />
+    </template>
+    <template #content>
+      <div class="flex w-full flex-col items-center justify-center">
+        <h2
+          class="my-4 text-center font-display text-xl uppercase text-white-100"
+          :class="{ 'mb-12': isMobile }"
+          exact
+        >
+          {{ t('homepage.next_event') }}
+        </h2>
+        <h1
+          class="mb-4 flex-inline text-center font-display text-6xl text-white-100"
+          to="/"
+          exact
+        >
+          La
+          <Tooltip v-if="showPeach">
+            <template #trigger>
+              <span class="mx-2 cursor-pointer">🍑</span>
+            </template>
+            Charme
+          </Tooltip>
+          <span v-else class="mx-2 cursor-pointer" @click="counter++">Pesca</span>
+          dei Burattini
+        </h1>
+        <h2
+          class="mb-4 text-center font-display text-2xl uppercase text-white-100"
+          :class="{ 'mb-12': isMobile }"
+          exact
+        >
+          Di perdita e riscatto
+        </h2>
+        <Decoration v-if="!isMobile" class="mb-8" size="medium" />
+        <p
+          class="mb-8 w-screen px-8 text-center font-body text-sm text-white-100 sm:w-screen md:w-4/5 lg:w-2/3"
+        >
+          <i>
+            "Si mormora che tra queste valli si celi qualcosa di silenzioso,
+            mai sopito e che solo i temerari o i disperati calcano questi
+            terreni, alla ricerca di qualcosa o qualcuno…
+            <br>
+            <br>
+            Chi abita queste terre sa che non è possibile uscirne, chi le
+            cerca invece vi entra per brama e riscatto…"
+          </i>
+        </p>
+        <Button
+          class="w-[160px]"
+          tag="router-link"
+          to="/events/future/la-pesca-dei-burattini"
+        >
+          {{ t('homepage.more') }}
+        </Button>
+      </div>
+    </template>
+  </Header>
 </template>
-
-<route lang="yaml">
-meta:
-  layout: home
-</route>

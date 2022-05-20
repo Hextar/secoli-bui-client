@@ -1,4 +1,5 @@
 import path from 'path'
+import { URL, fileURLToPath } from 'url'
 import { defineConfig } from 'vite'
 import Vue from '@vitejs/plugin-vue'
 import Pages from 'vite-plugin-pages'
@@ -14,11 +15,9 @@ import Prism from 'markdown-it-prism'
 import LinkAttributes from 'markdown-it-link-attributes'
 import Unocss from 'unocss/vite'
 import svgLoader from 'vite-svg-loader'
-import ViteFonts from 'vite-plugin-fonts'
-import imagePresets, { hdPreset, formatPreset, densityPreset } from 'vite-plugin-image-presets'
+import imagePresets, { densityPreset, formatPreset, hdPreset } from 'vite-plugin-image-presets'
 import viteImagemin from 'vite-plugin-imagemin'
 import ViteRadar from 'vite-plugin-radar'
-import { fileURLToPath, URL } from 'url'
 
 const markdownWrapperClasses = 'prose prose-sm m-auto text-left'
 
@@ -33,6 +32,14 @@ export default defineConfig({
     Vue({
       include: [/\.vue$/, /\.md$/],
       reactivityTransform: true,
+      template: {
+        transformAssetUrls: {
+          tags: {
+            source: ['src', 'srcset'],
+            img: ['src', 'srcset'],
+          }
+        }
+      }
     }),
 
     // https://github.com/hannoeru/vite-plugin-pages
@@ -130,8 +137,8 @@ export default defineConfig({
         widths: [440, 700],
         sizes: '(min-width: 700px) 700px, 100vw',
         formats: {
-          avif: { quality: 33 },
-          webp: { quality: 33 },
+          avif: { quality: 77 },
+          webp: { quality: 77 },
           jpg: { quality: 50 },
           png: { quality: 44 },
         },
@@ -169,35 +176,15 @@ export default defineConfig({
         formats: {
           png: { quality: 44 },
         },
-      })
+      }),
     },
     {
       // The node modules Netlify will cache are in the top dir.
-      cacheDir: fileURLToPath(new URL('../node_modules/.images', import.meta.url))
+      cacheDir: fileURLToPath(new URL('../node_modules/.images', import.meta.url)),
     }),
 
     // https://github.com/jpkleemans/vite-svg-loader
     svgLoader({ defaultImport: 'component' }),
-
-    // https://github.com/stafyniaksacha/vite-plugin-fonts
-    ViteFonts({
-      custom: {
-        families: [
-          {
-            name: 'Alegreya',
-            local: 'Alegreya',
-            src: './src/assets/fonts/alegreya/**/*.ttf',
-          },
-          {
-            name: 'Marcellus',
-            local: 'Marcellus',
-            src: './src/assets/fonts/marcellus/**/*.ttf',
-          }
-        ],
-        display: 'swap',
-        preload: true
-      }
-    }),
 
     // https://github.com/vbenjs/vite-plugin-imagemin
     viteImagemin({
@@ -208,8 +195,8 @@ export default defineConfig({
       svgo: {
         plugins: [{ name: 'removeViewBox' },
           { name: 'removeEmptyAttrs', active: false },
-        ]
-      }
+        ],
+      },
     }),
 
     // https://github.com/stafyniaksacha/vite-plugin-radar
@@ -229,18 +216,20 @@ export default defineConfig({
   ssgOptions: {
     script: 'async',
     formatting: 'minify',
+    format: 'cjs',
+    mock: true,
     onFinished() { generateSitemap() },
   },
 
-  optimizeDeps: { exclude: ["prettier"] },
+  optimizeDeps: { exclude: ['prettier'] },
 
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: `@import "./src/assets/styles/mixins/index.scss";`,
+        additionalData: '@import "./src/assets/styles/mixins/index.scss";',
         charset: false,
-      }
-    }
+      },
+    },
   },
 
   // https://github.com/vitest-dev/vitest

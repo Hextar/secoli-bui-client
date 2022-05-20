@@ -1,3 +1,5 @@
+import { expect, it } from 'vitest'
+
 import {
   colorValidator,
   variantValidator,
@@ -6,13 +8,7 @@ import {
   tagValidator
 } from './validators'
 
-import {
-  UiColor,
-  UiVariant,
-  UiSize,
-  UiFlair,
-  UiTag
-} from '.'
+import { UiVariant, UiColor, UiSize, UiFlair, UiTag } from '~/components/common/types'
 
 it('colorValidator should return true if a correct color is passed', () => {
   expect(colorValidator(UiColor.PRIMARY)).toBe(true)

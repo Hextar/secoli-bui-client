@@ -1,0 +1,85 @@
+$variants: 'filled', 'outline';
+$colors: (
+  primary: (
+    default: #AF1D1D,
+    border: #AF1D1D,
+    hover: #AF1D1D,
+    pressed: #FFCA34,
+    text: #FFF,
+    semiTransparent: rgba(0, 0, 0, 0.08),
+  ),
+  white: (
+    default: #F1F1F1,
+    border: #F1F1F1,
+    hover: #F1F1F1,
+    pressed: #FFCA34,
+    text: #0F0F0F,
+    semiTransparent: rgba(255, 255, 255, 0.08),
+  )
+);
+
+// variant and colors are managed in the same file
+// as we need to apply a bordered color for the outlined
+// variant instead of a bacckground-color
+.button--variant {
+  @each $variant in $variants {
+    &--#{$variant} {
+      @each $key in map-keys($colors) {
+        $color: map-get($colors, $key);
+
+        &.button--color--#{"" + $key} {
+          @if $variant == 'outline' {
+            background-color: map-get($color, 'semiTransparent');
+            border: 1px solid map-get($color, 'border');
+            @if $key == 'secondary' {
+              color: map-get($color, 'text') !important;
+            } @else {
+              color: map-get($color, 'default') !important;
+            }
+          } @else {
+            background-color: map-get($color, 'default');
+            color: map-get($color, 'text') !important;
+          }
+
+          &:hover {
+            @if $variant == 'outline' {
+              border: 1px solid map-get($color, 'hover');
+              color: map-get($color, 'hover') !important;
+            } @else {
+              background-color: map-get($color, 'hover');
+            }
+
+            @if $key == 'primary' {
+              box-shadow: 0px 0px 2px rgba(175, 29, 29, 0.25), 0px 0px 33px rgba(175, 29, 29, 0.25), 0px 0px 2px rgba(175, 29, 29, 0.75), 0px 0px 14px rgba(175, 29, 29, 0.5);
+            } @else {
+              box-shadow: 0px 0px 2px rgba(255, 255, 255, 0.25), 0px 0px 33px rgba(255, 255, 255, 0.25), 0px 0px 2px rgba(255, 255, 255, 0.75), 0px 0px 14px rgba(255, 255, 255, 0.5);
+            }
+          }
+
+          &:focus,
+          &:active {
+            outline: none;
+            box-shadow: none;
+
+            @if $variant == 'outline' {
+              border: 1px solid map-get($color, 'pressed');
+              color: map-get($color, 'pressed') !important;
+            } @else {
+              background-color: map-get($color, 'pressed');
+            }
+          }
+
+          &[disabled] {
+            opacity: .33;
+            pointer-events: none;
+          }
+        }
+
+        &[disabled] {
+          opacity: .33;
+          pointer-events: none;
+        }
+      }
+    }
+  }
+}

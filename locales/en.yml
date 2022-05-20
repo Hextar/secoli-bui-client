@@ -1,14 +1,16 @@
-button:
-  about: About
+common:
   back: Back
-  go: GO
+  next: Next
+  go: Go
   home: Home
-  toggle_dark: Toggle dark mode
-  toggle_langs: Change languages
-intro:
-  desc: Opinionated Vite Starter Template
-  dynamic-route: Demo of dynamic route
-  hi: Hi, {name}!
-  aka: Also known as
-  whats-your-name: What's your name?
+  toggle_langs: Change language
+  loading: Casting...
+  subscribe: Subscribe
 not-found: Not found
+homepage:
+  next_event: Upcoming event
+  more: Discover more
+footer:
+  desc: La Mad² Factory è un'associazione che si propone come trampolino di lancio per associazioni nascenti e/o progetti ed eventi che abbiano finalità ludiche come larp (giochi di ruolo dal vivo) ed attività affini.
+  copyright: ©2022 Mad Factory, All Rights Reserved
+  privacy: Privacy policy

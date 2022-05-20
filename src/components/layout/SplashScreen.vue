@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { Ref, onMounted, ref } from 'vue'
+import type { Ref } from 'vue'
+import { onMounted, ref } from 'vue'
+const { t } = useI18n()
 
 // VARIABLES
 const visible: Ref<Boolean> = ref(true)
@@ -18,7 +20,7 @@ onMounted(() => {
     class="splash-screen firefor-bg flex items-center justify-center backdrop-blur"
     :class="{ 'splash-screen--hide': hide }"
   >
-    <span class="font-display text-2xl text-white-100"> CASTANDO... </span>
+    <span class="font-display text-3xl text-white-100 uppercase"> {{ t('common.loading') }} </span>
   </div>
 </template>
 
