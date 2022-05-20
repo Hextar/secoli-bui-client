@@ -37,18 +37,18 @@ const { isMobile, belowTablet } = useViewport()
           {{ t('homepage.next_event') }}
         </h2>
         <h1
-          class="mb-4 flex-inline text-center font-display text-6xl text-white-100"
+          class="event-title mb-4 flex-inline text-center font-display text-6xl text-white-100"
           to="/"
           exact
         >
           La
-          <Tooltip v-if="showPeach">
+          <Tooltip :disabled="!showPeach">
             <template #trigger>
-              <span class="mx-2 cursor-pointer">🍑</span>
+              <span v-if="showPeach" class="peach mx-2 cursor-pointer">🍑</span>
+              <span v-else class="mx-2 cursor-pointer" @click="counter++">Pesca</span>
             </template>
             <span>Charme</span>
           </Tooltip>
-          <span v-else class="mx-2 cursor-pointer" @click="counter++">Pesca</span>
           dei Burattini
         </h1>
         <h2
@@ -83,3 +83,16 @@ const { isMobile, belowTablet } = useViewport()
     </template>
   </Header>
 </template>
+
+<style lang="scss" scoped>
+.event-title {
+  @media (max-width: '640px') {
+    display: inline;
+    white-space: pre;
+
+    .peach {
+      font-size: 54px;
+    }
+  }
+}
+</style>
