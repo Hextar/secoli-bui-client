@@ -32,38 +32,21 @@ const onScroll = (): void => {
 </script>
 
 <template>
-  <div
-    ref="header"
-    class="header flex items-start justify-center"
-    v-bind="$attrs"
-  >
-    <Image
-      class="header__background pointer-events-none w-full"
-      :src="image"
-      title="Background event cover"
-      alt="Background event cover"
-      above-the-fold
-    />
+  <div ref="header" class="header flex items-start justify-center" v-bind="$attrs">
+    <Image class="header__background pointer-events-none w-full" :src="image" title="Background event cover"
+      alt="Background event cover" above-the-fold />
     <div
-      class="header__content items-space-betwen container flex flex-col justify-start px-8 pb-8 sm:px-0 md:justify-between md:pb-0"
-    >
-      <div
-        class="header__content__menu flex flex-col items-center justify-center pt-6 md:pt-8"
-      >
+      class="header__content items-space-betwen container flex flex-col justify-start px-8 pb-8 sm:px-0 md:justify-between md:pb-0">
+      <div class="header__content__menu flex flex-col items-center justify-center pt-6 md:pt-8">
         <slot name="menu" />
       </div>
       <div class="header__content__body py-8">
         <slot name="content" />
       </div>
-      <div
-        v-if="props.showArrow && !isMobile"
-        class="header__content__action flex flex-col items-center justify-center"
-      >
-        <IconArrow
-          v-if="!scrolled"
-          class="header__content__action__icon animate__bounce cursor-pointer"
-          @click="onScroll"
-        />
+      <div v-if="props.showArrow && !isMobile"
+        class="header__content__action flex flex-col items-center justify-center">
+        <IconArrow v-if="!scrolled" class="header__content__action__icon animate__bounce cursor-pointer"
+          @click="onScroll" />
       </div>
     </div>
   </div>

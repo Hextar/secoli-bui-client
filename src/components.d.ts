@@ -23,7 +23,7 @@ declare module '@vue/runtime-core' {
     RouterView: typeof import('vue-router')['RouterView']
     Spacer: typeof import('./components/common/Spacer.vue')['default']
     SplashScreen: typeof import('./components/layout/SplashScreen.vue')['default']
-    Tooltip: typeof import('./components/common/Tooltip.vue')['default']
+    Tooltip: typeof import('./components/common/tooltip/Tooltip.vue')['default']
   }
 }
 

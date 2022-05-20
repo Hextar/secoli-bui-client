@@ -21,7 +21,7 @@ const loading: Ref<Boolean> = ref(false)
 const items: MenuItemType[] = [
   {
     label: 'Info',
-    to: { path: '/events', hash: '#info' },
+    to: { path: '/events/future/la-pesca-dei-burattini', hash: '#info' },
     tooltip: {
       content: 'Scrolla al paragrafo "Informazioni"',
       placement: 'bottom',
@@ -30,19 +30,19 @@ const items: MenuItemType[] = [
   },
   {
     label: 'Incipit',
-    to: { path: '/events', hash: '#incipit' },
+    to: { path: '/events/future/la-pesca-dei-burattini', hash: '#incipit' },
     tooltip: { content: 'Scrolla al paragrafo "Incipit"', placement: 'bottom' },
     homepage: true,
   },
   {
     label: 'Fazioni',
-    to: { path: '/events', hash: '#fazioni' },
+    to: { path: '/events/future/la-pesca-dei-burattini', hash: '#fazioni' },
     tooltip: { content: 'Scrolla al paragrafo "Fazioni"', placement: 'bottom' },
     homepage: true,
   },
   {
     label: 'Come funziona?',
-    to: { path: '/events', hash: '#howItWorks' },
+    to: { path: '/events/future/la-pesca-dei-burattini', hash: '#howItWorks' },
     tooltip: {
       content: 'Scrolla al paragrafo "Come funziona?"',
       placement: 'bottom',
@@ -70,71 +70,40 @@ const downloadAttachment = async (): Promise<void> => {
 </script>
 
 <template>
-  <div
-    class="menu-event flex justify-between py-4 px-8"
-    :class="{
-      'menu-event--scrolled': hasScrolledY(parsedScrollThreshold),
-      'backdrop-blur': hasScrolledY(parsedScrollThreshold),
-    }"
-    v-bind="$attrs"
-  >
-    <div
-      v-if="belowTablet"
-      class="menu__logo animate__slide-from-above my-2 flex w-full flex-col items-center justify-center"
-    >
+  <div class="menu-event flex justify-between py-4 px-8" :class="{
+    'menu-event--scrolled': hasScrolledY(parsedScrollThreshold),
+    'backdrop-blur': hasScrolledY(parsedScrollThreshold),
+  }" v-bind="$attrs">
+    <div v-if="belowTablet"
+      class="menu__logo animate__slide-from-above my-2 flex w-full flex-col items-center justify-center">
       <Logo :size="belowTablet ? 'small' : 'medium'" homepage />
     </div>
-    <div
-      v-else
-      class="animate_bg-fade flex h-full items-center justify-between gap-4"
-    >
-      <Tooltip
-        placement="bottom"
-      >
+    <div v-else class="animate_bg-fade flex h-full items-center justify-between gap-4">
+      <Tooltip placement="bottom">
         <template #trigger>
-          <router-link
-            class="menu-event__back flex items-center justify-start text-white-100"
-            :class="{
-              'text-black-700': hasScrolledY(parsedScrollThreshold),
-            }"
-            aria-label="torna indietro"
-            to="/"
-          >
-            <IconArrow
-              v-if="hasScrolledY(parsedScrollThreshold)"
-              class="menu-event__back__arrow cursor-pointer fill-current"
-            />
+          <router-link class="menu-event__back flex items-center justify-start text-white-100" :class="{
+            'text-black-700': hasScrolledY(parsedScrollThreshold),
+          }" aria-label="torna indietro" to="/">
+            <IconArrow v-if="hasScrolledY(parsedScrollThreshold)"
+              class="menu-event__back__arrow cursor-pointer fill-current" />
             <Logo v-else size="small" />
           </router-link>
-          Torna indietro
         </template>
+        {{ t('common.go_home') }}
       </Tooltip>
-      <h2
-        v-if="hasScrolledY(parsedScrollThreshold)"
-        class="font-display text-2xl text-white-100"
-        :class="{
-          'text-black-700': hasScrolledY(parsedScrollThreshold),
-        }"
-      >
+      <h2 v-if="hasScrolledY(parsedScrollThreshold)" class="font-display text-2xl text-white-100" :class="{
+        'text-black-700': hasScrolledY(parsedScrollThreshold),
+      }">
         La Pesca dei Burattini
       </h2>
     </div>
-    <div
-      v-if="aboveTablet"
-      class="menu-event__content justify-satrt items-center gap-8 md:flex"
-    >
-      <div
-        v-for="({ label, to, tooltip, disabled }, idx) in items"
-        :key="`${label}-${idx}`"
-        class="flex items-center justify-center"
-      >
-        <Tooltip
-          :disabled="tooltip ? tooltip.disabled : undefined"
-          :placement="tooltip ? tooltip.placement : undefined"
-        >
+    <div v-if="aboveTablet" class="menu-event__content justify-satrt items-center gap-8 md:flex">
+      <div v-for="({ label, to, tooltip, disabled }, idx) in items" :key="`${label}-${idx}`"
+        class="flex items-center justify-center">
+        <Tooltip :disabled="tooltip ? tooltip.disabled : undefined"
+          :placement="tooltip ? tooltip.placement : undefined">
           <template #trigger>
-            <router-link
-              v-if="to"
+            <router-link v-if="to"
               class="menu-event__content__item cursor-pointer items-center font-display text-lg font-bold text-white-100"
               :class="{
                 'menu-event__content__item--active': isActive(to, true),
@@ -142,47 +111,25 @@ const downloadAttachment = async (): Promise<void> => {
                   parsedScrollThreshold,
                 ),
                 'text-black-700': hasScrolledY(parsedScrollThreshold),
-              }"
-              :aria-label="label"
-              :disabled="disabled"
-              :to="to"
-              exact
-            >
+              }" :aria-label="label" :disabled="disabled" :to="to" exact>
               {{ label }}
             </router-link>
           </template>
           {{ tooltip ? tooltip.content : '' }}
         </Tooltip>
       </div>
-      <Button
-        class="w-[112px]"
-        variant="filled"
-        color="primary"
-        size="small"
-        :disabled="!!loading"
-        @click.prevent.stop="downloadAttachment"
-      >
+      <Button class="w-[112px]" variant="filled" color="primary" size="small" :disabled="!!loading"
+        @click.prevent.stop="downloadAttachment">
         <span class="font-display text-lg font-bold">
           {{ loading ? t('common.loading') : t('common.subscribe') }}
         </span>
       </Button>
     </div>
   </div>
-  <MenuMobile
-    v-if="belowTablet"
-    :items="items"
-    :scrolled="hasScrolledY(parsedScrollThreshold)"
-    match-hash
-  >
+  <MenuMobile v-if="belowTablet" :items="items" :scrolled="hasScrolledY(parsedScrollThreshold)" match-hash>
     <template #action>
-      <Button
-        class="w-[112px]"
-        variant="filled"
-        color="primary"
-        size="small"
-        :disabled="!!loading"
-        @click.prevent.stop="downloadAttachment"
-      >
+      <Button class="w-[112px]" variant="filled" color="primary" size="small" :disabled="!!loading"
+        @click.prevent.stop="downloadAttachment">
         <span class="font-display text-lg font-bold">
           {{ loading ? t('common.loading') : t('common.subscribe') }}
         </span>

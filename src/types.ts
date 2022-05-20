@@ -4,10 +4,8 @@ import type { RouteLocationRaw } from 'vue-router'
 
 export type UserModule = (ctx: ViteSSGContext) => void
 
-export type TooltipDelay = {
-  show?: number,
-  hide?: number 
-}
+
+import { TooltipDelay, TooltipPosition } from '~/components/common/tooltip';
 
 /**
  * Shape of the tooltip rendered using v-tooltip
@@ -20,7 +18,7 @@ export type TooltipOptions = {
   disabled?: boolean,
   delay?: TooltipDelay,
   classes?: string,
-  placement?: 'top' | 'right' | 'bottom' | 'left',
+  placement?: TooltipPosition,
   offset?: number,
   trigger?: string,
   theme?: string,

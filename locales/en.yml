@@ -7,7 +7,8 @@ common:
   toggle_langs: Change language
   loading: Casting...
   subscribe: Subscribe
-not-found: Not found
+  no_effect: No effect
+not_found: Pagina non trovata
 homepage:
   next_event: Upcoming event
   more: Discover more

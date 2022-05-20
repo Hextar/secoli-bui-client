@@ -99,7 +99,8 @@ module.exports = {
         properties: 'above',
         methods: 'above'
       }
-    ]
+    ],
+    'vue/max-attributes-per-line': 'off',
   },
 
   overrides: [

@@ -15,11 +15,8 @@ onMounted(() => {
 </script>
 
 <template>
-  <div
-    v-if="visible"
-    class="splash-screen firefor-bg flex items-center justify-center backdrop-blur"
-    :class="{ 'splash-screen--hide': hide }"
-  >
+  <div v-if="visible" class="splash-screen firefor-bg flex items-center justify-center backdrop-blur"
+    :class="{ 'splash-screen--hide': hide }">
     <span class="font-display text-3xl text-white-100 uppercase"> {{ t('common.loading') }} </span>
   </div>
 </template>

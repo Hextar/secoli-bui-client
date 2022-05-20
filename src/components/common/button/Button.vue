@@ -63,32 +63,23 @@ const iconPosition = computed((): string =>
 <template>
   <Tooltip :disabled="!tooltip">
     <template #trigger>
-      <component
-        :is="props.tag"
-        class="button flex items-center justify-center"
-        :class="{
-          [`px-${padding}`]: padding > 0,
-          [`button--size--${props.size}`]: true,
-          [`button--color--${props.color}`]: true,
-          [`button--variant--${props.variant}`]: true,
-          [`button--icon--${iconPosition}`]: true,
-        }"
-        :disabled="!!props.disabled || undefined"
-        v-bind="$attrs"
-      >
+      <div :is="props.tag" class="button flex items-center justify-center" :class="{
+        [`px-${padding}`]: padding > 0,
+        [`button--size--${props.size}`]: true,
+        [`button--color--${props.color}`]: true,
+        [`button--variant--${props.variant}`]: true,
+        [`button--icon--${iconPosition}`]: true,
+      }" :disabled="!!props.disabled || undefined" v-bind="$attrs">
         <span v-if="hasPrefix" class="button__slot">
           <slot name="prefix-icon" />
         </span>
-        <span
-          class="button__label font-body"
-          :class="`button__label--icon--${iconPosition} ${fontSize}`"
-        >
+        <span class="button__label font-body" :class="`button__label--icon--${iconPosition} ${fontSize}`">
           <slot />
         </span>
         <span v-if="hasSuffix" class="button__slot">
           <slot name="suffix-icon" />
         </span>
-      </component>
+      </div>
     </template>
     <span>{{ tooltip }}</span>
   </Tooltip>
@@ -122,12 +113,15 @@ const iconPosition = computed((): string =>
               &--left {
                 margin-left: $m;
               }
+
               &--right {
                 margin-right: $m;
               }
+
               &--both {
                 margin: 0 $m;
               }
+
               &--none {
                 margin: 0;
               }

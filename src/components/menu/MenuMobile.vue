@@ -37,70 +37,37 @@ onMounted(() => setTimeout(() => (loaded.value = true), 510))
 </script>
 
 <template>
-  <div
-    class="menu-mobile flex cursor-pointer select-none flex-wrap items-center justify-start gap-8"
-    :class="{
-      'menu-mobile--scrolled': props.scrolled,
-    }"
-    v-bind="$attrs"
-  >
-    <InputHamburgherSymmetric
-      v-if="randSlash === 1"
-      class="menu-mobile__toggle__hamburgher hamburgher--symmetric select-none"
-      :class="{
+  <div class="menu-mobile flex cursor-pointer select-none flex-wrap items-center justify-start gap-8" :class="{
+    'menu-mobile--scrolled': props.scrolled,
+  }" v-bind="$attrs">
+    <InputHamburgherSymmetric v-if="randSlash === 1"
+      class="menu-mobile__toggle__hamburgher hamburgher--symmetric select-none" :class="{
         'animate__bloody-slash': loaded,
         'menu-mobile__toggle__hamburgher--close': open,
         'menu-mobile__toggle__hamburgher--scrolled': props.scrolled,
-      }"
-      @click="open = !open"
-    />
-    <InputHamburgher
-      v-else
-      class="menu-mobile__toggle__hamburgher hamburgher--normal select-none"
-      :class="{
-        'hamburgher--reversed': randSlash === 3,
-        'animate__bloody-slash': loaded,
-        'menu-mobile__toggle__hamburgher--close': open,
-        'menu-mobile__toggle__hamburgher--scrolled': props.scrolled,
-      }"
-      @click="open = !open"
-    />
+      }" @click="open = !open" />
+    <InputHamburgher v-else class="menu-mobile__toggle__hamburgher hamburgher--normal select-none" :class="{
+      'hamburgher--reversed': randSlash === 3,
+      'animate__bloody-slash': loaded,
+      'menu-mobile__toggle__hamburgher--close': open,
+      'menu-mobile__toggle__hamburgher--scrolled': props.scrolled,
+    }" @click="open = !open" />
   </div>
-  <div
-    v-if="open"
-    class="menu-mobile__overlay flex flex-col items-center justify-center gap-12"
-  >
-    <div
-      v-for="({ label, to, tooltip, disabled }, idx) in props.items"
-      :key="`${label}-${idx}`"
-      class="menu-mobile__overlay__item animate__gentle-slide-from-above cursor-pointer font-display text-lg font-bold text-white-100"
-    >
-      <Tooltip
-        :disabled="tooltip && tooltip.disabled"
-        :placement="tooltip && tooltip.placement"
-      >
+  <div v-if="open" class="menu-mobile__overlay flex flex-col items-center justify-center gap-12">
+    <div v-for="({ label, to, tooltip, disabled }, idx) in props.items" :key="`${label}-${idx}`"
+      class="menu-mobile__overlay__item animate__gentle-slide-from-above cursor-pointer font-display text-lg font-bold text-white-100">
+      <Tooltip :disabled="tooltip && tooltip.disabled" :placement="tooltip && tooltip.placement">
         <template #trigger>
-          <router-link
-            v-if="to"
-            class="menu-mobile__overlay__item"
-            :class="{
-              'menu-mobile__overlay__item--active': isActive(to, props.matchHash),
-            }"
-            :disabled="disabled"
-            :aria-label="label"
-            :to="to"
-            exact
-            @click="open = !open"
-          >
+          <router-link v-if="to" class="menu-mobile__overlay__item" :class="{
+            'menu-mobile__overlay__item--active': isActive(to, props.matchHash),
+          }" :disabled="disabled" :aria-label="label" :to="to" exact @click="open = !open">
             {{ label }}
           </router-link>
         </template>
         {{ tooltip ? tooltip.content : '' }}
       </Tooltip>
     </div>
-    <div
-      class="mobile__overlay__item mobile__overlay__action animate__gentle-slide-from-above cursor-pointer"
-    >
+    <div class="mobile__overlay__item mobile__overlay__action animate__gentle-slide-from-above cursor-pointer">
       <slot name="action" />
     </div>
   </div>
@@ -126,6 +93,7 @@ $overlayIndex: 99;
 
     &__hamburgher,
     &__hamburgher--close {
+
       &:hover,
       &:focus {
         fill: #AF1D1D;
@@ -155,6 +123,7 @@ $overlayIndex: 99;
       // transform the claw mark signs
       // into an x
       &--close.hamburgher {
+
         &--normal,
         &--reversed {
           &:deep(.claw-mark) {

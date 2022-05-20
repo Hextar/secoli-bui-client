@@ -3,22 +3,11 @@ import { PropType, ref } from 'vue'
 
 import { Popper } from 'vue-use-popperjs'
 
-import { TooltipDelay } from '~/types'
+import { TooltipDelay, TooltipPosition, TooltipTrigger } from '.';
 
-export type TooltipPosition =
-  | 'top-start' | 'top' | 'top-end'
-  | 'right-start' | 'right' | 'right-end'
-  | 'bottom-start' | 'bottom' | 'bottom-end'
-  | 'left-start' | 'left' | 'left-end'
-
-export type TooltipTrigger =
-  | 'hover'
-  | 'focus'
-  | 'click-to-open';
-  
 // PROPS
 const props = defineProps({
-  trigger: { type: String as PropType<TooltipTrigger>, default: 'hover'},
+  trigger: { type: String as PropType<TooltipTrigger>, default: 'hover' },
   placement: { type: String as PropType<TooltipPosition>, default: 'bottom' },
   delay: { type: Object as PropType<TooltipDelay>, default: { show: 150, hide: 150 } },
   disabled: { type: Boolean, default: false },
@@ -28,38 +17,39 @@ const props = defineProps({
 })
 
 // VARIABLES
-const teleportToBody = ref(false);
 const useTransition = ref(true);
 const modifiers = [
   {
-    name: "offset",
+    name: 'offset',
     options: {
       offset: [0 - props.nudgeRight, 8 - props.nudgeTop],
     },
   },
+  {
+    name: 'flip',
+    options: {
+      enabled: false,
+    },
+  },
+  {
+    name: 'preventOverflow',
+    options: {
+      enabled: false,
+      escapeWithReference: true,
+      boundariesElement: 'viewport'
+    }
+  }
 ];
 </script>
 
 <template>
-  <Popper
-    :reference-props="{ id: 'trigger' }"
-    :popper-props="{ id: 'tooltip' }"
-    :trigger="props.trigger || 'hover'"
-    :disabled="disabled"
-    :teleport-props="teleportToBody ? { to: 'body' } : undefined"
-    :transition-props="useTransition ? { name: 'fade' } : undefined"
-    :placement="placement"
-    :modifiers="modifiers"
-    :delay-on-mouseover="delay.show"
-    :delay-on-mouseout="delay.hide"
-    :force-show="forceShow"
-  >
+  <Popper :reference-props="{ id: 'trigger' }" :popper-props="{ id: 'tooltip' }" :trigger="props.trigger || 'hover'"
+    :disabled="disabled" :transition-props="useTransition ? { name: 'fade' } : undefined" :placement="placement"
+    :modifiers="modifiers" :delay-on-mouseover="delay.show" :delay-on-mouseout="delay.hide" :force-show="forceShow">
     <template #reference>
       <slot name="trigger"></slot>
     </template>
-    <span
-      class="tooltip__content pa-2 bg-black-700 text-base rounded"
-    >
+    <span class="tooltip__content pa-2 bg-black-700 text-base rounded">
       <slot />
       <div id="arrow" data-popper-arrow />
     </span>
