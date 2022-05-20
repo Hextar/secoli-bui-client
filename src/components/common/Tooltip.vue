@@ -22,6 +22,8 @@ const props = defineProps({
   placement: { type: String as PropType<TooltipPosition>, default: 'bottom' },
   delay: { type: Object as PropType<TooltipDelay>, default: { show: 150, hide: 150 } },
   disabled: { type: Boolean, default: false },
+  nudgeTop: { type: Number, default: 0 },
+  nudgeRight: { type: Number, default: 0 },
   forceShow: { Boolean, default: false },
 })
 
@@ -32,38 +34,36 @@ const modifiers = [
   {
     name: "offset",
     options: {
-      offset: [0, 8],
+      offset: [0 - props.nudgeRight, 8 - props.nudgeTop],
     },
   },
 ];
 </script>
 
 <template>
-  <div id="root">
-    <Popper
-      :reference-props="{ id: 'trigger' }"
-      :popper-props="{ id: 'tooltip' }"
-      :trigger="props.trigger || 'hover'"
-      :disabled="disabled"
-      :teleport-props="teleportToBody ? { to: 'body' } : undefined"
-      :transition-props="useTransition ? { name: 'fade' } : undefined"
-      :placement="placement"
-      :modifiers="modifiers"
-      :delay-on-mouseover="delay.show"
-      :delay-on-mouseout="delay.hide"
-      :force-show="forceShow"
+  <Popper
+    :reference-props="{ id: 'trigger' }"
+    :popper-props="{ id: 'tooltip' }"
+    :trigger="props.trigger || 'hover'"
+    :disabled="disabled"
+    :teleport-props="teleportToBody ? { to: 'body' } : undefined"
+    :transition-props="useTransition ? { name: 'fade' } : undefined"
+    :placement="placement"
+    :modifiers="modifiers"
+    :delay-on-mouseover="delay.show"
+    :delay-on-mouseout="delay.hide"
+    :force-show="forceShow"
+  >
+    <template #reference>
+      <slot name="trigger"></slot>
+    </template>
+    <span
+      class="tooltip__content pa-2 bg-black-700 text-base rounded"
     >
-      <template #reference>
-        <slot name="trigger"></slot>
-      </template>
-      <span
-        class="tooltip__content pa-2 bg-black-700 text-base rounded"
-      >
-        <slot />
-        <div id="arrow" data-popper-arrow />
-      </span>
-    </Popper>
-  </div>
+      <slot />
+      <div id="arrow" data-popper-arrow />
+    </span>
+  </Popper>
 </template>
 
 <style lang="scss" scoped>
@@ -72,6 +72,7 @@ $arrowSize: 5px;
 .tooltip {
   &__content {
     position: relative;
+    display: flex;
 
     // &::after {
     //   content: '';
