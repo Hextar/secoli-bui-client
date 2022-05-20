@@ -88,20 +88,27 @@ const downloadAttachment = async (): Promise<void> => {
       v-else
       class="animate_bg-fade flex h-full items-center justify-between gap-4"
     >
-      <router-link
-        class="menu-event__back flex items-center justify-start text-white-100"
-        :class="{
-          'text-black-700': hasScrolledY(parsedScrollThreshold),
-        }"
-        aria-label="torna indietro"
-        to="/"
+      <Tooltip
+        placement="bottom"
       >
-        <IconArrow
-          v-if="hasScrolledY(parsedScrollThreshold)"
-          class="menu-event__back__arrow cursor-pointer fill-current"
-        />
-        <Logo v-else size="small" />
-      </router-link>
+        <template #trigger>
+          <router-link
+            class="menu-event__back flex items-center justify-start text-white-100"
+            :class="{
+              'text-black-700': hasScrolledY(parsedScrollThreshold),
+            }"
+            aria-label="torna indietro"
+            to="/"
+          >
+            <IconArrow
+              v-if="hasScrolledY(parsedScrollThreshold)"
+              class="menu-event__back__arrow cursor-pointer fill-current"
+            />
+            <Logo v-else size="small" />
+          </router-link>
+          Torna indietro
+        </template>
+      </Tooltip>
       <h2
         v-if="hasScrolledY(parsedScrollThreshold)"
         class="font-display text-2xl text-white-100"
@@ -121,22 +128,31 @@ const downloadAttachment = async (): Promise<void> => {
         :key="`${label}-${idx}`"
         class="flex items-center justify-center"
       >
-        <router-link
-          class="menu-event__content__item cursor-pointer items-center font-display text-lg font-bold text-white-100"
-          :class="{
-            'menu-event__content__item--active': isActive(to, true),
-            'menu-event__content__item--scrolled': hasScrolledY(
-              parsedScrollThreshold,
-            ),
-            'text-black-700': hasScrolledY(parsedScrollThreshold),
-          }"
-          :aria-label="label"
-          :disabled="disabled"
-          :to="to"
-          exact
+        <Tooltip
+          :disabled="tooltip ? tooltip.disabled : undefined"
+          :placement="tooltip ? tooltip.placement : undefined"
         >
-          {{ label }}
-        </router-link>
+          <template #trigger>
+            <router-link
+              v-if="to"
+              class="menu-event__content__item cursor-pointer items-center font-display text-lg font-bold text-white-100"
+              :class="{
+                'menu-event__content__item--active': isActive(to, true),
+                'menu-event__content__item--scrolled': hasScrolledY(
+                  parsedScrollThreshold,
+                ),
+                'text-black-700': hasScrolledY(parsedScrollThreshold),
+              }"
+              :aria-label="label"
+              :disabled="disabled"
+              :to="to"
+              exact
+            >
+              {{ label }}
+            </router-link>
+          </template>
+          {{ tooltip ? tooltip.content : '' }}
+        </Tooltip>
       </div>
       <Button
         class="w-[112px]"

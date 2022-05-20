@@ -1,40 +1,3 @@
-<template>
-  <div
-    class="menu"
-    :class="{
-      'menu-event--scrolled': hasScrolledY(parsedScrollThreshold),
-      'backdrop-blur': hasScrolledY(parsedScrollThreshold),
-    }"
-    v-bind="$attrs"
-  >
-    <div
-      class="menu__logo animate__slide-from-above mb-6 flex flex-col items-center justify-center"
-    >
-      <Logo :size="isMobile ? 'small' : 'medium'" homepage />
-    </div>
-    <template
-      class="menu__content hidden flex-wrap items-center justify-center gap-8 sm:flex"
-    >
-      <div
-        v-for="({ label, to, tooltip, disabled }, idx) in items"
-        :key="`${label}-${idx}`"
-      >
-        <router-link
-          class="menu__content__item cursor-pointer font-display text-lg font-bold text-white-100 grayscale"
-          :class="{ 'menu__content__item--active': isActive(to) }"
-          :disabled="disabled"
-          :aria-label="label"
-          :to="to"
-          exact
-        >
-          {{ label }}
-        </router-link>
-      </div>
-    </template>
-  </div>
-  <MenuMobile v-if="belowTablet" :items="items" />
-</template>
-
 <script setup lang="ts">
 import { MenuItems } from '~/pages/items'
 import { computed } from 'vue'
@@ -57,6 +20,52 @@ const parsedScrollThreshold = computed(() => props.scrollThreshold - 54)
 const { isActive } = useMenuItem()
 const { hasScrolledY } = useScroll()
 </script>
+
+<template>
+  <div
+    class="menu"
+    :class="{
+      'menu-event--scrolled': hasScrolledY(parsedScrollThreshold),
+      'backdrop-blur': hasScrolledY(parsedScrollThreshold),
+    }"
+    v-bind="$attrs"
+  >
+    <div
+      class="menu__logo animate__slide-from-above mb-6 flex flex-col items-center justify-center"
+    >
+      <Logo :size="isMobile ? 'small' : 'medium'" homepage />
+    </div>
+    <template
+      class="menu__content hidden flex-wrap items-center justify-center gap-8 sm:flex"
+    >
+      <div
+        v-for="({ label, to, tooltip, disabled }, idx) in items"
+        :key="`${label}-${idx}`"
+      >
+        <Tooltip
+          :disabled="tooltip ? tooltip.disabled : undefined"
+          :placement="tooltip ? tooltip.placement : undefined"
+        >
+          <template #trigger>
+            <router-link
+              v-if="to"
+              class="menu__content__item cursor-pointer font-display text-lg font-bold text-white-100 grayscale"
+              :class="{ 'menu__content__item--active': isActive(to) }"
+              :disabled="disabled"
+              :aria-label="label"
+              :to="to"
+              exact
+            >
+              {{ label }}
+            </router-link>
+          </template>
+          {{ tooltip ? tooltip.content : '' }}
+        </Tooltip>
+      </div>
+    </template>
+  </div>
+  <MenuMobile v-if="belowTablet" :items="items" />
+</template>
 
 <style lang="scss" scoped>
 .menu {

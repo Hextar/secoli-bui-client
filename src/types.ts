@@ -16,14 +16,15 @@ export type TooltipDelay = {
  * options.
  */
 export type TooltipOptions = {
-  content: string | undefined
-  delay?: TooltipDelay
-  classes?: string
-  placement?: 'top' | 'right' | 'bottom' | 'left'
-  offset?: number
-  trigger?: string
-  theme?: string
-} | string
+  content: string | undefined,
+  disabled?: boolean,
+  delay?: TooltipDelay,
+  classes?: string,
+  placement?: 'top' | 'right' | 'bottom' | 'left',
+  offset?: number,
+  trigger?: string,
+  theme?: string,
+}
 
 /**
  * v-lazy option tpye

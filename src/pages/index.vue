@@ -11,7 +11,7 @@ const { t } = useI18n()
 const counter = ref(0)
 
 // COMPUTED
-const showPeach = computed((): boolean => counter.value >= 1)
+const showPeach = computed((): boolean => counter.value >= 13)
 
 const { isMobile, belowTablet } = useViewport()
 </script>
@@ -46,7 +46,7 @@ const { isMobile, belowTablet } = useViewport()
             <template #trigger>
               <span class="mx-2 cursor-pointer">🍑</span>
             </template>
-            Charme
+            <span>Charme</span>
           </Tooltip>
           <span v-else class="mx-2 cursor-pointer" @click="counter++">Pesca</span>
           dei Burattini

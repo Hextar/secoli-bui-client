@@ -75,19 +75,28 @@ onMounted(() => setTimeout(() => (loaded.value = true), 510))
       :key="`${label}-${idx}`"
       class="menu-mobile__overlay__item animate__gentle-slide-from-above cursor-pointer font-display text-lg font-bold text-white-100"
     >
-      <router-link
-        class="menu-mobile__overlay__item"
-        :class="{
-          'menu-mobile__overlay__item--active': isActive(to, props.matchHash),
-        }"
-        :disabled="disabled"
-        :aria-label="label"
-        :to="to"
-        exact
-        @click="open = !open"
+      <Tooltip
+        :disabled="tooltip && tooltip.disabled"
+        :placement="tooltip && tooltip.placement"
       >
-        {{ label }}
-      </router-link>
+        <template #trigger>
+          <router-link
+            v-if="to"
+            class="menu-mobile__overlay__item"
+            :class="{
+              'menu-mobile__overlay__item--active': isActive(to, props.matchHash),
+            }"
+            :disabled="disabled"
+            :aria-label="label"
+            :to="to"
+            exact
+            @click="open = !open"
+          >
+            {{ label }}
+          </router-link>
+        </template>
+        {{ tooltip ? tooltip.content : '' }}
+      </Tooltip>
     </div>
     <div
       class="mobile__overlay__item mobile__overlay__action animate__gentle-slide-from-above cursor-pointer"

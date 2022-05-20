@@ -3,6 +3,7 @@ common:
   next: Prossimo
   go: Vai
   home: Home
+  go_home: Torna alla tenda master
   toggle_langs: Cambia lingua
   loading: Castando...
   subscribe: Iscriviti

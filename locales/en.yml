@@ -3,6 +3,7 @@ common:
   next: Next
   go: Go
   home: Home
+  go_home: Go back to headcamp 
   toggle_langs: Change language
   loading: Casting...
   subscribe: Subscribe

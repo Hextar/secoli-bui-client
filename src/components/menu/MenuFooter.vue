@@ -22,32 +22,48 @@ const { isActive } = useMenuItem()
         :key="item.label"
         class="justify-start flex h-full w-full flex-col items-center md:w-32 md:items-start"
       >
-        <router-link
-          v-if="item.to"
-          class="menu-footer__content__title mb-4 cursor-pointer text-center font-display text-lg font-bold text-white-100"
-          :class="{ 'menu-footer__content__title--active': isActive(item.to) }"
-          :disabled="item.disabled"
-          :aria-label="item.label"
-          :to="item.to"
-          exact
+        <Tooltip
+          :disabled="item.tooltip ? item.tooltip.disabled : undefined"
+          :placement="item.tooltip ? item.tooltip.placement : undefined"
         >
-          {{ item.label }}
-        </router-link>
+          <template #trigger>
+            <router-link
+              v-if="item.to"
+              class="menu-footer__content__title mb-4 cursor-pointer text-center font-display text-lg font-bold text-white-100"
+              :class="{ 'menu-footer__content__title--active': isActive(item.to) }"
+              :disabled="item.disabled"
+              :aria-label="item.label"
+              :to="item.to"
+              exact
+            >
+              {{ item.label }}
+            </router-link>
+          </template>
+          {{ item.tooltip ? item.tooltip.content : '' }}
+        </Tooltip>
         <div
           v-for="child in item.children"
           :key="child.label"
         >
-          <router-link
-            v-if="child.to"
-            class="menu-footer__content__item mb-2 cursor-pointer font-display text-sm text-white-100"
-            :class="{ 'menu-footer__content__item--active': isActive(child.to) }"
-            :disabled="child.disabled"
-            :aria-label="child.label"
-            :to="child.to"
-            exact
+          <Tooltip
+            :disabled="child.tooltip ? child.tooltip.disabled : undefined"
+            :placement="child.tooltip ? child.tooltip.placement : undefined"
           >
-            {{ child.label }}
-          </router-link>
+            <template #trigger>
+              <router-link
+                v-if="child.to"
+                class="menu-footer__content__item mb-2 cursor-pointer font-display text-sm text-white-100"
+                :class="{ 'menu-footer__content__item--active': isActive(child.to) }"
+                :disabled="child.disabled"
+                :aria-label="child.label"
+                :to="child.to"
+                exact
+              >
+                {{ child.label }}
+              </router-link>
+              {{ child.tooltip ? child.tooltip.content : '' }}
+            </template>
+          </Tooltip>
         </div>
       </div>
       <div
