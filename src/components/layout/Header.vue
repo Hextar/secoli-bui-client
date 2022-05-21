@@ -52,7 +52,7 @@ watch(height, ((val: number) => {
       </div>
       <div v-if="props.showArrow && !isMobile"
         class="header__content__action flex flex-col items-center justify-center">
-        <IconArrow v-if="!scrolled" class="header__content__action__icon animate__bounce cursor-pointer"
+        <IconArrow v-if="!scrolled" class="text-white-100 header__content__action__icon animate__bounce cursor-pointer"
           @click="onScroll" />
       </div>
     </div>

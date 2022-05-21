@@ -38,7 +38,7 @@ export const useMeta = (params: {
       'game of thrones'
     ]
   ]
-  const url = window.location.href
+  const url = process.env.NODE_ENV === 'production' ? 'https://www.grvsecolibui.it' : 'localhost:3000'
   const image = params.image || `${url}/images/social.jpg`
 
   useHead({

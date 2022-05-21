@@ -22,7 +22,8 @@
       "vite-plugin-vue-layouts/client"
     ],
     "typeRoots": [
-      "./node_modules/@types/"
+      "./node_modules/@types",
+      "./src/index.d.ts"
     ],
     "paths": {
       "~/*": ["src/*"]

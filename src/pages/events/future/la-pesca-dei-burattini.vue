@@ -92,7 +92,7 @@ const downloadImage = async (url: string): Promise<void> => {
                 <IconPin />
               </template>
               <br />
-              <span class="pl-2" itemprop="location" itemscope itemtype="http://schema.org/Place">
+              <span class="pl-2" itemprop="location" itemscope itemtype="https://schema.org/Place">
                 •
                 <a class="text-action-500 hover:underline"
                   href="https://www.google.com/maps/place/39%C2%B007'32.1%22N+8%C2%B026'27.4%22E/@39.1256265,8.438438,2283m/data=!3m1!1e3!4m6!3m5!1s0!7e2!8m2!3d39.1255724!4d8.440949"
