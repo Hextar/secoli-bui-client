@@ -16,7 +16,8 @@ const props = defineProps({
 const style = computed(
   (): Record<string, string | undefined> => ({
     height: props.height ? `${props.height}px` : undefined,
-    width: props.width ? `${props.width}px` : undefined,
+    minWidth: props.width ? `${props.width}px` : undefined,
+    maxWidth: props.width ? `${props.width}px` : undefined,
   }),
 )
 
@@ -56,21 +57,13 @@ const lastSource = computed((): string | any[] => {
 </script>
 
 <template>
-  <picture
-    class="picture flex h-full w-full items-center justify-center"
-    :style="style"
-    v-bind="{ ...pictureAttrs }"
-  >
+  <picture class="picture flex h-full w-full items-center justify-center" :style="style" v-bind="{ ...pictureAttrs }">
     <source v-for="(attrs, index) in sources" :key="index" v-bind="attrs" />
-    <img
-      class="picture__image h-full w-full"
-      v-bind="{
-        ...(typeof lastSource === 'object'
-          ? lastSource
-          : { srcset: lastSource }),
-        ...imgAttrs,
-      }"
-      itemprop="image"
-    />
+    <img class="picture__image h-full w-full" v-bind="{
+      ...(typeof lastSource === 'object'
+        ? lastSource
+        : { srcset: lastSource }),
+      ...imgAttrs,
+    }" itemprop="image" />
   </picture>
 </template>

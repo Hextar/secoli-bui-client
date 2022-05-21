@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import type { PropType } from 'vue'
-import { ref } from 'vue'
+import { getCurrentInstance, PropType, ref } from 'vue'
 
 import { IconArrow } from '~/assets/icons'
 
-import { useScroll, useViewport } from '~/composables'
+import { useBoundingRect, useScroll, useViewport } from '~/composables'
+
+const { emit } = getCurrentInstance() as NonNullable<ReturnType<typeof getCurrentInstance>>
 
 // PROPS
 const props = defineProps({
@@ -23,12 +24,18 @@ const scrolled = ref(false)
 
 // COMPUTED
 const { isMobile } = useViewport()
-const { scrollToRef } = useScroll()
+const { scrollToBottomOfRef } = useScroll()
 
 // METHODS
 const onScroll = (): void => {
-  scrollToRef(header, () => (scrolled.value = true))
+  scrollToBottomOfRef(header, () => (scrolled.value = true))
 }
+
+const { height } = useBoundingRect(header)
+
+watch(height, ((val: number) => {
+  emit('resize:height', val)
+}), { immediate: true, deep: true })
 </script>
 
 <template>

@@ -1,4 +1,5 @@
 export * from './dark'
+export * from './useBoundingRect'
 export * from './useFocus'
 export * from './useMenuItem'
 export * from './useScroll'

@@ -8,6 +8,7 @@ common:
   loading: Castando...
   subscribe: Iscriviti
   no_effect: No effect
+  download_image: Scarica immagine
 not_found: Pagina non trovata
 homepage:
   next_event: Prossimo evento

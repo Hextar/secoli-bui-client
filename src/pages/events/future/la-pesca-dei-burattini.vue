@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import axios from 'axios'
 import pkg from 'file-saver'
-import { computed, ref } from 'vue'
+
+import { useViewport } from '~/composables'
 
 import { IconClock, IconFacebook, IconMoney, IconPin } from '~/assets/icons'
 
@@ -18,6 +19,15 @@ import {
 
 // VARIABLES
 const { saveAs } = pkg
+const scrollThreshold = ref(200)
+const { t } = useI18n()
+
+// COMPUTED
+const { isMobile } = useViewport()
+
+const imageWidth = computed((): number => {
+  return isMobile.value ? 240 : 160
+})
 
 // // METHODS
 const getAssetPath = (value: string): string => {
@@ -38,20 +48,31 @@ const getAssetPath = (value: string): string => {
   return assets.get(value)
 }
 
+const onHeaderHeightResize = (height: number): void => {
+  scrollThreshold.value = height + (86 / 2)
+}
+
 const downloadAttachment = async (): Promise<void> => {
   axios
     .get('/files/iscrizione.pdf', { responseType: 'blob' })
     .then((response) => saveAs(response.data, 'secoli-bui-iscrizione.pdf'))
     .catch((err: unknown) => console.error(err))
 }
+
+const downloadImage = async (url: string): Promise<void> => {
+  axios
+    .get(`/images/events/la_pesca_dei_burattini/${url}`, { responseType: 'blob' })
+    .then((response) => saveAs(response.data, url))
+    .catch((err: unknown) => console.error(err))
+}
 </script>
 
 <template>
   <section class="event-detail">
-    <Header class="text-white-100" :image="backgroundLogoHd" :lazy-image="backgroundLazyLogoHd" height="400px" itemscope
-      itemtype="https://schema.org/Event">
+    <Header ref="header" class="text-white-100" :image="backgroundLogoHd" :lazy-image="backgroundLazyLogoHd"
+      height="400px" itemscope itemtype="https://schema.org/Event" @resize:height="onHeaderHeightResize">
       <template #menu>
-        <MenuEvent :scroll-threshold="500" />
+        <MenuEvent :scroll-threshold="scrollThreshold" />
       </template>
       <template #content>
         <div id="info" class="anchor pb- flex flex-col items-start justify-center pt-16 pb-0 sm:pb-8">
@@ -142,12 +163,19 @@ const downloadAttachment = async (): Promise<void> => {
           <h2 id="fazioni" class="anchor">⚔️ Fazioni</h2>
         </Paragraph>
         <Paragraph class="mb-4">
-          <h3 class="pb-4 text-center sm:text-left">
-            I Portatori della Fiamma Bianca
-          </h3>
-          <CustomImage class="float-none mx-auto sm:float-left sm:mr-16"
-            :src="getAssetPath('i_portatori_della_fiamma_bianca.svg')" :width="160"
-            title="Portatori della Fiamma Bianca" alt="Portatori della Fiamma Bianca" />
+          <template #title>
+            <h3 class="pb-4 text-center sm:text-left">
+              I Portatori della Fiamma Bianca
+            </h3>
+          </template>
+          <Tooltip>
+            <template #trigger>
+              <CustomImage class="cursor-pointer" :src="getAssetPath('i_portatori_della_fiamma_bianca.svg')"
+                :width="imageWidth" title="Portatori della Fiamma Bianca" alt="Portatori della Fiamma Bianca"
+                @click.prevent.stop="downloadImage('i_portatori_della_fiamma_bianca.svg')" />
+            </template>
+            {{ t('common.download_image') }}
+          </Tooltip>
           <p class="text-justify">
             Ci sono poche cose che muovono le genti come gli ideali o i sogni.
             Le stelle si muovono e gli dei sussurrano, per guidare i mortali
@@ -161,10 +189,18 @@ const downloadAttachment = async (): Promise<void> => {
             fermarvi, o voi che avete acceso la Fiamma bianca nel cuore.
           </p>
         </Paragraph>
-        <Paragraph>
-          <h3 class="pb-4 text-center sm:text-right">Le Code Mozzate</h3>
-          <CustomImage class="float-none mx-auto sm:float-right sm:ml-16" :src="getAssetPath('le_code_mozzate.svg')"
-            :width="160" title="Portatori della Fiamma Bianca" alt="Portatori della Fiamma Bianca" />
+        <Paragraph reverse>
+          <template #title>
+            <h3 class="pb-4 text-center sm:text-right">Le Code Mozzate</h3>
+          </template>
+          <Tooltip>
+            <template #trigger>
+              <CustomImage class="cursor-pointer" :src="getAssetPath('le_code_mozzate.svg')" :width="imageWidth"
+                title="Le code mozzate" alt="Le code mozzate"
+                @click.prevent.stop="downloadImage('le_code_mozzate.svg')" />
+            </template>
+            {{ t('common.download_image') }}
+          </Tooltip>
           <p class="text-justify">
             In piedi carogne! Il sangue rimesta nelle vostre vene, e non c'è
             altra opzione se non strisciare avanti: vi è stato promesso molto
@@ -176,10 +212,17 @@ const downloadAttachment = async (): Promise<void> => {
           </p>
         </Paragraph>
         <Paragraph>
-          <h3 class="pb-4 text-center sm:text-left">L'Ineluttabile Domani</h3>
-          <CustomImage class="float-none mx-auto sm:float-left sm:mr-16"
-            :src="getAssetPath('l_ineluttabile_domani.svg')" :width="160" title="Portatori della Fiamma Bianca"
-            alt="Portatori della Fiamma Bianca" />
+          <template #title>
+            <h3 class="pb-4 text-center sm:text-left">L'Ineluttabile Domani</h3>
+          </template>
+          <Tooltip>
+            <template #trigger>
+              <CustomImage class="cursor-pointer" :src="getAssetPath('l_ineluttabile_domani.svg')" :width="imageWidth"
+                title="L'ineluttabile domani" alt="L'ineluttabile domani"
+                @click.prevent.stop="downloadImage('l_ineluttabile_domani.svg')" />
+            </template>
+            {{ t('common.download_image') }}
+          </Tooltip>
           <p class="text-justify">
             Buio. Per voi è sempre stato buio. Difficile vedere qualcosa di
             diverso prima del cambiamento. Poi tutto ha iniziato ad avere più
@@ -195,13 +238,20 @@ const downloadAttachment = async (): Promise<void> => {
             cambiare.
           </p>
         </Paragraph>
-        <Paragraph>
-          <h3 class="pb-8 text-center sm:text-right">
-            I Cercatori del Sentiero Dorato
-          </h3>
-          <CustomImage class="float-none mx-auto sm:float-right sm:ml-16"
-            :src="getAssetPath('i_cercatori_del_sentiero_dorato.svg')" :width="160"
-            title="Portatori della Fiamma Bianca" alt="Portatori della Fiamma Bianca" />
+        <Paragraph reverse>
+          <template #title>
+            <h3 class="pb-8 text-center sm:text-right">
+              I Cercatori del Sentiero Dorato
+            </h3>
+          </template>
+          <Tooltip>
+            <template #trigger>
+              <CustomImage class="cursor-pointer" :src="getAssetPath('i_cercatori_del_sentiero_dorato.svg')"
+                :width="imageWidth" title="I cercatori del sentiero dorato" alt="I cercatori del sentiero dorato"
+                @click.prevent.stop="downloadImage('i_cercatori_del_sentiero_dorato.svg')" />
+            </template>
+            {{ t('common.download_image') }}
+          </Tooltip>
           <p class="text-justify">
             La strada è finita prima che voi siate riusciti a percorrerla.
             Quando l'avete intrapresa pensavate ad un miglioramento con cui
@@ -218,9 +268,17 @@ const downloadAttachment = async (): Promise<void> => {
           </p>
         </Paragraph>
         <Paragraph>
-          <h3 class="pb-4 text-center sm:text-left">Le Fauci Grondanti</h3>
-          <CustomImage class="float-none mx-auto sm:float-left sm:mr-16" :src="getAssetPath('le_fauci_grondanti.svg')"
-            :width="160" title="Portatori della Fiamma Bianca" alt="Portatori della Fiamma Bianca" />
+          <template #title>
+            <h3 class="pb-4 text-center sm:text-left">Le Fauci Grondanti</h3>
+          </template>
+          <Tooltip>
+            <template #trigger>
+              <CustomImage class="cursor-pointer" :src="getAssetPath('le_fauci_grondanti.svg')" :width="imageWidth"
+                title="Le fauci grondanti" alt="Le fauci grondanti"
+                @click.prevent.stop="downloadImage('le_fauci_grondanti.svg')" />
+            </template>
+            {{ t('common.download_image') }}
+          </Tooltip>
           <p class="text-justify">
             Può un amore votato all'eternità consumare?
             <br />
@@ -235,10 +293,18 @@ const downloadAttachment = async (): Promise<void> => {
             delle dolci labbra restano solo fauci grondanti di sangue.
           </p>
         </Paragraph>
-        <Paragraph>
-          <h3 class="pb-8 text-center sm:text-right">La Loghia del Gufo</h3>
-          <CustomImage class="float-none mx-auto sm:float-right sm:ml-16" :src="getAssetPath('la_loghia_del_gufo.svg')"
-            :width="160" title="Portatori della Fiamma Bianca" alt="Portatori della Fiamma Bianca" />
+        <Paragraph reverse>
+          <template #title>
+            <h3 class="pb-8 text-center sm:text-right">La Loghia del Gufo</h3>
+          </template>
+          <Tooltip>
+            <template #trigger>
+              <CustomImage class="cursor-pointer" :src="getAssetPath('la_loghia_del_gufo.svg')" :width="imageWidth"
+                title="La loghia del gufo" alt="La loghia del gufo"
+                @click.prevent.stop="downloadImage('la_loghia_del_gufo.svg')" />
+            </template>
+            {{ t('common.download_image') }}
+          </Tooltip>
           <p class="text-justify">
             Ricercatori, avventurieri, spie e guerrieri. Questa è la Loghia del
             Gufo, il "Verdetto". Avventurieri ammantati che si spingono laddove
@@ -259,7 +325,9 @@ const downloadAttachment = async (): Promise<void> => {
       </Article>
       <Article>
         <Paragraph>
-          <h2 id="howItWorks" class="anchor">🧰 Come funziona?</h2>
+          <template #title>
+            <h2 id="howItWorks" class="anchor">🧰 Come funziona?</h2>
+          </template>
         </Paragraph>
         <Paragraph class="mb-4">
           <p class="text-justify">
@@ -279,7 +347,9 @@ const downloadAttachment = async (): Promise<void> => {
           </p>
         </Paragraph>
         <Paragraph>
-          <h3 class="pb-2 text-center sm:text-left">Come si crea? Semplice!</h3>
+          <template #title>
+            <h3 class="pb-2 text-center sm:text-left">Come si crea? Semplice!</h3>
+          </template>
         </Paragraph>
         <Paragraph class="mb-4">
           <p class="text-justify">
@@ -298,7 +368,9 @@ const downloadAttachment = async (): Promise<void> => {
           </p>
         </Paragraph>
         <Paragraph>
-          <h3 class="pb-2 text-center sm:text-left">I rinforzi</h3>
+          <template #title>
+            <h3 class="pb-2 text-center sm:text-left">I rinforzi</h3>
+          </template>
         </Paragraph>
         <Paragraph class="mb-4">
           <p class="text-justify">

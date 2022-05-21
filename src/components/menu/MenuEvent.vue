@@ -81,7 +81,8 @@ const downloadAttachment = async (): Promise<void> => {
     <div v-else class="animate_bg-fade flex h-full items-center justify-between gap-4">
       <Tooltip placement="bottom">
         <template #trigger>
-          <router-link class="menu-event__back flex items-center justify-start text-white-100" :class="{
+          <router-link class="menu-event__back flex items-center justify-start" :class="{
+            'text-white-100': !hasScrolledY(parsedScrollThreshold),
             'text-black-700': hasScrolledY(parsedScrollThreshold),
           }" aria-label="torna indietro" to="/">
             <IconArrow v-if="hasScrolledY(parsedScrollThreshold)"
@@ -91,7 +92,8 @@ const downloadAttachment = async (): Promise<void> => {
         </template>
         {{ t('common.go_home') }}
       </Tooltip>
-      <h2 v-if="hasScrolledY(parsedScrollThreshold)" class="font-display text-2xl text-white-100" :class="{
+      <h2 v-if="hasScrolledY(parsedScrollThreshold)" class="font-display text-2xl" :class="{
+        'text-white-100': !hasScrolledY(parsedScrollThreshold),
         'text-black-700': hasScrolledY(parsedScrollThreshold),
       }">
         La Pesca dei Burattini
@@ -104,12 +106,12 @@ const downloadAttachment = async (): Promise<void> => {
           :placement="tooltip ? tooltip.placement : undefined">
           <template #trigger>
             <router-link v-if="to"
-              class="menu-event__content__item cursor-pointer items-center font-display text-lg font-bold text-white-100"
-              :class="{
+              class="menu-event__content__item cursor-pointer items-center font-display text-lg font-bold" :class="{
                 'menu-event__content__item--active': isActive(to, true),
                 'menu-event__content__item--scrolled': hasScrolledY(
                   parsedScrollThreshold,
                 ),
+                'text-white-100': !hasScrolledY(parsedScrollThreshold),
                 'text-black-700': hasScrolledY(parsedScrollThreshold),
               }" :aria-label="label" :disabled="disabled" :to="to" exact>
               {{ label }}

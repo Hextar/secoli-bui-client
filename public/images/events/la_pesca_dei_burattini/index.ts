@@ -1,0 +1,6 @@
+export { default as ICercatoriDelSentieroDoratoThumbnail } from './i_cercatori_del_sentiero_dorato.svg?preset=article'
+export { default as IPortatoriDellaFiammaBiancaThumbnail } from './i_portatori_della_fiamma_bianca.svg?preset=article'
+export { default as LIneluttabileDomainThumbnail } from './l_ineluttabile_domani.svg?preset=article'
+export { default as LaLoghiaDelGufoThumbnail } from './la_loghia_del_gufo.svg?preset=article'
+export { default as LeCodeMozzateThumbnail } from './le_code_mozzate.svg?preset=article'
+export { default as LeFauciGrondantiThumbnail } from './le_fauci_grondanti.svg?preset=article'

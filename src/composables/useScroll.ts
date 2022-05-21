@@ -5,8 +5,8 @@ export const useScroll = () => {
   const { replace } = useRouter()
 
   // VARIABLES
-  const scrollY = ref(0);
-  const scrollX = ref(0);
+  const scrollY = ref(0)
+  const scrollX = ref(0)
 
   // METHODS
   const hasElemScrolledIntoView = (elem: Element): boolean => {
@@ -32,7 +32,7 @@ export const useScroll = () => {
     }, 150)
   }
 
-  const scrollToRef = (ref: Ref, callback: () => {}): void => {
+  const scrollToBottomOfRef = (ref: Ref, callback: () => {}): void => {
     const { offsetTop: top, offsetHeight: height } = ref.value
     window.scrollTo({ top: top + height, behavior: 'smooth' })
     callback()
@@ -57,6 +57,6 @@ export const useScroll = () => {
     scrollX: readonly(scrollX),
     hasScrolledY,
     hasScrolledX,
-    scrollToRef
-  }  
+    scrollToBottomOfRef
+  }
 }

@@ -9,7 +9,7 @@ export const MenuItems: MenuItemType[] = [
   },
   {
     label: 'Eventi',
-    to: { path: '/events' },
+    to: { path: '/events/future/la-pesca-dei-burattini' },
     tooltip: { content: 'Lista eventi', placement: 'bottom' },
     children: [
       {

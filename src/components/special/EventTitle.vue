@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, PropType, ref } from 'vue'
 
 // PROPS
 const props = defineProps({
@@ -15,7 +15,8 @@ const showPeach = computed((): boolean => counter.value >= 13)
 
 <template>
   <section class="event-title w-full flex flex-col justify-center items-center" :class="`sm:items-${props.align}`">
-    <h1 class="event-title mb-4 font-display text-6xl text-white-100">
+    <h1 class="event-title mb-4 font-display text-6xl text-white-100 text-center"
+      :class="`sm:text-${props.align === 'start' ? 'left' : (props.align === 'end' ? 'right' : 'center')}`">
       <template v-if="showPeach">
         <div class="inline-flex">
           La
@@ -33,7 +34,8 @@ const showPeach = computed((): boolean => counter.value >= 13)
         La <span @click="counter++">Pesca</span> dei Burattini
       </template>
     </h1>
-    <h2 class="mb-4 text-center font-display text-2xl uppercase text-white-100 sm:text-left">
+    <h2 class="mb-4 w-full font-display text-2xl uppercase text-white-100 text-center"
+      :class="`sm:text-${props.align === 'start' ? 'left' : (props.align === 'end' ? 'right' : 'center')}`">
       Di perdita e riscatto
     </h2>
   </section>
