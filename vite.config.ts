@@ -45,6 +45,13 @@ export default defineConfig({
     // https://github.com/hannoeru/vite-plugin-pages
     Pages({
       extensions: ['vue', 'md'],
+      extendRoute: (route) => {
+        console.warn(route.path)
+        if (route.path === '/events' || route.path === '/events/future') {
+          return { ...route, redirect: '/events/future/la-pesca-dei-burattini' }
+        }
+        return route
+      },
     }),
 
     // https://github.com/JohnCampionJr/vite-plugin-vue-layouts
@@ -178,10 +185,10 @@ export default defineConfig({
         },
       }),
     },
-    {
-      // The node modules Netlify will cache are in the top dir.
-      cacheDir: fileURLToPath(new URL('../node_modules/.images', import.meta.url)),
-    }),
+      {
+        // The node modules Netlify will cache are in the top dir.
+        cacheDir: fileURLToPath(new URL('../node_modules/.images', import.meta.url)),
+      }),
 
     // https://github.com/jpkleemans/vite-svg-loader
     svgLoader({ defaultImport: 'component' }),
@@ -194,7 +201,7 @@ export default defineConfig({
       pngquant: { quality: [0.8, 0.9], speed: 4, strip: true },
       svgo: {
         plugins: [{ name: 'removeViewBox' },
-          { name: 'removeEmptyAttrs', active: false },
+        { name: 'removeEmptyAttrs', active: false },
         ],
       },
     }),
