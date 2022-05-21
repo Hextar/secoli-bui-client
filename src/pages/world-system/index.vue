@@ -3,6 +3,7 @@ import { useMeta } from '~/composables'
 
 
 import { economiaHd } from '~/assets/images'
+import type { MenuItemType } from '~/types'
 
 // META
 useMeta({
@@ -12,6 +13,48 @@ useMeta({
 
 // VARIABLES
 const scrollThreshold = ref(200)
+const items: MenuItemType[] = [
+  {
+    label: 'Storia',
+    to: { path: '/world-system', hash: '#story' },
+    tooltip: {
+      content: 'Scrolla al paragrafo "Storia"',
+      placement: 'bottom',
+    },
+  },
+  {
+    label: 'Guerra',
+    to: { path: '/world-system', hash: '#war' },
+    tooltip: {
+      content: 'Scrolla al paragrafo "La Guerra dei Caduti"',
+      placement: 'bottom',
+    },
+  },
+  {
+    label: 'Braara oggi',
+    to: { path: '/world-system', hash: '#today' },
+    tooltip: {
+      content: 'Scrolla al paragrafo "Braara oggi"',
+      placement: 'bottom',
+    },
+  },
+  {
+    label: 'Geografia',
+    to: { path: '/world-system', hash: '#geography' },
+    tooltip: {
+      content: 'Scrolla al paragrafo "Geografia"',
+      placement: 'bottom',
+    },
+  },
+  {
+    label: 'Regioni',
+    to: { path: '/world-system', hash: '#regions' },
+    tooltip: {
+      content: 'Scrolla al paragrafo "Geografia"',
+      placement: 'bottom',
+    },
+  }
+]
 
 const onHeaderHeightResize = (height: number): void => {
   scrollThreshold.value = height - (86 / 2)
@@ -23,10 +66,10 @@ const onHeaderHeightResize = (height: number): void => {
     <Header ref="header" class="text-white-100" :image="economiaHd" height="420px"
       @resize:height="onHeaderHeightResize">
       <template #menu>
-        <MenuEvent :scroll-threshold="scrollThreshold" />
+        <MenuDetail :scroll-threshold="scrollThreshold" :items="items" />
       </template>
       <template #content>
-        <div id="info" class="anchor h-full flex flex-col items-center justify-center">
+        <div id="title" class="anchor h-full flex flex-col items-center justify-center">
           <div class="flex flex-col" itemprop="name">
             <h1 class="event-title font-display text-6xl text-white-100 text-center">Ambientazione</h1>
           </div>
@@ -89,7 +132,7 @@ const onHeaderHeightResize = (height: number): void => {
       </Article>
       <Article>
         <Paragraph>
-          <h2 id="incipit" class="anchor">La Guerra dei Caduti</h2>
+          <h2 id="war" class="anchor">La Guerra dei Caduti</h2>
         </Paragraph>
         <Paragraph class="mb-4">
           <p class="text-justify">
@@ -137,7 +180,7 @@ const onHeaderHeightResize = (height: number): void => {
       </Article>
       <Article>
         <Paragraph>
-          <h2 class="anchor">Braara oggi</h2>
+          <h2 id="today" class="anchor">Braara oggi</h2>
         </Paragraph>
         <Paragraph class="mb-4">
           <p class="text-justify">
@@ -186,7 +229,7 @@ const onHeaderHeightResize = (height: number): void => {
       </Article>
       <Article>
         <Paragraph>
-          <h2 id="regions" class="anchor">Geografia</h2>
+          <h2 id="geography" class="anchor">Geografia</h2>
         </Paragraph>
         <Paragraph class="mb-4">
           <p class="text-justify">

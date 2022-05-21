@@ -2,9 +2,12 @@
 import axios from 'axios'
 import pkg from 'file-saver'
 
+import { ref, Ref } from 'vue'
+
 import { useMeta, useViewport } from '~/composables'
 
 import { IconClock, IconFacebook, IconMoney, IconPin } from '~/assets/icons'
+import type { MenuItemType } from '~/types'
 
 import {
   ICercatoriDelSentieroDoratoThumbnail,
@@ -25,8 +28,41 @@ useMeta({
 })
 
 // VARIABLES
-const { saveAs } = pkg
 const scrollThreshold = ref(200)
+const loading: Ref<Boolean> = ref(false)
+const items: MenuItemType[] = [
+  {
+    label: 'Info',
+    to: { path: '/events/future/la-pesca-dei-burattini', hash: '#info' },
+    tooltip: {
+      content: 'Scrolla al paragrafo "Informazioni"',
+      placement: 'bottom',
+    },
+    homepage: true,
+  },
+  {
+    label: 'Incipit',
+    to: { path: '/events/future/la-pesca-dei-burattini', hash: '#incipit' },
+    tooltip: { content: 'Scrolla al paragrafo "Incipit"', placement: 'bottom' },
+    homepage: true,
+  },
+  {
+    label: 'Fazioni',
+    to: { path: '/events/future/la-pesca-dei-burattini', hash: '#fazioni' },
+    tooltip: { content: 'Scrolla al paragrafo "Fazioni"', placement: 'bottom' },
+    homepage: true,
+  },
+  {
+    label: 'Come funziona?',
+    to: { path: '/events/future/la-pesca-dei-burattini', hash: '#howItWorks' },
+    tooltip: {
+      content: 'Scrolla al paragrafo "Come funziona?"',
+      placement: 'bottom',
+    },
+    homepage: true,
+  },
+]
+const { saveAs } = pkg
 const { t } = useI18n()
 
 // COMPUTED
@@ -60,10 +96,12 @@ const onHeaderHeightResize = (height: number): void => {
 }
 
 const downloadAttachment = async (): Promise<void> => {
+  loading.value = true
   axios
     .get('/files/iscrizione.pdf', { responseType: 'blob' })
-    .then((response) => saveAs(response.data, 'secoli-bui-iscrizione.pdf'))
+    .then(response => saveAs(response.data, 'secoli-bui-iscrizione.pdf'))
     .catch((err: unknown) => console.error(err))
+    .finally(() => (loading.value = false))
 }
 
 const downloadImage = async (url: string): Promise<void> => {
@@ -79,7 +117,21 @@ const downloadImage = async (url: string): Promise<void> => {
     <Header ref="header" class="text-white-100" :image="backgroundLogoHd" :lazy-image="backgroundLazyLogoHd"
       height="400px" @resize:height="onHeaderHeightResize">
       <template #menu>
-        <MenuEvent :scroll-threshold="scrollThreshold" />
+        <MenuDetail :scroll-threshold="scrollThreshold" :items="items" back-title="La Pesca dei Burattini">
+          <template #cta>
+            <Tooltip placement="bottom">
+              <template #trigger>
+                <CustomButton class="w-[112px]" variant="filled" color="primary" size="small" :disabled="!!loading"
+                  @click.prevent.stop="downloadAttachment">
+                  <span class="font-display text-lg font-bold">
+                    {{ loading ? t('common.loading') : t('common.subscribe') }}
+                  </span>
+                </CustomButton>
+              </template>
+              Scarica il documento di iscrizione
+            </Tooltip>
+          </template>
+        </MenuDetail>
       </template>
       <template #content>
         <div id="info" class="anchor flex flex-col items-start justify-center pt-16 pb-0 sm:pb-8">

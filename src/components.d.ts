@@ -15,6 +15,7 @@ declare module '@vue/runtime-core' {
     Header: typeof import('./components/layout/Header.vue')['default']
     Info: typeof import('./components/common/Info.vue')['default']
     Logo: typeof import('./components/common/logo/Logo.vue')['default']
+    MenuDetail: typeof import('./components/menu/MenuDetail.vue')['default']
     MenuEvent: typeof import('./components/menu/MenuEvent.vue')['default']
     MenuFooter: typeof import('./components/menu/MenuFooter.vue')['default']
     MenuMobile: typeof import('./components/menu/MenuMobile.vue')['default']

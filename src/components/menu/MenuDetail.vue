@@ -1,8 +1,5 @@
 <script setup lang="ts">
-import axios from 'axios'
-import pkg from 'file-saver'
-import type { Ref } from 'vue'
-import { computed, ref } from 'vue'
+import { computed, PropType } from 'vue'
 
 import { IconArrow } from '~/assets/icons'
 
@@ -12,44 +9,11 @@ import type { MenuItemType } from '~/types'
 // PROPS
 const props = defineProps({
   scrollThreshold: { type: Number, default: 200 },
+  backTitle: { type: String, default: 'Torna alla home' },
+  items: { type: Array as PropType<MenuItemType[]>, default: () => [] },
+  cta: { type: Boolean, default: () => [] },
 })
 const { t } = useI18n()
-
-// VARIABLES
-const { saveAs } = pkg
-const loading: Ref<Boolean> = ref(false)
-const items: MenuItemType[] = [
-  {
-    label: 'Info',
-    to: { path: '/events/future/la-pesca-dei-burattini', hash: '#info' },
-    tooltip: {
-      content: 'Scrolla al paragrafo "Informazioni"',
-      placement: 'bottom',
-    },
-    homepage: true,
-  },
-  {
-    label: 'Incipit',
-    to: { path: '/events/future/la-pesca-dei-burattini', hash: '#incipit' },
-    tooltip: { content: 'Scrolla al paragrafo "Incipit"', placement: 'bottom' },
-    homepage: true,
-  },
-  {
-    label: 'Fazioni',
-    to: { path: '/events/future/la-pesca-dei-burattini', hash: '#fazioni' },
-    tooltip: { content: 'Scrolla al paragrafo "Fazioni"', placement: 'bottom' },
-    homepage: true,
-  },
-  {
-    label: 'Come funziona?',
-    to: { path: '/events/future/la-pesca-dei-burattini', hash: '#howItWorks' },
-    tooltip: {
-      content: 'Scrolla al paragrafo "Come funziona?"',
-      placement: 'bottom',
-    },
-    homepage: true,
-  },
-]
 
 // COMPUTED
 const { aboveTablet, belowTablet } = useViewport()
@@ -58,15 +22,6 @@ const parsedScrollThreshold = computed(() => props.scrollThreshold - 54)
 // METHODS
 const { hasScrolledY } = useScroll()
 const { isActive } = useMenuItem()
-
-const downloadAttachment = async (): Promise<void> => {
-  loading.value = true
-  axios
-    .get('/files/iscrizione.pdf', { responseType: 'blob' })
-    .then(response => saveAs(response.data, 'secoli-bui-iscrizione.pdf'))
-    .catch((err: unknown) => console.error(err))
-    .finally(() => (loading.value = false))
-}
 </script>
 
 <template>
@@ -96,11 +51,11 @@ const downloadAttachment = async (): Promise<void> => {
         'text-white-100': !hasScrolledY(parsedScrollThreshold),
         'text-black-700': hasScrolledY(parsedScrollThreshold),
       }">
-        La Pesca dei Burattini
+        {{ props.backTitle }}
       </h2>
     </div>
     <div v-if="aboveTablet" class="menu-event__content justify-satrt items-center gap-8 md:flex">
-      <div v-for="({ label, to, tooltip, disabled }, idx) in items" :key="`${label}-${idx}`"
+      <div v-for="({ label, to, tooltip, disabled }, idx) in props.items" :key="`${label}-${idx}`"
         class="flex items-center justify-center">
         <Tooltip :disabled="tooltip ? tooltip.disabled : undefined"
           :placement="tooltip ? tooltip.placement : undefined">
@@ -120,27 +75,12 @@ const downloadAttachment = async (): Promise<void> => {
           {{ tooltip ? tooltip.content : '' }}
         </Tooltip>
       </div>
-      <Tooltip placement="bottom">
-        <template #trigger>
-          <CustomButton class="w-[112px]" variant="filled" color="primary" size="small" :disabled="!!loading"
-            @click.prevent.stop="downloadAttachment">
-            <span class="font-display text-lg font-bold">
-              {{ loading ? t('common.loading') : t('common.subscribe') }}
-            </span>
-          </CustomButton>
-        </template>
-        Scarica il documento di iscrizione
-      </Tooltip>
+      <slot name="cta" />
     </div>
   </section>
   <MenuMobile v-if="belowTablet" :items="items" :scrolled="hasScrolledY(parsedScrollThreshold)" match-hash>
     <template #action>
-      <CustomButton class="w-[112px]" variant="filled" color="primary" size="small" :disabled="!!loading"
-        @click.prevent.stop="downloadAttachment">
-        <span class="font-display text-lg font-bold">
-          {{ loading ? t('common.loading') : t('common.subscribe') }}
-        </span>
-      </CustomButton>
+      <slot name="cta" />
     </template>
   </MenuMobile>
 </template>
