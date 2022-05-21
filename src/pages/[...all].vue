@@ -1,6 +1,15 @@
 <script setup lang="ts">
 import { backgroundLazyLogoHd, backgroundLogoHd } from '~/assets/images'
 
+import { useMeta } from '~/composables'
+
+// META
+useMeta({
+  title: 'Pagina non trovata',
+  description: 'scopri i prossimi eventi LARP italiani',
+})
+
+// VARIABLES
 const { t } = useI18n()
 </script>
 

@@ -2,7 +2,7 @@
 import axios from 'axios'
 import pkg from 'file-saver'
 
-import { useViewport } from '~/composables'
+import { useMeta, useViewport } from '~/composables'
 
 import { IconClock, IconFacebook, IconMoney, IconPin } from '~/assets/icons'
 
@@ -16,6 +16,13 @@ import {
   backgroundLazyLogoHd,
   backgroundLogoHd,
 } from '~/assets/images'
+
+// META
+useMeta({
+  title: 'Prossimo evento - La pesca dei burattini',
+  description: 'La pesca dei burattini - evento LARP, 18 Giugno nel Sulcis',
+  keywords: ['sulcis', 'matzaccara', 'carloforte', 'sud sardegna'],
+})
 
 // VARIABLES
 const { saveAs } = pkg

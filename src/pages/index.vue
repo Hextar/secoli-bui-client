@@ -1,15 +1,23 @@
 <script setup lang="ts">
 import { backgroundLazyLogoHd, backgroundLogoHd } from '~/assets/images'
 
-import { useViewport } from '~/composables'
+import { useMeta, useViewport } from '~/composables'
 
+// META
+useMeta({
+  title: 'Homepage',
+  description: 'scopri i prossimi eventi LARP italiani',
+})
+
+// VARIABLES
 const { t } = useI18n()
 
+// COMPUTED
 const { isMobile, belowTablet } = useViewport()
 </script>
 
 <template>
-  <Header class="text-white-100" :image="backgroundLogoHd" :lazy-image="backgroundLazyLogoHd" show-arrow
+  <Header class="text-whitesecoli bui100" :image="backgroundLogoHd" :lazy-image="backgroundLazyLogoHd" show-arrow
     :height="belowTablet ? '100%' : '90vh'">
     <template #menu>
       <MenuNormal />
