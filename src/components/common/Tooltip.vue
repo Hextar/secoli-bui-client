@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { PropType, ref, Ref } from 'vue'
+import { PropType, ref } from 'vue'
 
-import { usePopperjs, Trigger } from 'vue-use-popperjs'
+import { Popper } from 'vue-use-popperjs'
 
 import { TooltipDelay } from '~/types'
 
@@ -11,61 +11,58 @@ export type TooltipPosition =
   | 'bottom-start' | 'bottom' | 'bottom-end'
   | 'left-start' | 'left' | 'left-end'
 
+export type TooltipTrigger =
+  | 'hover'
+  | 'focus'
+  | 'click-to-open';
+  
 // PROPS
 const props = defineProps({
-  trigger: { type: String as PropType<Trigger>, default: 'hover' },
+  trigger: { type: String as PropType<TooltipTrigger>, default: 'hover'},
   placement: { type: String as PropType<TooltipPosition>, default: 'bottom' },
-  forceShow: { Boolean, default: false },
   delay: { type: Object as PropType<TooltipDelay>, default: { show: 150, hide: 150 } },
-  delayOnMouseout: { type: Boolean, default: false },
+  disabled: { type: Boolean, default: false },
+  forceShow: { Boolean, default: false },
 })
 
 // VARIABLES
-const trigger: Ref<Element> = ref<any>()
-const tooltip: Ref<HTMLElement> = ref<any>()
-
-const { visible } = usePopperjs(trigger, tooltip, {
-  trigger: props.trigger,
-  forceShow: props.forceShow,
-  delayOnMouseover: props.delay.show ? props.delay.show : 0,
-  delayOnMouseout: props.delay.hide ? props.delay.hide : 0,
-  placement: props.placement,
-  modifiers: [
-    {
-      name: 'offset',
-      options: {
-        offset: [0, -8],
-      },
+const teleportToBody = ref(false);
+const useTransition = ref(true);
+const modifiers = [
+  {
+    name: "offset",
+    options: {
+      offset: [0, 8],
     },
-  ],
-})
+  },
+];
 </script>
 
 <template>
   <div id="root">
-    <div
-      :tabindex="props.trigger === 'focus' ? 0 : undefined"
-      ref="trigger"
-      class="tooltip__trigger"
-      aria-describedby="tooltip"
-      v-bind="$attrs"
+    <Popper
+      :reference-props="{ id: 'trigger' }"
+      :popper-props="{ id: 'tooltip' }"
+      :trigger="props.trigger || 'hover'"
+      :disabled="disabled"
+      :teleport-props="teleportToBody ? { to: 'body' } : undefined"
+      :transition-props="useTransition ? { name: 'fade' } : undefined"
+      :placement="placement"
+      :modifiers="modifiers"
+      :delay-on-mouseover="delay.show"
+      :delay-on-mouseout="delay.hide"
+      :force-show="forceShow"
     >
-      <slot name="trigger"/>
-    </div>
-    <div
-      ref="tooltip"
-      id="tooltip"
-      role="tooltip"
-    >
+      <template #reference>
+        <slot name="trigger"></slot>
+      </template>
       <span
-        v-if="visible"
         class="tooltip__content pa-2 bg-black-700 text-base rounded"
-        :class="`tooltip__content--${position}`"
       >
         <slot />
+        <div id="arrow" data-popper-arrow />
       </span>
-      <div id="arrow" data-popper-arrow />
-    </div>
+    </Popper>
   </div>
 </template>
 
