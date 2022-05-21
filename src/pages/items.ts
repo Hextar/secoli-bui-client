@@ -29,7 +29,6 @@ export const MenuItems: MenuItemType[] = [
     label: 'Ambientazione',
     to: { path: '/world-system' },
     tooltip: { content: 'Coming soon', placement: 'bottom' },
-    disabled: true,
     children: [
       {
         label: 'Storia di Braara',

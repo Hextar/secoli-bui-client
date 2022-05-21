@@ -18,12 +18,12 @@ const { isMobile, belowTablet } = useViewport()
 
 <template>
   <Header class="text-whitesecoli bui100" :image="backgroundLogoHd" :lazy-image="backgroundLazyLogoHd" show-arrow
-    :height="belowTablet ? '100%' : '90vh'">
+    :height="belowTablet ? '100%' : '60vh'">
     <template #menu>
       <MenuNormal />
     </template>
     <template #content>
-      <div class="flex w-full flex-col items-center justify-center">
+      <div class="flex w-full flex-col items-center justify-center pt-32">
         <h2 class="my-4 text-center font-display text-xl uppercase text-white-100" :class="{ 'mb-12': isMobile }" exact>
           {{ t('homepage.next_event') }}
         </h2>

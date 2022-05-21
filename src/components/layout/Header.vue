@@ -31,9 +31,9 @@ const onScroll = (): void => {
   scrollToBottomOfRef(header, () => (scrolled.value = true))
 }
 
-const { height } = useBoundingRect(header)
+const { height: headerHeight } = useBoundingRect(header)
 
-watch(height, ((val: number) => {
+watch(headerHeight, ((val: number) => {
   emit('resize:height', val)
 }), { immediate: true, deep: true })
 </script>
@@ -42,8 +42,7 @@ watch(height, ((val: number) => {
   <section ref="header" class="header flex items-start justify-center" v-bind="$attrs">
     <CustomImage class="header__background pointer-events-none w-full" :src="image" title="Background event cover"
       alt="Background event cover" above-the-fold />
-    <div
-      class="header__content items-space-betwen container flex flex-col justify-start pb-8 md:justify-between md:pb-0">
+    <div class="header__content container flex flex-col justify-start pb-8 md:justify-center md:pb-0">
       <div class="header__content__menu flex flex-col items-center justify-center pt-6 md:pt-8">
         <slot name="menu" />
       </div>

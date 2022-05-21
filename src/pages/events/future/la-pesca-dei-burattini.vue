@@ -82,7 +82,7 @@ const downloadImage = async (url: string): Promise<void> => {
         <MenuEvent :scroll-threshold="scrollThreshold" />
       </template>
       <template #content>
-        <div id="info" class="anchor pb- flex flex-col items-start justify-center pt-16 pb-0 sm:pb-8">
+        <div id="info" class="anchor flex flex-col items-start justify-center pt-16 pb-0 sm:pb-8">
           <div class="mb-8 flex flex-col" itemprop="name">
             <EventTitle align="start" />
           </div>
@@ -170,7 +170,7 @@ const downloadImage = async (url: string): Promise<void> => {
         <Paragraph>
           <h2 id="fazioni" class="anchor">⚔️ Fazioni</h2>
         </Paragraph>
-        <Paragraph class="mb-4">
+        <Paragraph class="mb-4" horizontal>
           <template #title>
             <h3 class="pb-4 text-center sm:text-left">
               I Portatori della Fiamma Bianca
@@ -197,7 +197,7 @@ const downloadImage = async (url: string): Promise<void> => {
             fermarvi, o voi che avete acceso la Fiamma bianca nel cuore.
           </p>
         </Paragraph>
-        <Paragraph reverse>
+        <Paragraph reverse horizontal>
           <template #title>
             <h3 class="pb-4 text-center sm:text-right">Le Code Mozzate</h3>
           </template>
@@ -219,7 +219,7 @@ const downloadImage = async (url: string): Promise<void> => {
             Questa non è una bella vita, ma sarà molto peggiore per gli altri.
           </p>
         </Paragraph>
-        <Paragraph>
+        <Paragraph horizontal>
           <template #title>
             <h3 class="pb-4 text-center sm:text-left">L'Ineluttabile Domani</h3>
           </template>
@@ -246,7 +246,7 @@ const downloadImage = async (url: string): Promise<void> => {
             cambiare.
           </p>
         </Paragraph>
-        <Paragraph reverse>
+        <Paragraph reverse horizontal>
           <template #title>
             <h3 class="pb-8 text-center sm:text-right">
               I Cercatori del Sentiero Dorato
@@ -275,7 +275,7 @@ const downloadImage = async (url: string): Promise<void> => {
             Iniziate a rivedere un sentiero lungo la via.
           </p>
         </Paragraph>
-        <Paragraph>
+        <Paragraph horizontal>
           <template #title>
             <h3 class="pb-4 text-center sm:text-left">Le Fauci Grondanti</h3>
           </template>
@@ -301,7 +301,7 @@ const downloadImage = async (url: string): Promise<void> => {
             delle dolci labbra restano solo fauci grondanti di sangue.
           </p>
         </Paragraph>
-        <Paragraph reverse>
+        <Paragraph reverse horizontal>
           <template #title>
             <h3 class="pb-8 text-center sm:text-right">La Loghia del Gufo</h3>
           </template>
