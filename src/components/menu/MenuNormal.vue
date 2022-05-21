@@ -22,7 +22,7 @@ const { hasScrolledY } = useScroll()
 </script>
 
 <template>
-  <div class="menu" :class="{
+  <section class="menu" :class="{
     'menu-event--scrolled': hasScrolledY(parsedScrollThreshold),
     'backdrop-blur': hasScrolledY(parsedScrollThreshold),
   }" v-bind="$attrs">
@@ -45,7 +45,7 @@ const { hasScrolledY } = useScroll()
         </Tooltip>
       </div>
     </template>
-  </div>
+  </section>
   <MenuMobile v-if="belowTablet" :items="items" />
 </template>
 
@@ -62,6 +62,10 @@ const { hasScrolledY } = useScroll()
 
   &--scrolled {
     padding: 4px 0;
+  }
+
+  &__logo {
+    overflow: hidden;
   }
 
   &__content {

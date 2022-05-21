@@ -63,7 +63,7 @@ const iconPosition = computed((): string =>
 <template>
   <Tooltip :disabled="!tooltip">
     <template #trigger>
-      <div :is="props.tag" class="button flex items-center justify-center" :class="{
+      <component :is="props.tag" class="button flex items-center justify-center" :class="{
         [`px-${padding}`]: padding > 0,
         [`button--size--${props.size}`]: true,
         [`button--color--${props.color}`]: true,
@@ -79,7 +79,7 @@ const iconPosition = computed((): string =>
         <span v-if="hasSuffix" class="button__slot">
           <slot name="suffix-icon" />
         </span>
-      </div>
+      </component>
     </template>
     <span>{{ tooltip }}</span>
   </Tooltip>

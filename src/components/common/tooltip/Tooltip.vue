@@ -3,6 +3,8 @@ import { PropType, ref } from 'vue'
 
 import { Popper } from 'vue-use-popperjs'
 
+import { useViewport } from '~/composables'
+
 import { TooltipDelay, TooltipPosition, TooltipTrigger } from '.';
 
 // PROPS
@@ -13,6 +15,7 @@ const props = defineProps({
   disabled: { type: Boolean, default: false },
   nudgeTop: { type: Number, default: 0 },
   nudgeRight: { type: Number, default: 0 },
+  light: { type: Boolean, default: false },
   forceShow: { Boolean, default: false },
 })
 
@@ -40,16 +43,26 @@ const modifiers = [
     }
   }
 ];
+
+// COMPUTED
+const { isMobile } = useViewport()
+
+const trigger = computed((): TooltipTrigger => isMobile.value ? 'click-to-open' : props.trigger)
+const delay = computed((): TooltipDelay => isMobile.value ? { show: 0, hide: 0 } : props.delay)
 </script>
 
 <template>
-  <Popper :reference-props="{ id: 'trigger' }" :popper-props="{ id: 'tooltip' }" :trigger="props.trigger || 'hover'"
-    :disabled="disabled" :transition-props="useTransition ? { name: 'fade' } : undefined" :placement="placement"
-    :modifiers="modifiers" :delay-on-mouseover="delay.show" :delay-on-mouseout="delay.hide" :force-show="forceShow">
+  <Popper :reference-props="{ id: 'trigger' }" :popper-props="{ id: 'tooltip' }" :trigger="trigger"
+    :disabled="props.disabled" :transition-props="useTransition ? { name: 'fade' } : undefined"
+    :placement="props.placement" :modifiers="modifiers" :delay-on-mouseover="delay.show" :delay-on-mouseout="delay.hide"
+    :force-show="props.forceShow">
     <template #reference>
       <slot name="trigger"></slot>
     </template>
-    <span class="tooltip__content pa-2 bg-black-700 text-base rounded">
+    <span class="tooltip__content pa-2 bg-black-700 text-base rounded" :class="{
+      'bg-white-100 text-black-700': light,
+      'bg-black-700 text-white-100': !light
+    }">
       <slot />
       <div id="arrow" data-popper-arrow />
     </span>

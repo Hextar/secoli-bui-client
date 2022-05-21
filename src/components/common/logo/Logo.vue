@@ -23,28 +23,11 @@ const width = computed((): number => SIZE[props.size])
 </script>
 
 <template>
-  <router-link
-    v-if="props.homepage"
-    class="menu-event__back flex cursor-pointer items-center justify-start text-white-100"
-    to="/"
-    aria-label="secolid bui logo"
-    exact
-    v-bind="$attrs"
-  >
-    <Image
-      :src="secoliBuiLogo"
-      :width="width"
-      alt="Secoli Bui logo"
-      title="Secoli Bui logo"
-      above-the-fold
-    />
+  <router-link v-if="props.homepage"
+    class="menu-event__back flex cursor-pointer items-center justify-start text-white-100" to="/"
+    aria-label="secolid bui logo" exact v-bind="$attrs">
+    <CustomImage :src="secoliBuiLogo" :width="width" alt="Secoli Bui logo" title="Secoli Bui logo" above-the-fold />
   </router-link>
-  <Image
-    v-else
-    :src="secoliBuiLogo"
-    :width="width"
-    alt="Secoli Bui logo"
-    title="Secoli Bui logo"
-    above-the-fold
-  />
+  <CustomImage v-else :src="secoliBuiLogo" :width="width" alt="Secoli Bui logo" title="Secoli Bui logo"
+    above-the-fold />
 </template>

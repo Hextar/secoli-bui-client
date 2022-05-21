@@ -37,7 +37,7 @@ onMounted(() => setTimeout(() => (loaded.value = true), 510))
 </script>
 
 <template>
-  <div class="menu-mobile flex cursor-pointer select-none flex-wrap items-center justify-start gap-8" :class="{
+  <section class="menu-mobile flex cursor-pointer select-none flex-wrap items-center justify-start gap-8" :class="{
     'menu-mobile--scrolled': props.scrolled,
   }" v-bind="$attrs">
     <InputHamburgherSymmetric v-if="randSlash === 1"
@@ -52,11 +52,11 @@ onMounted(() => setTimeout(() => (loaded.value = true), 510))
       'menu-mobile__toggle__hamburgher--close': open,
       'menu-mobile__toggle__hamburgher--scrolled': props.scrolled,
     }" @click="open = !open" />
-  </div>
+  </section>
   <div v-if="open" class="menu-mobile__overlay flex flex-col items-center justify-center gap-12">
     <div v-for="({ label, to, tooltip, disabled }, idx) in props.items" :key="`${label}-${idx}`"
       class="menu-mobile__overlay__item animate__gentle-slide-from-above cursor-pointer font-display text-lg font-bold text-white-100">
-      <Tooltip :disabled="tooltip && tooltip.disabled" :placement="tooltip && tooltip.placement">
+      <Tooltip :disabled="tooltip && tooltip.disabled" :placement="tooltip && tooltip.placement" light>
         <template #trigger>
           <router-link v-if="to" class="menu-mobile__overlay__item" :class="{
             'menu-mobile__overlay__item--active': isActive(to, props.matchHash),

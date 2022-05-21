@@ -6,11 +6,12 @@ import '@vue/runtime-core'
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     Article: typeof import('./components/common/typography/Article.vue')['default']
-    Button: typeof import('./components/common/button/Button.vue')['default']
+    CustomButton: typeof import('./components/common/button/CustomButton.vue')['default']
+    CustomImage: typeof import('./components/common/image/CustomImage.vue')['default']
     Decoration: typeof import('./components/common/Decoration.vue')['default']
+    EventTitle: typeof import('./components/special/EventTitle.vue')['default']
     Footer: typeof import('./components/layout/Footer.vue')['default']
     Header: typeof import('./components/layout/Header.vue')['default']
-    Image: typeof import('./components/common/image/Image.vue')['default']
     Info: typeof import('./components/common/Info.vue')['default']
     Logo: typeof import('./components/common/logo/Logo.vue')['default']
     MenuEvent: typeof import('./components/menu/MenuEvent.vue')['default']
@@ -23,6 +24,7 @@ declare module '@vue/runtime-core' {
     RouterView: typeof import('vue-router')['RouterView']
     Spacer: typeof import('./components/common/Spacer.vue')['default']
     SplashScreen: typeof import('./components/layout/SplashScreen.vue')['default']
+    Title: typeof import('./components/event/title.vue')['default']
     Tooltip: typeof import('./components/common/tooltip/Tooltip.vue')['default']
   }
 }

@@ -32,11 +32,11 @@ const onScroll = (): void => {
 </script>
 
 <template>
-  <div ref="header" class="header flex items-start justify-center" v-bind="$attrs">
-    <Image class="header__background pointer-events-none w-full" :src="image" title="Background event cover"
+  <section ref="header" class="header flex items-start justify-center" v-bind="$attrs">
+    <CustomImage class="header__background pointer-events-none w-full" :src="image" title="Background event cover"
       alt="Background event cover" above-the-fold />
     <div
-      class="header__content items-space-betwen container flex flex-col justify-start px-8 pb-8 sm:px-0 md:justify-between md:pb-0">
+      class="header__content items-space-betwen container flex flex-col justify-start pb-8 md:justify-between md:pb-0">
       <div class="header__content__menu flex flex-col items-center justify-center pt-6 md:pt-8">
         <slot name="menu" />
       </div>
@@ -49,7 +49,7 @@ const onScroll = (): void => {
           @click="onScroll" />
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <style lang="scss" scoped>

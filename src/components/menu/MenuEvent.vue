@@ -70,7 +70,7 @@ const downloadAttachment = async (): Promise<void> => {
 </script>
 
 <template>
-  <div class="menu-event flex justify-between py-4 px-8" :class="{
+  <section class="menu-event flex justify-between py-4 px-8" :class="{
     'menu-event--scrolled': hasScrolledY(parsedScrollThreshold),
     'backdrop-blur': hasScrolledY(parsedScrollThreshold),
   }" v-bind="$attrs">
@@ -118,22 +118,27 @@ const downloadAttachment = async (): Promise<void> => {
           {{ tooltip ? tooltip.content : '' }}
         </Tooltip>
       </div>
-      <Button class="w-[112px]" variant="filled" color="primary" size="small" :disabled="!!loading"
-        @click.prevent.stop="downloadAttachment">
-        <span class="font-display text-lg font-bold">
-          {{ loading ? t('common.loading') : t('common.subscribe') }}
-        </span>
-      </Button>
+      <Tooltip placement="bottom">
+        <template #trigger>
+          <CustomButton class="w-[112px]" variant="filled" color="primary" size="small" :disabled="!!loading"
+            @click.prevent.stop="downloadAttachment">
+            <span class="font-display text-lg font-bold">
+              {{ loading ? t('common.loading') : t('common.subscribe') }}
+            </span>
+          </CustomButton>
+        </template>
+        Scarica il documento di iscrizione
+      </Tooltip>
     </div>
-  </div>
+  </section>
   <MenuMobile v-if="belowTablet" :items="items" :scrolled="hasScrolledY(parsedScrollThreshold)" match-hash>
     <template #action>
-      <Button class="w-[112px]" variant="filled" color="primary" size="small" :disabled="!!loading"
+      <CustomButton class="w-[112px]" variant="filled" color="primary" size="small" :disabled="!!loading"
         @click.prevent.stop="downloadAttachment">
         <span class="font-display text-lg font-bold">
           {{ loading ? t('common.loading') : t('common.subscribe') }}
         </span>
-      </Button>
+      </CustomButton>
     </template>
   </MenuMobile>
 </template>

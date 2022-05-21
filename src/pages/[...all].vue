@@ -19,9 +19,9 @@ meta:
         <h1 class="mb-8 p-8 text-center font-display text-5xl text-white-100">
           {{ t('not_found') }}: [{{ t('common.no_effect') }}]
         </h1>
-        <Button size="medium" tag="router-link" to="/" :alt="t('common.go_home')">
+        <CustomButton size="medium" tag="router-link" to="/" :alt="t('common.go_home')">
           {{ t('common.go_home') }}
-        </Button>
+        </CustomButton>
       </div>
     </template>
   </Header>
