@@ -75,9 +75,9 @@ const downloadImage = async (url: string): Promise<void> => {
 </script>
 
 <template>
-  <section class="event-detail">
+  <section class="event-detail" itemscope itemtype="https://schema.org/Event">
     <Header ref="header" class="text-white-100" :image="backgroundLogoHd" :lazy-image="backgroundLazyLogoHd"
-      height="400px" itemscope itemtype="https://schema.org/Event" @resize:height="onHeaderHeightResize">
+      height="400px" @resize:height="onHeaderHeightResize">
       <template #menu>
         <MenuEvent :scroll-threshold="scrollThreshold" />
       </template>
@@ -92,22 +92,23 @@ const downloadImage = async (url: string): Promise<void> => {
                 <IconPin />
               </template>
               <br />
-              <span class="pl-2" itemprop="location">
+              <span class="pl-2" itemprop="location" itemscope itemtype="http://schema.org/Place">
                 •
                 <a class="text-action-500 hover:underline"
                   href="https://www.google.com/maps/place/39%C2%B007'32.1%22N+8%C2%B026'27.4%22E/@39.1256265,8.438438,2283m/data=!3m1!1e3!4m6!3m5!1s0!7e2!8m2!3d39.1255724!4d8.440949"
                   rel="noopener noreferrer" title="indicazioni matzaccara" alt="indicazioni matzaccara" target="_blank">
-                  Sardegna, Matzaccara - Pineta di Punt’e Trettu
+                  <span itemprop="name address">Sardegna, Matzaccara - Pineta di Punt’e Trettu</span>
                 </a>
               </span>
               <br />
             </Info>
-            <Info class="w-full sm:w-auto" label="Quando" itemprop="startDate">
+            <Info class="w-full sm:w-auto" label="Quando">
               <template #icon>
                 <IconClock />
               </template>
               <br />
-              <span class="pl-2"> • 18/06/2022 15:00-23:00 </span><br />
+              <time class="pl-2" itemprop="startDate" datetime="2022-06-18T14:30:00Z"> • 18/06/2022 14:30 </time><br />
+              <time class="pl-2" itemprop="endDate" datetime="2022-06-18T23:30:00Z"> • 18/06/2022 23:00 </time><br />
             </Info>
             <Info class="w-full sm:w-auto" label="Quota" itemprop="offers" itemscope
               itemtype="https://schema.org/Offer">
@@ -143,7 +144,7 @@ const downloadImage = async (url: string): Promise<void> => {
         </div>
       </template>
     </Header>
-    <div class="bg-white-100 pb-16">
+    <div class="bg-white-100 pb-16" itemprop="description">
       <Article>
         <Paragraph>
           <h2 id="incipit" class="anchor">📖 Incipit</h2>
@@ -390,6 +391,11 @@ const downloadImage = async (url: string): Promise<void> => {
             assegnarti come Rinforzo, un eroe dalla scheda già pronta. Questo
             sistema é stato pensato per consentire anche a chi si é liberato
             "all'ultimo" di partecipare comunque!
+          </p>
+        </Paragraph>
+        <Paragraph class="mb-4">
+          <p class="text-justify" itemprop="organizer performer">
+            Evento organizzato in collaborazione con la Mad² Factory
           </p>
         </Paragraph>
       </Article>
