@@ -11,8 +11,8 @@ import type { MenuItemType } from '~/types'
 
 // META
 useMeta({
-  title: 'Ambientazione - La pesca dei burattini',
-  description: 'Ambientazione'
+  title: 'Che cosa è il larp',
+  description: 'Scopri che cosa è il gioco di ruolo dal vivo'
 })
 
 // VARIABLES

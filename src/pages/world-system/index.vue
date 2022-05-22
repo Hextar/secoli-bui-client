@@ -13,8 +13,8 @@ import type { MenuItemType } from '~/types'
 
 // META
 useMeta({
-  title: 'Ambientazione - La pesca dei burattini',
-  description: 'Ambientazione'
+  title: 'Ambientazione',
+  description: 'Scopri Braara, l\'ambientazione dark fantasy di Secoli Bui'
 })
 
 // VARIABLES
