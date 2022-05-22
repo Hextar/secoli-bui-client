@@ -10,8 +10,7 @@ import type { MenuItemType } from '~/types'
 const props = defineProps({
   scrollThreshold: { type: Number, default: 200 },
   backTitle: { type: String, default: 'Torna alla home' },
-  items: { type: Array as PropType<MenuItemType[]>, default: () => [] },
-  cta: { type: Boolean, default: () => [] },
+  items: { type: Array as PropType<MenuItemType[]>, default: () => [] }
 })
 const { t } = useI18n()
 
@@ -38,7 +37,7 @@ const { isActive } = useMenuItem()
         <template #trigger>
           <router-link class="menu-event__back flex items-center justify-start" :class="{
             'text-white-100': !hasScrolledY(parsedScrollThreshold),
-            'text-black-700': hasScrolledY(parsedScrollThreshold),
+            'text-black-500': hasScrolledY(parsedScrollThreshold),
           }" aria-label="torna indietro" to="/">
             <IconArrow v-if="hasScrolledY(parsedScrollThreshold)"
               class="menu-event__back__arrow cursor-pointer fill-current" />
@@ -49,7 +48,7 @@ const { isActive } = useMenuItem()
       </Tooltip>
       <h2 v-if="hasScrolledY(parsedScrollThreshold)" class="font-display text-2xl" :class="{
         'text-white-100': !hasScrolledY(parsedScrollThreshold),
-        'text-black-700': hasScrolledY(parsedScrollThreshold),
+        'text-black-500': hasScrolledY(parsedScrollThreshold),
       }">
         {{ props.backTitle }}
       </h2>
@@ -67,7 +66,7 @@ const { isActive } = useMenuItem()
                   parsedScrollThreshold,
                 ),
                 'text-white-100': !hasScrolledY(parsedScrollThreshold),
-                'text-black-700': hasScrolledY(parsedScrollThreshold),
+                'text-black-500': hasScrolledY(parsedScrollThreshold),
               }" :aria-label="label" :disabled="disabled" :to="to" exact>
               {{ label }}
             </router-link>

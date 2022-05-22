@@ -48,7 +48,6 @@ export const MenuItems: MenuItemType[] = [
     label: 'Gioca con noi',
     to: { path: '/play-with-us' },
     tooltip: { content: 'Coming soon', placement: 'bottom' },
-    disabled: true,
     children: [
       {
         label: 'Chi siamo',
@@ -60,7 +59,6 @@ export const MenuItems: MenuItemType[] = [
         label: 'Cos’è il LARP?',
         to: { path: '/pay-with-us/what-is-larp' },
         tooltip: { content: 'Coming soon', placement: 'bottom' },
-        disabled: true,
       },
       {
         label: 'Guida per neofiti',

@@ -6,5 +6,6 @@ export { default as backgroundLogoHd } from './background.jpg?preset=hd'
 export { default as backgroundLazyLogoHd } from './background-lazy.jpg?preset=hd'
 
 export { default as economiaHd } from './economia.jpg?preset=hd'
-export { default as religioneHd } from './religione.jpg?preset=hd'
 export { default as fazioniHd } from './fazioni.jpg?preset=hd'
+export { default as larpHd } from './larp.jpg?preset=hd'
+export { default as religioneHd } from './religione.jpg?preset=hd'

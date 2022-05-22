@@ -16,6 +16,7 @@ const props = defineProps({
     required: false,
   },
   showArrow: { type: Boolean, default: false },
+  darkest: { type: Boolean, default: false },
 })
 
 // VARIABLES
@@ -40,7 +41,8 @@ watch(headerHeight, ((val: number) => {
 
 <template>
   <section ref="header" class="header flex items-start justify-center" v-bind="$attrs">
-    <CustomImage class="header__background pointer-events-none w-full" :src="image" title="Background event cover"
+    <CustomImage class="header__background pointer-events-none w-full"
+      :class="{ 'header__background--darkest': darkest }" :src="image" title="Background event cover"
       alt="Background event cover" above-the-fold />
     <div class="header__content container flex flex-col justify-start pb-8 md:justify-center md:pb-0">
       <div class="header__content__menu flex flex-col items-center justify-center pt-6 md:pt-8">
@@ -73,6 +75,10 @@ watch(headerHeight, ((val: number) => {
     min-height: 100%;
     z-index: 1;
     opacity: 0.5;
+
+    &--darkest {
+      opacity: 0.25;
+    }
 
     :deep(img) {
       object-fit: cover;
