@@ -51,30 +51,30 @@ export const MenuItems: MenuItemType[] = [
     children: [
       {
         label: 'Chi siamo',
-        to: { path: '/pay-with-us/about-us' },
+        to: { path: '/play-with-us/about-us' },
         tooltip: { content: 'Coming soon', placement: 'bottom' },
         disabled: true,
       },
       {
         label: 'Cos’è il LARP?',
-        to: { path: '/pay-with-us/what-is-larp' },
+        to: { path: '/play-with-us/what-is-larp' },
         tooltip: { content: 'Coming soon', placement: 'bottom' },
       },
       {
         label: 'Guida per neofiti',
-        to: { path: '/pay-with-us/new-players-guide' },
+        to: { path: '/play-with-us/new-players-guide' },
         tooltip: { content: 'Coming soon', placement: 'bottom' },
         disabled: true,
       },
       {
         label: 'Sicurezza e COVID',
-        to: { path: '/pay-with-us/safety-covid' },
+        to: { path: '/play-with-us/safety-covid' },
         tooltip: { content: 'Coming soon', placement: 'bottom' },
         disabled: true,
       },
       {
         label: 'Glossario LARP',
-        to: { path: '/pay-with-us/larp-glossary' },
+        to: { path: '/play-with-us/larp-glossary' },
         tooltip: { content: 'Coming soon', placement: 'bottom' },
         disabled: true,
       },

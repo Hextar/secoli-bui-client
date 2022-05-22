@@ -1,10 +1,9 @@
 <h2 id="LeTrameOneshotECampagna" class="anchor">Le trame: oneshot e campagna</h2>
 
-
 Generalmente gli eventi larp a marchio Mad2Factory e non solo, si suddividono in due categorie: gli **eventi** **oneshot** e la **Campagna**.
 
 
-## **Gli eventi oneshot**
+#### **Gli eventi oneshot**
 
 I live definiti oneshot sono avventure autoconclusive che durano una o più giornate, in rari casi anche tre giorni. Sono i più versatili perché essendo piccole storie con un inizio e una fine ben precisi possono essere ambientati nei luoghi più diversi ed appartenere ad altrettante ambientazioni di generi vari.
 

@@ -228,7 +228,7 @@ const downloadImage = async (url: string): Promise<void> => {
               I Portatori della Fiamma Bianca
             </h3>
           </template>
-          <Tooltip>
+          <Tooltip classname="float-none sm:float-left mr-0 sm:mr-8">
             <template #trigger>
               <CustomImage class="cursor-pointer" :src="getAssetPath('i_portatori_della_fiamma_bianca.svg')"
                 :width="imageWidth" title="Portatori della Fiamma Bianca" alt="Portatori della Fiamma Bianca"
@@ -253,7 +253,7 @@ const downloadImage = async (url: string): Promise<void> => {
           <template #title>
             <h3 class="pb-4 text-center sm:text-right">Le Code Mozzate</h3>
           </template>
-          <Tooltip>
+          <Tooltip classname="float-none sm:float-right ml-0 sm:ml-8">
             <template #trigger>
               <CustomImage class="cursor-pointer" :src="getAssetPath('le_code_mozzate.svg')" :width="imageWidth"
                 title="Le code mozzate" alt="Le code mozzate"
@@ -275,7 +275,7 @@ const downloadImage = async (url: string): Promise<void> => {
           <template #title>
             <h3 class="pb-4 text-center sm:text-left">L'Ineluttabile Domani</h3>
           </template>
-          <Tooltip>
+          <Tooltip classname="float-none sm:float-left mr-0 sm:mr-8">
             <template #trigger>
               <CustomImage class="cursor-pointer" :src="getAssetPath('l_ineluttabile_domani.svg')" :width="imageWidth"
                 title="L'ineluttabile domani" alt="L'ineluttabile domani"
@@ -304,7 +304,7 @@ const downloadImage = async (url: string): Promise<void> => {
               I Cercatori del Sentiero Dorato
             </h3>
           </template>
-          <Tooltip>
+          <Tooltip classname="float-none sm:float-right ml-0 sm:ml-8">
             <template #trigger>
               <CustomImage class="cursor-pointer" :src="getAssetPath('i_cercatori_del_sentiero_dorato.svg')"
                 :width="imageWidth" title="I cercatori del sentiero dorato" alt="I cercatori del sentiero dorato"
@@ -331,7 +331,7 @@ const downloadImage = async (url: string): Promise<void> => {
           <template #title>
             <h3 class="pb-4 text-center sm:text-left">Le Fauci Grondanti</h3>
           </template>
-          <Tooltip>
+          <Tooltip classname="float-none sm:float-left mr-0 sm:mr-8">
             <template #trigger>
               <CustomImage class="cursor-pointer" :src="getAssetPath('le_fauci_grondanti.svg')" :width="imageWidth"
                 title="Le fauci grondanti" alt="Le fauci grondanti"
@@ -357,7 +357,7 @@ const downloadImage = async (url: string): Promise<void> => {
           <template #title>
             <h3 class="pb-8 text-center sm:text-right">La Loghia del Gufo</h3>
           </template>
-          <Tooltip>
+          <Tooltip classname="float-none sm:float-right ml-0 sm:ml-8">
             <template #trigger>
               <CustomImage class="cursor-pointer" :src="getAssetPath('la_loghia_del_gufo.svg')" :width="imageWidth"
                 title="La loghia del gufo" alt="La loghia del gufo"

@@ -17,6 +17,7 @@ const props = defineProps({
   nudgeRight: { type: Number, default: 0 },
   light: { type: Boolean, default: false },
   forceShow: { Boolean, default: false },
+  classname: { String, default: '' },
 })
 
 // VARIABLES
@@ -52,10 +53,10 @@ const delay = computed((): TooltipDelay => isMobile.value ? { show: 0, hide: 0 }
 </script>
 
 <template>
-  <Popper :reference-props="{ id: 'trigger' }" :popper-props="{ id: 'tooltip' }" :trigger="trigger"
-    :disabled="props.disabled" :transition-props="useTransition ? { name: 'fade' } : undefined"
+  <Popper :reference-props="{ id: 'trigger', class: props.classname }" :popper-props="{ id: 'tooltip' }"
+    :trigger="trigger" :disabled="props.disabled" :transition-props="useTransition ? { name: 'fade' } : undefined"
     :placement="props.placement" :modifiers="modifiers" :delay-on-mouseover="delay.show" :delay-on-mouseout="delay.hide"
-    :force-show="props.forceShow">
+    :force-show="props.forceShow" v-bind="$attrs">
     <template #reference>
       <slot name="trigger"></slot>
     </template>

@@ -5,6 +5,10 @@
   --prism-font-family: 'DM Mono', monospace;
 }
 
+.prose p {
+  text-align: justify;
+}
+
 .prose img {
   width: 100%;
 }

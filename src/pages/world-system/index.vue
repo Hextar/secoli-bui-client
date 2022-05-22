@@ -92,7 +92,7 @@ const onHeaderHeightResize = (height: number): void => {
       </template>
       <template #content>
         <div id="title" class="flex flex-col items-center justify-center">
-          <div class="flex h-[336px] items-center" itemprop="name">
+          <div class="flex h-[336px] items-center" itemprop="title">
             <h1 class="event-title font-display text-6xl text-white-100 text-center">Ambientazione</h1>
           </div>
         </div>
