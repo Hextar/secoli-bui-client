@@ -134,7 +134,7 @@ const downloadImage = async (url: string): Promise<void> => {
         </MenuDetail>
       </template>
       <template #content>
-        <div id="info" class="anchor flex flex-col items-start justify-center pt-16 pb-0 sm:pb-8">
+        <div id="info" class="anchor flex flex-col items-start justify-center pb-0 sm:pb-8 pt-16">
           <div class="mb-8 flex flex-col" itemprop="name">
             <EventTitle align="start" />
           </div>

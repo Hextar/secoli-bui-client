@@ -23,7 +23,7 @@ const { isMobile, belowTablet } = useViewport()
       <MenuNormal />
     </template>
     <template #content>
-      <div class="flex w-full flex-col items-center justify-center pt-32">
+      <div class="flex w-full flex-col items-center justify-center sm:pt-32">
         <h2 class="my-4 text-center font-display text-xl uppercase text-white-100" :class="{ 'mb-12': isMobile }" exact>
           {{ t('homepage.next_event') }}
         </h2>
