@@ -53,6 +53,9 @@ export default defineConfig({
         else if (route.path === '/play-with-us') {
           return { ...route, redirect: '/play-with-us/what-is-larp' }
         }
+        else if (route.path === '/qrcode') {
+          return { ...route, redirect: '/events/future/la-pesca-dei-burattini' }
+        }
         return route
       },
     }),
