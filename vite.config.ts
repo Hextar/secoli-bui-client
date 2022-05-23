@@ -46,7 +46,6 @@ export default defineConfig({
     Pages({
       extensions: ['vue', 'md'],
       extendRoute: (route) => {
-        console.warn(route.path)
         if (route.path === '/events' || route.path === '/events/future') {
           return { ...route, redirect: '/events/future/la-pesca-dei-burattini' }
         }
