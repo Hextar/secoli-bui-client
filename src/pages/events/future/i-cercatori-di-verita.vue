@@ -124,7 +124,7 @@ const onHeaderHeightResize = (height: number): void => {
               </time>
               <br />
               <time class="pl-2" itemprop="endDate" datetime="2022-01-13T17:00:00Z">
-                • 18/06/2022 11:00 - 17:00
+                • 13/11/2022 11:00 - 17:00
               </time>
               <br />
             </Info>
