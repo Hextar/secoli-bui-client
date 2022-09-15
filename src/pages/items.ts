@@ -14,9 +14,8 @@ export const MenuItems: MenuItemType[] = [
     children: [
       {
         label: 'Eventi passati',
-        to: { path: '/events/past' },
-        tooltip: { content: 'Coming soon', placement: 'bottom' },
-        disabled: true,
+        to: { path: '/events/past/la-pesca-dei-burattini' },
+        tooltip: { content: 'Eventi passati', placement: 'bottom' },
       },
       {
         label: 'Eventi futuri',
