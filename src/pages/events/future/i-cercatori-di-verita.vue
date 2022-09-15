@@ -123,7 +123,7 @@ const onHeaderHeightResize = (height: number): void => {
                 • 12/11/2022 18:00 - 24:00
               </time>
               <br />
-              <time class="pl-2" itemprop="endDate" datetime="2022-01-13T17:00:00Z">
+              <time class="pl-2" itemprop="endDate" datetime="2022-11-13T17:00:00Z">
                 • 13/11/2022 11:00 - 17:00
               </time>
               <br />
@@ -170,7 +170,7 @@ const onHeaderHeightResize = (height: number): void => {
             e della Chiesa dell’Unico, unendosi alle schiere del Sacro Baluardo, o se accettare il dominio della
             Dama e rivolgere la propria fede alla Fiamma Bianca e agli antichi dei.
             <br /><br />
-            Nelle bachece di ogni città del regno nelle ultime settimane sono apparsi inviti rivolti a tutta la
+            Nelle bacheche di ogni città del regno nelle ultime settimane sono apparsi inviti rivolti a tutta la
             popolazione che recitano:
           </p>
         </Paragraph>
