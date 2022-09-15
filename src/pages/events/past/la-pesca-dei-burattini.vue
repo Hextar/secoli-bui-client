@@ -20,7 +20,9 @@ import {
   backgroundLogoHd,
 } from '~/assets/images'
 
-// META
+// USE
+const { isMobile } = useViewport()
+
 useMeta({
   title: 'Prossimo evento - La pesca dei burattini',
   description: 'La pesca dei burattini - evento LARP, 18 Giugno nel Sulcis',
@@ -66,13 +68,11 @@ const { saveAs } = pkg
 const { t } = useI18n()
 
 // COMPUTED
-const { isMobile } = useViewport()
-
 const imageWidth = computed((): number => {
   return isMobile.value ? 240 : 160
 })
 
-// // METHODS
+// METHODS
 const getAssetPath = (value: string): string => {
   const assets = new Map<string, any>([
     [

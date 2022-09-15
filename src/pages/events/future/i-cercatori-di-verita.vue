@@ -1,7 +1,11 @@
 <script setup lang="ts">
 import { ref, Ref } from 'vue'
 
-import { useMeta } from '~/composables'
+import { useMeta, useViewport } from '~/composables'
+
+import {
+  SignatureThumbnail,
+} from '~/assets/images/events/cercatori_di_verita'
 
 import { IconClock, IconFacebook, IconMoney, IconPin } from '~/assets/icons'
 import type { MenuItemType } from '~/types'
@@ -11,11 +15,15 @@ import {
   backgroundLogoHd,
 } from '~/assets/images'
 
-// META
+// USE
+const { t } = useI18n()
+
+const { isMobile } = useViewport()
+
 useMeta({
   title: 'Prossimo evento - L\'ultimo Regno',
-  description: 'L\'ultimo Regno - evento LARP, 12/13 Novembre al Castrum Romano',
-  keywords: ['sassari', 'castrum', 'romano', 'rievocazione storica'],
+  description: 'I cercatori di verità - evento LARP, 12/13 Novembre al Castrum Romano',
+  keywords: ['larp', 'sassari', 'castrum', 'romano', 'rievocazione storica'],
 })
 
 // VARIABLES
@@ -38,7 +46,19 @@ const items: MenuItemType[] = [
     homepage: true,
   }
 ]
-const { t } = useI18n()
+
+// COMPUTED
+const imageWidth = computed((): number => {
+  return isMobile.value ? 240 : 160
+})
+
+// METHODS
+const getAssetPath = (value: string): string => {
+  const assets = new Map<string, any>([
+    ['signature.png', SignatureThumbnail],
+  ])
+  return assets.get(value)
+}
 
 const onHeaderHeightResize = (height: number): void => {
   scrollThreshold.value = height + (86 / 2)
@@ -119,7 +139,7 @@ const onHeaderHeightResize = (height: number): void => {
                 AL GIORNO (STANDARD) </span><br />
               <span class="pl-2">
                 • <span itemprop="price" content="10.00">10</span><span itemprop="priceCurrency" content="EUR">€</span>
-                AL GIORNO (AIUTANTI SUL CAMPO) </span><br />
+                AL GIORNO (PAGO COL SANGUE) </span><br />
               <br />
             </Info>
             <Info class="w-full sm:w-auto" label="Evento FB">
@@ -152,67 +172,54 @@ const onHeaderHeightResize = (height: number): void => {
             del 12 di Ashantis ogni suddito del regno dovrà in cuor suo scegliere se stare dalla parte della Corona
             e della Chiesa dell’Unico, unendosi alle schiere del Sacro Baluardo, o se accettare il dominio della
             Dama e rivolgere la propria fede alla Fiamma Bianca e agli antichi dei.
-          </p>
-        </Paragraph>
-        <Paragraph>
-          <p class="text-justify">
+            <br /><br />
             Nelle bachece di ogni città del regno nelle ultime settimane sono apparsi inviti rivolti a tutta la
             popolazione che recitano:
           </p>
         </Paragraph>
         <Parchment>
-          <Paragraph>
-            <p class="text-justify">
-              <i>
-                Il Tempo dell’oscurità è terminato.
-              </i>
-            </p>
-          </Paragraph>
-          <Paragraph>
-            <p class="text-justify">
-              <i>
-                Il nostro regno brancola nel buio dell’ignoranza da troppo tempo, spesso guidato da signori
-                accecati dal potere e ottenebrati dal denaro, quando il bene più grande che le genti libere
-                possiedano è quello della Verità.
-              </i>
-            </p>
-          </Paragraph>
-          <Paragraph>
-            <p class="text-justify">
-              <i>
-                In data 12 e 13 Ashantis, presso Forte Oath, nei territori di Rocca d’Avorio, il Magnate,
-                studioso ed eccelso cittadino Rodrigo de Leon di Velantes, sarà lieto di accogliere tutti coloro
-                che sono assetati di verità e che non temono di intraprendere un viaggio in questo periodo di
-                incertezze. Per l’occasione, numerosi eroi della Spedizione oltre il Re Bianco, salvatori di Braara
-                e di tutte le genti, saranno presenti per testimoniare ciò che hanno visto nei loro lunghi viaggi.
-              </i>
-            </p>
-          </Paragraph>
-          <Paragraph>
-            <p class="text-justify">
-              <i>
-                In data 12 e 13 Ashantis, presso Forte Oath, nei territori di Rocca d’Avorio, il Magnate,
-                studioso ed eccelso cittadino Rodrigo de Leon di Velantes, sarà lieto di accogliere tutti coloro
-                che sono assetati di verità e che non temono di intraprendere un viaggio in questo periodo di
-                incertezze. Per l’occasione, numerosi eroi della Spedizione oltre il Re Bianco, salvatori di Braara
-                e di tutte le genti, saranno presenti per testimoniare ciò che hanno visto nei loro lunghi viaggi.
-                Se l’illuminazione è la vostra meta e se siete stanchi di vivere nella menzogna, recatevi presso
-                Forte Oath e i vostri occhi verranno spalancati dalla più pura e grande verità che sia mai
-                fuoriuscita dalle labbra di un uomo.
-                La fama di Rodrigo de Leon, conosciuto ai più per le sue idee controverse e i suoi comportamenti
-                fuori dall’ordinario, ha tenuto i più lontani dal suo invito, ma alcuni hanno intravisto nelle sue
-                parole
-                la possibilità di essere protagonisti di un evento fuori dall’ordinario, qualcosa che plasmerà il futuro
-                delle genti e così hanno deciso di mettersi in viaggio, alla volta del famoso forte avoriano.
-                <br />
-                Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nulla quis sem
-                ut
-                nulla porta facilisis in sit amet elit. Fusce et aliquam orci, nec rhoncus leo. Praesent neque turpis,
-                elementum nec massa ut, semper euismod ante. Duis laoreet imperdiet justo, nec hendrerit massa mollis
-                non.
-              </i>
-            </p>
-          </Paragraph>
+          <template #content>
+            <Paragraph>
+              <p class="text-justify">
+                <i>
+                  Il Tempo dell’oscurità è terminato.
+                </i>
+              </p>
+            </Paragraph>
+            <Paragraph>
+              <p class="text-justify">
+                <i>
+                  Il nostro regno brancola nel buio dell’ignoranza da troppo tempo, spesso guidato da signori
+                  accecati dal potere e ottenebrati dal denaro, quando il bene più grande che le genti libere
+                  possiedano è quello della Verità.
+                </i>
+              </p>
+            </Paragraph>
+            <Paragraph>
+              <p class="text-justify">
+                <i>
+                  In data 12 e 13 Ashantis, presso Forte Oath, nei territori di Rocca d’Avorio, il Magnate,
+                  studioso ed eccelso cittadino Rodrigo de Leon di Velantes, sarà lieto di accogliere tutti coloro
+                  che sono assetati di verità e che non temono di intraprendere un viaggio in questo periodo di
+                  incertezze. Per l’occasione, numerosi eroi della Spedizione oltre il Re Bianco, salvatori di Braara
+                  e di tutte le genti, saranno presenti per testimoniare ciò che hanno visto nei loro lunghi viaggi.
+                </i>
+              </p>
+            </Paragraph>
+            <Paragraph>
+              <p class="text-justify">
+                <i>
+                  Se l’illuminazione è la vostra meta e se siete stanchi di vivere nella menzogna, recatevi presso
+                  Forte Oath e i vostri occhi verranno spalancati dalla più pura e grande verità che sia mai
+                  fuoriuscita dalle labbra di un uomo.
+                </i>
+              </p>
+            </Paragraph>
+          </template>
+          <template #signature>
+            <CustomImage :src="getAssetPath('signature.png')" :width="imageWidth" title="Rodrigo de Leon"
+              alt="Rodrigo de Leon" />
+          </template>
         </Parchment>
         <Paragraph>
           <p class="text-justify">
@@ -220,10 +227,6 @@ const onHeaderHeightResize = (height: number): void => {
             fuori dall’ordinario, ha tenuto i più lontani dal suo invito, ma alcuni hanno intravisto nelle sue parole
             la possibilità di essere protagonisti di un evento fuori dall’ordinario, qualcosa che plasmerà il futuro
             delle genti e così hanno deciso di mettersi in viaggio, alla volta del famoso forte avoriano.
-            <br />
-            Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nulla quis sem ut
-            nulla porta facilisis in sit amet elit. Fusce et aliquam orci, nec rhoncus leo. Praesent neque turpis,
-            elementum nec massa ut, semper euismod ante. Duis laoreet imperdiet justo, nec hendrerit massa mollis non.
           </p>
         </Paragraph>
       </Article>
