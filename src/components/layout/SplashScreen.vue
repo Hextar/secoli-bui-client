@@ -7,7 +7,7 @@ const { t } = useI18n()
 const visible: Ref<Boolean> = ref(true)
 const hide: Ref<Boolean> = ref(false)
 
-// METHODS
+// ON MOUNTED
 onMounted(() => {
   setTimeout(() => (hide.value = true), 255)
   setTimeout(() => (visible.value = false), 510)

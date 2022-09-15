@@ -20,6 +20,7 @@ declare module '@vue/runtime-core' {
     MenuMobile: typeof import('./components/menu/MenuMobile.vue')['default']
     MenuNormal: typeof import('./components/menu/MenuNormal.vue')['default']
     Paragraph: typeof import('./components/common/typography/Paragraph.vue')['default']
+    Parchment: typeof import('./components/common/Parchment.vue')['default']
     README: typeof import('./components/README.md')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

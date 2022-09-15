@@ -27,20 +27,16 @@ const { isMobile, belowTablet } = useViewport()
         <h2 class="my-4 text-center font-display text-xl uppercase text-white-100" :class="{ 'mb-12': isMobile }" exact>
           {{ t('homepage.next_event') }}
         </h2>
-        <EventTitle />
+        <h1 class="event-title mb-4 font-display text-6xl text-white-100 text-center">
+          I Cercatori di Verità
+        </h1>
         <Decoration v-if="!isMobile" class="mb-8" size="medium" />
-        <p class="mb-8 w-screen px-8 text-center font-body text-sm text-white-100 sm:w-screen md:w-4/5 lg:w-2/3">
+        <p class="mb-8 w-screen px-8 text-center font-body text-lg text-white-100 sm:w-screen md:w-4/5 lg:w-2/3">
           <i>
-            "Si mormora che tra queste valli si celi qualcosa di silenzioso,
-            mai sopito e che solo i temerari o i disperati calcano questi
-            terreni, alla ricerca di qualcosa o qualcuno…
-            <br>
-            <br>
-            Chi abita queste terre sa che non è possibile uscirne, chi le
-            cerca invece vi entra per brama e riscatto…"
+            Campagna: L'ultimo Regno
           </i>
         </p>
-        <CustomButton class="w-[160px]" tag="router-link" to="/events/future/la-pesca-dei-burattini">
+        <CustomButton class="w-[160px]" tag="router-link" to="/events/future/i-cercatori-di-verita">
           {{ t('homepage.more') }}
         </CustomButton>
       </div>
