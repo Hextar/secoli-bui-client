@@ -149,11 +149,8 @@ const onHeaderHeightResize = (height: number): void => {
               <br />
               <span class="pl-2">
                 • Rimani aggiornato
-                <a class="text-action-500 hover:underline" href="https://www.facebook.com/events/353854243429800/"
-                  rel="noopener noreferrer" title="evento facebook l'ultimo regno" alt="evento facebook l'ultimo regno"
-                  target="_blank">
-                  iscrivendoti all’evento!
-                </a>
+                <CustomButton class="text-action-500 hover:underline" variant="filled" color="transparent" size="small"
+                  tag="a" href="" target="_blank" :disabled="true">iscrivendoti all’evento!</CustomButton>
               </span>
               <br />
             </Info>

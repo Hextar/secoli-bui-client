@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // PROPS
 const props = defineProps({
-  timeout: { default: 30000, type: Number },
+  timeout: { default: 0, type: Number },
 })
 
 // USE
@@ -21,11 +21,13 @@ const onOpen = () => {
 }
 
 // ON MOUNTED
-// onMounted(() => {
-//   setTimeout(() => {
-//     if (!open.value) { open.value = true }
-//   }, props.timeout)
-// })
+onMounted(() => {
+  if (props.timeout) {
+    setTimeout(() => {
+      if (!open.value) { open.value = true }
+    }, props.timeout)
+  }
+})
 </script>
 
 <template>
