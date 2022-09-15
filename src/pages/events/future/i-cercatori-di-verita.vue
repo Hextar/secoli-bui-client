@@ -70,7 +70,7 @@ const onHeaderHeightResize = (height: number): void => {
     <Header ref="header" class="text-white-100" :image="backgroundLogoHd" :lazy-image="backgroundLazyLogoHd"
       height="400px" @resize:height="onHeaderHeightResize">
       <template #menu>
-        <MenuDetail :scroll-threshold="scrollThreshold" :items="items" back-title="La Pesca dei Burattini">
+        <MenuDetail :scroll-threshold="scrollThreshold" :items="items" back-title="I cercatori di verità">
           <template #cta>
             <Tooltip placement="bottom">
               <template #trigger>
