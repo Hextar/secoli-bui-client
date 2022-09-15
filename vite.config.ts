@@ -47,13 +47,13 @@ export default defineConfig({
       extensions: ['vue', 'md'],
       extendRoute: (route) => {
         if (route.path === '/events' || route.path === '/events/future') {
-          return { ...route, redirect: '/events/future/la-pesca-dei-burattini' }
+          return { ...route, redirect: '/events/future/i-cercatori-di-verita' }
         }
         else if (route.path === '/play-with-us') {
           return { ...route, redirect: '/play-with-us/what-is-larp' }
         }
         else if (route.path === '/qrcode') {
-          return { ...route, redirect: '/events/future/la-pesca-dei-burattini' }
+          return { ...route, redirect: '/events/future/i-cercatori-di-verita' }
         }
         return route
       },
