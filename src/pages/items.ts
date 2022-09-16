@@ -25,9 +25,9 @@ export const MenuItems: MenuItemType[] = [
     ],
   },
   {
-    label: 'Manuale',
+    label: 'Manuali',
     to: { path: '/rules' },
-    tooltip: { content: 'Manuale di Secoli Bui', placement: 'bottom' }
+    tooltip: { content: 'Manuali di Secoli Bui', placement: 'bottom' }
   },
   {
     label: 'Ambientazione',

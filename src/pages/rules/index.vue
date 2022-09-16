@@ -18,7 +18,7 @@ const { t } = useI18n()
 
 // META
 useMeta({
-  title: 'Manuale',
+  title: 'Manuali',
   description: 'scopri il regolamento ufficiale di Secoli Bui',
 })
 
@@ -125,7 +125,8 @@ const downloadAttachment = async (val: string): Promise<void> => {
           <p class="text-justify">
             Ogni cosa inizia da qui.
             <br />
-            Nel manuale di ambientazione troverai tutto ciò che c'è da sapere su Braara, i popoli che la abitano e la
+            Nel manuale di ambientazione troverai tutto ciò che c'è da sapere su <strong>Braara</strong>, i popoli che
+            la abitano e la
             sua storia. Affronta questo viaggio armandoti di coraggio e spirito d'avventura: ti attendono grandi
             avventure!
           </p>
@@ -143,7 +144,8 @@ const downloadAttachment = async (val: string): Promise<void> => {
           <p class="text-justify">
             Nel regolamento base troverai tutto il necessario per imparare a giocare in un live di Secoli Bui.
             <br />
-            Dalle regole di comportamento a quelle per costruire il tuo personaggio da zero o importarlo dal Primo
+            Dalle <strong>regole</strong> di comportamento a quelle per costruire il tuo personaggio da zero o
+            importarlo dal Primo
             Capitolo della Campagna.
           </p>
           <div class="flex flex-grow flex-1" />
@@ -163,7 +165,8 @@ const downloadAttachment = async (val: string): Promise<void> => {
             <br />
             Ti appellerai alle forze della natura o a quelle arcane per tenere testa ai tuoi nemici.
             <br />
-            Certo: prima dovrai imparare tutto ciò che riguarda i vari tipi di incantesimi, di Magie, Circoli e così
+            Certo: prima dovrai imparare tutto ciò che riguarda i vari tipi di <strong>incantesimi</strong>,
+            di Magie, Circoli e così
             via.
           </p>
           <CustomButton class="px-4" variant="filled" color="primary" size="small" :disabled="!!loading"
@@ -180,7 +183,7 @@ const downloadAttachment = async (val: string): Promise<void> => {
           <p class="text-justify">
             Un incantatore che scelga di appellarsi alla fede può percorrere la via della Preghiera.
             <br />
-            Inizierai come adepto e, grazie alla forza del tuo dio - o i tuoi dei - farai grandi cose.
+            Inizierai come adepto e, grazie alla forza del <strong>tuo dio - o i tuoi dei -</strong> farai grandi cose.
             <br />
             Grazie a questo manuale conoscerai le tipologie di culti esistenti a Braara, le numerose preghiere esistenti
             e tutti i loro effetti.
@@ -197,11 +200,8 @@ const downloadAttachment = async (val: string): Promise<void> => {
             <h3 id="alchimia" class="anchor">Manuale di alchimia</h3>
           </template>
           <p class="text-justify">
-            C'è chi si appella alla certezza della fede e chi alla forza della propria spada.
-            <br />
-            C'è anche chi si affida alle spregiudicate forze magiche. E poi ci sei tu.
-            Tu hai deciso di affidarti alle tue mani e al tuo intelletto, alla tua astuzia e alla conoscenza di chi ha
-            trascorso decenni a riempire pagine e pagine di formule e ricerche.
+            Hai deciso di affidarti alle tue mani e al tuo intelletto, alla tua astuzia e alla conoscenza di chi ha
+            trascorso decenni a riempire pagine e pagine di <strong>formule e ricerche</strong>.
             <br />
             Tu sei un alchimista. Questo manuale,
             invece, è la tua chiave per conoscere tutti i segreti alchemici di Braara.
@@ -222,7 +222,7 @@ const downloadAttachment = async (val: string): Promise<void> => {
             <br />
             Allora il manuale dell'Arte Runica è proprio
             ciò che fa al caso tuo per comprendere al meglio questa nobile arte. Troverai informazioni sulle regole, le
-            rune esistenti, i metalli di Braara e molto altro.
+            <strong>rune</strong> esistenti, i <strong>metalli</strong> di Braara e molto altro.
           </p>
           <CustomButton class="px-4" variant="filled" color="primary" size="small" :disabled="!!loading"
             @click.prevent.stop="downloadAttachment('arte_runica')">
@@ -238,11 +238,11 @@ const downloadAttachment = async (val: string): Promise<void> => {
           <p class="text-justify">
             Nel corso della Campagna tu e il tuo personaggio crescerete, scoprirete nuovi intrecci e affronterete nuove
             sfide.
+            Con questi passi in avanti arriveranno anche i <strong>punti esperienza</strong> chiamati in Secoli Bui
+            <strong>OSP</strong>.
             <br />
-            Con questi passi in avanti arriveranno anche i "punti esperienza" chiamati in Secoli Bui "OSP". Gli
-            OSP ti permetteranno di acquisire nuove e formidabili abilità a seconda dei gruppi di combattenti a cui ti
-            unirai.
-            <br />
+            Gli OSP ti permetteranno di acquisire nuove e formidabili abilità a seconda dei gruppi
+            di combattenti a cui ti unirai.
             Puoi trovare ogni informazione necessaria in questo manuale.
           </p>
           <CustomButton class="px-4" variant="filled" color="primary" size="small" :disabled="!!loading"
