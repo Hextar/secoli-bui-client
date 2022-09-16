@@ -25,9 +25,14 @@ export const MenuItems: MenuItemType[] = [
     ],
   },
   {
+    label: 'Manuale',
+    to: { path: '/rules' },
+    tooltip: { content: 'Manuale di Secoli Bui', placement: 'bottom' }
+  },
+  {
     label: 'Ambientazione',
     to: { path: '/world-system' },
-    tooltip: { content: 'Coming soon', placement: 'bottom' },
+    tooltip: { content: 'Ambientazione di Braara', placement: 'bottom' },
     children: [
       {
         label: 'Storia di Braara',

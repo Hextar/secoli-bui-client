@@ -35,7 +35,7 @@ const loading: Ref<Boolean> = ref(false)
 const items: MenuItemType[] = [
   {
     label: 'Info',
-    to: { path: '/events/future/la-pesca-dei-burattini', hash: '#info' },
+    to: { path: '/events/past/la-pesca-dei-burattini', hash: '#info' },
     tooltip: {
       content: 'Scrolla al paragrafo "Informazioni"',
       placement: 'bottom',
@@ -44,19 +44,19 @@ const items: MenuItemType[] = [
   },
   {
     label: 'Incipit',
-    to: { path: '/events/future/la-pesca-dei-burattini', hash: '#incipit' },
+    to: { path: '/events/past/la-pesca-dei-burattini', hash: '#incipit' },
     tooltip: { content: 'Scrolla al paragrafo "Incipit"', placement: 'bottom' },
     homepage: true,
   },
   {
     label: 'Fazioni',
-    to: { path: '/events/future/la-pesca-dei-burattini', hash: '#fazioni' },
+    to: { path: '/events/past/la-pesca-dei-burattini', hash: '#fazioni' },
     tooltip: { content: 'Scrolla al paragrafo "Fazioni"', placement: 'bottom' },
     homepage: true,
   },
   {
     label: 'Come funziona?',
-    to: { path: '/events/future/la-pesca-dei-burattini', hash: '#howItWorks' },
+    to: { path: '/events/past/la-pesca-dei-burattini', hash: '#howItWorks' },
     tooltip: {
       content: 'Scrolla al paragrafo "Come funziona?"',
       placement: 'bottom',
