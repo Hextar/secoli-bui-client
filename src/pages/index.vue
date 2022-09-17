@@ -28,15 +28,15 @@ const { isMobile, belowTablet } = useViewport()
           {{ t('homepage.next_event') }}
         </h2>
         <h1 class="event-title mb-4 font-display text-6xl text-white-100 text-center">
-          I Cercatori di Verità
+          Cercatori di Verità
         </h1>
         <Decoration v-if="!isMobile" class="mb-8" size="medium" />
         <p class="mb-8 w-screen px-8 text-center font-body text-lg text-white-100 sm:w-screen md:w-4/5 lg:w-2/3">
           <i>
-            Campagna: L'ultimo Regno
+            Secoli bui: L'ultimo Regno
           </i>
         </p>
-        <CustomButton class="w-[160px]" tag="router-link" to="/events/future/i-cercatori-di-verita">
+        <CustomButton class="w-[160px]" tag="router-link" to="/events/future/cercatori-di-verita">
           {{ t('homepage.more') }}
         </CustomButton>
       </div>

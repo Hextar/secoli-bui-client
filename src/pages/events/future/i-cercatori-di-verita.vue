@@ -22,7 +22,7 @@ const { isMobile } = useViewport()
 
 useMeta({
   title: 'Prossimo evento - L\'ultimo Regno',
-  description: 'I cercatori di verità - evento LARP, 12/13 Novembre al Castrum Romano',
+  description: 'Cercatori di verità - evento LARP, 12/13 Novembre al Castrum Romano',
   keywords: ['larp', 'sassari', 'castrum', 'romano', 'rievocazione storica'],
 })
 
@@ -32,7 +32,7 @@ const loading: Ref<Boolean> = ref(false)
 const items: MenuItemType[] = [
   {
     label: 'Info',
-    to: { path: '/events/future/i-cercatori-di-verita', hash: '#info' },
+    to: { path: '/events/future/cercatori-di-verita', hash: '#info' },
     tooltip: {
       content: 'Scrolla al paragrafo "Informazioni"',
       placement: 'bottom',
@@ -41,7 +41,7 @@ const items: MenuItemType[] = [
   },
   {
     label: 'Incipit',
-    to: { path: '/events/future/i-cercatori-di-verita', hash: '#incipit' },
+    to: { path: '/events/future/cercatori-di-verita', hash: '#incipit' },
     tooltip: { content: 'Scrolla al paragrafo "Incipit"', placement: 'bottom' },
     homepage: true,
   }
@@ -70,7 +70,7 @@ const onHeaderHeightResize = (height: number): void => {
     <Header ref="header" class="text-white-100" :image="backgroundLogoHd" :lazy-image="backgroundLazyLogoHd"
       height="400px" @resize:height="onHeaderHeightResize">
       <template #menu>
-        <MenuDetail :scroll-threshold="scrollThreshold" :items="items" back-title="I Cercatori di Verità">
+        <MenuDetail :scroll-threshold="scrollThreshold" :items="items" back-title="Cercatori di Verità">
           <template #cta>
             <Tooltip placement="bottom">
               <template #trigger>
@@ -91,10 +91,10 @@ const onHeaderHeightResize = (height: number): void => {
         <div id="info" class="anchor flex flex-col items-start justify-center pb-0 sm:pb-8 pt-16">
           <div class="mb-8 flex flex-col" itemprop="name">
             <h1 class="event-title mb-4 font-display text-6xl text-white-100 text-center">
-              I Cercatori di Verità
+              Cercatori di Verità
             </h1>
             <h2 class="mb-4 w-full font-display text-2xl uppercase text-white-100 text-center" :class="'sm:text-left'">
-              Campagna: L'ultimo Regno
+              Secoli bui: L'ultimo Regno
             </h2>
           </div>
           <div class="flex w-full flex-wrap items-start justify-start gap-8">
