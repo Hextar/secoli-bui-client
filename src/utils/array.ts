@@ -1,7 +1,7 @@
 /**
  * Array related helper functions
  */
-import { difference, intersection, sortBy } from 'lodash'
+import { difference, intersection, sortBy, shuffle } from 'lodash'
 
 export const initializeArray = (length: number): undefined[] =>
   Array.from(new Array(length))
@@ -110,7 +110,6 @@ export const getIdNext = (current: number, length: number, next: boolean): numbe
 }
 
 // Get sub-array of first n elements after shuffled
-export const shuffle = (array: any[], n: number) => {
-  const shuffled = array.sort(() => 0.5 - Math.random())
-  return shuffled.slice(0, n)
+export const shuffleArray = (array: any[], n: number) => {
+  return shuffle(array).slice(0, n)
 }

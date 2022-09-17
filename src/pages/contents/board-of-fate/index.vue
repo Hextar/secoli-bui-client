@@ -8,7 +8,7 @@ import {
   fatoHd
 } from '~/assets/images'
 
-import { shuffle } from '~/utils/array'
+import { shuffleArray } from '~/utils/array'
 
 type FateItem = {
   label: string,
@@ -109,7 +109,7 @@ const onHeaderHeightResize = (height: number): void => {
 
 const onRandom = () => {
   setTimeout(() => loading.value = false, 1200)
-  setTimeout(() => items.value = shuffle(items.value, 3), 600)
+  setTimeout(() => items.value = shuffleArray(ITEMS, 3), 600)
   loading.value = true
 }
 </script>
