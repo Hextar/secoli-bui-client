@@ -155,11 +155,11 @@ $overlayIndex: 99;
   &__overlay {
     position: fixed;
     @include fullsize;
+    @include menuItem(false);
     @apply bg-black-700;
     opacity: 0.95;
     overflow-y: scroll;
     z-index: $overlayIndex;
-    @include menuItem;
   }
 }
 </style>

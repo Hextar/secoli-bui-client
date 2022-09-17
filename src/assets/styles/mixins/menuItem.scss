@@ -1,4 +1,4 @@
-@mixin menuItem {
+@mixin menuItem($strikeOut: true) {
   &__title,
   &__item,
   &__label {
@@ -10,19 +10,6 @@
       opacity: 0.5;
     }
 
-    &:after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 0;
-      right: 0;
-      height: 1px;
-      width: 0%;
-      background-color: #FFF;
-      transition: width 0.255s ease-in-out;
-      z-index: 2;
-    }
-    
     &--scrolled:after {
       background-color: #0F0F0F;
     }
@@ -31,10 +18,25 @@
       opacity: 0.5;
     }
 
-    &--active:after,
-    &:hover:after {
-      content: '';
-      width: 100%;
+    @if $strikeOut == true {
+      &:after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        height: 1px;
+        width: 0%;
+        background-color: #FFF;
+        transition: width 0.255s ease-in-out;
+        z-index: 2;
+      }
+
+      &--active:after,
+      &:hover:after {
+        content: '';
+        width: 100%;
+      }
     }
   }
 }

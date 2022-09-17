@@ -9,13 +9,13 @@ const { emit } = getCurrentInstance() as NonNullable<ReturnType<typeof getCurren
 
 // METHODS
 const onToggle = (): void => {
-  emit(props.value ? 'close' : 'open', !props.value)
+  emit('update:value', !props.value)
 }
 </script>
 
 <template>
   <div class="expansion-panel">
-    <div class="expansion-pane__trigger" @click="onToggle">
+    <div class="expansion-pane__trigger relative flex justify-center items-center" @click="onToggle">
       <slot name="trigger" />
     </div>
     <div v-if="value" class="expansion-pane__content relative flex justify-start items-start">
