@@ -80,12 +80,11 @@ const onNavigate = (to?: RouteLocationRaw): void => {
       <IconChevron :class="{ 'rotate-180': showPopupMenu }" />
     </span>
   </div>
-  <PopupMenu ref="popupMenu" v-if="showPopupMenu" class="popup-menu" :class="{
+  <PopupMenu ref="popupMenu" v-if="showPopupMenu" class="popup-menu px-2" :class="{
     'popup-menu--open': showPopupMenu
   }" @click:outside="onClose" @mouseover="onOpen(true)" @mouseleave="onClose(true)">
-    <ListElement v-for="(child, idx) in item.children"
-      class="popup-menu__content__item px-2 w-full h-[fit-content] cursor-item" :key="`${child?.label}-${idx}`"
-      :disabled="child.disabled" @click="onNavigate(child.to)">
+    <ListElement v-for="(child, idx) in item.children" class="menu__content__item w-full h-[fit-content] cursor-item"
+      :key="`${child?.label}-${idx}`" :disabled="child.disabled" @click="onNavigate(child.to)">
       <span class="py-2 text-white-100 w-full"
         :class="{ 'menu__content__item__label': !child.disabled, 'menu__content__item__disabled': child.disabled }">
         {{ child.label }}
@@ -95,11 +94,13 @@ const onNavigate = (to?: RouteLocationRaw): void => {
 </template>
 
 <style lang="scss" scoped>
-.menu__content__item {
+.menu__content {
   @include menuItem;
 
-  &__disabled {
-    opacity: 0.55;
+  &__item {
+    &__disabled {
+      opacity: 0.55;
+    }
   }
 }
 </style>

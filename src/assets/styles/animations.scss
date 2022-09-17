@@ -57,6 +57,16 @@
       -webkit-animation: fade-in 0.510s ease-in-out, slide-from-below 0.510s ease-in-out;
     }
   }
+
+  &shake {
+    animation: shake 4.72s ease infinite;
+    transform-origin: 50% 50%;
+  }
+
+  &spin {
+    animation: spin 0.510s ease-in-out forwards;
+    -webkit-animation: spin 0.510s ease-in-out forwards;
+  }
 }
 
 @keyframes bounce {
@@ -133,7 +143,11 @@
   100% { transform: translateY(-32px) }
 }
 
-/* animates orb glow */
+@keyframes spin {
+  from { transform:rotate(0deg) }
+  to { transform:rotate(360deg) }
+}
+
 @keyframes glow {
 
   0%,
@@ -145,4 +159,15 @@
     box-shadow: 0 0 48px 16px #630000;
     ;
   }
+}
+
+@keyframes shake {
+  0% { transform:translate(0,0) }
+  1.78571% { transform:translate(5px,0) }
+  3.57143% { transform:translate(0,0) }
+  5.35714% { transform:translate(5px,0) }
+  7.14286% { transform:translate(0,0) }
+  8.92857% { transform:translate(5px,0) }
+  10.71429% { transform:translate(0,0) }
+  100% { transform:translate(0,0) }
 }

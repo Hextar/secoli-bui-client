@@ -8,3 +8,4 @@ export { default as InputHamburgherSymmetric } from './hamburgher-symmetric.svg?
 export { default as IconMoney } from './money.svg?component'
 export { default as IconPin } from './pin.svg?component'
 export { default as IconRandom } from './random.svg?component'
+export { default as IconTent } from './tent.svg?component'

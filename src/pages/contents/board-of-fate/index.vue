@@ -1,11 +1,14 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, Ref } from 'vue'
 
 import { useMeta } from '~/composables'
 
+import { IconRandom } from '~/assets/icons'
 import {
   fatoHd
 } from '~/assets/images'
+
+import { shuffle } from '~/utils/array'
 
 type FateItem = {
   label: string,
@@ -13,15 +16,17 @@ type FateItem = {
 }
 
 // USE
-// META
 useMeta({
   title: 'Manuali',
   description: 'scopri il regolamento ufficiale di Secoli Bui',
 })
 
+const { t } = useI18n()
+
 // VARIABLES
 const scrollThreshold = ref(200)
-const items: FateItem[] = [
+const loading = ref(false)
+const ITEMS: FateItem[] = [
   { label: 'Agire prima di pensare', disabled: false },
   { label: 'Amore Perduto', disabled: false },
   { label: 'Canto dell\'oro', disabled: false },
@@ -91,9 +96,21 @@ const items: FateItem[] = [
   { label: 'Uno per tutti', disabled: false },
   { label: 'Verso la Vetta', disabled: false },
 ]
+const items: Ref<FateItem[]> = ref(ITEMS)
+
+// COMPUTED
+const filteredItems = computed((): FateItem[] => {
+  return items.value
+})
 
 const onHeaderHeightResize = (height: number): void => {
   scrollThreshold.value = height - (86 / 2)
+}
+
+const onRandom = () => {
+  setTimeout(() => loading.value = false, 1200)
+  setTimeout(() => items.value = shuffle(items.value, 3), 600)
+  loading.value = true
 }
 </script>
     
@@ -112,13 +129,50 @@ const onHeaderHeightResize = (height: number): void => {
     </template>
   </Header>
   <div class="bg-white-100 pb-16" itemprop="description">
-    <Article>
+    <Article full-width>
+      <span class="flex justify-between items-end">
+        <Paragraph>
+          <h2 id="incipit" class="anchor">🧵 Scegli un Filo del fato!</h2>
+        </Paragraph>
+        <Tooltip class="cursor-item" placement="top">
+          <template #trigger>
+            <span class="animate_spin">
+              <IconRandom class="h-[48px] w-[48px] mb-2 mr-4 cursor-pointer"
+                :class="{ 'animate__shake': !loading, 'animate__spin': loading }" @click="onRandom" />
+            </span>
+          </template>
+          {{ t('random.label') }}
+        </Tooltip>
+      </span>
       <Paragraph>
-        <h2 id="incipit" class="anchor">🧵 Fili del fato</h2>
+        <p class="text-justify">
+          <strong>Di cosa si tratta?</strong>
+          <br />
+          Questo calderone di fili intricati (i titoli qui sotto) creerà legami e conflitti, aggiungerà tratti di
+          background e creerà più gioco per i vostri personaggi.
+          <br /><br />
+          <strong>Come funziona?</strong>
+          <br />
+          Avete la possibilità di scegliere <strong>3 fili</strong> dalla bacheca, che ci potrete comunicare quando
+          compilerete il modulo d’iscrizione.
+          Lo staff vi assegnerà, cercando di accontentare tutti, uno solo dei 3 fili scelti entro pochi giorni e assieme
+          ad esso le informazioni complete di questo piccolo frammento di background che dovrete integrare a vostro
+          piacere nella storia personale del vostro personaggio.
+          <br /><br />
+          <strong>Scelte e scadenze</strong>
+          <br />
+          Il <strong>1 ottobre 2022</strong> verrà assegnato il primo round di fili del fato a chi ha già inviato la
+          scheda ed espresso le proprie preferenze.
+
+          Da tale data in poi <strong>ogni settimana</strong> i fili a disposizione diminuiranno. Non temete: terremo
+          traccia sul sito di quelli non più disponibli.
+          <br /><br />
+          Scegliete com saggezza o, se siete indecisi, fatevi consigliare dal fato cliccando il dado qui sopra!
+        </p>
       </Paragraph>
-      <div class="flex flex-wrap justify-center sm:justify-start items-center my-8">
-        <ScrollCard class="h-[128px] w-full sm:w-1/2 md:w-1/3 lg:w-1/3 pr-0 sm:pr-4 mb-8" v-for="(item, idx) in items"
-          :key="`${item.label}-${idx}`" :label="item.label" />
+      <div class="flex flex-wrap justify-center sm:justify-start items-center w-full my-8">
+        <ScrollCard class="h-[128px] w-full sm:w-1/2 md:w-1/3 lg:w-1/3 pr-0 sm:pr-8 mb-8"
+          v-for="(item, idx) in filteredItems" :key="`${item.label}-${idx}`" :label="item.label" />
       </div>
     </Article>
   </div>

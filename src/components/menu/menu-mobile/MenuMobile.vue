@@ -4,8 +4,6 @@ import { computed, onMounted, ref, watch } from 'vue'
 
 import { InputHamburgher, InputHamburgherSymmetric } from '~/assets/icons'
 
-import { useMenuItem } from '~/composables'
-
 import type { MenuItemType } from '~/types'
 
 // PROPS
@@ -29,9 +27,6 @@ const randSlash = computed((): number => {
   return Math.floor(Math.random() * 3) + 1
 })
 
-// METHODS
-const { isActive } = useMenuItem()
-
 // ON MOUNTED
 onMounted(() => setTimeout(() => (loaded.value = true), 510))
 </script>
@@ -54,18 +49,9 @@ onMounted(() => setTimeout(() => (loaded.value = true), 510))
     }" @click="open = !open" />
   </section>
   <div v-if="open" class="menu-mobile__overlay flex flex-col items-center justify-center gap-12">
-    <div v-for="({ label, to, tooltip, disabled }, idx) in props.items" :key="`${label}-${idx}`"
+    <div v-for="(item, idx) in items" :key="`${item.label}-${idx}`"
       class="menu-mobile__overlay__item animate__gentle-slide-from-above cursor-pointer font-display text-lg font-bold text-white-100">
-      <Tooltip :disabled="tooltip && tooltip.disabled" :placement="tooltip && tooltip.placement" light>
-        <template #trigger>
-          <router-link v-if="to" class="menu-mobile__overlay__item" :class="{
-            'menu-mobile__overlay__item--active': isActive(to, props.matchHash),
-          }" :disabled="disabled" :aria-label="label" :to="to" exact @click="open = !open">
-            {{ label }}
-          </router-link>
-        </template>
-        {{ tooltip ? tooltip.content : '' }}
-      </Tooltip>
+      <MenuMobileItem :item="item" />
     </div>
     <div class="mobile__overlay__item mobile__overlay__action animate__gentle-slide-from-above cursor-pointer">
       <slot name="action" />

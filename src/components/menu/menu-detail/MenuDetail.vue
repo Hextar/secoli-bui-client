@@ -14,6 +14,17 @@ const props = defineProps({
 })
 const { t } = useI18n()
 
+// VARIABLE
+const itemsWithHome: MenuItemType[] = [
+  {
+    label: 'Home',
+    to: { path: '/' },
+    tooltip: { content: 'Tenda master', placement: 'bottom' },
+    homepage: true,
+  },
+  ...props.items,
+]
+
 // COMPUTED
 const { aboveTablet, belowTablet } = useViewport()
 const parsedScrollThreshold = computed(() => props.scrollThreshold - 54)
@@ -77,7 +88,7 @@ const { isActive } = useMenuItem()
       <slot name="cta" />
     </div>
   </section>
-  <MenuMobile v-if="belowTablet" :items="items" :scrolled="hasScrolledY(parsedScrollThreshold)" match-hash>
+  <MenuMobile v-if="belowTablet" :items="itemsWithHome" :scrolled="hasScrolledY(parsedScrollThreshold)" match-hash>
     <template #action>
       <slot name="cta" />
     </template>

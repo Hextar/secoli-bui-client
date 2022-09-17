@@ -40,19 +40,16 @@ const items: MenuItemType[] = [
       content: 'Scrolla al paragrafo "Informazioni"',
       placement: 'bottom',
     },
-    homepage: true,
   },
   {
     label: 'Incipit',
     to: { path: '/events/past/la-pesca-dei-burattini', hash: '#incipit' },
     tooltip: { content: 'Scrolla al paragrafo "Incipit"', placement: 'bottom' },
-    homepage: true,
   },
   {
     label: 'Fazioni',
     to: { path: '/events/past/la-pesca-dei-burattini', hash: '#fazioni' },
     tooltip: { content: 'Scrolla al paragrafo "Fazioni"', placement: 'bottom' },
-    homepage: true,
   },
   {
     label: 'Come funziona?',
@@ -61,7 +58,6 @@ const items: MenuItemType[] = [
       content: 'Scrolla al paragrafo "Come funziona?"',
       placement: 'bottom',
     },
-    homepage: true,
   },
 ]
 const { saveAs } = pkg

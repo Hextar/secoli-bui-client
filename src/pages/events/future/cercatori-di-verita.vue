@@ -37,13 +37,11 @@ const items: MenuItemType[] = [
       content: 'Scrolla al paragrafo "Informazioni"',
       placement: 'bottom',
     },
-    homepage: true,
   },
   {
     label: 'Incipit',
     to: { path: '/events/future/cercatori-di-verita', hash: '#incipit' },
     tooltip: { content: 'Scrolla al paragrafo "Incipit"', placement: 'bottom' },
-    homepage: true,
   }
 ]
 

@@ -108,3 +108,9 @@ export const containSameKeys = (a: Record<string, unknown>, b: Record<string, un
 export const getIdNext = (current: number, length: number, next: boolean): number => {
   return next ? (current + 1) % length : (current - 1) < 0 ? length - 1 : (current - 1)
 }
+
+// Get sub-array of first n elements after shuffled
+export const shuffle = (array: any[], n: number) => {
+  const shuffled = array.sort(() => 0.5 - Math.random())
+  return shuffled.slice(0, n)
+}
