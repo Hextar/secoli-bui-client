@@ -7,7 +7,7 @@ defineProps({
 <template>
   <div class="scroll-card w-full">
     <div class="scroll-card__content flex justify-center items-center h-full w-full">
-      <div class="scroll-card__content__label w-full text-primary-500 text-center text-xl text-ellipsis">
+      <div class="scroll-card__content__label w-[80%] text-primary-500 text-center text-xl text-ellipsis">
         {{ label }}
       </div>
     </div>
