@@ -17,7 +17,6 @@ const onToggle = (): void => {
   <div class="expansion-panel">
     <div class="expansion-pane__trigger" @click="onToggle">
       <slot name="trigger" />
-      {{ value }}
     </div>
     <div v-if="value" class="expansion-pane__content relative flex justify-start items-start">
       <slot name="content" />
