@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { madLogo } from '~/assets/images'
 
+// USE
 const { t } = useI18n()
 </script>
 

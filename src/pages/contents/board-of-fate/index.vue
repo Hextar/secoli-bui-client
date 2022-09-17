@@ -118,7 +118,7 @@ const onRandom = () => {
   <Header ref="header" class="text-white-100" :image="fatoHd" height="420px" darkest
     @resize:height="onHeaderHeightResize">
     <template #menu>
-      <MenuDetail :scroll-threshold="scrollThreshold" :items="items" />
+      <MenuDetail :scroll-threshold="scrollThreshold" />
     </template>
     <template #content>
       <div id="title" class="flex flex-col items-center justify-center">

@@ -6,13 +6,16 @@ import { IconArrow } from '~/assets/icons'
 import { useMenuItem, useScroll, useViewport } from '~/composables'
 
 import type { MenuItemType } from '~/types'
+
+// USE
+const { t } = useI18n()
+
 // PROPS
 const props = defineProps({
   scrollThreshold: { type: Number, default: 200 },
-  backTitle: { type: String, default: 'Torna alla home' },
-  items: { type: Array as PropType<MenuItemType[]>, default: () => [] }
+  backTitle: { default: '', type: String },
+  items: { default: () => [], type: Array as PropType<MenuItemType[]> }
 })
-const { t } = useI18n()
 
 // VARIABLE
 const itemsWithHome: MenuItemType[] = [
@@ -61,11 +64,11 @@ const { isActive } = useMenuItem()
         'text-white-100': !hasScrolledY(parsedScrollThreshold),
         'text-black-500': hasScrolledY(parsedScrollThreshold),
       }">
-        {{ props.backTitle }}
+        {{ !!backTitle ? backTitle : t('common.go_home') }}
       </h2>
     </div>
-    <div v-if="aboveTablet" class="menu-event__content justify-satrt items-center gap-8 md:flex">
-      <div v-for="({ label, to, tooltip, disabled }, idx) in props.items" :key="`${label}-${idx}`"
+    <div v-if="aboveTablet && !!items.length" class="menu-event__content justify-satrt items-center gap-8 md:flex">
+      <div v-for="({ label, to, tooltip, disabled }, idx) in items" :key="`${label}-${idx}`"
         class="flex items-center justify-center">
         <Tooltip :disabled="tooltip ? tooltip.disabled : undefined"
           :placement="tooltip ? tooltip.placement : undefined">
