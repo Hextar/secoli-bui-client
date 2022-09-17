@@ -2,7 +2,7 @@
 import { MenuItems } from '~/pages/items'
 import { computed } from 'vue'
 
-import { useMenuItem, useScroll, useViewport } from '~/composables'
+import { useScroll, useViewport } from '~/composables'
 
 // PROPS
 const props = defineProps({
@@ -17,7 +17,6 @@ const { belowTablet, isMobile } = useViewport()
 const parsedScrollThreshold = computed(() => props.scrollThreshold - 54)
 
 // METHODS
-const { isActive } = useMenuItem()
 const { hasScrolledY } = useScroll()
 </script>
 
@@ -30,19 +29,8 @@ const { hasScrolledY } = useScroll()
       <Logo :size="isMobile ? 'small' : 'medium'" homepage />
     </div>
     <template class="menu__content hidden flex-wrap items-center justify-center gap-8 sm:flex">
-      <div v-for="({ label, to, tooltip, disabled }, idx) in items" :key="`${label}-${idx}`">
-        <Tooltip :disabled="tooltip ? tooltip.disabled : undefined"
-          :placement="tooltip ? tooltip.placement : undefined">
-          <template #trigger>
-            <router-link v-if="to"
-              class="menu__content__item cursor-pointer font-display text-lg font-bold text-white-100 grayscale"
-              :class="{ 'menu__content__item--active': isActive(to) }" :disabled="disabled" :aria-label="label" :to="to"
-              exact>
-              {{ label }}
-            </router-link>
-          </template>
-          {{ tooltip ? tooltip.content : '' }}
-        </Tooltip>
+      <div v-for="(item, idx) in items" :key="`${item.label}-${idx}`">
+        <MenuNormalItem :item="item" />
       </div>
     </template>
   </section>
@@ -52,7 +40,7 @@ const { hasScrolledY } = useScroll()
 <style lang="scss" scoped>
 .menu {
   position: relative;
-  overflow: auto;
+  // overflow: auto;
   top: 0;
   right: 0;
   left: 0;
@@ -66,10 +54,6 @@ const { hasScrolledY } = useScroll()
 
   &__logo {
     overflow: hidden;
-  }
-
-  &__content {
-    @include menuItem;
   }
 }
 </style>

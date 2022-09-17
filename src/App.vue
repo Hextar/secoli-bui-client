@@ -1,11 +1,13 @@
 <script setup lang="ts">
-import { useMeta } from '~/composables'
+import { useForceOpenInBrowser, useMeta } from '~/composables'
 
-// META
+// USE
 useMeta({
   title: 'Secoli bui',
   description: 'scopri i prossimi eventi LARP italiani',
 })
+
+useForceOpenInBrowser()
 </script>
 
 <template>

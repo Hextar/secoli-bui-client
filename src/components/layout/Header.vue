@@ -41,9 +41,8 @@ watch(headerHeight, ((val: number) => {
 
 <template>
   <section ref="header" class="header flex items-start justify-center" v-bind="$attrs">
-    <CustomImage class="header__background pointer-events-none w-full"
-      :class="{ 'header__background--darkest': darkest }" :src="image" title="Background event cover"
-      alt="Background event cover" above-the-fold />
+    <Image class="header__background pointer-events-none w-full" :class="{ 'header__background--darkest': darkest }"
+      :src="image" title="Background event cover" alt="Background event cover" above-the-fold />
     <div class="header__content container flex flex-col justify-start pb-8 md:justify-center md:pb-0">
       <div class="header__content__menu flex flex-col items-center justify-center pt-6 md:pt-8">
         <slot name="menu" />

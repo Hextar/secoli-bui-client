@@ -121,12 +121,12 @@ const downloadImage = async (url: string): Promise<void> => {
           <template #cta>
             <Tooltip placement="bottom">
               <template #trigger>
-                <CustomButton class="w-[112px]" variant="filled" color="primary" size="small" :disabled="!!loading"
+                <Button class="w-[112px]" variant="filled" color="primary" size="small" :disabled="!!loading"
                   @click.prevent.stop="downloadAttachment">
                   <span class="font-display text-lg font-bold">
                     {{ loading ? t('common.loading') : t('common.subscribe') }}
                   </span>
-                </CustomButton>
+                </Button>
               </template>
               Scarica il documento di iscrizione
             </Tooltip>
@@ -230,7 +230,7 @@ const downloadImage = async (url: string): Promise<void> => {
           </template>
           <Tooltip classname="float-none sm:float-left mr-0 sm:mr-8">
             <template #trigger>
-              <CustomImage class="cursor-pointer" :src="getAssetPath('i_portatori_della_fiamma_bianca.svg')"
+              <Image class="cursor-pointer" :src="getAssetPath('i_portatori_della_fiamma_bianca.svg')"
                 :width="imageWidth" title="Portatori della Fiamma Bianca" alt="Portatori della Fiamma Bianca"
                 @click.prevent.stop="downloadImage('i_portatori_della_fiamma_bianca.svg')" />
             </template>
@@ -255,7 +255,7 @@ const downloadImage = async (url: string): Promise<void> => {
           </template>
           <Tooltip classname="float-none sm:float-right ml-0 sm:ml-8">
             <template #trigger>
-              <CustomImage class="cursor-pointer" :src="getAssetPath('le_code_mozzate.svg')" :width="imageWidth"
+              <Image class="cursor-pointer" :src="getAssetPath('le_code_mozzate.svg')" :width="imageWidth"
                 title="Le code mozzate" alt="Le code mozzate"
                 @click.prevent.stop="downloadImage('le_code_mozzate.svg')" />
             </template>
@@ -277,7 +277,7 @@ const downloadImage = async (url: string): Promise<void> => {
           </template>
           <Tooltip classname="float-none sm:float-left mr-0 sm:mr-8">
             <template #trigger>
-              <CustomImage class="cursor-pointer" :src="getAssetPath('l_ineluttabile_domani.svg')" :width="imageWidth"
+              <Image class="cursor-pointer" :src="getAssetPath('l_ineluttabile_domani.svg')" :width="imageWidth"
                 title="L'ineluttabile domani" alt="L'ineluttabile domani"
                 @click.prevent.stop="downloadImage('l_ineluttabile_domani.svg')" />
             </template>
@@ -306,7 +306,7 @@ const downloadImage = async (url: string): Promise<void> => {
           </template>
           <Tooltip classname="float-none sm:float-right ml-0 sm:ml-8">
             <template #trigger>
-              <CustomImage class="cursor-pointer" :src="getAssetPath('i_cercatori_del_sentiero_dorato.svg')"
+              <Image class="cursor-pointer" :src="getAssetPath('i_cercatori_del_sentiero_dorato.svg')"
                 :width="imageWidth" title="I cercatori del sentiero dorato" alt="I cercatori del sentiero dorato"
                 @click.prevent.stop="downloadImage('i_cercatori_del_sentiero_dorato.svg')" />
             </template>
@@ -333,7 +333,7 @@ const downloadImage = async (url: string): Promise<void> => {
           </template>
           <Tooltip classname="float-none sm:float-left mr-0 sm:mr-8">
             <template #trigger>
-              <CustomImage class="cursor-pointer" :src="getAssetPath('le_fauci_grondanti.svg')" :width="imageWidth"
+              <Image class="cursor-pointer" :src="getAssetPath('le_fauci_grondanti.svg')" :width="imageWidth"
                 title="Le fauci grondanti" alt="Le fauci grondanti"
                 @click.prevent.stop="downloadImage('le_fauci_grondanti.svg')" />
             </template>
@@ -359,7 +359,7 @@ const downloadImage = async (url: string): Promise<void> => {
           </template>
           <Tooltip classname="float-none sm:float-right ml-0 sm:ml-8">
             <template #trigger>
-              <CustomImage class="cursor-pointer" :src="getAssetPath('la_loghia_del_gufo.svg')" :width="imageWidth"
+              <Image class="cursor-pointer" :src="getAssetPath('la_loghia_del_gufo.svg')" :width="imageWidth"
                 title="La loghia del gufo" alt="La loghia del gufo"
                 @click.prevent.stop="downloadImage('la_loghia_del_gufo.svg')" />
             </template>

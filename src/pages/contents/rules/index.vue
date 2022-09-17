@@ -130,12 +130,12 @@ const downloadAttachment = async (val: string): Promise<void> => {
             sua storia. Affronta questo viaggio armandoti di coraggio e spirito d'avventura: ti attendono grandi
             avventure!
           </p>
-          <CustomButton class="px-4" variant="filled" color="primary" size="small" :disabled="!!loading"
+          <Button class="px-4" variant="filled" color="primary" size="small" :disabled="!!loading"
             @click.prevent.stop="downloadAttachment('ambientazione')">
             <span class="font-display text-lg font-bold">
               {{ loading ? t('common.loading') : 'Scarica ambientazione' }}
             </span>
-          </CustomButton>
+          </Button>
         </Paragraph>
         <Paragraph class="w-full sm:w-1/2 mb-8 pl-0 sm:pl-8" horizontal reverse>
           <template #title>
@@ -149,12 +149,12 @@ const downloadAttachment = async (val: string): Promise<void> => {
             Capitolo della Campagna.
           </p>
           <div class="flex flex-grow flex-1" />
-          <CustomButton class="px-4" variant="filled" color="primary" size="small" :disabled="!!loading"
+          <Button class="px-4" variant="filled" color="primary" size="small" :disabled="!!loading"
             @click.prevent.stop="downloadAttachment('base')">
             <span class="font-display text-lg font-bold">
               {{ loading ? t('common.loading') : 'Scarica manuale base' }}
             </span>
-          </CustomButton>
+          </Button>
         </Paragraph>
         <Paragraph class="w-full sm:w-1/2 mb-8 pr-0 sm:pr-8" horizontal>
           <template #title>
@@ -169,12 +169,12 @@ const downloadAttachment = async (val: string): Promise<void> => {
             di Magie, Circoli e così
             via.
           </p>
-          <CustomButton class="px-4" variant="filled" color="primary" size="small" :disabled="!!loading"
+          <Button class="px-4" variant="filled" color="primary" size="small" :disabled="!!loading"
             @click.prevent.stop="downloadAttachment('magia')">
             <span class="font-display text-lg font-bold">
               {{ loading ? t('common.loading') : 'Scarica manuale di magia' }}
             </span>
-          </CustomButton>
+          </Button>
         </Paragraph>
         <Paragraph class="w-full sm:w-1/2 mb-8 pl-0 sm:pl-8" horizontal reverse>
           <template #title>
@@ -188,12 +188,12 @@ const downloadAttachment = async (val: string): Promise<void> => {
             Grazie a questo manuale conoscerai le tipologie di culti esistenti a Braara, le numerose preghiere esistenti
             e tutti i loro effetti.
           </p>
-          <CustomButton class="px-4" variant="filled" color="primary" size="small" :disabled="!!loading"
+          <Button class="px-4" variant="filled" color="primary" size="small" :disabled="!!loading"
             @click.prevent.stop="downloadAttachment('preghiera')">
             <span class="font-display text-lg font-bold">
               {{ loading ? t('common.loading') : 'Scarica manuale di preghiera' }}
             </span>
-          </CustomButton>
+          </Button>
         </Paragraph>
         <Paragraph class="w-full sm:w-1/2 mb-8 pr-0 sm:pr-8" horizontal>
           <template #title>
@@ -206,12 +206,12 @@ const downloadAttachment = async (val: string): Promise<void> => {
             Tu sei un alchimista. Questo manuale,
             invece, è la tua chiave per conoscere tutti i segreti alchemici di Braara.
           </p>
-          <CustomButton class="px-4" variant="filled" color="primary" size="small" :disabled="!!loading"
+          <Button class="px-4" variant="filled" color="primary" size="small" :disabled="!!loading"
             @click.prevent.stop="downloadAttachment('alchimia')">
             <span class="font-display text-lg font-bold">
               {{ loading ? t('common.loading') : 'Scarica manuale di alchimia' }}
             </span>
-          </CustomButton>
+          </Button>
         </Paragraph>
         <Paragraph class="w-full sm:w-1/2 mb-8 pl-0 sm:pl-8" horizontal reverse>
           <template #title>
@@ -224,12 +224,12 @@ const downloadAttachment = async (val: string): Promise<void> => {
             ciò che fa al caso tuo per comprendere al meglio questa nobile arte. Troverai informazioni sulle regole, le
             <strong>rune</strong> esistenti, i <strong>metalli</strong> di Braara e molto altro.
           </p>
-          <CustomButton class="px-4" variant="filled" color="primary" size="small" :disabled="!!loading"
+          <Button class="px-4" variant="filled" color="primary" size="small" :disabled="!!loading"
             @click.prevent.stop="downloadAttachment('arte_runica')">
             <span class="font-display text-lg font-bold">
               {{ loading ? t('common.loading') : 'Scarica manuale di arte runica' }}
             </span>
-          </CustomButton>
+          </Button>
         </Paragraph>
         <Paragraph class="w-full mb-8 pr-0 sm:pr-8" horizontal reverse>
           <template #title>
@@ -245,12 +245,12 @@ const downloadAttachment = async (val: string): Promise<void> => {
             di combattenti a cui ti unirai.
             Puoi trovare ogni informazione necessaria in questo manuale.
           </p>
-          <CustomButton class="px-4" variant="filled" color="primary" size="small" :disabled="!!loading"
+          <Button class="px-4" variant="filled" color="primary" size="small" :disabled="!!loading"
             @click.prevent.stop="downloadAttachment('avanzamento_e_osp')">
             <span class="font-display text-lg font-bold">
               {{ loading ? t('common.loading') : 'Scarica manuale di Avanzamento e OSP' }}
             </span>
-          </CustomButton>
+          </Button>
         </Paragraph>
       </div>
     </Article>

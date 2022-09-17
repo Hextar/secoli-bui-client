@@ -11,7 +11,7 @@ const { t } = useI18n()
         <div class="mb-16 flex flex-col items-center gap-8 md:mb-0 md:w-1/5 md:items-start">
           <a href="https://www.facebook.com/mad2factory/" rel="noopener noreferrer" title="mad_2_factory"
             alt="mad_2_factory" target="_blank">
-            <CustomImage class="footer__main__logo" :width="160" :src="madLogo" title="Mad2Factory logo"
+            <Image class="footer__main__logo" :width="160" :src="madLogo" title="Mad2Factory logo"
               alt="Mad2Factory logo" />
           </a>
           <span class="text-center font-body text-sm text-white-500 md:text-left">

@@ -1,6 +1,6 @@
 import { type ViteSSGContext } from 'vite-ssg'
 
-import type { RouteLocationRaw } from 'vue-router'
+import type { RouteLocationPathRaw } from 'vue-router'
 
 export type UserModule = (ctx: ViteSSGContext) => void
 
@@ -38,7 +38,7 @@ export interface LazyOptions {
  */
 export interface MenuItemType {
   label: string
-  to?: RouteLocationRaw
+  to?: RouteLocationPathRaw
   tooltip?: TooltipOptions
   disabled?: boolean
   children?: MenuItemType[]

@@ -53,10 +53,10 @@ const { isActive } = useMenuItem()
         <span class="mb-8 text-center font-body text-sm text-grey-500 md:text-left">
           Non perderti tutti gli aggiornamenti dei nostri eventi LARP
         </span>
-        <CustomButton variant="outline" tag="a" href="https://mailchi.mp/bd173f18b082/iscriviti"
+        <Button variant="outline" tag="a" href="https://mailchi.mp/bd173f18b082/iscriviti"
           title="Iscriviti alla newsletter" alt="Iscriviti alla newsletter" rel="noopener noreferrer" target="_blank">
           {{ t('common.subscribe') }}
-        </CustomButton>
+        </Button>
       </div>
     </div>
   </section>

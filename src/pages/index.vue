@@ -36,9 +36,9 @@ const { isMobile, belowTablet } = useViewport()
             Secoli bui: L'ultimo Regno
           </i>
         </p>
-        <CustomButton class="w-[160px]" tag="router-link" to="/events/future/cercatori-di-verita">
+        <Button class="w-[160px]" tag="router-link" to="/events/future/cercatori-di-verita">
           {{ t('homepage.more') }}
-        </CustomButton>
+        </Button>
       </div>
     </template>
   </Header>

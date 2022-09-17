@@ -1,6 +1,7 @@
 @mixin menuItem {
   &__title,
-  &__item {
+  &__item,
+  &__label {
     position: relative;
     z-index: 1;
 

@@ -6,6 +6,7 @@ export { default as backgroundLogoHd } from './events/cercatori_di_verita/backgr
 export { default as backgroundLazyLogoHd } from './events/cercatori_di_verita/background-lazy.jpeg?preset=hd'
 
 export { default as economiaHd } from './economia.jpg?preset=hd'
+export { default as fatoHd } from './fato.jpg?preset=hd'
 export { default as fazioniHd } from './fazioni.jpg?preset=hd'
 export { default as manualiHd } from './manuali.jpg?preset=hd'
 export { default as larpHd } from './larp.jpg?preset=hd'
