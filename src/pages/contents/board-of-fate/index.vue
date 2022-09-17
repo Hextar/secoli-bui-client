@@ -146,12 +146,12 @@ const onRandom = () => {
       </span>
       <Paragraph>
         <p class="text-justify">
-          <strong>Di cosa si tratta?</strong>
+          <strong>DI COSA SI TRATTA?</strong>
           <br />
-          Questo calderone di fili intricati (i titoli qui sotto) creerà legami e conflitti, aggiungerà tratti di
-          background e creerà più gioco per i vostri personaggi.
+          Le pergamene che troverai qui sotto daranno inizio a legami e conflitti, aggiungendo tratti di
+          background e creando più gioco per i vostri personaggi.
           <br /><br />
-          <strong>Come funziona?</strong>
+          <strong>COME FUNZIONA?</strong>
           <br />
           Avete la possibilità di scegliere <strong>3 fili</strong> dalla bacheca, che ci potrete comunicare quando
           compilerete il modulo d’iscrizione.
@@ -159,7 +159,7 @@ const onRandom = () => {
           ad esso le informazioni complete di questo piccolo frammento di background che dovrete integrare a vostro
           piacere nella storia personale del vostro personaggio.
           <br /><br />
-          <strong>Scelte e scadenze</strong>
+          <strong>SCELTE E SCADENZA</strong>
           <br />
           Il <strong>1 ottobre 2022</strong> verrà assegnato il primo round di fili del fato a chi ha già inviato la
           scheda ed espresso le proprie preferenze.
@@ -171,7 +171,7 @@ const onRandom = () => {
         </p>
       </Paragraph>
       <div class="flex flex-wrap justify-center sm:justify-start items-center w-full my-8">
-        <ScrollCard class="h-[128px] w-full sm:w-1/2 md:w-1/3 lg:w-1/3 pr-0 sm:pr-8 mb-8"
+        <ScrollCard class="h-[128px] w-full sm:w-1/2 md:w-1/3 lg:w-1/3 pr-0 sm:px-4 mb-8"
           v-for="(item, idx) in filteredItems" :key="`${item.label}-${idx}`" :label="item.label" />
       </div>
     </Article>
