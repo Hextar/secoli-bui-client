@@ -55,6 +55,7 @@ onMounted(() => {
 .parchment {
   background-size: 100%;
   max-width: 100%;
+  z-index: 0;
 
   @media (max-width: '640px') {
     max-width: calc(100% + 64px);
@@ -95,9 +96,11 @@ onMounted(() => {
       }
 
       .parchment__sigil {
-        left: calc(50% - 90px);
-        top: calc(50% - 90px);
-        transform: scale(.75);
+        height: fit-content;
+        width: fit-content;
+        left: calc(50% - 95px);
+        top: calc(50% - 85px);
+        transform: scale(.70) rotate(-15deg);
       }
 
       .parchment__footer {
