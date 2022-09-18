@@ -14,7 +14,7 @@ export const useForceOpenInBrowser = (): void => {
   const tryOpenBrowser = (): void => {
     if (document.body) {
       if (isInApp(['FBAN', 'FBAV'])) {
-        alert('Hai aperto il sito da un link Facebook, si consiglia di cliccare l\'icon \'...\' in alto a destra e seleazionare "Apri nel browser"')
+        alert('Hai aperto il sito da un link Facebook. Per ragioni di stabilità, si consiglia di cliccare l\'icona \'...\' in alto a destra e selezionare "Apri nel browser"')
         // openInBrowser(window.location.href, 'googlechrome://navigate?url=')
         window.open(window.location.href, '_system', 'location=yes')
       }
