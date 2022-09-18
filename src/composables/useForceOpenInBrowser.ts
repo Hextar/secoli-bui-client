@@ -14,7 +14,8 @@ export const useForceOpenInBrowser = (): void => {
   const tryOpenBrowser = (): void => {
     if (document.body) {
       if (isInApp(['FBAN', 'FBAV'])) {
-        openInBrowser(window.location.href, 'googlechrome://navigate?url=')
+        // openInBrowser(window.location.href, 'googlechrome://navigate?url=')
+        window.open(window.location.href, '_system')
       }
     } else {
       window.requestAnimationFrame(tryOpenBrowser);
