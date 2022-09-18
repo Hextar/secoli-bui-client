@@ -49,7 +49,7 @@ export const MenuItems: MenuItemType[] = [
   {
     label: 'Gioca con noi',
     to: { path: '/play-with-us' },
-    tooltip: { content: 'Coming soon', placement: 'bottom' },
+    tooltip: { content: 'Gioca con noi', placement: 'bottom' },
     // children: [
     //   {
     //     label: 'Chi siamo',

@@ -26,6 +26,10 @@ const { isActive } = useMenuItem()
               :aria-label="item.label" :to="item.to" exact>
               {{ item.label }}
             </router-link>
+            <span v-else
+              class="menu-footer__content__title mb-4 cursor-pointer text-center font-display text-lg font-bold text-white-100">
+              {{ item.label }}
+            </span>
           </template>
           {{ item.tooltip ? item.tooltip.content : '' }}
         </Tooltip>
@@ -39,6 +43,9 @@ const { isActive } = useMenuItem()
                 :aria-label="child.label" :to="child.to" exact>
                 {{ child.label }}
               </router-link>
+              <span v-else class="menu-footer__content__item mb-2 cursor-pointer font-display text-sm text-white-100">
+                {{ child.label }}
+              </span>
             </template>
             {{ child.tooltip ? child.tooltip.content : '' }}
           </Tooltip>
