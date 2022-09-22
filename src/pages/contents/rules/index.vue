@@ -91,7 +91,7 @@ const onHeaderHeightResize = (height: number): void => {
 const downloadAttachment = async (val: string): Promise<void> => {
   loading.value = true
   axios
-    .get(`/files/manuali/${val}.pdf`, { responseType: 'blob' })
+    .get(`/files/rules/${val}.pdf`, { responseType: 'blob' })
     .then(response => saveAs(response.data, `${val}.pdf`))
     .catch((err: unknown) => console.error(err))
     .finally(() => (loading.value = false))
@@ -249,6 +249,13 @@ const downloadAttachment = async (val: string): Promise<void> => {
             @click.prevent.stop="downloadAttachment('avanzamento_e_osp')">
             <span class="font-display text-lg font-bold">
               {{ loading ? t('common.loading') : 'Scarica manuale di Avanzamento e OSP' }}
+            </span>
+          </Button>
+        </Paragraph>
+        <Paragraph class="w-full mb-8 pr-0 sm:pr-8" horizontal reverse>
+          <Button class="px-4" variant="filled" color="primary" size="small">
+            <span class="font-display text-lg font-bold">
+              Per vedere i manuali della vecchia campagna (2015-2020) clicca qui
             </span>
           </Button>
         </Paragraph>
