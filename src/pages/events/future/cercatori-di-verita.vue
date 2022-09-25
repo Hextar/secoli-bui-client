@@ -70,18 +70,13 @@ const onHeaderHeightResize = (height: number): void => {
       <template #menu>
         <MenuDetail :scroll-threshold="scrollThreshold" :items="items" back-title="Cercatori di Verità">
           <template #cta>
-            <Tooltip placement="bottom">
-              <template #trigger>
-                <Button class="w-[112px]" variant="filled" color="primary" size="small" tag="a"
-                  href="https://docs.google.com/forms/d/e/1FAIpQLSeAwrZF8Y_L7qOdKXX7ui1PyyVEMNPpBjto83uU5VNv1kx-mg/viewform"
-                  target="_blank" :disabled="!!loading">
-                  <span class="font-display text-lg font-bold">
-                    {{ loading ? t('common.loading') : t('common.subscribe') }}
-                  </span>
-                </Button>
-              </template>
-              Scarica il documento di iscrizione
-            </Tooltip>
+            <Button class="w-[112px] animate__shake" variant="filled" color="primary" size="small" tag="a"
+              href="https://docs.google.com/forms/d/e/1FAIpQLSeAwrZF8Y_L7qOdKXX7ui1PyyVEMNPpBjto83uU5VNv1kx-mg/viewform"
+              target="_blank" :disabled="!!loading" tooltip="Vai al Google form di iscrizione">
+              <span class="font-display text-lg font-bold">
+                {{ loading ? t('common.loading') : t('common.subscribe') }}
+              </span>
+            </Button>
           </template>
         </MenuDetail>
       </template>
@@ -225,6 +220,46 @@ const onHeaderHeightResize = (height: number): void => {
             la possibilità di essere protagonisti di un evento fuori dall’ordinario, qualcosa che plasmerà il futuro
             delle genti e così hanno deciso di mettersi in viaggio, alla volta del famoso forte avoriano.
           </p>
+        </Paragraph>
+      </Article>
+      <Article>
+        <Paragraph>
+          <h2 id="incipit" class="anchor">✒️ Iscriversi al live</h2>
+        </Paragraph>
+        <Paragraph class="pb-4 sm:pb-8 md:pb-8">
+          <p class="text-justify">
+            Ora non ti resta che iscriverti all'evento cliccando il pulsante
+            <a class="pa-0 ma-0 decoration-none"
+              href="https://docs.google.com/forms/d/e/1FAIpQLSeAwrZF8Y_L7qOdKXX7ui1PyyVEMNPpBjto83uU5VNv1kx-mg/viewform"
+              target="_blank">
+              <span class=" font-display text-lg font-bold">
+                {{ t('common.subscribe') }}
+              </span>
+            </a> qui sotto, che
+            ti porterà al modulo compilabile;
+            se sei interessato alle convenzioni hotel potrai selezionarle all'interno del modulo al
+            paragrafo <strong>Pernotto</strong>.
+            <br /><br />
+            Nella seconda pagina del modulo potrai inserire le informazioni riguardanti il tuo personaggio, che sia
+            importato dal
+            precedente capitolo o un personaggio interamente nuovo.
+            <br /><br />
+            Potrai inoltre scegliere i <strong>Fili del fato</strong> visionabili alla <a
+              class="pa-0 ma-0 decoration-none" href="/contents/board-of-fate" target="_blank">
+              <span class=" font-display text-lg font-bold text-primary-500">
+                pagina dedicata
+              </span>
+            </a>.
+          </p>
+        </Paragraph>
+        <Paragraph class="flex justify-center w-full">
+          <Button class="w-[112px] animate__shake decoration-none w-1/3" variant="filled" color="primary" tag="a"
+            href="https://docs.google.com/forms/d/e/1FAIpQLSeAwrZF8Y_L7qOdKXX7ui1PyyVEMNPpBjto83uU5VNv1kx-mg/viewform"
+            target="_blank" :disabled="!!loading" full-width="" tooltip="Vai al Google form di iscrizione">
+            <span class="font-display text-lg font-bold">
+              {{ loading ? t('common.loading') : t('common.subscribe') }}
+            </span>
+          </Button>
         </Paragraph>
       </Article>
     </div>

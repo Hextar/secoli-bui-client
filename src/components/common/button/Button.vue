@@ -61,11 +61,12 @@ const iconPosition = computed((): string =>
 </script>
 
 <template>
-  <Tooltip :disabled="!tooltip">
-    <template #trigger>
+  <Tooltip :disabled="!tooltip" :full-width="fullWidth">
+    <template #trigger style="width: 100%">
       <component :is="props.tag" class="button flex items-center justify-center" :class="{
         [`px-${padding}`]: padding > 0,
         [`button--size--${props.size}`]: true,
+        [`button--full-width`]: fullWidth,
         [`button--color--${props.color}`]: true,
         [`button--variant--${props.variant}`]: true,
         [`button--icon--${iconPosition}`]: true,
@@ -91,6 +92,10 @@ const iconPosition = computed((): string =>
 .button {
   position: relative;
   transition: background-color 250ms ease;
+
+  &--full-width {
+    width: 100%
+  }
 
   &.button--size {
     @each $key in map-keys($sizes) {

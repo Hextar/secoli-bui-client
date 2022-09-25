@@ -67,6 +67,11 @@
     animation: spin 0.510s ease-in-out forwards;
     -webkit-animation: spin 0.510s ease-in-out forwards;
   }
+
+  &glow {
+    animation: glow 3.6s infinite;
+    -webkit-animation: glow 3.6s infinite;
+  }
 }
 
 @keyframes bounce {

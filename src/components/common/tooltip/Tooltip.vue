@@ -16,8 +16,9 @@ const props = defineProps({
   nudgeTop: { type: Number, default: 0 },
   nudgeRight: { type: Number, default: 0 },
   light: { type: Boolean, default: false },
-  forceShow: { Boolean, default: false },
-  classname: { String, default: '' },
+  forceShow: { type: Boolean, default: false },
+  classname: { type: String, default: '' },
+  fullWidth: { type: Boolean, default: false },
 })
 
 // VARIABLES
@@ -50,6 +51,8 @@ const { isMobile } = useViewport()
 
 const trigger = computed((): TooltipTrigger => isMobile.value ? 'click-to-open' : props.trigger)
 const delay = computed((): TooltipDelay => isMobile.value ? { show: 0, hide: 0 } : props.delay)
+
+const width = computed((): string => props.fullWidth ? '100%' : 'fit-content')
 </script>
 
 <template>
@@ -58,7 +61,9 @@ const delay = computed((): TooltipDelay => isMobile.value ? { show: 0, hide: 0 }
     :placement="props.placement" :modifiers="modifiers" :delay-on-mouseover="delay.show" :delay-on-mouseout="delay.hide"
     :force-show="props.forceShow" v-bind="$attrs">
     <template #reference>
-      <slot name="trigger"></slot>
+      <span class="flex justify-center items-center">
+        <slot name="trigger"></slot>
+      </span>
     </template>
     <span class="tooltip__content pa-2 bg-black-700 text-base rounded" :class="{
       'bg-white-100 text-black-700': light,
@@ -70,6 +75,13 @@ const delay = computed((): TooltipDelay => isMobile.value ? { show: 0, hide: 0 }
   </Popper>
 </template>
 
+<style lang="scss">
+#trigger {
+  max-width: v-bind(width);
+  width: v-bind(width);
+}
+</style>
+
 <style lang="scss" scoped>
 $arrowSize: 5px;
 
@@ -78,47 +90,47 @@ $arrowSize: 5px;
     position: relative;
     display: flex;
 
-    // &::after {
-    //   content: '';
-    //   position: absolute;
-    //   z-index: inherit;
-    // }
+    &::after {
+      content: '';
+      position: absolute;
+      z-index: inherit;
+    }
 
-    // &--top::after {
-    //   top: -#{$arrowSize};
-    //   left: calc(50% - #{$arrowSize / 1.25});
-    //   width: 0; 
-    //   height: 0; 
-    //   border-left: $arrowSize solid transparent;
-    //   border-right: $arrowSize solid transparent;
-    //   border-bottom: $arrowSize solid #0F0F0F;
-    // }
+    &--top::after {
+      top: -#{$arrowSize};
+      left: calc(50% - #{$arrowSize / 1.25});
+      width: 0;
+      height: 0;
+      border-left: $arrowSize solid transparent;
+      border-right: $arrowSize solid transparent;
+      border-bottom: $arrowSize solid #0F0F0F;
+    }
 
-    // &--down::after {
-    //   top: -#{$arrowSize};
-    //   left: calc(50% - #{$arrowSize / 2});
-    //   width: 0; 
-    //   height: 0; 
-    //   border-left: $arrowSize solid transparent;
-    //   border-right: $arrowSize solid transparent;
-    //   border-top: $arrowSize solid #0F0F0F;
-    // }
+    &--down::after {
+      top: -#{$arrowSize};
+      left: calc(50% - #{$arrowSize / 2});
+      width: 0;
+      height: 0;
+      border-left: $arrowSize solid transparent;
+      border-right: $arrowSize solid transparent;
+      border-top: $arrowSize solid #0F0F0F;
+    }
 
-    // &--right::after {
-    //   width: 0; 
-    //   height: 0; 
-    //   border-top: $arrowSize solid transparent;
-    //   border-bottom: $arrowSize solid transparent;
-    //   border-left: $arrowSize solid 0F0F0F;
-    // }
+    &--right::after {
+      width: 0;
+      height: 0;
+      border-top: $arrowSize solid transparent;
+      border-bottom: $arrowSize solid transparent;
+      border-left: $arrowSize solid 0F0F0F;
+    }
 
-    // &--left::after {
-    //   width: 0; 
-    //   height: 0; 
-    //   border-top: $arrowSize solid transparent;
-    //   border-bottom: $arrowSize solid transparent; 
-    //   border-right: $arrowSize solid 0F0F0F; 
-    // }    
+    &--left::after {
+      width: 0;
+      height: 0;
+      border-top: $arrowSize solid transparent;
+      border-bottom: $arrowSize solid transparent;
+      border-right: $arrowSize solid 0F0F0F;
+    }
   }
 }
 </style>

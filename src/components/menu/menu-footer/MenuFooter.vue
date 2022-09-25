@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { MenuItems } from '~/pages/items'
 
-import { useMenuItem } from '~/composables'
+import { useMenuItem, useViewport } from '~/composables'
 
+// USE
+const { isMobile } = useViewport()
 const { t } = useI18n()
 
 // VARIABLES
@@ -62,7 +64,7 @@ const { isActive } = useMenuItem()
         </span>
         <Button variant="outline" tag="a" href="https://mailchi.mp/bd173f18b082/iscriviti"
           title="Iscriviti alla newsletter" alt="Iscriviti alla newsletter" rel="noopener noreferrer" target="_blank">
-          {{ t('common.subscribe') }}
+          {{ t('common.subscribe') }} {{ isMobile ? 'alla newsletter' : '' }}
         </Button>
       </div>
     </div>
