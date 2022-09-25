@@ -3,6 +3,8 @@
 // Read more: https://github.com/vuejs/core/pull/3399
 import '@vue/runtime-core'
 
+export {}
+
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     Article: typeof import('./components/common/typography/Article.vue')['default']
@@ -35,5 +37,3 @@ declare module '@vue/runtime-core' {
     Tooltip: typeof import('./components/common/tooltip/Tooltip.vue')['default']
   }
 }
-
-export {}
