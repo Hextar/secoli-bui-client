@@ -36,7 +36,7 @@ const ITEMS: FateItem[] = [
   { label: 'Debito di morte', disabled: false },
   { label: 'Eterno Secondo', disabled: false },
   { label: 'Fede che vacilla', disabled: false },
-  { label: 'Fortuna sospetta', disabled: false },
+  { label: 'Fortuna sospetta', disabled: true },
   { label: 'Il buio', disabled: false },
   { label: 'Il cinico perduto', disabled: false },
   { label: 'Il Desiderato', disabled: false },
@@ -48,51 +48,51 @@ const ITEMS: FateItem[] = [
   { label: 'Il risvegliato', disabled: false },
   { label: 'Il Samaritano', disabled: false },
   { label: 'Il sangue', disabled: false },
-  { label: 'Il segugio', disabled: false },
+  { label: 'Il segugio', disabled: true },
   { label: 'Il sogno dello sconfitto', disabled: false },
   { label: 'Il sole', disabled: false },
   { label: 'Il sussurro inaccolto', disabled: false },
   { label: 'Il timore del fuoco', disabled: false },
-  { label: 'Il Vil denaro', disabled: false },
+  { label: 'Il Vil denaro', disabled: true },
   { label: 'In Carriera', disabled: false },
   { label: 'L\'affranco si paga', disabled: false },
   { label: 'L\'ala dell\'usignolo', disabled: false },
   { label: 'L\'ambizione sbagliata', disabled: false },
   { label: 'L\'Avidità', disabled: false },
-  { label: 'L\'avventuriero senza sole', disabled: false },
-  { label: 'L\'impiccato', disabled: false },
+  { label: 'L\'avventuriero senza sole', disabled: true },
+  { label: 'L\'impiccato', disabled: true },
   { label: 'L\'ira delle catene', disabled: false },
-  { label: 'L\'ombra che vegliava', disabled: false },
-  { label: 'L\'oro non ha odore', disabled: false },
+  { label: 'L\'ombra che vegliava', disabled: true },
+  { label: 'L\'oro non ha odore', disabled: true },
   { label: 'L\'uomo/donna delle offerte', disabled: false },
   { label: 'L\'Urlo Iniquo', disabled: false },
   { label: 'La bottiglia incendiaria', disabled: false },
-  { label: 'La Creatività ci piace', disabled: false },
-  { label: 'La curiosità che non uccide', disabled: false },
+  { label: 'La Creatività ci piace', disabled: true },
+  { label: 'La curiosità che non uccide', disabled: true },
   { label: 'La fine della freccia', disabled: false },
-  { label: 'La Giustizia', disabled: false },
-  { label: 'La Linfa', disabled: false },
-  { label: 'La mia fetta', disabled: false },
+  { label: 'La Giustizia', disabled: true },
+  { label: 'La Linfa', disabled: true },
+  { label: 'La mia fetta', disabled: true },
   { label: 'La Perfidia', disabled: false },
   { label: 'La Sapienza su tutto', disabled: false },
   { label: 'La Sete di Potere', disabled: false },
-  { label: 'La spalla', disabled: false },
-  { label: 'La torre che arde', disabled: false },
-  { label: 'La Vendetta', disabled: false },
+  { label: 'La spalla', disabled: true },
+  { label: 'La torre che arde', disabled: true },
+  { label: 'La Vendetta', disabled: true },
   { label: 'La virtù dei forti', disabled: false },
-  { label: 'Lama al guinzaglio', disabled: false },
+  { label: 'Lama al guinzaglio', disabled: true },
   { label: 'Liberi nella morte', disabled: false },
   { label: 'Mani in pasta', disabled: false },
-  { label: 'Nel posto giusto', disabled: false },
-  { label: 'Nel vivo del gelo', disabled: false },
+  { label: 'Nel posto giusto', disabled: true },
+  { label: 'Nel vivo del gelo', disabled: true },
   { label: 'Nuovo Sceriffo', disabled: false },
-  { label: 'Ode al Sangue Blu', disabled: false },
+  { label: 'Ode al Sangue Blu', disabled: true },
   { label: 'Omertà', disabled: false },
-  { label: 'Pugni insanguinati', disabled: false },
-  { label: 'Scimmia a Tre Teste', disabled: false },
-  { label: 'Segugio dello stato', disabled: false },
+  { label: 'Pugni insanguinati', disabled: true },
+  { label: 'Scimmia a Tre Teste', disabled: true },
+  { label: 'Segugio dello stato', disabled: true },
   { label: 'Sogno di Fama', disabled: false },
-  { label: 'Un\'altra vita', disabled: false },
+  { label: 'Un\'altra vita', disabled: true },
   { label: 'Uno per tutti', disabled: false },
   { label: 'Verso la Vetta', disabled: false },
 ]
@@ -115,7 +115,8 @@ const onRandom = () => {
 </script>
     
 <template>
-  <Header ref="header" class="text-white-100" :image="fatoHd" height="420px" darkest
+  <div class="board-of-fate"></div>
+  <Header ref="header" class="board-of-fate__header text-white-100" :image="fatoHd" height="420px" darkest
     @resize:height="onHeaderHeightResize">
     <template #menu>
       <MenuDetail :scroll-threshold="scrollThreshold" />
@@ -128,7 +129,7 @@ const onRandom = () => {
       </div>
     </template>
   </Header>
-  <div class="bg-white-100 pb-16" itemprop="description">
+  <div class="board-of-fate__content cbg-white-100 pb-16" itemprop="description">
     <Article full-width>
       <span class="flex justify-between items-end">
         <Paragraph>
@@ -171,9 +172,26 @@ const onRandom = () => {
         </p>
       </Paragraph>
       <div class="flex flex-wrap justify-center sm:justify-start items-center w-full my-8">
-        <ScrollCard class="h-[128px] w-full sm:w-1/2 md:w-1/3 lg:w-1/3 pr-0 sm:px-4 mb-8"
-          v-for="(item, idx) in filteredItems" :key="`${item.label}-${idx}`" :label="item.label" />
+        <ScrollCard v-for="(item, idx) in filteredItems" :key="`${item.label}-${idx}`"
+          class="board-of-fate__content__item h-[128px] w-full sm:w-1/2 md:w-1/3 lg:w-1/3 pr-0 sm:px-4 mb-8"
+          :class="{ 'board-of-fate__content__item--disabled': item.disabled }" :label="item.label" />
       </div>
     </Article>
   </div>
 </template>
+
+<style lang="scss" scoped>
+.board-of-fate {
+  &__content {
+    &__item {
+      &--disabled {
+        opacity: .3;
+
+        :deep(.scroll-card__content__label) {
+          text-decoration: line-through;
+        }
+      }
+    }
+  }
+}
+</style>
