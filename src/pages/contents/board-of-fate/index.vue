@@ -64,7 +64,7 @@ const ITEMS: FateItem[] = [
   { label: 'L\'ira delle catene', disabled: false },
   { label: 'L\'ombra che vegliava', disabled: true },
   { label: 'L\'oro non ha odore', disabled: true },
-  { label: 'L\'uomo/donna delle offerte', disabled: false },
+  { label: 'L\'uomo/donna delle offerte', disabled: true },
   { label: 'L\'Urlo Iniquo', disabled: false },
   { label: 'La bottiglia incendiaria', disabled: false },
   { label: 'La Creatività ci piace', disabled: true },
