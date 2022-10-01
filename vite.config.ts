@@ -244,6 +244,12 @@ export default defineConfig({
     },
   },
 
+  server: {
+    hmr: {
+      overlay: false
+    }
+  },
+
   // https://github.com/vitest-dev/vitest
   test: {
     include: ['test/**/*.test.ts'],

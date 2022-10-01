@@ -62,7 +62,7 @@ const iconPosition = computed((): string =>
 
 <template>
   <Tooltip :disabled="!tooltip" :full-width="fullWidth">
-    <template #trigger style="width: 100%">
+    <template #trigger>
       <component :is="props.tag" class="button flex items-center justify-center" :class="{
         [`px-${padding}`]: padding > 0,
         [`button--size--${props.size}`]: true,

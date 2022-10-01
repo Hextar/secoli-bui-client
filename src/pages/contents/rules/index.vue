@@ -252,13 +252,6 @@ const downloadAttachment = async (val: string): Promise<void> => {
             </span>
           </Button>
         </Paragraph>
-        <Paragraph class="w-full mb-8 pr-0 sm:pr-8" horizontal reverse>
-          <Button class="px-4" variant="filled" color="primary" size="small">
-            <span class="font-display text-lg font-bold">
-              Per vedere i manuali della vecchia campagna (2015-2020) clicca qui
-            </span>
-          </Button>
-        </Paragraph>
       </div>
     </Article>
   </div>

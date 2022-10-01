@@ -109,74 +109,77 @@ const onHeaderHeightResize = (height: number): void => {
 
 const onRandom = () => {
   setTimeout(() => loading.value = false, 1200)
-  setTimeout(() => items.value = shuffleArray(ITEMS, 3), 600)
+  setTimeout(() => items.value = shuffleArray(ITEMS.filter(({ disabled }) => !disabled), 3), 600)
   loading.value = true
 }
 </script>
     
 <template>
-  <div class="board-of-fate"></div>
-  <Header ref="header" class="board-of-fate__header text-white-100" :image="fatoHd" height="420px" darkest
-    @resize:height="onHeaderHeightResize">
-    <template #menu>
-      <MenuDetail :scroll-threshold="scrollThreshold" />
-    </template>
-    <template #content>
-      <div id="title" class="flex flex-col items-center justify-center">
-        <div class="flex h-[336px] items-center" itemprop="title">
-          <h1 class="event-title font-display text-6xl text-white-100 text-center">Bacheca del fato</h1>
+  <div class="board-of-fate pb-16 bg-white-100">
+    <Header ref="header" class="board-of-fate__header text-white-100" :image="fatoHd" height="420px" darkest
+      @resize:height="onHeaderHeightResize">
+      <template #menu>
+        <MenuDetail :scroll-threshold="scrollThreshold" />
+      </template>
+      <template #content>
+        <div id="title" class="flex flex-col items-center justify-center">
+          <div class="flex h-[336px] items-center" itemprop="title">
+            <h1 class="event-title font-display text-6xl text-white-100 text-center">Bacheca del fato</h1>
+          </div>
         </div>
-      </div>
-    </template>
-  </Header>
-  <div class="board-of-fate__content cbg-white-100 pb-16" itemprop="description">
-    <Article full-width>
-      <span class="flex justify-between items-end">
+      </template>
+    </Header>
+    <div class="board-of-fate__content cbg-white-100" itemprop="description">
+      <Article full-width>
+        <span class="flex justify-between items-end">
+          <Paragraph>
+            <h2 id="incipit" class="anchor">🧵 Scegli un Filo del fato!</h2>
+          </Paragraph>
+          <Tooltip class="cursor-item" placement="top">
+            <template #trigger>
+              <span class="animate_spin">
+                <IconRandom class="h-[48px] w-[48px] mb-2 mr-4 cursor-pointer"
+                  :class="{ 'animate__shake': !loading, 'animate__spin': loading }" @click="onRandom" />
+              </span>
+            </template>
+            {{ t('random.label') }}
+          </Tooltip>
+        </span>
         <Paragraph>
-          <h2 id="incipit" class="anchor">🧵 Scegli un Filo del fato!</h2>
-        </Paragraph>
-        <Tooltip class="cursor-item" placement="top">
-          <template #trigger>
-            <span class="animate_spin">
-              <IconRandom class="h-[48px] w-[48px] mb-2 mr-4 cursor-pointer"
-                :class="{ 'animate__shake': !loading, 'animate__spin': loading }" @click="onRandom" />
-            </span>
-          </template>
-          {{ t('random.label') }}
-        </Tooltip>
-      </span>
-      <Paragraph>
-        <p class="text-justify">
-          <strong>DI COSA SI TRATTA?</strong>
-          <br />
-          Le pergamene che troverai qui sotto daranno inizio a legami e conflitti, aggiungendo tratti di
-          background e creando più gioco per i vostri personaggi.
-          <br /><br />
-          <strong>COME FUNZIONA?</strong>
-          <br />
-          Avete la possibilità di scegliere <strong>3 fili</strong> dalla bacheca, che ci potrete comunicare quando
-          compilerete il modulo d’iscrizione.
-          Lo staff vi assegnerà, cercando di accontentare tutti, uno solo dei 3 fili scelti entro pochi giorni e assieme
-          ad esso le informazioni complete di questo piccolo frammento di background che dovrete integrare a vostro
-          piacere nella storia personale del vostro personaggio.
-          <br /><br />
-          <strong>SCELTE E SCADENZA</strong>
-          <br />
-          Il <strong>1 ottobre 2022</strong> verrà assegnato il primo round di fili del fato a chi ha già inviato la
-          scheda ed espresso le proprie preferenze.
+          <p class="text-justify">
+            <strong>DI COSA SI TRATTA?</strong>
+            <br />
+            Le pergamene che troverai qui sotto daranno inizio a legami e conflitti, aggiungendo tratti di
+            background e creando più gioco per i vostri personaggi.
+            <br /><br />
+            <strong>COME FUNZIONA?</strong>
+            <br />
+            Avete la possibilità di scegliere <strong>3 fili</strong> dalla bacheca, che ci potrete comunicare quando
+            compilerete il modulo d’iscrizione.
+            Lo staff vi assegnerà, cercando di accontentare tutti, uno solo dei 3 fili scelti entro pochi giorni e
+            assieme
+            ad esso le informazioni complete di questo piccolo frammento di background che dovrete integrare a vostro
+            piacere nella storia personale del vostro personaggio.
+            <br /><br />
+            <strong>SCELTE E SCADENZA</strong>
+            <br />
+            Il <strong>1 ottobre 2022</strong> verrà assegnato il primo round di fili del fato a chi ha già inviato la
+            scheda ed espresso le proprie preferenze.
 
-          Da tale data in poi <strong>ogni settimana</strong> i fili a disposizione diminuiranno. Non temete: terremo
-          traccia sul sito di quelli non più disponibli.
-          <br /><br />
-          Scegliete com saggezza o, se siete indecisi, fatevi consigliare dal fato cliccando il dado qui sopra!
-        </p>
-      </Paragraph>
-      <div class="flex flex-wrap justify-center sm:justify-start items-center w-full my-8">
-        <ScrollCard v-for="(item, idx) in filteredItems" :key="`${item.label}-${idx}`"
-          class="board-of-fate__content__item h-[128px] w-full sm:w-1/2 md:w-1/3 lg:w-1/3 pr-0 sm:px-4 mb-8"
-          :class="{ 'board-of-fate__content__item--disabled': item.disabled }" :label="item.label" />
-      </div>
-    </Article>
+            Da tale data in poi <strong>ogni settimana</strong> i fili a disposizione diminuiranno. Non temete: terremo
+            traccia sul sito di quelli non più disponibli.
+            <br /><br />
+            Scegliete com saggezza o, se siete indecisi, fatevi consigliare dal fato cliccando il dado qui sopra!
+          </p>
+        </Paragraph>
+        <div class="flex flex-wrap justify-center sm:justify-start items-center w-full my-8">
+          <ScrollCard v-for="(item, idx) in filteredItems" :key="`${item.label}-${idx}`"
+            class="board-of-fate__content__item w-full sm:w-1/2 md:w-1/3 lg:w-1/3 pr-0 sm:px-4 mb-8"
+            :class="{ 'board-of-fate__content__item--disabled': item.disabled }" :label="item.label"
+            :tooltip="item.disabled ? 'Filo del fato assegnato ad un\'altro giocatore' : ''" />
+        </div>
+      </Article>
+    </div>
   </div>
 </template>
 
@@ -185,10 +188,12 @@ const onRandom = () => {
   &__content {
     &__item {
       &--disabled {
-        opacity: .3;
+        :deep(.scroll-card__content) {
+          opacity: .3;
 
-        :deep(.scroll-card__content__label) {
-          text-decoration: line-through;
+          .scroll-card__content__label {
+            text-decoration: line-through;
+          }
         }
       }
     }
