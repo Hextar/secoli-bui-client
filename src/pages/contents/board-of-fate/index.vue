@@ -30,7 +30,7 @@ const ITEMS: FateItem[] = [
   { label: 'Agire prima di pensare', disabled: false },
   { label: 'Amore Perduto', disabled: false },
   { label: 'Canto dell\'oro', disabled: false },
-  { label: 'Condotto dal Fato', disabled: false },
+  { label: 'Condotto dal Fato', disabled: true },
   { label: 'Dalla Regia Accademia', disabled: false },
   { label: 'Dalle stelle alle stalle', disabled: false },
   { label: 'Debito di morte', disabled: false },
