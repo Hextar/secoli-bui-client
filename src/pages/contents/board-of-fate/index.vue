@@ -82,7 +82,7 @@ const ITEMS: FateItem[] = [
   { label: 'La virtù dei forti', disabled: false },
   { label: 'Lama al guinzaglio', disabled: true },
   { label: 'Liberi nella morte', disabled: false },
-  { label: 'Mani in pasta', disabled: false },
+  { label: 'Mani in pasta', disabled: true },
   { label: 'Nel posto giusto', disabled: true },
   { label: 'Nel vivo del gelo', disabled: true },
   { label: 'Nuovo Sceriffo', disabled: false },
