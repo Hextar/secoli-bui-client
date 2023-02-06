@@ -19,7 +19,7 @@ export const MenuItems: MenuItemType[] = [
       },
       {
         label: 'Eventi passati',
-        to: { path: '/events/past/la-pesca-dei-burattini' },
+        to: { path: '/events/past/cercatori-di-verita' },
         tooltip: { content: 'Eventi passati', placement: 'bottom' },
       },
     ],

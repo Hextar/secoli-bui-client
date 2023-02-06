@@ -28,7 +28,7 @@ const { isMobile, belowTablet } = useViewport()
           {{ t('homepage.next_event') }}
         </h2>
         <h1 class="event-title mb-4 font-display text-6xl text-white-100 text-center">
-          Cercatori di Verità
+          Cosa ci tiene uniti
         </h1>
         <Decoration v-if="!isMobile" class="mb-8" size="medium" />
         <p class="mb-8 w-screen px-8 text-center font-body text-lg text-white-100 sm:w-screen md:w-4/5 lg:w-2/3">
@@ -36,7 +36,7 @@ const { isMobile, belowTablet } = useViewport()
             Secoli bui: L'ultimo Regno
           </i>
         </p>
-        <Button class="w-[160px]" tag="router-link" to="/events/future/cercatori-di-verita">
+        <Button class="w-[160px]" tag="router-link" to="/events/future/cosa-ci-tiene-uniti">
           {{ t('homepage.more') }}
         </Button>
       </div>

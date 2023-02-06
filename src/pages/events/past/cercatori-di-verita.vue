@@ -74,7 +74,7 @@ const onHeaderHeightResize = (height: number): void => {
               href="https://docs.google.com/forms/d/e/1FAIpQLSeAwrZF8Y_L7qOdKXX7ui1PyyVEMNPpBjto83uU5VNv1kx-mg/viewform"
               target="_blank" :disabled="!!loading" tooltip="Vai al Google form di iscrizione">
               <span class="font-display text-lg font-bold">
-                {{ loading ? t('common.loading') : t('common.subscribe') }}
+                {{ loading? t('common.loading'): t('common.subscribe') }}
               </span>
             </Button>
           </template>
@@ -255,9 +255,9 @@ const onHeaderHeightResize = (height: number): void => {
         <Paragraph class="flex justify-center w-full">
           <Button class="w-[112px] animate__shake decoration-none w-1/3" variant="filled" color="primary" tag="a"
             href="https://docs.google.com/forms/d/e/1FAIpQLSeAwrZF8Y_L7qOdKXX7ui1PyyVEMNPpBjto83uU5VNv1kx-mg/viewform"
-            target="_blank" :disabled="!!loading" full-width="" tooltip="Vai al Google form di iscrizione">
+            target="_blank" :disabled="!!loading" full-width tooltip="Vai al Google form di iscrizione">
             <span class="font-display text-lg font-bold">
-              {{ loading ? t('common.loading') : t('common.subscribe') }}
+              {{ loading? t('common.loading'): t('common.subscribe') }}
             </span>
           </Button>
         </Paragraph>
