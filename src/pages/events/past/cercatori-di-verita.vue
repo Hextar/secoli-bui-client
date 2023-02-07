@@ -7,13 +7,12 @@ import {
   SignatureThumbnail,
 } from '~/assets/images/events/cercatori_di_verita'
 
-import { IconClock, IconFacebook, IconMoney, IconPin } from '~/assets/icons'
 import type { MenuItemType } from '~/types'
 
 import {
-  backgroundLazyLogoHd,
-  backgroundLogoHd,
-} from '~/assets/images'
+  backgroundLazyHd,
+  backgroundHd,
+} from '~/assets/images/events/cercatori_di_verita'
 
 // USE
 const { t } = useI18n()
@@ -28,6 +27,9 @@ useMeta({
 
 // VARIABLES
 const scrollThreshold = ref(200)
+const facebookEventUrl = 'https://www.facebook.com/events/467948275242751?acontext=%7B%22event_action_history%22%3A[%7B%22surface%22%3A%22page%22%7D%2C%7B%22mechanism%22%3A%22surface%22%2C%22surface%22%3A%22edit_dialog%22%7D]%2C%22ref_notif_type%22%3Anull%7D'
+const googleFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSeAwrZF8Y_L7qOdKXX7ui1PyyVEMNPpBjto83uU5VNv1kx-mg/viewform'
+const googleMapsUrl = 'https://www.google.com/maps?q=sassari+castrum+romano&um=1&ie=UTF-8&sa=X&ved=2ahUKEwiR1PbogJT6AhXUO-wKHfDfBpIQ_AUoAnoECAEQBA'
 const loading: Ref<Boolean> = ref(false)
 const items: MenuItemType[] = [
   {
@@ -65,14 +67,13 @@ const onHeaderHeightResize = (height: number): void => {
 
 <template>
   <section class="event-detail" itemscope itemtype="https://schema.org/Event">
-    <Header ref="header" class="text-white-100" :image="backgroundLogoHd" :lazy-image="backgroundLazyLogoHd"
-      height="400px" @resize:height="onHeaderHeightResize">
+    <Header ref="header" class="text-white-100" :image="backgroundHd" :lazy-image="backgroundLazyHd" height="400px"
+      @resize:height="onHeaderHeightResize">
       <template #menu>
         <MenuDetail :scroll-threshold="scrollThreshold" :items="items" back-title="Cercatori di Verità">
           <template #cta>
             <Button class="w-[112px] animate__shake" variant="filled" color="primary" size="small" tag="a"
-              href="https://docs.google.com/forms/d/e/1FAIpQLSeAwrZF8Y_L7qOdKXX7ui1PyyVEMNPpBjto83uU5VNv1kx-mg/viewform"
-              target="_blank" :disabled="!!loading" tooltip="Vai al Google form di iscrizione">
+              :href="googleFormUrl" target="_blank" :disabled="!!loading" tooltip="Vai al Google form di iscrizione">
               <span class="font-display text-lg font-bold">
                 {{ loading? t('common.loading'): t('common.subscribe') }}
               </span>
@@ -91,64 +92,12 @@ const onHeaderHeightResize = (height: number): void => {
             </h2>
           </div>
           <div class="flex w-full flex-wrap items-start justify-start gap-8">
-            <Info class="w-full sm:w-auto" label="Dove">
-              <template #icon>
-                <IconPin />
-              </template>
-              <br />
-              <span class="pl-2" itemprop="location" itemscope itemtype="https://schema.org/Place">
-                •
-                <a class="text-action-500 hover:underline"
-                  href="https://www.google.com/maps?q=sassari+castrum+romano&um=1&ie=UTF-8&sa=X&ved=2ahUKEwiR1PbogJT6AhXUO-wKHfDfBpIQ_AUoAnoECAEQBA"
-                  rel="noopener noreferrer" title="indicazioni castrum romano" alt="indicazioni castrum romano"
-                  target="_blank">
-                  <span itemprop="name address">Sassari - Castrum Romano</span>
-                </a>
-              </span>
-              <br />
-            </Info>
-            <Info class="w-full sm:w-auto" label="Quando">
-              <template #icon>
-                <IconClock />
-              </template>
-              <br />
-              <time class="pl-2" itemprop="startDate" datetime="2022-11-12T18:00:00Z">
-                • 12/11/2022 18:00 - 24:00
-              </time>
-              <br />
-              <time class="pl-2" itemprop="endDate" datetime="2022-11-13T17:00:00Z">
-                • 13/11/2022 11:00 - 17:00
-              </time>
-              <br />
-            </Info>
-            <Info class="w-full sm:w-auto" label="Quota" itemprop="offers" itemscope
-              itemtype="https://schema.org/Offer">
-              <template #icon>
-                <IconMoney />
-              </template>
-              <br />
-              <span class="pl-2">
-                • <span itemprop="price" content="25.00">30</span><span itemprop="priceCurrency" content="EUR">€</span>
-                AL GIORNO (STANDARD) </span><br />
-              <span class="pl-2">
-                • <span itemprop="price" content="10.00">10</span><span itemprop="priceCurrency" content="EUR">€</span>
-                AL GIORNO (PAGO COL SANGUE) </span><br />
-              <br />
-            </Info>
-            <Info class="w-full sm:w-auto" label="Evento FB">
-              <template #icon>
-                <IconFacebook />
-              </template>
-              <br />
-              <span class="pl-2">
-                • Rimani aggiornato
-                <Button class="text-action-500 hover:underline" variant="filled" color="transparent" size="small"
-                  tag="a"
-                  href="https://www.facebook.com/events/467948275242751?acontext=%7B%22event_action_history%22%3A[%7B%22surface%22%3A%22page%22%7D%2C%7B%22mechanism%22%3A%22surface%22%2C%22surface%22%3A%22edit_dialog%22%7D]%2C%22ref_notif_type%22%3Anull%7D"
-                  target="_blank">iscrivendoti all’evento!</Button>
-              </span>
-              <br />
-            </Info>
+            <InfoWhere class="w-full sm:w-auto" meta="indicazioni castrum romano" :google-maps-url="googleMapsUrl"
+              label="Sassari - Castrum Romano" />
+            <InfoWhen class="w-full sm:w-auto" first-date="12/11/2022 18:00 - 24:00"
+              second-date="13/11/2022 11:00 - 17:00" />
+            <InfoPrice class="w-full sm:w-auto" :price="30.00" :price-discounted="10.00" />
+            <InfoEvent class="w-full sm:w-auto" :facebook-event-url="facebookEventUrl" />
           </div>
         </div>
       </template>
@@ -229,9 +178,7 @@ const onHeaderHeightResize = (height: number): void => {
         <Paragraph class="pb-4 sm:pb-8 md:pb-8">
           <p class="text-justify">
             Ora non ti resta che iscriverti all'evento cliccando il pulsante
-            <a class="pa-0 ma-0 decoration-none"
-              href="https://docs.google.com/forms/d/e/1FAIpQLSeAwrZF8Y_L7qOdKXX7ui1PyyVEMNPpBjto83uU5VNv1kx-mg/viewform"
-              target="_blank">
+            <a class="pa-0 ma-0 decoration-none" :href="googleFormUrl" target="_blank">
               <span class=" font-display text-lg font-bold">
                 {{ t('common.subscribe') }}
               </span>
@@ -254,8 +201,8 @@ const onHeaderHeightResize = (height: number): void => {
         </Paragraph>
         <Paragraph class="flex justify-center w-full">
           <Button class="w-[112px] animate__shake decoration-none w-1/3" variant="filled" color="primary" tag="a"
-            href="https://docs.google.com/forms/d/e/1FAIpQLSeAwrZF8Y_L7qOdKXX7ui1PyyVEMNPpBjto83uU5VNv1kx-mg/viewform"
-            target="_blank" :disabled="!!loading" full-width tooltip="Vai al Google form di iscrizione">
+            :href="googleFormUrl" target="_blank" :disabled="!!loading" full-width
+            tooltip="Vai al Google form di iscrizione">
             <span class="font-display text-lg font-bold">
               {{ loading? t('common.loading'): t('common.subscribe') }}
             </span>

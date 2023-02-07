@@ -1,24 +1,17 @@
 <script setup lang="ts">
 import { ref, Ref } from 'vue'
 
-import { useMeta, useViewport } from '~/composables'
+import { useMeta } from '~/composables'
 
-import {
-  SignatureThumbnail,
-} from '~/assets/images/events/cercatori_di_verita'
-
-import { IconClock, IconFacebook, IconMoney, IconPin } from '~/assets/icons'
 import type { MenuItemType } from '~/types'
 
 import {
-  backgroundLazyLogoHd,
-  backgroundLogoHd,
-} from '~/assets/images'
+  backgroundLazyHd,
+  backgroundHd,
+} from '~/assets/images/events/cosa_ci_tiene_uniti'
 
 // USE
 const { t } = useI18n()
-
-const { isMobile } = useViewport()
 
 useMeta({
   title: 'Prossimo evento - L\'ultimo Regno',
@@ -55,10 +48,10 @@ const onHeaderHeightResize = (height: number): void => {
 
 <template>
   <section class="event-detail" itemscope itemtype="https://schema.org/Event">
-    <Header ref="header" class="text-white-100" :image="backgroundLogoHd" :lazy-image="backgroundLazyLogoHd"
-      height="400px" @resize:height="onHeaderHeightResize">
+    <Header ref="header" class="text-white-100" :image="backgroundHd" :lazy-image="backgroundLazyHd" height="400px"
+      @resize:height="onHeaderHeightResize">
       <template #menu>
-        <MenuDetail :scroll-threshold="scrollThreshold" :items="items" back-title="Cercatori di Verità">
+        <MenuDetail :scroll-threshold="scrollThreshold" :items="items" back-title="Cosa ci tiene uniti">
           <template #cta>
             <Button class="w-[112px] animate__shake" variant="filled" color="primary" size="small" tag="a"
               :href="googleFormUrl" target="_blank" :disabled="!!loading" tooltip="Vai al Google form di iscrizione">
@@ -80,57 +73,11 @@ const onHeaderHeightResize = (height: number): void => {
             </h2>
           </div>
           <div class="flex w-full flex-wrap items-start justify-start gap-8">
-            <Info class="w-full sm:w-auto" label="Dove">
-              <template #icon>
-                <IconPin />
-              </template>
-              <br />
-              <span class="pl-2" itemprop="location" itemscope itemtype="https://schema.org/Place">
-                •
-                <a class="text-action-500 hover:underline" :href="googleMapsUrl" rel="noopener noreferrer"
-                  title="indicazioni castrum romano" alt="indicazioni castrum romano" target="_blank">
-                  <span itemprop="name address">Villacidro - Cantina Ferraris</span>
-                </a>
-              </span>
-              <br />
-            </Info>
-            <Info class="w-full sm:w-auto" label="Quando">
-              <template #icon>
-                <IconClock />
-              </template>
-              <br />
-              <time class="pl-2" itemprop="startDate" datetime="2022-11-12T18:00:00Z">
-                • 12/03/2023 11:00 - 17:00
-              </time>
-              <br />
-            </Info>
-            <Info class="w-full sm:w-auto" label="Quota" itemprop="offers" itemscope
-              itemtype="https://schema.org/Offer">
-              <template #icon>
-                <IconMoney />
-              </template>
-              <br />
-              <span class="pl-2">
-                • <span itemprop="price" content="25.00">30</span><span itemprop="priceCurrency" content="EUR">€</span>
-                STANDARD </span><br />
-              <span class="pl-2">
-                • <span itemprop="price" content="10.00">10</span><span itemprop="priceCurrency" content="EUR">€</span>
-                PAGO COL SANGUE </span><br />
-              <br />
-            </Info>
-            <Info class="w-full sm:w-auto" label="Evento FB">
-              <template #icon>
-                <IconFacebook />
-              </template>
-              <br />
-              <span class="pl-2">
-                • Rimani aggiornato
-                <Button class="text-action-500 hover:underline" variant="filled" color="transparent" size="small"
-                  tag="a" :href="facebookEventUrl" target="_blank">iscrivendoti
-                  all’evento!</Button>
-              </span>
-              <br />
-            </Info>
+            <InfoWhere class="w-full sm:w-auto" meta="indicazioni cantina ferraris" :google-maps-url="googleMapsUrl"
+              label="Villacidro - Cantina Ferraris" />
+            <InfoWhen class="w-full sm:w-auto" first-date="12/03/2023 11:00 - 17:00" />
+            <InfoPrice class="w-full sm:w-auto" :price="30.00" :price-discounted="10.00" />
+            <InfoEvent class="w-full sm:w-auto" :facebook-event-url="facebookEventUrl" />
           </div>
         </div>
       </template>

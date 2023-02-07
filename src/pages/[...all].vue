@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { backgroundLazyLogoHd, backgroundLogoHd } from '~/assets/images'
 
 import { useMeta } from '~/composables'
 
@@ -19,7 +18,7 @@ meta:
 </route>
 
 <template>
-  <Header class="text-white-100" :image="backgroundLogoHd" :lazy-image="backgroundLazyLogoHd" :height="'600px'">
+  <Header class="text-white-100" :height="'600px'">
     <template #menu>
       <MenuNormal />
     </template>

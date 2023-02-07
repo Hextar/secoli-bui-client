@@ -98,7 +98,7 @@ $arrowSize: 5px;
 
     &--top::after {
       top: -#{$arrowSize};
-      left: calc(50% - #{$arrowSize / 1.25});
+      left: calc(50% - #{calc($arrowSize / 1.25)});
       width: 0;
       height: 0;
       border-left: $arrowSize solid transparent;
@@ -108,7 +108,7 @@ $arrowSize: 5px;
 
     &--down::after {
       top: -#{$arrowSize};
-      left: calc(50% - #{$arrowSize / 2});
+      left: calc(50% - #{calc($arrowSize / 2)});
       width: 0;
       height: 0;
       border-left: $arrowSize solid transparent;

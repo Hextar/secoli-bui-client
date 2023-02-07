@@ -14,7 +14,7 @@ export const MenuItems: MenuItemType[] = [
     children: [
       {
         label: 'Eventi futuri',
-        to: { path: '/events/future' },
+        to: { path: '/events/future/cosa-ci-tiene-uniti' },
         tooltip: { content: 'Prossimi eventi', placement: 'bottom' },
       },
       {

@@ -1,3 +1,5 @@
+export { default as backgroundHd } from './background_hd.jpg?preset=hd'
+export { default as backgroundLazyHd } from './background_hd_lazy.jpg?preset=hd'
 export { default as ICercatoriDelSentieroDoratoThumbnail } from './i_cercatori_del_sentiero_dorato.svg?preset=article'
 export { default as IPortatoriDellaFiammaBiancaThumbnail } from './i_portatori_della_fiamma_bianca.svg?preset=article'
 export { default as LIneluttabileDomainThumbnail } from './l_ineluttabile_domani.svg?preset=article'
