@@ -49,6 +49,9 @@ export default defineConfig({
         if (route.path === '/events' || route.path === '/events/future') {
           return { ...route, redirect: '/events/future/tra-l-incudine-e-il-martello' }
         }
+        if (route.path === '/events' || route.path === '/events/past') {
+          return { ...route, redirect: '/events/past/cosa-ci-tiene-uniti' }
+        }
         else if (route.path === '/play-with-us') {
           return { ...route, redirect: '/play-with-us/what-is-larp' }
         }
