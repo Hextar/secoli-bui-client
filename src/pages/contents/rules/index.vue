@@ -84,6 +84,7 @@ const items: MenuItemType[] = [
   },
 ]
 
+// METHODS
 const onHeaderHeightResize = (height: number): void => {
   scrollThreshold.value = height - (86 / 2)
 }
@@ -133,7 +134,7 @@ const downloadAttachment = async (val: string): Promise<void> => {
           <Button class="px-4" variant="filled" color="primary" size="small" :disabled="!!loading"
             @click.prevent.stop="downloadAttachment('ambientazione')">
             <span class="font-display text-lg font-bold">
-              {{ loading ? t('common.loading') : 'Scarica ambientazione' }}
+              {{ loading? t('common.loading'): 'Scarica ambientazione' }}
             </span>
           </Button>
         </Paragraph>
@@ -152,7 +153,7 @@ const downloadAttachment = async (val: string): Promise<void> => {
           <Button class="px-4" variant="filled" color="primary" size="small" :disabled="!!loading"
             @click.prevent.stop="downloadAttachment('base')">
             <span class="font-display text-lg font-bold">
-              {{ loading ? t('common.loading') : 'Scarica manuale base' }}
+              {{ loading? t('common.loading'): 'Scarica manuale base' }}
             </span>
           </Button>
         </Paragraph>
@@ -172,7 +173,7 @@ const downloadAttachment = async (val: string): Promise<void> => {
           <Button class="px-4" variant="filled" color="primary" size="small" :disabled="!!loading"
             @click.prevent.stop="downloadAttachment('magia')">
             <span class="font-display text-lg font-bold">
-              {{ loading ? t('common.loading') : 'Scarica manuale di magia' }}
+              {{ loading? t('common.loading'): 'Scarica manuale di magia' }}
             </span>
           </Button>
         </Paragraph>
@@ -191,7 +192,7 @@ const downloadAttachment = async (val: string): Promise<void> => {
           <Button class="px-4" variant="filled" color="primary" size="small" :disabled="!!loading"
             @click.prevent.stop="downloadAttachment('preghiera')">
             <span class="font-display text-lg font-bold">
-              {{ loading ? t('common.loading') : 'Scarica manuale di preghiera' }}
+              {{ loading? t('common.loading'): 'Scarica manuale di preghiera' }}
             </span>
           </Button>
         </Paragraph>
@@ -209,7 +210,7 @@ const downloadAttachment = async (val: string): Promise<void> => {
           <Button class="px-4" variant="filled" color="primary" size="small" :disabled="!!loading"
             @click.prevent.stop="downloadAttachment('alchimia')">
             <span class="font-display text-lg font-bold">
-              {{ loading ? t('common.loading') : 'Scarica manuale di alchimia' }}
+              {{ loading? t('common.loading'): 'Scarica manuale di alchimia' }}
             </span>
           </Button>
         </Paragraph>
@@ -227,7 +228,7 @@ const downloadAttachment = async (val: string): Promise<void> => {
           <Button class="px-4" variant="filled" color="primary" size="small" :disabled="!!loading"
             @click.prevent.stop="downloadAttachment('arte_runica')">
             <span class="font-display text-lg font-bold">
-              {{ loading ? t('common.loading') : 'Scarica manuale di arte runica' }}
+              {{ loading? t('common.loading'): 'Scarica manuale di arte runica' }}
             </span>
           </Button>
         </Paragraph>
@@ -248,7 +249,7 @@ const downloadAttachment = async (val: string): Promise<void> => {
           <Button class="px-4" variant="filled" color="primary" size="small" :disabled="!!loading"
             @click.prevent.stop="downloadAttachment('avanzamento_e_osp')">
             <span class="font-display text-lg font-bold">
-              {{ loading ? t('common.loading') : 'Scarica manuale di Avanzamento e OSP' }}
+              {{ loading? t('common.loading'): 'Scarica manuale di Avanzamento e OSP' }}
             </span>
           </Button>
         </Paragraph>

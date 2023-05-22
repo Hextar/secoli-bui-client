@@ -6,7 +6,6 @@ import { ref, Ref } from 'vue'
 
 import { useMeta, useViewport } from '~/composables'
 
-import { IconClock, IconFacebook, IconMoney, IconPin } from '~/assets/icons'
 import type { MenuItemType } from '~/types'
 
 import {
@@ -16,9 +15,9 @@ import {
   LaLoghiaDelGufoThumbnail,
   LeCodeMozzateThumbnail,
   LeFauciGrondantiThumbnail,
-  backgroundLazyLogoHd,
-  backgroundLogoHd,
-} from '~/assets/images'
+  backgroundLazyHd,
+  backgroundHd,
+} from '~/assets/images/events/la_pesca_dei_burattini'
 
 // USE
 const { isMobile } = useViewport()
@@ -31,6 +30,8 @@ useMeta({
 
 // VARIABLES
 const scrollThreshold = ref(200)
+const facebookEventUrl = 'https://www.facebook.com/events/353854243429800/'
+const googleMapsUrl = "https://www.google.com/maps/place/39%C2%B007'32.1%22N+8%C2%B026'27.4%22E/@39.1256265,8.438438,2283m/data=!3m1!1e3!4m6!3m5!1s0!7e2!8m2!3d39.1255724!4d8.440949"
 const loading: Ref<Boolean> = ref(false)
 const items: MenuItemType[] = [
   {
@@ -110,8 +111,8 @@ const downloadImage = async (url: string): Promise<void> => {
 
 <template>
   <section class="event-detail" itemscope itemtype="https://schema.org/Event">
-    <Header ref="header" class="text-white-100" :image="backgroundLogoHd" :lazy-image="backgroundLazyLogoHd"
-      height="400px" @resize:height="onHeaderHeightResize">
+    <Header ref="header" class="text-white-100" :image="backgroundHd" :lazy-image="backgroundLazyHd" height="400px"
+      @resize:height="onHeaderHeightResize">
       <template #menu>
         <MenuDetail :scroll-threshold="scrollThreshold" :items="items" back-title="La Pesca dei Burattini">
           <template #cta>
@@ -120,7 +121,7 @@ const downloadImage = async (url: string): Promise<void> => {
                 <Button class="w-[112px]" variant="filled" color="primary" size="small" :disabled="!!loading"
                   @click.prevent.stop="downloadAttachment">
                   <span class="font-display text-lg font-bold">
-                    {{ loading ? t('common.loading') : t('common.subscribe') }}
+                    {{ loading? t('common.loading'): t('common.subscribe') }}
                   </span>
                 </Button>
               </template>
@@ -135,59 +136,11 @@ const downloadImage = async (url: string): Promise<void> => {
             <EventTitle align="start" />
           </div>
           <div class="flex w-full flex-wrap items-start justify-start gap-8">
-            <Info class="w-full sm:w-auto" label="Dove">
-              <template #icon>
-                <IconPin />
-              </template>
-              <br />
-              <span class="pl-2" itemprop="location" itemscope itemtype="https://schema.org/Place">
-                •
-                <a class="text-action-500 hover:underline"
-                  href="https://www.google.com/maps/place/39%C2%B007'32.1%22N+8%C2%B026'27.4%22E/@39.1256265,8.438438,2283m/data=!3m1!1e3!4m6!3m5!1s0!7e2!8m2!3d39.1255724!4d8.440949"
-                  rel="noopener noreferrer" title="indicazioni matzaccara" alt="indicazioni matzaccara" target="_blank">
-                  <span itemprop="name address">Sardegna, Matzaccara - Pineta di Punt’e Trettu</span>
-                </a>
-              </span>
-              <br />
-            </Info>
-            <Info class="w-full sm:w-auto" label="Quando">
-              <template #icon>
-                <IconClock />
-              </template>
-              <br />
-              <time class="pl-2" itemprop="startDate" datetime="2022-06-18T14:30:00Z"> • 18/06/2022 14:30 </time><br />
-              <time class="pl-2" itemprop="endDate" datetime="2022-06-18T23:30:00Z"> • 18/06/2022 23:00 </time><br />
-            </Info>
-            <Info class="w-full sm:w-auto" label="Quota" itemprop="offers" itemscope
-              itemtype="https://schema.org/Offer">
-              <template #icon>
-                <IconMoney />
-              </template>
-              <br />
-              <span class="pl-2">
-                • <span itemprop="price" content="25.00">25</span><span itemprop="priceCurrency" content="EUR">€</span>
-                STANDARD </span><br />
-              <span class="pl-2">
-                • <span itemprop="price" content="10.00">10</span><span itemprop="priceCurrency" content="EUR">€</span>
-                PAGO COL
-                SANGUE </span><br />
-              <br />
-            </Info>
-            <Info class="w-full sm:w-auto" label="Evento FB">
-              <template #icon>
-                <IconFacebook />
-              </template>
-              <br />
-              <span class="pl-2">
-                • Rimani aggiornato
-                <a class="text-action-500 hover:underline" href="https://www.facebook.com/events/353854243429800/"
-                  rel="noopener noreferrer" title="evento facebook la pesca dei burattini"
-                  alt="evento facebook la pesca dei burattini" target="_blank">
-                  iscrivendoti all’evento!
-                </a>
-              </span>
-              <br />
-            </Info>
+            <InfoWhere class="w-full sm:w-auto" meta="indicazioni matzaccara" :google-maps-url="googleMapsUrl"
+              label="Sardegna, Matzaccara - Pineta di Punt’e Trettu" />
+            <InfoWhen class="w-full sm:w-auto" first-date="18/06/2022 14:30 - 23:00" />
+            <InfoPrice class="w-full sm:w-auto" :price="25.00" :price-discounted="10.00" />
+            <InfoEvent class="w-full sm:w-auto" :facebook-event-url="facebookEventUrl" />
           </div>
         </div>
       </template>

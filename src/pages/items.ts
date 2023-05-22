@@ -14,12 +14,12 @@ export const MenuItems: MenuItemType[] = [
     children: [
       {
         label: 'Eventi futuri',
-        to: { path: '/events/future' },
+        to: { path: '/events/future/cosa-ci-tiene-uniti' },
         tooltip: { content: 'Prossimi eventi', placement: 'bottom' },
       },
       {
         label: 'Eventi passati',
-        to: { path: '/events/past/la-pesca-dei-burattini' },
+        to: { path: '/events/past/cercatori-di-verita' },
         tooltip: { content: 'Eventi passati', placement: 'bottom' },
       },
     ],
@@ -50,36 +50,36 @@ export const MenuItems: MenuItemType[] = [
     label: 'Gioca con noi',
     to: { path: '/play-with-us' },
     tooltip: { content: 'Gioca con noi', placement: 'bottom' },
-    // children: [
-    //   {
-    //     label: 'Chi siamo',
-    //     to: { path: '/play-with-us/about-us' },
-    //     tooltip: { content: 'Coming soon', placement: 'bottom' },
-    //     disabled: true,
-    //   },
-    //   {
-    //     label: 'Cos’è il LARP?',
-    //     to: { path: '/play-with-us/what-is-larp' },
-    //     tooltip: { content: 'Coming soon', placement: 'bottom' },
-    //   },
-    //   {
-    //     label: 'Guida per neofiti',
-    //     to: { path: '/play-with-us/new-players-guide' },
-    //     tooltip: { content: 'Coming soon', placement: 'bottom' },
-    //     disabled: true,
-    //   },
-    //   {
-    //     label: 'Sicurezza e COVID',
-    //     to: { path: '/play-with-us/safety-covid' },
-    //     tooltip: { content: 'Coming soon', placement: 'bottom' },
-    //     disabled: true,
-    //   },
-    //   {
-    //     label: 'Glossario LARP',
-    //     to: { path: '/play-with-us/larp-glossary' },
-    //     tooltip: { content: 'Coming soon', placement: 'bottom' },
-    //     disabled: true,
-    //   },
-    // ],
+    children: [
+      //   {
+      //     label: 'Chi siamo',
+      //     to: { path: '/play-with-us/about-us' },
+      //     tooltip: { content: 'Coming soon', placement: 'bottom' },
+      //     disabled: true,
+      //   },
+      {
+        label: 'Cos’è il LARP?',
+        to: { path: '/play-with-us/what-is-larp' },
+        tooltip: { content: 'Coming soon', placement: 'bottom' },
+      },
+      //   {
+      //     label: 'Guida per neofiti',
+      //     to: { path: '/play-with-us/new-players-guide' },
+      //     tooltip: { content: 'Coming soon', placement: 'bottom' },
+      //     disabled: true,
+      //   },
+      //   {
+      //     label: 'Sicurezza e COVID',
+      //     to: { path: '/play-with-us/safety-covid' },
+      //     tooltip: { content: 'Coming soon', placement: 'bottom' },
+      //     disabled: true,
+      //   },
+      //   {
+      //     label: 'Glossario LARP',
+      //     to: { path: '/play-with-us/larp-glossary' },
+      //     tooltip: { content: 'Coming soon', placement: 'bottom' },
+      //     disabled: true,
+      //   },
+    ],
   },
 ]
