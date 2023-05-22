@@ -21,7 +21,7 @@ useMeta({
 
 // VARIABLES
 const scrollThreshold = ref(200)
-const facebookEventUrl = ''
+const facebookEventUrl = 'https://fb.me/e/1aBDgKjG3'
 const googleFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSeQ_B-UcpJj_NAAFKiCELUA5xON_Un96V9OEEVmaX_Tnau2MQ/viewform'
 const googleMapsUrl = 'https://goo.gl/maps/pKXGhZA8cjUnKsZe9'
 const loading: Ref<Boolean> = ref(false)
