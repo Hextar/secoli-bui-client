@@ -1,11 +1,7 @@
 <script setup lang="ts">
 import { ref, Ref } from 'vue'
 
-import { useMeta, useViewport } from '~/composables'
-
-import {
-  SignatureThumbnail,
-} from '~/assets/images/events/tra_l_incudine_e_il_martello'
+import { useMeta } from '~/composables'
 
 import type { MenuItemType } from '~/types'
 
@@ -17,8 +13,6 @@ import {
 // USE
 const { t } = useI18n()
 
-const { isMobile } = useViewport()
-
 useMeta({
   title: 'Prossimo evento - L\'ultimo Regno',
   description: "Tra l'incudine e il Martello - evento LARP, 08 Luglio a S'Acqua Frida",
@@ -29,12 +23,12 @@ useMeta({
 const scrollThreshold = ref(200)
 const facebookEventUrl = ''
 const googleFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSeQ_B-UcpJj_NAAFKiCELUA5xON_Un96V9OEEVmaX_Tnau2MQ/viewform'
-const googleMapsUrl = 'https://goo.gl/maps/Ux4s2K1jvzsR8bHB7'
+const googleMapsUrl = 'https://goo.gl/maps/pKXGhZA8cjUnKsZe9'
 const loading: Ref<Boolean> = ref(false)
 const items: MenuItemType[] = [
   {
     label: 'Info',
-    to: { path: '/events/past/cercatori-di-verita', hash: '#info' },
+    to: { path: '/events/future/tra-l-incudine-e-il-martello', hash: '#info' },
     tooltip: {
       content: 'Scrolla al paragrafo "Informazioni"',
       placement: 'bottom',
@@ -47,19 +41,6 @@ const items: MenuItemType[] = [
   }
 ]
 
-// COMPUTED
-const imageWidth = computed((): number => {
-  return isMobile.value ? 240 : 160
-})
-
-// METHODS
-const getAssetPath = (value: string): string => {
-  const assets = new Map<string, any>([
-    ['signature.png', SignatureThumbnail],
-  ])
-  return assets.get(value)
-}
-
 const onHeaderHeightResize = (height: number): void => {
   scrollThreshold.value = height + (86 / 2)
 }
@@ -70,12 +51,12 @@ const onHeaderHeightResize = (height: number): void => {
     <Header ref="header" class="text-white-100" :image="backgroundHd" :lazy-image="backgroundLazyHd" height="400px"
       @resize:height="onHeaderHeightResize">
       <template #menu>
-        <MenuDetail :scroll-threshold="scrollThreshold" :items="items" back-title="Cercatori di Verità">
+        <MenuDetail :scroll-threshold="scrollThreshold" :items="items" back-title="Tra l'Incudine e il Martello">
           <template #cta>
             <Button class="w-[112px] animate__shake" variant="filled" color="primary" size="small" tag="a"
               :href="googleFormUrl" target="_blank" :disabled="!!loading" tooltip="Vai al Google form di iscrizione">
               <span class="font-display text-lg font-bold">
-                {{ loading? t('common.loading'): t('common.subscribe') }}
+                {{ loading ? t('common.loading') : t('common.subscribe') }}
               </span>
             </Button>
           </template>
@@ -85,7 +66,7 @@ const onHeaderHeightResize = (height: number): void => {
         <div id="info" class="anchor flex flex-col items-start justify-center pb-0 sm:pb-8 pt-16">
           <div class="mb-8 flex flex-col" itemprop="name">
             <h1 class="event-title mb-4 font-display text-6xl text-white-100 text-center">
-              Cercatori di Verità
+              Tra l'Incudine e il Martello
             </h1>
             <h2 class="mb-4 w-full font-display text-2xl uppercase text-white-100 text-center" :class="'sm:text-left'">
               Secoli bui: L'ultimo Regno
@@ -93,10 +74,10 @@ const onHeaderHeightResize = (height: number): void => {
           </div>
           <div class="flex w-full flex-wrap items-start justify-start gap-8">
             <InfoWhere class="w-full sm:w-auto" meta="indicazioni castrum romano" :google-maps-url="googleMapsUrl"
-              label="Sassari - Castrum Romano" />
-            <InfoWhen class="w-full sm:w-auto" first-date="12/11/2022 18:00 - 24:00"
-              second-date="13/11/2022 11:00 - 17:00" />
-            <InfoPrice class="w-full sm:w-auto" :price="30.00" :price-discounted="10.00" />
+              label="Oristano - Area picnic S'Acqua Frida, Ales" />
+            <InfoWhen class="w-full sm:w-auto" first-date="08/07/2023 18:00 - 24:00" />
+            <InfoPrice class="w-full sm:w-auto" :price="40.00" :price-discounted="10.00"
+              label="Standard + cena in ruolo" />
             <InfoEvent class="w-full sm:w-auto" :facebook-event-url="facebookEventUrl" />
           </div>
         </div>
@@ -109,65 +90,25 @@ const onHeaderHeightResize = (height: number): void => {
         </Paragraph>
         <Paragraph class="mb-4">
           <p class="text-justify">
-            Sono trascorsi 359 giorni dall’ultimatum che la Dama Pallida ha imposto al Regno di Braara. La notte
-            del 12 di Ashantis ogni suddito del regno dovrà in cuor suo scegliere se stare dalla parte della Corona
-            e della Chiesa dell’Unico, unendosi alle schiere del Sacro Baluardo, o se accettare il dominio della
-            Dama e rivolgere la propria fede alla Fiamma Bianca e agli antichi dei.
-            <br /><br />
-            Nelle bacheche di ogni città del regno nelle ultime settimane sono apparsi inviti rivolti a tutta la
-            popolazione che recitano:
+            Dopo essere fuggiti dalla prigionie e aver abbandonato le terre di <strong>Dorsten</strong>, i Cercatori di
+            Verità potranno
+            finalmente trovare un posto sicuro da considerare casa?
           </p>
-        </Paragraph>
-        <Parchment>
-          <template #content>
-            <Paragraph>
-              <p class="text-justify">
-                <i>
-                  Il Tempo dell’oscurità è terminato.
-                </i>
-              </p>
-            </Paragraph>
-            <Paragraph>
-              <p class="text-justify">
-                <i>
-                  Il nostro regno brancola nel buio dell’ignoranza da troppo tempo, spesso guidato da signori
-                  accecati dal potere e ottenebrati dal denaro, quando il bene più grande che le genti libere
-                  possiedano è quello della Verità.
-                </i>
-              </p>
-            </Paragraph>
-            <Paragraph>
-              <p class="text-justify">
-                <i>
-                  In data 12 e 13 Ashantis, presso Forte Oath, nei territori di Rocca d’Avorio, il Magnate,
-                  studioso ed eccelso cittadino Rodrigo de Leon di Velantes, sarà lieto di accogliere tutti coloro
-                  che sono assetati di verità e che non temono di intraprendere un viaggio in questo periodo di
-                  incertezze. Per l’occasione, numerosi eroi della Spedizione oltre il Re Bianco, salvatori di Braara
-                  e di tutte le genti, saranno presenti per testimoniare ciò che hanno visto nei loro lunghi viaggi.
-                </i>
-              </p>
-            </Paragraph>
-            <Paragraph>
-              <p class="text-justify">
-                <i>
-                  Se l’illuminazione è la vostra meta e se siete stanchi di vivere nella menzogna, recatevi presso
-                  Forte Oath e i vostri occhi verranno spalancati dalla più pura e grande verità che sia mai
-                  fuoriuscita dalle labbra di un uomo.
-                </i>
-              </p>
-            </Paragraph>
-          </template>
-          <template #signature>
-            <Image :src="getAssetPath('signature.png')" :width="imageWidth" title="Rodrigo de Leon"
-              alt="Rodrigo de Leon" />
-          </template>
-        </Parchment>
-        <Paragraph>
           <p class="text-justify">
-            La fama di Rodrigo de Leon, conosciuto ai più per le sue idee controverse e i suoi comportamenti
-            fuori dall’ordinario, ha tenuto i più lontani dal suo invito, ma alcuni hanno intravisto nelle sue parole
-            la possibilità di essere protagonisti di un evento fuori dall’ordinario, qualcosa che plasmerà il futuro
-            delle genti e così hanno deciso di mettersi in viaggio, alla volta del famoso forte avoriano.
+            Sono molte le risorse e i contatti di cui i Cercatori dispongono, ma in tempi come questi è difficile
+            discernere tra coloro che sono degni di fiducia e coloro che hanno ceduto alle allettanti offerte di potere e
+            denaro che la Fiamma Bianca e il Sacro Balurdo offrono ai loro sudditi.
+          </p>
+          <p class="text-justify">
+            Nelle remote terre della <strong>Baronia di Daggerford</strong>, <strong>Sir Markus de Coulevre</strong>,
+            feudatario del Barone D'Ongràn e membro dei Cercatori, offre le sue terre come porto sicuro per coloro che
+            fuggono dalla persecuzione della Chiesa dell'Unico.
+            È il momento per riorganizzarsi, il momento per smettere di scappare e dare nuovamente uno
+            scopo alla vostra vita.
+          </p>
+
+          <p class="text-justify">
+            Riuscerete a capire cosa significa di preciso essere un Cercatore di Verità?
           </p>
         </Paragraph>
       </Article>
@@ -182,21 +123,7 @@ const onHeaderHeightResize = (height: number): void => {
               <span class=" font-display text-lg font-bold">
                 {{ t('common.subscribe') }}
               </span>
-            </a> qui sotto, che
-            ti porterà al modulo compilabile;
-            se sei interessato alle convenzioni hotel potrai selezionarle all'interno del modulo al
-            paragrafo <strong>Pernotto</strong>.
-            <br /><br />
-            Nella seconda pagina del modulo potrai inserire le informazioni riguardanti il tuo personaggio, che sia
-            importato dal
-            precedente capitolo o un personaggio interamente nuovo.
-            <br /><br />
-            Potrai inoltre scegliere i <strong>Fili del fato</strong> visionabili alla <a
-              class="pa-0 ma-0 decoration-none" href="/contents/board-of-fate" target="_blank">
-              <span class=" font-display text-lg font-bold text-primary-500">
-                pagina dedicata
-              </span>
-            </a>.
+            </a> qui sotto, che ti porterà al modulo compilabile:
           </p>
         </Paragraph>
         <Paragraph class="flex justify-center w-full">
@@ -204,7 +131,7 @@ const onHeaderHeightResize = (height: number): void => {
             :href="googleFormUrl" target="_blank" :disabled="!!loading" full-width
             tooltip="Vai al Google form di iscrizione">
             <span class="font-display text-lg font-bold">
-              {{ loading? t('common.loading'): t('common.subscribe') }}
+              {{ loading ? t('common.loading') : t('common.subscribe') }}
             </span>
           </Button>
         </Paragraph>
