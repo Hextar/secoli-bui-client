@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, useAttrs, useSlots } from 'vue'
+import { computed, defineProps, useAttrs, useSlots } from 'vue'
 
 import { getIconPosition } from './useIconPosition'
 import {
