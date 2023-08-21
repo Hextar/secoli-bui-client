@@ -16,6 +16,8 @@ declare module '@vue/runtime-core' {
     Info: typeof import('./components/common/info/Info.vue')['default']
     InfoEvent: typeof import('./components/common/info/InfoEvent.vue')['default']
     InfoPrice: typeof import('./components/common/info/InfoPrice.vue')['default']
+    'InfoPrice copy': typeof import('./components/common/info/InfoPrice copy.vue')['default']
+    InfoPriceSale: typeof import('./components/common/info/InfoPriceSale.vue')['default']
     InfoWhen: typeof import('./components/common/info/InfoWhen.vue')['default']
     InfoWhere: typeof import('./components/common/info/InfoWhere.vue')['default']
     ListElement: typeof import('./components/common/list-element/ListElement.vue')['default']

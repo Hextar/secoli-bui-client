@@ -44,3 +44,13 @@ export interface MenuItemType {
   children?: MenuItemType[]
   homepage?: boolean
 }
+
+
+/**
+ * Price
+ */
+export interface PriceType {
+  sale: number
+  full: number,
+  label?: string
+}

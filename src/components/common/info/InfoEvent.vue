@@ -4,10 +4,9 @@
       <IconFacebook />
     </template>
     <br />
-    <span class="pl-2">
-      • Rimani aggiornato
-      <Button class="text-action-500 hover:underline" variant="filled" color="transparent" size="small" tag="a"
-        :href="facebookEventUrl" target="_blank">iscrivendoti all’evento!</Button>
+    <span class="pl-2 inline-block">
+      • Rimani aggiornato <Button class="text-action-500 hover:underline" variant="filled" color="transparent"
+        size="small" tag="a" :href="facebookEventUrl" target="_blank">iscrivendoti all’evento!</Button>
     </span>
     <br />
   </Info>
