@@ -13,14 +13,8 @@ import {
 // USE
 const { t } = useI18n()
 
-useMeta({
-  title: 'Prossimo evento - L\'ultimo Regno',
-  description: 'Il Circolo di Conoscenza - evento LARP, 19 Maggio alle Cantina Ferraris',
-  keywords: ['larp', 'villacidro', 'cantina', 'ferraris', 'rievocazione storica'],
-})
-
 // VARIABLES
-const scrollThreshold = ref(200)
+const eventTitle = 'Il Circolo di Conoscenza'
 const facebookEventUrl = 'https://www.facebook.com/events/437299868859522?locale=it_IT'
 const googleFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSexfG7V7H4itkhab0QZ98gnwTd8MgPGpHOxNT6qCp76fC-TpA/viewform'
 const googleMapsUrl = 'https://www.google.com/maps/place/Cantina+Ferraris/@39.4010464,8.648073,300m/data=!3m1!1e3!4m5!3m4!1s0x12e7721017853c5f:0x5d1708cdaeadb6b9!8m2!3d39.4011832!4d8.6483298'
@@ -45,6 +39,13 @@ const items: MenuItemType[] = [
     tooltip: { content: 'Scrolla al paragrafo "Incipit"', placement: 'bottom' },
   }
 ]
+const scrollThreshold = ref(200)
+
+useMeta({
+  title: 'Prossimo evento - L\'ultimo Regno',
+  description: `${eventTitle} - evento LARP, 19 Maggio alle Cantina Ferraris`,
+  keywords: ['larp', 'villacidro', 'cantina', 'ferraris', 'rievocazione storica'],
+})
 
 const onHeaderHeightResize = (height: number): void => {
   scrollThreshold.value = height + (86 / 2)
@@ -56,7 +57,7 @@ const onHeaderHeightResize = (height: number): void => {
     <Header ref="header" class="text-white-100" :image="backgroundHd" :lazy-image="backgroundLazyHd" height="400px"
       @resize:height="onHeaderHeightResize">
       <template #menu>
-        <MenuDetail :scroll-threshold="scrollThreshold" :items="items" back-title="Il circolo di conoscenza">
+        <MenuDetail :scroll-threshold="scrollThreshold" :items="items" :back-title="eventTitle">
           <template #cta>
             <Button class="w-[112px] animate__shake" variant="filled" color="primary" size="small" tag="a"
               :href="googleFormUrl" target="_blank" :disabled="!!loading || !subscriptionOpened"
@@ -72,7 +73,7 @@ const onHeaderHeightResize = (height: number): void => {
         <div id="info" class="anchor flex flex-col items-start justify-center pb-0 sm:pb-8 pt-16">
           <div class="mb-8 flex flex-col" itemprop="name">
             <h1 class="event-title mb-4 font-display text-6xl text-white-100 text-center">
-              Il Circolo di Conoscenza
+              {{ eventTitle }}
             </h1>
             <h2 class="mb-4 w-full font-display text-2xl uppercase text-white-100 text-center" :class="'sm:text-left'">
               Secoli bui: L'ultimo Regno
