@@ -14,12 +14,12 @@ export const MenuItems: MenuItemType[] = [
     children: [
       {
         label: 'Eventi futuri',
-        to: { path: '/events/future' },
+        to: { path: '/events/future/il-circolo-di-conoscenza' },
         tooltip: { content: 'Prossimi eventi', placement: 'bottom' },
       },
       {
         label: 'Eventi passati',
-        to: { path: '/events/past' },
+        to: { path: '/events/past/cosa-ci-tiene-uniti' },
         tooltip: { content: 'Eventi passati', placement: 'bottom' },
       },
     ],

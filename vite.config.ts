@@ -47,16 +47,13 @@ export default defineConfig({
       extensions: ['vue', 'md'],
       extendRoute: (route) => {
         if (route.path === '/events' || route.path === '/events/future') {
-          return { ...route, redirect: '/events/future/sulle-orme-di-klaus-brown-mantle' }
-        }
-        if (route.path === '/events' || route.path === '/events/past') {
-          return { ...route, redirect: '/events/past/tra-l-incudine-e-il-martello' }
+          return { ...route, redirect: '/events/future/il-circolo-di-conoscenza' }
         }
         else if (route.path === '/play-with-us') {
           return { ...route, redirect: '/play-with-us/what-is-larp' }
         }
         else if (route.path === '/qrcode') {
-          return { ...route, redirect: '/events/future/sulle-orme-di-klaus-brown-mantle' }
+          return { ...route, redirect: '/events/future' }
         }
         return route
       },
