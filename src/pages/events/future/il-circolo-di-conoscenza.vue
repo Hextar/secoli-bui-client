@@ -59,7 +59,7 @@ const onHeaderHeightResize = (height: number): void => {
         <MenuDetail :scroll-threshold="scrollThreshold" :items="items" back-title="Il circolo di conoscenza">
           <template #cta>
             <Button class="w-[112px] animate__shake" variant="filled" color="primary" size="small" tag="a"
-              :href="googleFormUrl" target="_blank" :disabled="!!loading && !subscriptionOpened"
+              :href="googleFormUrl" target="_blank" :disabled="!!loading || !subscriptionOpened"
               :tooltip="googleFormTooltip">
               <span class="font-display text-lg font-bold">
                 {{ loading ? t('common.loading') : t('common.subscribe') }}
