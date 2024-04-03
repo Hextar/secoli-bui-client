@@ -76,7 +76,7 @@ const onHeaderHeightResize = (height: number): void => {
             <InfoWhere class="w-full sm:w-auto" meta="indicazioni castrum romano" :google-maps-url="googleMapsUrl"
               label="Oristano - Area picnic S'Acqua Frida, Ales" />
             <InfoWhen class="w-full sm:w-auto" first-date="08/07/2023 18:00 - 24:00" />
-            <InfoPrice class="w-full sm:w-auto" :price="40.00" :price-discounted="10.00"
+            <LegacyInfoPrice class="w-full sm:w-auto" :price="40.00" :price-discounted="10.00"
               label="Standard + cena in ruolo" />
             <InfoEvent class="w-full sm:w-auto" :facebook-event-url="facebookEventUrl" />
           </div>

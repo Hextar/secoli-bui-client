@@ -121,7 +121,7 @@ const downloadImage = async (url: string): Promise<void> => {
                 <Button class="w-[112px]" variant="filled" color="primary" size="small" :disabled="!!loading"
                   @click.prevent.stop="downloadAttachment">
                   <span class="font-display text-lg font-bold">
-                    {{ loading? t('common.loading'): t('common.subscribe') }}
+                    {{ loading ? t('common.loading') : t('common.subscribe') }}
                   </span>
                 </Button>
               </template>
@@ -139,7 +139,7 @@ const downloadImage = async (url: string): Promise<void> => {
             <InfoWhere class="w-full sm:w-auto" meta="indicazioni matzaccara" :google-maps-url="googleMapsUrl"
               label="Sardegna, Matzaccara - Pineta di Punt’e Trettu" />
             <InfoWhen class="w-full sm:w-auto" first-date="18/06/2022 14:30 - 23:00" />
-            <InfoPrice class="w-full sm:w-auto" :price="25.00" :price-discounted="10.00" />
+            <LegacyInfoPrice class="w-full sm:w-auto" :price="25.00" :price-discounted="10.00" />
             <InfoEvent class="w-full sm:w-auto" :facebook-event-url="facebookEventUrl" />
           </div>
         </div>
@@ -179,8 +179,8 @@ const downloadImage = async (url: string): Promise<void> => {
           </template>
           <Tooltip classname="float-none sm:float-left mr-0 sm:mr-8">
             <template #trigger>
-              <Image class="cursor-pointer" :src="getAssetPath('i_portatori_della_fiamma_bianca.svg')"
-                :width="imageWidth" title="Portatori della Fiamma Bianca" alt="Portatori della Fiamma Bianca"
+              <Image class="cursor-pointer" :src="getAssetPath('i_portatori_della_fiamma_bianca.svg')" :width="imageWidth"
+                title="Portatori della Fiamma Bianca" alt="Portatori della Fiamma Bianca"
                 @click.prevent.stop="downloadImage('i_portatori_della_fiamma_bianca.svg')" />
             </template>
             {{ t('common.download_image') }}
@@ -255,8 +255,8 @@ const downloadImage = async (url: string): Promise<void> => {
           </template>
           <Tooltip classname="float-none sm:float-right ml-0 sm:ml-8">
             <template #trigger>
-              <Image class="cursor-pointer" :src="getAssetPath('i_cercatori_del_sentiero_dorato.svg')"
-                :width="imageWidth" title="I cercatori del sentiero dorato" alt="I cercatori del sentiero dorato"
+              <Image class="cursor-pointer" :src="getAssetPath('i_cercatori_del_sentiero_dorato.svg')" :width="imageWidth"
+                title="I cercatori del sentiero dorato" alt="I cercatori del sentiero dorato"
                 @click.prevent.stop="downloadImage('i_cercatori_del_sentiero_dorato.svg')" />
             </template>
             {{ t('common.download_image') }}

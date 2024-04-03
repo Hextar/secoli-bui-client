@@ -20,6 +20,7 @@ const googleFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSexfG7V7H4itkhab
 const googleMapsUrl = 'https://www.google.com/maps/place/Cantina+Ferraris/@39.4010464,8.648073,300m/data=!3m1!1e3!4m5!3m4!1s0x12e7721017853c5f:0x5d1708cdaeadb6b9!8m2!3d39.4011832!4d8.6483298'
 const subscriptionOpened = false
 const subscriptionOpenDate = `06 Aprile 2024`
+const subscriptionEarlyDate = `21 Aprile 2024`
 const googleFormTooltip = subscriptionOpened
   ? 'Vai al Google form di iscrizione'
   : `Le iscrizioni apriranno a partire dal ${subscriptionOpenDate}`
@@ -83,7 +84,11 @@ const onHeaderHeightResize = (height: number): void => {
             <InfoWhere class="w-full sm:w-auto" meta="indicazioni cantina ferraris" :google-maps-url="googleMapsUrl"
               label="Villacidro - Cantina Ferraris" />
             <InfoWhen class="w-full sm:w-auto" first-date="19/05/2024 9:30 - 17:30" />
-            <InfoPrice class="w-full sm:w-auto" :price="50.00" :price-discounted="40.00" />
+            <InfoPrice class="w-full sm:w-auto">
+              <InfoPriceItem :price="50.00">STANDARD</InfoPriceItem>
+              <InfoPriceItem :price="40.00">Iscrizione entro il {{ subscriptionEarlyDate }}</InfoPriceItem>
+              <InfoPriceItem price="GRATIS">Pago col sangue (posti limitati)</InfoPriceItem>
+            </InfoPrice>
             <InfoEvent class="w-full sm:w-auto" :facebook-event-url="facebookEventUrl" />
           </div>
         </div>

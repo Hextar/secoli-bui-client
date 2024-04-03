@@ -75,7 +75,7 @@ const onHeaderHeightResize = (height: number): void => {
             <Button class="w-[112px] animate__shake" variant="filled" color="primary" size="small" tag="a"
               :href="googleFormUrl" target="_blank" :disabled="!!loading" tooltip="Vai al Google form di iscrizione">
               <span class="font-display text-lg font-bold">
-                {{ loading? t('common.loading'): t('common.subscribe') }}
+                {{ loading ? t('common.loading') : t('common.subscribe') }}
               </span>
             </Button>
           </template>
@@ -96,7 +96,7 @@ const onHeaderHeightResize = (height: number): void => {
               label="Sassari - Castrum Romano" />
             <InfoWhen class="w-full sm:w-auto" first-date="12/11/2022 18:00 - 24:00"
               second-date="13/11/2022 11:00 - 17:00" />
-            <InfoPrice class="w-full sm:w-auto" :price="30.00" :price-discounted="10.00" />
+            <LegacyInfoPriceSale class="w-full sm:w-auto" :price="30.00" :price-discounted="10.00" />
             <InfoEvent class="w-full sm:w-auto" :facebook-event-url="facebookEventUrl" />
           </div>
         </div>
@@ -204,7 +204,7 @@ const onHeaderHeightResize = (height: number): void => {
             :href="googleFormUrl" target="_blank" :disabled="!!loading" full-width
             tooltip="Vai al Google form di iscrizione">
             <span class="font-display text-lg font-bold">
-              {{ loading? t('common.loading'): t('common.subscribe') }}
+              {{ loading ? t('common.loading') : t('common.subscribe') }}
             </span>
           </Button>
         </Paragraph>
