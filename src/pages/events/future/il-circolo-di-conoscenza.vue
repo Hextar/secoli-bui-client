@@ -24,6 +24,7 @@ const scrollThreshold = ref(200)
 const facebookEventUrl = 'https://www.facebook.com/events/437299868859522?locale=it_IT'
 const googleFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSexfG7V7H4itkhab0QZ98gnwTd8MgPGpHOxNT6qCp76fC-TpA/viewform'
 const googleMapsUrl = 'https://www.google.com/maps/place/Cantina+Ferraris/@39.4010464,8.648073,300m/data=!3m1!1e3!4m5!3m4!1s0x12e7721017853c5f:0x5d1708cdaeadb6b9!8m2!3d39.4011832!4d8.6483298'
+const googleFormTooltip = 'Le iscrizioni apriranno a partire dal 06/04/24'
 const loading: Ref<Boolean> = ref(false)
 const items: MenuItemType[] = [
   {
@@ -53,8 +54,8 @@ const onHeaderHeightResize = (height: number): void => {
       <template #menu>
         <MenuDetail :scroll-threshold="scrollThreshold" :items="items" back-title="Il circolo di conoscenza">
           <template #cta>
-            <Button class="w-[112px] animate__shake" variant="filled" color="primary" size="small" tag="a"
-              :href="googleFormUrl" target="_blank" :disabled="!!loading" tooltip="Vai al Google form di iscrizione">
+            <Button class="w-[112px] animate__shake pointer-events-none" variant="filled" color="primary" size="small"
+              tag="a" :href="googleFormUrl" target="_blank" :disabled="!!loading" :tooltip="googleFormTooltip">
               <span class="font-display text-lg font-bold">
                 {{ loading ? t('common.loading') : t('common.subscribe') }}
               </span>
@@ -103,7 +104,7 @@ const onHeaderHeightResize = (height: number): void => {
             deciso che ogni nuovo cercatore dovrà essere istruito sulle verità riguardanti la storia, la
             politica e le numerose arti che rendono Braara così potente e meravigliosa.
             <br />
-            Nelle terre di Dorsten, presso la neonata sede dell’agenzia di investigazione e sterminio di
+            Nelle terre di Dorsten, presso la neonata sede dell'agenzia di investigazione e sterminio di
             mostri esotici “Sullivan e Amici”, i Cercatori hanno deciso di portare avanti questo compito
             fondamentale. In altri luoghi di Braara posti simili vengono attrezzati per divenire delle vere
             e proprie accademie, dove illustri maestri di tutte le gilde affiliati ai Cercatori elargiscono la
@@ -141,7 +142,7 @@ const onHeaderHeightResize = (height: number): void => {
         <Paragraph class="pb-4 sm:pb-8 md:pb-8">
           <p class="text-justify">
             Ora non ti resta che iscriverti all'evento cliccando il pulsante
-            <a class="pa-0 ma-0 decoration-none" :href="googleFormUrl" target="_blank">
+            <a class="pa-0 ma-0 decoration-none pointer-events-none" :href="googleFormUrl" target="_blank">
               <span class=" font-display text-lg font-bold">
                 {{ t('common.subscribe') }}
               </span>
@@ -150,9 +151,9 @@ const onHeaderHeightResize = (height: number): void => {
           </p>
         </Paragraph>
         <Paragraph class="flex justify-center w-full">
-          <Button class="w-[112px] animate__shake decoration-none w-1/3" variant="filled" color="primary" tag="a"
-            :href="googleFormUrl" target="_blank" :disabled="!!loading" full-width
-            tooltip="Vai al Google form di iscrizione">
+          <Button class="w-[112px] animate__shake decoration-none w-1/3 pointer-events-none" variant="filled"
+            color="primary" tag="a" :href="googleFormUrl" target="_blank" :disabled="!!loading" full-width
+            :tooltip="googleFormTooltip">
             <span class="font-display text-lg font-bold">
               {{ loading ? t('common.loading') : t('common.subscribe') }}
             </span>
