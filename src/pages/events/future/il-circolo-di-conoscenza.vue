@@ -18,7 +18,7 @@ const eventTitle = 'Il Circolo di Conoscenza'
 const facebookEventUrl = 'https://www.facebook.com/events/437299868859522?locale=it_IT'
 const googleFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSexfG7V7H4itkhab0QZ98gnwTd8MgPGpHOxNT6qCp76fC-TpA/viewform'
 const googleMapsUrl = 'https://www.google.com/maps/place/Cantina+Ferraris/@39.4010464,8.648073,300m/data=!3m1!1e3!4m5!3m4!1s0x12e7721017853c5f:0x5d1708cdaeadb6b9!8m2!3d39.4011832!4d8.6483298'
-const subscriptionOpened = false
+const subscriptionOpened = true
 const subscriptionOpenDate = `06 Aprile 2024`
 const subscriptionEarlyDate = `21 Aprile 2024`
 const googleFormTooltip = subscriptionOpened
