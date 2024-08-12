@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { backgroundLazyHd, backgroundHd } from '~/assets/images/events/il_circolo_di_conoscenza'
+import { backgroundLazyHd, backgroundHd } from '~/assets/images/events/bianca_nenia'
 
 import { useMeta, useViewport } from '~/composables'
 
@@ -28,7 +28,7 @@ const { isMobile, belowTablet } = useViewport()
           {{ t('homepage.next_event') }}
         </h2>
         <h1 class="event-title mb-4 font-display text-6xl text-white-100 text-center">
-          Il Circolo di Conoscenza
+          Bianca Nenia
         </h1>
         <Decoration v-if="!isMobile" class="mb-8" size="medium" />
         <p class="mb-8 w-screen px-8 text-center font-body text-lg text-white-100 sm:w-screen md:w-4/5 lg:w-2/3">
