@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { MenuItems } from '~/pages/items'
 
+import { IconExternal } from '~/assets/icons'
+
 import { useMenuItem, useViewport } from '~/composables'
 
 // USE
@@ -22,7 +24,13 @@ const { isActive } = useMenuItem()
         <Tooltip :disabled="item.tooltip ? item.tooltip.disabled : undefined"
           :placement="item.tooltip ? item.tooltip.placement : undefined" light>
           <template #trigger>
-            <router-link v-if="item.to"
+            <a v-if="item.external && item.to?.path"
+              class="flex gap-1 items-center cursor-alias text-lg text-center font-bold text-white-100" :disabled="item.disabled"
+              :aria-label="item.label" :href="item.to?.path" target="_blank">
+              {{ item.label }}
+              <IconExternal class="h-4 w-4" />
+            </a>
+            <router-link v-else-if="item.to"
               class="menu-footer__content__title mb-4 cursor-pointer text-center font-display text-lg font-bold text-white-100"
               :class="{ 'menu-footer__content__title--active': isActive(item.to) }" :disabled="item.disabled"
               :aria-label="item.label" :to="item.to" exact>
@@ -39,7 +47,12 @@ const { isActive } = useMenuItem()
           <Tooltip :disabled="child.tooltip ? child.tooltip.disabled : undefined"
             :placement="child.tooltip ? child.tooltip.placement : undefined" light>
             <template #trigger>
-              <router-link v-if="child.to"
+              <a v-if="item.external && item.to?.path" class="flex gap-1 items-center cursor-alias"
+                :disabled="item.disabled" :aria-label="item.label" :href="item.to?.path" target="_blank">
+                {{ item.label }}
+                <IconExternal class="h-4 w-4" />
+              </a>
+              <router-link v-else-if="child.to"
                 class="menu-footer__content__item mb-2 cursor-pointer font-display text-sm text-white-100"
                 :class="{ 'menu-footer__content__item--active': isActive(child.to) }" :disabled="child.disabled"
                 :aria-label="child.label" :to="child.to" exact>

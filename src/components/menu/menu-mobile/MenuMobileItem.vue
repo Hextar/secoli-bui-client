@@ -2,7 +2,7 @@
 import { PropType, ref } from 'vue';
 import { RouteLocationRaw, useRouter } from 'vue-router';
 
-import { IconChevron, IconTent } from '~/assets/icons'
+import { IconChevron, IconTent, IconExternal } from '~/assets/icons'
 import { useMenuItem } from '~/composables'
 import type { MenuItemType } from '~/types'
 
@@ -40,6 +40,10 @@ const showLink = computed((): boolean => {
 // METHODS
 const onNavigate = (to?: RouteLocationRaw): void => {
   if (!to) { return }
+  if (external) {
+    window.open(`${to?.path}`, '_blank')
+    return
+  }
   router.push(to)
 }
 </script>
@@ -47,7 +51,13 @@ const onNavigate = (to?: RouteLocationRaw): void => {
 <template>
   <div class="menu__content__item relative cursor-pointer font-display text-lg font-bold text-white-100 grayscale"
     :class="{ 'menu__content__item--active': hasActiveNavigation }">
-    <span v-if="showLink && item.to" class="w-full flex items-center text-center" :class="{ 'pr-4': item.homepage }">
+    <a v-if="showLink && item.external && item.to?.path" class="flex gap-1 items-center cursor-alias"
+      :class="{ 'menu__content__item__label': showLink }" :disabled="item.disabled" :aria-label="item.label"
+      :href="item.to?.path" target="_blank">
+      {{ item.label }}
+      <IconExternal class="h-4 w-4" />
+    </a>
+    <span v-else-if="showLink && item.to" class="w-full flex items-center text-center" :class="{ 'pr-4': item.homepage }">
       <IconTent v-if="item.homepage" />
       <router-link class="tet-center" :class="{ 'menu__content__item__label': showLink }" :disabled="item.disabled"
         :aria-label="item.label" :to="item.to" exact>
@@ -58,7 +68,7 @@ const onNavigate = (to?: RouteLocationRaw): void => {
       <template #trigger>
         <span class="w-full flex justify-center items-center text-center pl-2" :class="{ 'line-through mb-4': open }">
           {{ item.label }}
-          <IconChevron :class=" { 'rotate-180' : open }" />
+          <IconChevron :class="{ 'rotate-180': open }" />
         </span>
       </template>
       <template #content>
@@ -69,6 +79,7 @@ const onNavigate = (to?: RouteLocationRaw): void => {
             <span class=" text-white-100 w-full text-center"
               :class="{ 'menu__content__item__label': !child.disabled, 'menu__content__item__disabled': child.disabled }">
               {{ child.label }}
+              <IconExternal v-if="child.external" class="h-4 w-4" />
             </span>
           </ListElement>
         </span>

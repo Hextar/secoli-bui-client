@@ -2,8 +2,7 @@
 import { PropType, Ref, ref } from 'vue';
 import { RouteLocationRaw, useRouter } from 'vue-router';
 
-import { IconChevron } from '~/assets/icons'
-import { IconExternal } from '~/assets/icons'
+import { IconChevron, IconExternal } from '~/assets/icons'
 import { useMenuItem } from '~/composables'
 import type { MenuItemType } from '~/types'
 import { ItemHoverState } from '~/components/menu';
