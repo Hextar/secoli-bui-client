@@ -17,13 +17,13 @@ const { t } = useI18n()
 const eventTitle = 'Bianca Nenia'
 const eventVenue = 'Fortificazioni monte Doglia - Alghero'
 const facebookEventUrl = 'https://www.facebook.com/events/1651984295378718?ref=newsfeed'
-const googleFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSexfG7V7H4itkhab0QZ98gnwTd8MgPGpHOxNT6qCp76fC-TpA/viewform'
+const subscriptionFormUrl = 'http://www.mondoditenebra.com/mad2factory/index.php?PaginaHome=SecoliBui%2Flogin&SezioneSito=SecoliBui&fbclid=IwY2xjawEhp0dleHRuA2FlbQIxMAABHc-Jv8FXTw8NIskSUFaS7I0iNdVOfKfdscN175XEeaKTCy5JO1lorhjhOg_aem_4FCm4F_ZmuuvxKNiN5CK2Q'
 const googleMapsUrl = 'https://maps.app.goo.gl/HqXWr434j9Pu6HJT8'
 const subscriptionOpened = true
 const subscriptionOpenDate = `19 Agosto 2024`
 const subscriptionEarlyDate = `31 Agosto 2024`
-const googleFormTooltip = subscriptionOpened
-  ? 'Vai al Google form di iscrizione'
+const subscriptionFormTooltip = subscriptionOpened
+  ? 'Vai al form di iscrizione'
   : `Le iscrizioni apriranno a partire dal ${subscriptionOpenDate}`
 const loading: Ref<Boolean> = ref(false)
 const items: MenuItemType[] = [
@@ -62,8 +62,8 @@ const onHeaderHeightResize = (height: number): void => {
         <MenuDetail :scroll-threshold="scrollThreshold" :items="items" :back-title="eventTitle">
           <template #cta>
             <Button class="w-[112px]" :class="{ ['animate__shake']: subscriptionOpened }" variant="filled" color="primary"
-              size="small" tag="a" :href="googleFormUrl" target="_blank" :disabled="!!loading || !subscriptionOpened"
-              :tooltip="googleFormTooltip">
+              size="small" tag="a" :href="subscriptionFormUrl" target="_blank" :disabled="!!loading || !subscriptionOpened"
+              :tooltip="subscriptionFormTooltip">
               <span class="font-display text-lg font-bold">
                 {{ loading ? t('common.loading') : t('common.subscribe') }}
               </span>
@@ -151,7 +151,7 @@ const onHeaderHeightResize = (height: number): void => {
         <Paragraph class="pb-4 sm:pb-8 md:pb-8">
           <p class="text-justify">
             Ora non ti resta che iscriverti all'evento cliccando il pulsante
-            <a class="pa-0 ma-0 decoration-none" :href="googleFormUrl" target="_blank">
+            <a class="pa-0 ma-0 decoration-none" :href="subscriptionFormUrl" target="_blank">
               <span class=" font-display text-lg font-bold">
                 {{ t('common.subscribe') }}
               </span>
@@ -161,7 +161,7 @@ const onHeaderHeightResize = (height: number): void => {
         </Paragraph>
         <Paragraph class="flex justify-center w-full">
           <Button class="w-[112px] animate__shake decoration-none w-1/3" variant="filled" color="primary" tag="a"
-            :href="googleFormUrl" target="_blank" :disabled="!!loading" full-width :tooltip="googleFormTooltip">
+            :href="subscriptionFormUrl" target="_blank" :disabled="!!loading" full-width :tooltip="subscriptionFormTooltip">
             <span class="font-display text-lg font-bold">
               {{ loading ? t('common.loading') : t('common.subscribe') }}
             </span>
