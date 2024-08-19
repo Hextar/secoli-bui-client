@@ -3,6 +3,7 @@ import { PropType, Ref, ref } from 'vue';
 import { RouteLocationRaw, useRouter } from 'vue-router';
 
 import { IconChevron } from '~/assets/icons'
+import { IconExternal } from '~/assets/icons'
 import { useMenuItem } from '~/composables'
 import type { MenuItemType } from '~/types'
 import { ItemHoverState } from '~/components/menu';
@@ -62,8 +63,12 @@ const onClose = (item: boolean = false): void => {
   },)
 }
 
-const onNavigate = (to?: RouteLocationRaw): void => {
+const onNavigate = (to?: RouteLocationRaw, external = false): void => {
   if (!to) { return }
+  if (external) {
+    window.open(`${to?.path}`, '_blank')
+    return
+  }
   router.push(to)
 }
 </script>
@@ -71,7 +76,13 @@ const onNavigate = (to?: RouteLocationRaw): void => {
 <template>
   <div class="menu__content__item relative cursor-pointer font-display text-lg font-bold text-white-100 grayscale"
     :class="{ 'menu__content__item--active': hasActiveNavigation }" @mouseover="onOpen()" @mouseleave="onClose()">
-    <router-link v-if="showLink && item.to" :class="{ 'menu__content__item__label': showLink }"
+    <a v-if="showLink && item.external && item.to?.path" class="flex gap-1 items-center cursor-alias"
+      :class="{ 'menu__content__item__label': showLink }" :disabled="item.disabled" :aria-label="item.label"
+      :href="item.to?.path" target="_blank">
+      {{ item.label }}
+      <IconExternal class="h-4 w-4" />
+    </a>
+    <router-link v-else-if="showLink && item.to" :class="{ 'menu__content__item__label': showLink }"
       :disabled="item.disabled" :aria-label="item.label" :to="item.to" exact>
       {{ item.label }}
     </router-link>
@@ -83,11 +94,13 @@ const onNavigate = (to?: RouteLocationRaw): void => {
   <PopupMenu ref="popupMenu" v-if="showPopupMenu" class="popup-menu px-2" :class="{
     'popup-menu--open': showPopupMenu
   }" @click:outside="onClose" @mouseover="onOpen(true)" @mouseleave="onClose(true)">
-    <ListElement v-for="(child, idx) in item.children" class="menu__content__item w-full h-[fit-content] cursor-item"
-      :key="`${child?.label}-${idx}`" :disabled="child.disabled" @click="onNavigate(child.to)">
+    <ListElement v-for="(child, idx) in item.children"
+      class="menu__content__itemflex items-center gap-1 w-full h-[fit-content] cursor-item"
+      :key="`${child?.label}-${idx}`" :disabled="child.disabled" @click="onNavigate(child.to, child.external)">
       <span class="py-2 text-white-100 w-full"
-        :class="{ 'menu__content__item__label': !child.disabled, 'menu__content__item__disabled': child.disabled }">
+        :class="{ 'menu__content__item__label': !child.disabled, 'menu__content__item__disabled': child.disabled, 'cursor-alias': child.external }">
         {{ child.label }}
+        <IconExternal v-if="child.external" class="h-4 w-4" />
       </span>
     </ListElement>
   </PopupMenu>

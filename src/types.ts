@@ -43,6 +43,7 @@ export interface MenuItemType {
   disabled?: boolean
   children?: MenuItemType[]
   homepage?: boolean
+  external?: boolean,
 }
 
 

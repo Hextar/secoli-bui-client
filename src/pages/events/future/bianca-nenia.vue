@@ -19,7 +19,7 @@ const eventVenue = 'Fortificazioni monte Doglia - Alghero'
 const facebookEventUrl = 'https://www.facebook.com/events/1651984295378718?ref=newsfeed'
 const googleFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSexfG7V7H4itkhab0QZ98gnwTd8MgPGpHOxNT6qCp76fC-TpA/viewform'
 const googleMapsUrl = 'https://maps.app.goo.gl/HqXWr434j9Pu6HJT8'
-const subscriptionOpened = false
+const subscriptionOpened = true
 const subscriptionOpenDate = `19 Agosto 2024`
 const subscriptionEarlyDate = `31 Agosto 2024`
 const googleFormTooltip = subscriptionOpened
