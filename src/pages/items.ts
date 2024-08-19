@@ -83,7 +83,7 @@ export const MenuItems: MenuItemType[] = [
     ],
   },
   {
-    label: 'Abilità OSP',
+    label: 'Gestionale',
     to: { path: 'http://www.mondoditenebra.com/mad2factory/index.php?PaginaHome=SecoliBui%2Flogin&SezioneSito=SecoliBui&fbclid=IwY2xjawEhp0dleHRuA2FlbQIxMAABHc-Jv8FXTw8NIskSUFaS7I0iNdVOfKfdscN175XEeaKTCy5JO1lorhjhOg_aem_4FCm4F_ZmuuvxKNiN5CK2Q' },
     tooltip: { content: 'Spendi i tuoi punti OSP', placement: 'bottom' },
     external: true
