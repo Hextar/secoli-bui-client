@@ -29,7 +29,7 @@ const loading: Ref<Boolean> = ref(false)
 const items: MenuItemType[] = [
   {
     label: 'Info',
-    to: { path: '/events/future/bianca-nenia', hash: '#info' },
+    to: { path: '/events/future/il-simposio-di-lauriel-rose', hash: '#info' },
     tooltip: {
       content: 'Scrolla al paragrafo "Informazioni"',
       placement: 'bottom',
@@ -37,7 +37,7 @@ const items: MenuItemType[] = [
   },
   {
     label: 'Incipit',
-    to: { path: '/events/future/bianca-nenia', hash: '#incipit' },
+    to: { path: '/events/future/il-simposio-di-lauriel-rose', hash: '#incipit' },
     tooltip: { content: 'Scrolla al paragrafo "Incipit"', placement: 'bottom' },
   }
 ]
@@ -61,9 +61,9 @@ const onHeaderHeightResize = (height: number): void => {
       <template #menu>
         <MenuDetail :scroll-threshold="scrollThreshold" :items="items" :back-title="eventTitle">
           <template #cta>
-            <Button class="w-[112px]" :class="{ ['animate__shake']: subscriptionOpened }" variant="filled" color="primary"
-              size="small" tag="a" :href="subscriptionFormUrl" target="_blank" :disabled="!!loading || !subscriptionOpened"
-              :tooltip="subscriptionFormTooltip">
+            <Button class="w-[112px]" :class="{ ['animate__shake']: subscriptionOpened }" variant="filled"
+              color="primary" size="small" tag="a" :href="subscriptionFormUrl" target="_blank"
+              :disabled="!!loading || !subscriptionOpened" :tooltip="subscriptionFormTooltip">
               <span class="font-display text-lg font-bold">
                 {{ loading ? t('common.loading') : t('common.subscribe') }}
               </span>
@@ -161,7 +161,8 @@ const onHeaderHeightResize = (height: number): void => {
         </Paragraph>
         <Paragraph class="flex justify-center w-full">
           <Button class="w-[112px] animate__shake decoration-none w-1/3" variant="filled" color="primary" tag="a"
-            :href="subscriptionFormUrl" target="_blank" :disabled="!!loading" full-width :tooltip="subscriptionFormTooltip">
+            :href="subscriptionFormUrl" target="_blank" :disabled="!!loading" full-width
+            :tooltip="subscriptionFormTooltip">
             <span class="font-display text-lg font-bold">
               {{ loading ? t('common.loading') : t('common.subscribe') }}
             </span>

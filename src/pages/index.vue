@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { backgroundLazyHd, backgroundHd } from '~/assets/images/events/bianca_nenia'
+import { backgroundLazyHd, backgroundHd } from '~/assets/images/events/il_simposio_di_lauriel_rose'
 
 import { useMeta, useViewport } from '~/composables'
 
